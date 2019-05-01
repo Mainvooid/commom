@@ -9,6 +9,7 @@
 *.tlog
 *.log
 *.pdb
+*.db
 
 # Precompiled Headers
 *.gch
@@ -33,3 +34,7 @@
 *.exe
 *.out
 *.app
+
+/.vs
+/Release
+/Debug

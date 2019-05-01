@@ -27,6 +27,9 @@
     <ClInclude Include="common\cmdline.h">
       <Filter>头文件\common</Filter>
     </ClInclude>
+    <ClInclude Include="common_all.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
