@@ -38,3 +38,5 @@
 /.vs
 /Release
 /Debug
+/x64
+test.cpp

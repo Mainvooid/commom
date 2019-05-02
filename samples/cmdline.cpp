@@ -3,7 +3,6 @@
 @author guobao.v@gmail.com
 */
 
-
 #include <common/cmdline.h>
 #include <iostream>
 
@@ -96,8 +95,8 @@ void cmdline_parser(int argc, char* argv[], Args &...args) {
 
 int main(int argc, char* argv[])
 {
-	/*
-	argc = 12;
+	argc = 10;
+	argv = (char **)malloc(sizeof(char*) * argc);
 	argv[0] = const_cast<char*>("common.exe");
 	argv[1] = const_cast<char*>("-i");
 	argv[2] = const_cast<char*>("in");
@@ -108,7 +107,6 @@ int main(int argc, char* argv[])
 	argv[7] = const_cast<char*>("-t");
 	argv[8] = const_cast<char*>("mp4");
 	argv[9] = const_cast<char*>("--zip");
-	*/
 
 	string input_fname;
 	string output_fname;
@@ -123,7 +121,7 @@ int main(int argc, char* argv[])
 	cout << "port:" << port << endl;
 	cout << "type:" << type << endl;
 	cout << "zip:" << isZip << endl;
-
+	free_s(argv);
 }
 /*
 >./common

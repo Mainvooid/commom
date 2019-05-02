@@ -2,7 +2,10 @@
 @brief  a simple command line parser only one header file.
 @author guobao.v@gmail.com
 */
+#ifdef _MSC_VER
 #pragma once
+#endif
+
 #ifndef _CMDLINE_H_
 #define _CMDLINE_H_
 
@@ -18,9 +21,6 @@
 #endif
 
 #include <common.h>
-
-#pragma warning(push,_STL_WARNING_LEVEL)
-#pragma warning(disable: _STL_DISABLED_WARNINGS)
 
 namespace common {
 
@@ -208,7 +208,7 @@ namespace common {
 		public:
 			oneof_reader() {}
 			template <typename ...Values>
-			oneof_reader(T v, Values...vs) noexcept
+			oneof_reader(const T& v, const Values&...vs) noexcept
 			{
 				add(v, vs...);
 			}
@@ -226,14 +226,14 @@ namespace common {
 			}
 
 			template <typename ...Values>
-			void add(T v, Values...vs) noexcept
+			void add(const T& v, const Values&...vs) noexcept
 			{
 				m_values.push_back(v);
 				add(vs...);
 			}
 
 		private:
-			void add(const T v) noexcept
+			void add(const T& v) noexcept
 			{
 				m_values.push_back(v);
 			}
@@ -246,7 +246,7 @@ namespace common {
 		*@brief 返回一个可选值检查器
 		*/
 		template <typename T, typename ...Values>
-		oneof_reader<T> oneof(T a1, Values... a2) noexcept
+		oneof_reader<T> oneof(const T& a1,const Values&... a2) noexcept
 		{
 			return oneof_reader<T>(a1, a2...);
 		}
@@ -257,7 +257,7 @@ namespace common {
 		class parser {
 		public:
 			parser() {}
-			~parser() noexcept{
+			~parser() noexcept {
 				for (std::map<std::string, option_base*>::iterator p = options.begin();
 					p != options.end(); p++)
 				{
@@ -313,7 +313,7 @@ namespace common {
 			*@param desc       描述
 			*@param need       是否必需(可选)
 			*@param def        默认值(可选,当不必需时使用)
-			*@param reader     可读包装类型string->T
+			*@param reader     可读包装类型
 			*/
 			template <class T, class F>
 			void add(const std::string &name,
@@ -629,8 +629,8 @@ namespace common {
 			*@brief 运行解析器(包装parse并做检查)
 			*@param argc 参数数量(+程序名)
 			*@param argv 参数值([0]为程序名)
-			*@note 仅当命令行参数有效时才返回 
-				   如果参数无效，解析器输出错误消息然后退出程序 
+			*@note 仅当命令行参数有效时才返回
+				   如果参数无效，解析器输出错误消息然后退出程序
 				   如果指定了help flag('-help'或'-?')或空命令，则解析器输出用法消息然后退出程序
 			*/
 			void parse_check(int argc, char *argv[]) noexcept(false)
@@ -705,13 +705,12 @@ namespace common {
 			}
 
 		private:
-
 			/**
 			*@brief parse检查
 			*@param argc 参数数量
 			*@param ok 是否解析成功
 			*/
-			void check(int argc, bool ok) noexcept {
+			void check(size_t argc, bool ok) noexcept {
 				if ((argc == 1 && !ok) || exist("help"))
 				{
 					std::cerr << usage();
@@ -911,6 +910,7 @@ namespace common {
 				F reader;
 			};
 
+		private:
 			std::map<std::string, option_base*> options;//参数选项map(长名称,一个选项)
 			std::vector<option_base*> ordered;          //有序的参数选项(add时push)
 			std::string ftr;                            //usage尾部添加说明
@@ -920,5 +920,6 @@ namespace common {
 		};
 	} // cmdline
 } // common
-#pragma warning(pop)
+
 #endif // _CMDLINE_H_
+

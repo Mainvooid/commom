@@ -30,10 +30,16 @@
     <ClInclude Include="common_all.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="common\debuglog.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
       <Filter>源文件\samples</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
