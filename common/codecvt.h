@@ -18,8 +18,6 @@
 					 在linux的GCC环境下为UTF-32编码
 		char16_t	 UTF-16编码
 		char32_t	 UTF-32编码
-
-		故而ANSI,UTF-16,UTF-32,UTF-8可以互相转换
 */
 #ifdef _MSC_VER
 #pragma once
@@ -47,7 +45,7 @@ namespace common {
 		/**
 		*@brief std::u16string -> std::string(utf8)
 		*@return 若失败返回空字符串
-				 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
+		*@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
 		*/
 		std::string utf16_to_utf8(const std::u16string& utf16_string) noexcept
 		{
@@ -105,7 +103,7 @@ namespace common {
 		/**
 		*@brief std::u32string -> std::string(utf8)
 		*@return 若失败返回空字符串
-				 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
+		*@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
 		*/
 		std::string utf32_to_utf8(const std::u32string& utf32_string) noexcept
 		{
@@ -183,7 +181,7 @@ namespace common {
 		/**
 		*@brief std::wstring(unicode) -> std::string(utf8)
 		*@return 若失败返回空字符串,
-				 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
+		*@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
 		*/
 		std::string unicode_to_utf8(const std::wstring& wstring) noexcept
 		{
@@ -275,7 +273,7 @@ namespace common {
 		/**
 		*@brief std::string(ansi) -> std::string(utf8)
 		*@return 若失败返回空字符串
-				 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
+		*@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
 		*/
 		std::string ansi_to_utf8(const std::string & ansi_string) noexcept
 		{
