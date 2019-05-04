@@ -15,7 +15,7 @@
 #include <iostream>
 
 namespace common {
-	const std::string _TAG = "common";
+    const std::string _TAG = "common";
 
 #if defined(_WIN32) && !defined(API)
 #define API __declspec(dllexport)
