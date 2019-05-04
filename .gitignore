@@ -40,3 +40,6 @@
 /Debug
 /x64
 test.cpp
+
+debuglog.cpp
+debuglog.h

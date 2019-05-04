@@ -7,6 +7,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace common;
 using namespace common::cmdline;
 
 /**
@@ -92,7 +93,6 @@ void cmdline_parser(int argc, char* argv[], Args &...args) {
 	//vector<string> rest = parser.rest();
 }
 
-
 int main(int argc, char* argv[])
 {
 	argc = 10;
@@ -114,7 +114,6 @@ int main(int argc, char* argv[])
 	string type;
 	bool isZip;
 	cmdline_parser(argc, argv, input_fname, output_fname, port, type, isZip);
-
 
 	cout << "input_fname:" << input_fname << endl;
 	cout << "output_fname:" << output_fname << endl;

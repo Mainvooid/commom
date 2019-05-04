@@ -33,6 +33,12 @@
     <ClInclude Include="common\debuglog.h">
       <Filter>头文件\common</Filter>
     </ClInclude>
+    <ClInclude Include="common\codecvt.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\precomm.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
@@ -40,6 +46,12 @@
     </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="samples\debuglog.cpp">
+      <Filter>源文件\samples</Filter>
+    </ClCompile>
+    <ClCompile Include="samples\codecvt.cpp">
+      <Filter>源文件\samples</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

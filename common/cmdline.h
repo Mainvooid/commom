@@ -1,5 +1,5 @@
 ﻿/*
-@brief  a simple command line parser only one header file.
+@brief  a simple command line parser
 @author guobao.v@gmail.com
 */
 #ifdef _MSC_VER
@@ -9,18 +9,17 @@
 #ifndef _CMDLINE_H_
 #define _CMDLINE_H_
 
+#include <common/precomm.h>
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <map>
-#include <algorithm>
 
 //当编译器非gcc时,不包含cxxabi.h头文件
 #ifdef __GNUC__
 #include <cxxabi.h>
 #endif
-
-#include <common.h>
 
 namespace common {
 
@@ -106,7 +105,7 @@ namespace common {
 			{
 #ifdef _MSC_VER
 				return name; // 为MSVC编译器时直接返回name
-#elif defined(__GNUC__) 
+#elif defined(__GNUC__)
 				// 为gcc编译器时还调用原来的代码
 				int status = 0;
 				char *p = abi::__cxa_demangle(name.c_str(), 0, 0, &status);
@@ -147,9 +146,11 @@ namespace common {
 		/**
 		*@brief 模块异常类
 		*/
-		class cmdline_error : public std::exception {
+
+		class[[deprecated("unnecessary")]]
+			cmdline_error : public std::exception{
 		public:
-			cmdline_error(const std::string &msg) : m_msg(msg) {}
+			cmdline_error(const std::string msg) : m_msg(std::move(msg)) {}
 			~cmdline_error() noexcept {}
 			const char *what() const noexcept { return m_msg.c_str(); }
 		private:
@@ -207,11 +208,24 @@ namespace common {
 		class oneof_reader {
 		public:
 			oneof_reader() {}
+			oneof_reader(const std::initializer_list<T> &list) noexcept {
+				for (T item : list) {
+					m_values.push_back(item);
+				}
+			}
+
 			template <typename ...Values>
 			oneof_reader(const T& v, const Values&...vs) noexcept
 			{
 				add(v, vs...);
 			}
+
+			T operator=(const std::initializer_list<T> &list) noexcept
+			{
+				for (T item : list) {
+					m_values.push_back(item);
+				}
+			};
 
 			T operator()(const std::string &s) noexcept(false)
 			{
@@ -246,9 +260,18 @@ namespace common {
 		*@brief 返回一个可选值检查器
 		*/
 		template <typename T, typename ...Values>
-		oneof_reader<T> oneof(const T& a1,const Values&... a2) noexcept
+		oneof_reader<T> oneof(const T& a1, const Values&... a2) noexcept
 		{
 			return oneof_reader<T>(a1, a2...);
+		}
+
+		/**
+		*@brief 返回一个可选值检查器
+		*/
+		template <typename T>
+		oneof_reader<T> oneof(const std::initializer_list<T> &list) noexcept
+		{
+			return oneof_reader<T>(list);
 		}
 
 		/**
@@ -262,9 +285,6 @@ namespace common {
 					p != options.end(); p++)
 				{
 					delete_s(p->second);
-
-					//delete p->second;
-					//p->second = nullptr;
 				}
 			}
 
@@ -337,13 +357,13 @@ namespace common {
 			*@brief usage尾部添加说明(如果需要解析未指定参数)
 			*@param f 补充说明
 			*/
-			void footer(const std::string &f) noexcept { ftr = f; }
+			void footer(const std::string f) noexcept { ftr = std::move(f); }
 
 			/**
 			*@brief 设置usage程序名,默认由argv[0]确定
 			*@param name usage程序名
 			*/
-			void set_program_name(const std::string &name) noexcept { prog_name = name; }
+			void set_program_name(const std::string name) noexcept { prog_name = std::move(name); }
 
 			/**
 			*@brief 判断bool参数是否被指定
@@ -904,6 +924,7 @@ namespace common {
 					: option_with_value<T>(name, short_name, need, def, desc), reader(reader) {}
 
 			private:
+				//string -> T
 				T read(const std::string &s) noexcept { return reader(s); }
 
 			private:
