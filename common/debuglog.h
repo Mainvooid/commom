@@ -16,9 +16,6 @@
 #include <common/codecvt.h>
 #include <windows.h>
 
-
-using namespace common;
-
 namespace common {
     namespace debuglog {
         const std::string _TAG = "debuglog";
