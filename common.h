@@ -12,6 +12,7 @@
 #include <common/precomm.h>
 #include <common/cmdline.h>
 #include <common/codecvt.h>
+#include <common/debuglog.h>
 #include <iostream>
 
 namespace common {
