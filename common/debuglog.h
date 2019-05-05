@@ -58,6 +58,11 @@ namespace common {
         public:
             void setLevel(level_e log_level) noexcept { m_level = log_level; }
 
+            /*
+            *@brief 打印Debug信息
+            *@param wmsgbuf 提示信息
+            *@param nLevel log等级
+            */
             void printLog(const wchar_t * wmsgbuf, const level_e nLevel) const noexcept
             {
                 if (nLevel < m_level) { return; }
@@ -86,6 +91,11 @@ namespace common {
                 }
             }
 
+            /*
+            *@brief 打印Debug信息
+            *@param msgbuf 提示信息
+            *@param nLevel log等级
+            */
             void printLog(const std::string msgbuf, const level_e nLevel) const noexcept
             {
                 if (nLevel < m_level) { return; }
@@ -93,7 +103,16 @@ namespace common {
                 printLog(wstring.data(), nLevel);
             }
 
-            void printLog(const wchar_t * wmsgbuf, const level_e nLevel, const char* _func, const char * _file, const int _line)const noexcept
+            /*
+            *@brief 打印Debug信息
+            *@param wmsgbuf 提示信息
+            *@param nLevel log等级
+            *@param _func 宏 __FUNCTION__ 函数名
+            *@param _file 宏 __FILE__ 文件名
+            *@param _line 宏 __LINE__ 行数
+            */
+            void printLog(const wchar_t * wmsgbuf, const level_e nLevel,
+                const char* _func, const char * _file, const int _line)const noexcept
             {
                 if (nLevel < m_level) { return; }
                 std::wstring wfunc = codecvt::ansi_to_unicode(_func);
@@ -128,7 +147,17 @@ namespace common {
                     break;
                 }
             }
-            void printLog(const std::string msgbuf, const level_e nLevel, const char* _func, const char * _file, const int _line)const noexcept
+
+            /*
+            *@brief 打印Debug信息
+            *@param msgbuf 提示信息
+            *@param nLevel log等级
+            *@param _func 宏 __FUNCTION__ 函数名
+            *@param _file 宏 __FILE__ 文件名
+            *@param _line 宏 __LINE__ 行数
+            */
+            void printLog(const std::string msgbuf, const level_e nLevel,
+                const char* _func, const char * _file, const int _line)const noexcept
             {
                 if (nLevel < m_level) { return; }
                 std::wstring wmsgbuf = codecvt::ansi_to_unicode(msgbuf);
