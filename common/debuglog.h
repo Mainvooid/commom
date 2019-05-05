@@ -6,12 +6,12 @@
 #pragma once
 #endif
 
+#ifndef _DEBUGLOG_H_
+#define _DEBUGLOG_H_
+
 #ifndef _WIN32
 #error Unsupported platform
 #else
-
-#ifndef _DEBUGLOG_H_
-#define _DEBUGLOG_H_
 
 #include <common/codecvt.h>
 #include <windows.h>
@@ -192,5 +192,7 @@ namespace common {
 
 } // namespace common
 
-#endif // _DEBUGLOG_H_
 #endif // _WIN32
+
+#endif // _DEBUGLOG_H_
+

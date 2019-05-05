@@ -39,4 +39,4 @@
 /Release
 /Debug
 /x64
-test.cpp
+test*.cpp

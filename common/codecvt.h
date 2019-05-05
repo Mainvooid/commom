@@ -30,7 +30,7 @@
 #include <codecvt>
 #include <tchar.h>
 
-//TODO 使用函数模板统一接口进行直接的互转
+//TODO 使用函数模板统一接口进行直接的互转(并且解决重定义问题)
 ///std::string(utf8) std::string(ansi) std::u16string(utf16) std::u32string(utf32) std::wstring(unicode)
 
 namespace common {
@@ -286,5 +286,6 @@ namespace common {
         //std::wstring unicode_to_utf8(const std::wstring& unicode_wstring) noexcept {}
     }// namespace codecvt
 }// namespace common
+
 #endif // _CODECVT_H_
 
