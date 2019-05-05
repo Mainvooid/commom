@@ -9,9 +9,9 @@
 using namespace common;
 using namespace common::debuglog;
 
-void test()
+void func()
 {
-    logger log("test", level_e::Info);
+    logger log(_T("test"), level_e::Info);
     std::wstring wstr = _T("Test测试123");
     std::string str = "Test测试123";
     log.printLog(str, level_e::Info);
@@ -21,11 +21,11 @@ void test()
 }
 int main()
 {
-    test();
+    func();
 }
 /*
-Info : Test测试123
-Info : Test测试123
-Info : Test测试123   [...\common\samples\debuglog.cpp(19) test]
-Info : Test测试123   [...\common\samples\debuglog.cpp(20) test]
+Info [test] : Test测试123
+Info [test] : Test测试123
+Info [test] : Test测试123   [...\common\samples\debuglog.cpp(19) func]
+Info [test] : Test测试123   [...\common\samples\debuglog.cpp(20) func]
 */

@@ -46,11 +46,11 @@ namespace common {
         class logger
         {
         public:
-            logger() :m_name(""), m_level(level_e::Warn) {}
+            logger() :m_name(_T("")), m_level(level_e::Warn) {}
             ~logger() noexcept {}
-            logger(std::string logger_name) :m_name(std::move(logger_name)), m_level(level_e::Warn) {}
-            logger(level_e log_level) :m_name(""), m_level(log_level) { }
-            logger(std::string logger_name, level_e log_level) :m_name(std::move(logger_name)), m_level(log_level) { }
+            logger(std::wstring logger_name) :m_name(std::move(logger_name)), m_level(level_e::Warn) {}
+            logger(level_e log_level) :m_name(_T("")), m_level(log_level) { }
+            logger(std::wstring logger_name, level_e log_level) :m_name(std::move(logger_name)), m_level(log_level) { }
             logger(const logger &) = delete;           //拷贝构造
             logger &operator=(const logger &) = delete;//拷贝赋值
             logger(const logger&&) = delete;           //移动构造
@@ -69,22 +69,22 @@ namespace common {
                 switch (nLevel)
                 {
                 case level_e::Trace:
-                    OutputDebugStringEx(L"Trace : %s\n", wmsgbuf);
+                    OutputDebugStringEx(L"Trace [%s] : %s\n",m_name.data(), wmsgbuf);
                     break;
                 case level_e::Debug:
-                    OutputDebugStringEx(L"Debug : %s\n", wmsgbuf);
+                    OutputDebugStringEx(L"Debug [%s] : %s\n", m_name.data(), wmsgbuf);
                     break;
                 case level_e::Info:
-                    OutputDebugStringEx(L"Info : %s\n", wmsgbuf);
+                    OutputDebugStringEx(L"Info [%s] : %s\n", m_name.data(), wmsgbuf);
                     break;
                 case level_e::Warn:
-                    OutputDebugStringEx(L"Warn : %s\n", wmsgbuf);
+                    OutputDebugStringEx(L"Warn [%s] : %s\n", m_name.data(), wmsgbuf);
                     break;
                 case level_e::Error:
-                    OutputDebugStringEx(L"Error : %s\n", wmsgbuf);
+                    OutputDebugStringEx(L"Error [%s] : %s\n", m_name.data(), wmsgbuf);
                     break;
                 case level_e::Critical:
-                    OutputDebugStringEx(L"Critical : %s\n", wmsgbuf);
+                    OutputDebugStringEx(L"Critical [%s] : %s\n", m_name.data(), wmsgbuf);
                     break;
                 default:
                     break;
@@ -126,22 +126,28 @@ namespace common {
                 switch (nLevel)
                 {
                 case level_e::Trace:
-                    OutputDebugStringEx(_T("Trace : %s   [...%s(%d) %s]\n"), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
+                    OutputDebugStringEx(_T("Trace [%s] : %s   [...%s(%d) %s]\n"),
+                        m_name.data(), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
                     break;
                 case level_e::Debug:
-                    OutputDebugStringEx(_T("Debug : %s   [...%s(%d) %s]\n"), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
+                    OutputDebugStringEx(_T("Debug [%s] : %s   [...%s(%d) %s]\n"),
+                        m_name.data(), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
                     break;
                 case level_e::Info:
-                    OutputDebugStringEx(_T("Info : %s   [...%s(%d) %s]\n"), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
+                    OutputDebugStringEx(_T("Info [%s] : %s   [...%s(%d) %s]\n"),
+                        m_name.data(), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
                     break;
                 case level_e::Warn:
-                    OutputDebugStringEx(_T("Warn : %s   [...%s(%d) %s]\n"), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
+                    OutputDebugStringEx(_T("Warn [%s] : %s   [...%s(%d) %s]\n"),
+                        m_name.data(), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
                     break;
                 case level_e::Error:
-                    OutputDebugStringEx(_T("Error : %s   [...%s(%d) %s]\n"), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
+                    OutputDebugStringEx(_T("Error [%s] : %s   [...%s(%d) %s]\n"),
+                        m_name.data(), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
                     break;
                 case level_e::Critical:
-                    OutputDebugStringEx(_T("Critical : %s   [...%s(%d) %s]\n"), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
+                    OutputDebugStringEx(_T("Critical [%s] : %s   [...%s(%d) %s]\n"),
+                        m_name.data(), wmsgbuf, wfile_fmt.data(), _line, wfunc.data());
                     break;
                 default:
                     break;
@@ -181,7 +187,7 @@ namespace common {
                 ::OutputDebugStringW(buf);
             }
         private:
-            std::string m_name;
+            std::wstring m_name;
             level_e m_level;
         };
 
