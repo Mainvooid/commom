@@ -13,7 +13,7 @@
 #include <common/cmdline.h>
 #include <common/codecvt.h>
 #include <common/debuglog.h>
-#include <iostream>
+#include <common/dll.h>
 
 namespace common {
     const std::string _TAG = "common";
