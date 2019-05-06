@@ -15,22 +15,8 @@
 #include <common/debuglog.h>
 #include <iostream>
 
-#if defined(_WIN32) && !defined(API)
-#define DLLAPI __declspec(dllexport)
-#else
-#define DLLAPI __declspec(dllimport)
-#endif
-
 namespace common {
     const std::string _TAG = "common";
-
-    template<class interfaceCls, class implCls>
-    std::shared_ptr<interfaceCls> getClsPtr() noexcept
-    {
-        std::shared_ptr<interfaceCls> ptr;
-        ptr.reset(new implCls);
-        return ptr;
-    }
 
 }
 #endif // _COMMON_H_

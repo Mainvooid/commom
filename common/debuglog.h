@@ -6,12 +6,8 @@
 #pragma once
 #endif
 
-#ifndef _DEBUGLOG_H_
+#if !defined(_DEBUGLOG_H_) && defined(_WIN32)
 #define _DEBUGLOG_H_
-
-#ifndef _WIN32
-#error Unsupported platform
-#else
 
 #include <common/codecvt.h>
 #include <windows.h>
