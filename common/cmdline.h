@@ -152,7 +152,7 @@ namespace common {
             cmdline_error : public std::exception{
         public:
             cmdline_error(const std::string msg) : m_msg(std::move(msg)) {}
-            ~cmdline_error() noexcept {}
+            ~cmdline_error() {}
             const char *what() const noexcept { return m_msg.c_str(); }
         private:
             std::string m_msg;
@@ -281,7 +281,7 @@ namespace common {
         class parser {
         public:
             parser() {}
-            ~parser() noexcept {
+            ~parser() {
                 for (std::map<std::string, option_base*>::iterator p = options.begin();
                     p != options.end(); p++)
                 {
