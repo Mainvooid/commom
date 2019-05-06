@@ -24,5 +24,13 @@ namespace common {
 #define API __declspec(dllimport)
 #endif
 
+    template<class interfaceCls, class implCls>
+    std::shared_ptr<interfaceCls> getClsPtr() noexcept
+    {
+        std::shared_ptr<interfaceCls> ptr;
+        ptr.reset(new implCls);
+        return ptr;
+    }
+
 }
 #endif // _COMMON_H_
