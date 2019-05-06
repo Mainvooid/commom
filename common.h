@@ -15,14 +15,14 @@
 #include <common/debuglog.h>
 #include <iostream>
 
-namespace common {
-    const std::string _TAG = "common";
-
 #if defined(_WIN32) && !defined(API)
 #define DLLAPI __declspec(dllexport)
 #else
 #define DLLAPI __declspec(dllimport)
 #endif
+
+namespace common {
+    const std::string _TAG = "common";
 
     template<class interfaceCls, class implCls>
     std::shared_ptr<interfaceCls> getClsPtr() noexcept
