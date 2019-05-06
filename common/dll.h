@@ -33,10 +33,10 @@ namespace common {
         std::wstring getSubDllFileName(const HMODULE& g_dllModule, const std::wstring sub_dll_name) {
             wchar_t current_dll_fname[MAX_PATH];
             wchar_t _Dir[MAX_PATH];
-            wchar_t _Driver[2];
+            wchar_t _Driver[sizeof(wchar_t) * 2];
             wchar_t sub_dll_fname[MAX_PATH];
             ::GetModuleFileNameW(g_dllModule, current_dll_fname, MAX_PATH);
-            ::_wsplitpath_s(current_dll_fname, _Driver, 2, _Dir, MAX_PATH, NULL, 0, NULL, 0);
+            ::_wsplitpath_s(current_dll_fname, _Driver, sizeof(wchar_t) * 2, _Dir, MAX_PATH, NULL, 0, NULL, 0);
             ::wsprintfW(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, std::move(sub_dll_name));
             return sub_dll_fname;
         };
