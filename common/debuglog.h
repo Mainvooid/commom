@@ -188,7 +188,5 @@ namespace common {
 
 } // namespace common
 
-#endif // _WIN32
-
 #endif // _DEBUGLOG_H_
 

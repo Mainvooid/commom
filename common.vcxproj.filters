@@ -39,6 +39,9 @@
     <ClInclude Include="common\precomm.h">
       <Filter>头文件\common</Filter>
     </ClInclude>
+    <ClInclude Include="common\dll.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
