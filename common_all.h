@@ -10,5 +10,5 @@
 #define _COMMON_ALL_H_
 namespace common {
 
-}
+} // namespace common
 #endif // _COMMON_ALL_H_

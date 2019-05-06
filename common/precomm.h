@@ -133,5 +133,6 @@ namespace common {
         release_s(args...);
     }
 
-}
+} // namespace common
+
 #endif // _PRECOMM_H_

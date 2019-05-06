@@ -15,6 +15,7 @@
 #include <sstream>
 #include <vector>
 #include <map>
+#include <tchar.h>
 
 //当编译器非gcc时,不包含cxxabi.h头文件
 #ifdef __GNUC__
@@ -24,7 +25,7 @@
 namespace common {
 
     namespace cmdline {
-        const std::string _TAG = "cmdline";
+        static const std::string _TAG = "cmdline";
 
         namespace detail {
 

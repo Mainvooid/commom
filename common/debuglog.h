@@ -13,8 +13,8 @@
 #include <windows.h>
 
 namespace common {
+
     namespace debuglog {
-        const std::string _TAG = "debuglog";
 
         /*调试日志级别
         Trace    = 0,

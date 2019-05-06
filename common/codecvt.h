@@ -34,7 +34,9 @@
 ///std::string(utf8) std::string(ansi) std::u16string(utf16) std::u32string(utf32) std::wstring(unicode)
 
 namespace common {
+
     namespace codecvt {
+
 #ifdef _MSC_VER
         static std::locale locale("zh-CN");//设置本地语言环境
 #else
@@ -296,7 +298,9 @@ namespace common {
         //std::wstring ansi_to_utf8(const std::string& ansi_string) noexcept {}
         //std::wstring utf8_to_unicode(const std::wstring& utf8_wstring) noexcept {}
         //std::wstring unicode_to_utf8(const std::wstring& unicode_wstring) noexcept {}
+
     }// namespace codecvt
+
 }// namespace common
 
 #endif // _CODECVT_H_

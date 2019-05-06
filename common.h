@@ -16,7 +16,7 @@
 #include <common/dll.h>
 
 namespace common {
-    const std::string _TAG = "common";
+    static const std::string _TAG = "common";
 
-}
+} // namespace common
 #endif // _COMMON_H_
