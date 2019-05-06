@@ -19,9 +19,9 @@ namespace common {
     const std::string _TAG = "common";
 
 #if defined(_WIN32) && !defined(API)
-#define API __declspec(dllexport)
+#define DLLAPI __declspec(dllexport)
 #else
-#define API __declspec(dllimport)
+#define DLLAPI __declspec(dllimport)
 #endif
 
     template<class interfaceCls, class implCls>
