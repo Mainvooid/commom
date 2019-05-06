@@ -38,6 +38,7 @@ namespace common {
             ::GetModuleFileNameW(g_dllModule, current_dll_fname, MAX_PATH);
             ::_wsplitpath_s(current_dll_fname, _Driver, 2, _Dir, MAX_PATH, NULL, 0, NULL, 0);
             ::wsprintfW(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, std::move(sub_dll_name));
+            return sub_dll_fname;
         };
 
         /**
