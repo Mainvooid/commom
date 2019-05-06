@@ -40,7 +40,7 @@ namespace common {
 
         /**
         *@brief dll下根据运行时环境获取子dll的绝对加载路径
-        *@param g_dllModule DllMain函数中DLL_THREAD_ATTACH通过g_dllModule = hModule获取
+        *@param g_dllModule DllMain函数的DLL_THREAD_ATTACH下通过g_dllModule = hModule获取
         *@param sub_dll_name 子dll名 xxx.dll
         *@return 子dll的绝对加载路径
         */
@@ -101,7 +101,7 @@ namespace common {
             */
             func_type_name getAddress(const HMODULE& dll,const std::string& func_name) noexcept
             {
-                return (func_type_name)GetProcAddress(dll, func_name.data());
+                return GetProcAddress(dll, func_name.data());
             }
 
             /**
