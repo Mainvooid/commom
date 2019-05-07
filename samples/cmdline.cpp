@@ -1,9 +1,9 @@
 ﻿/*
-@brief usage sample for cmdline.h.
+@brief usage sample for cmdline.hpp.
 @author guobao.v@gmail.com
 */
 
-#include <common/cmdline.h>
+#include <common/cmdline.hpp>
 #include <iostream>
 
 using namespace std;

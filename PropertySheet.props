@@ -3,23 +3,28 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup>
     <!-- 指定第三方依赖目录 -->
-    <example>./</example>
+    <OpenCV>D:\ProgramData\opencv401_with_contrib\opencv\sources\build\install</OpenCV>
     
     <!-- 指定include目录 -->
-    <IncludePath>./;../;$(common)/common;$(IncludePath)</IncludePath>
+    <IncludePath>./;../;$(common)/common;$(OpenCV)\include;$(IncludePath)</IncludePath>
 
     <!-- 指定lib目录 -->
-    <LibraryPath Condition="'$(Platform)'=='X64'">$(example)/Lib/x64;$(LibraryPath)</LibraryPath>
-    <LibraryPath Condition="'$(Platform)'=='X64'">$(example)/Lib/x86;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Platform)'=='X64'">$(OpenCV)\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Platform)'=='Win32'">$(OpenCV)\x86\vc15\lib;$(LibraryPath)</LibraryPath>
+    
+    <!-- 让系统PATH临时包含指定的dll目录 -->
+    <LocalDebuggerEnvironment Condition="'$(Platform)'=='X64'">PATH=$(OpenCV)\x64\vc15\bin;%PATH%;</LocalDebuggerEnvironment>
+    <LocalDebuggerEnvironment Condition="'$(Platform)'=='Win32'">PATH=$(OpenCV)\x86\vc15\bin;%PATH%;</LocalDebuggerEnvironment>
+    
   </PropertyGroup>
 
   <!-- 附加依赖项 -->
   <ItemDefinitionGroup >
     <Link Condition=" '$(Configuration)' == 'Debug' ">
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world401d.lib;opencv_img_hash401d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Link Condition=" '$(Configuration)' == 'Release' ">
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world401.lib;opencv_img_hash401.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

@@ -1,8 +1,8 @@
 ﻿/*
-@brief usage sample for codecvt.h.
+@brief usage sample for codecvt.hpp.
 @author guobao.v@gmail.com
 */
-#include <common/codecvt.h>
+#include <common/codecvt.hpp>
 using namespace common::codecvt;
 
 int main() {

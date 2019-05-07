@@ -6,8 +6,8 @@
 #pragma once
 #endif
 
-#ifndef _PRECOMM_H_
-#define _PRECOMM_H_
+#ifndef _COMMON_PRECOMM_HPP_
+#define _COMMON_PRECOMM_HPP_
 #include <cstdlib>
 
 namespace common {
@@ -135,4 +135,4 @@ namespace common {
 
 } // namespace common
 
-#endif // _PRECOMM_H_
+#endif // _COMMON_PRECOMM_HPP_

@@ -6,10 +6,10 @@
 #pragma once
 #endif
 
-#if !defined(_DLL_H_) && defined(_WIN32)
-#define _DLL_H_
+#if !defined(_COMMON_DLL_HPP_) && defined(_WIN32)
+#define _COMMON_DLL_HPP_
 
-#include <common/precomm.h>
+#include <common/precomm.hpp>
 #include <memory>
 #include <windows.h>
 
@@ -44,8 +44,7 @@ namespace common {
         *@param sub_dll_name 子dll名 xxx.dll
         *@return 子dll的绝对加载路径
         */
-        template<bool flag = false>
-        std::wstring getSubDllFileName(const HMODULE& g_dllModule,const std::wstring& sub_dll_name) noexcept
+        static std::wstring getSubDllFileName(const HMODULE& g_dllModule,const std::wstring& sub_dll_name) noexcept
         {
             wchar_t current_dll_fname[MAX_PATH];
             wchar_t _Dir[MAX_PATH];
@@ -61,8 +60,7 @@ namespace common {
         /**
         *@brief 运行时目录下搜索DLL及其依赖项
         */
-        template<bool flag = false>
-        HMODULE loadSubDll(const HMODULE& g_dllModule,const std::wstring& sub_dll_name) noexcept
+        static HMODULE loadSubDll(const HMODULE& g_dllModule,const std::wstring& sub_dll_name) noexcept
         {
             std::wstring sub_dll_path = getSubDllFileName(g_dllModule, sub_dll_name);
             return LoadLibraryEx(sub_dll_path.data(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
@@ -71,8 +69,7 @@ namespace common {
         /**
         *@brief 指定目录搜索DLL及其依赖项
         */
-        template<bool flag = false>
-        HMODULE loadSubDll(const std::wstring& sub_dll_dir,const std::wstring& sub_dll_name) noexcept
+        static HMODULE loadSubDll(const std::wstring& sub_dll_dir,const std::wstring& sub_dll_name) noexcept
         {
             ::AddDllDirectory(sub_dll_dir.data());
             return LoadLibraryEx(sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_USER_DIRS);
@@ -81,8 +78,7 @@ namespace common {
         /**
         *@brief 在应用程序的安装目录中搜索DLL及其依赖项
         */
-        template<bool flag = false>
-        HMODULE loadSubDll(const std::wstring& sub_dll_name) noexcept
+        static HMODULE loadSubDll(const std::wstring& sub_dll_name) noexcept
         {
             return LoadLibraryEx(sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
         }
@@ -132,4 +128,4 @@ namespace common {
 
 } // namespace common
 
-#endif // _DLL_H_
+#endif // _COMMON_DLL_HPP_

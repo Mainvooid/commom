@@ -6,9 +6,9 @@
 #pragma once
 #endif
 
-#ifndef _COMMON_ALL_H_
-#define _COMMON_ALL_H_
+#ifndef _COMMON_ALL_HPP_
+#define _COMMON_ALL_HPP_
 namespace common {
 
 } // namespace common
-#endif // _COMMON_ALL_H_
+#endif // _COMMON_ALL_HPP_

@@ -21,26 +21,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.h">
+    <ClInclude Include="common\cmdline.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\codecvt.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\debuglog.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\dll.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\opencv.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\precomm.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\cmdline.h">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common_all.h">
+    <ClInclude Include="common_all.hpp">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="common\debuglog.h">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\codecvt.h">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\precomm.h">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\dll.h">
-      <Filter>头文件\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,5 +59,13 @@
     <ClCompile Include="samples\codecvt.cpp">
       <Filter>源文件\samples</Filter>
     </ClCompile>
+    <ClCompile Include="samples\opencv.cpp">
+      <Filter>源文件\samples</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertySheet.props">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

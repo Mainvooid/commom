@@ -6,10 +6,10 @@
 #pragma once
 #endif
 
-#if !defined(_DEBUGLOG_H_) && defined(_WIN32)
-#define _DEBUGLOG_H_
+#if !defined(_COMMON_DEBUGLOG_HPP_) && defined(_WIN32)
+#define _COMMON_DEBUGLOG_HPP_
 
-#include <common/codecvt.h>
+#include <common/codecvt.hpp>
 #include <windows.h>
 
 namespace common {
@@ -44,8 +44,8 @@ namespace common {
             logger(std::wstring logger_name) :m_name(std::move(logger_name)), m_level(level_e::Warn) {}
             logger(level_e log_level) :m_name(_T("")), m_level(log_level) { }
             logger(std::wstring logger_name, level_e log_level) :m_name(std::move(logger_name)), m_level(log_level) { }
-            logger(const logger &) = delete;           //拷贝构造
-            logger &operator=(const logger &) = delete;//拷贝赋值
+            logger(const logger & loger) :m_name(loger.m_name), m_level(loger.m_level) {};
+            logger &operator=(const logger & loger) { m_name = loger.m_name; m_level = loger.m_level; return *this; }
             logger(const logger&&) = delete;           //移动构造
             logger& operator=(const logger&&) = delete;//移动赋值
         public:
@@ -62,7 +62,7 @@ namespace common {
                 switch (nLevel)
                 {
                 case level_e::Trace:
-                    OutputDebugStringEx(L"Trace [%s] : %s\n",m_name.data(), wmsgbuf);
+                    OutputDebugStringEx(L"Trace [%s] : %s\n", m_name.data(), wmsgbuf);
                     break;
                 case level_e::Debug:
                     OutputDebugStringEx(L"Debug [%s] : %s\n", m_name.data(), wmsgbuf);
@@ -188,5 +188,5 @@ namespace common {
 
 } // namespace common
 
-#endif // _DEBUGLOG_H_
+#endif // _COMMON_DEBUGLOG_HPP_
 

@@ -6,10 +6,10 @@
 #pragma once
 #endif
 
-#ifndef _CMDLINE_H_
-#define _CMDLINE_H_
+#ifndef _COMMON_CMDLINE_HPP_
+#define _COMMON_CMDLINE_HPP_
 
-#include <common/precomm.h>
+#include <common/precomm.hpp>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -943,5 +943,5 @@ namespace common {
     } // cmdline
 } // common
 
-#endif // _CMDLINE_H_
+#endif // _COMMON_CMDLINE_HPP_
 

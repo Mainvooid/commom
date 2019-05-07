@@ -1,9 +1,9 @@
 ﻿/*
-@brief usage sample for debuglog.h.
+@brief usage sample for debuglog.hpp.
 @author guobao.v@gmail.com
 */
 
-#include <common/debuglog.h>
+#include <common/debuglog.hpp>
 #include <iostream>
 
 using namespace common;
