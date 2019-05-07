@@ -53,7 +53,7 @@ namespace common {
             ::GetModuleFileNameW(g_dllModule, current_dll_fname, MAX_PATH);
             ::_wsplitpath_s(current_dll_fname, _Driver, sizeof(wchar_t) * 2,
                 _Dir, MAX_PATH, NULL, 0, NULL, 0);
-            ::wsprintfW(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, sub_dll_name);
+            ::wsprintfW(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, sub_dll_name.data());
             return sub_dll_fname;
         };
 
@@ -97,7 +97,7 @@ namespace common {
             */
             func_type_name getAddress(const HMODULE& dll,const std::string& func_name) noexcept
             {
-                return GetProcAddress(dll, func_name.data());
+                return (func_type_name)GetProcAddress(dll, func_name.data());
             }
 
             /**

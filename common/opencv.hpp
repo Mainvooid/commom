@@ -42,7 +42,7 @@ namespace common {
             time_t now_time = time(nullptr);
             char tmp[64];
             tm _tm;
-            errno_t err = ::localtime_s(&_tm, &now_time);
+            ::localtime_s(&_tm, &now_time);
             std::strftime(tmp, sizeof(tmp), "%Y-%m-%d_%H-%M-%S", &_tm);
             std::default_random_engine engine(_tm.tm_sec);
             char fname[260];

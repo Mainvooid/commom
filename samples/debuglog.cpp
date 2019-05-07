@@ -15,9 +15,10 @@ void func()
     std::wstring wstr = _T("Test测试123");
     std::string str = "Test测试123";
     log.printLog(str, level_e::Info);
-    log.printLog(wstr.data(), level_e::Info);
+    log.printLog(wstr, level_e::Info);
     log.printLog(str, level_e::Info, __FUNCTION__, __FILE__, __LINE__);
-    log.printLog(wstr.data(), level_e::Info, __FUNCTION__, __FILE__, __LINE__);
+    log.printLog(wstr, level_e::Info, __FUNCTION__, __FILE__, __LINE__);
+    LOGD(wstr, __FUNCTION__, __FILE__, __LINE__);
 }
 int main()
 {
