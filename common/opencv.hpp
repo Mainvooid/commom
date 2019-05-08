@@ -13,6 +13,9 @@
 #include <opencv2/img_hash.hpp>
 #include <random>
 
+#pragma comment(lib,"opencv_world401.lib")
+#pragma comment(lib,"opencv_img_hash401.lib")
+
 namespace common {
 
     namespace opencv {

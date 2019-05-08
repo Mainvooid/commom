@@ -21,10 +21,10 @@
   <!-- 附加依赖项 -->
   <ItemDefinitionGroup >
     <Link Condition=" '$(Configuration)' == 'Debug' ">
-      <AdditionalDependencies>opencv_world401d.lib;opencv_img_hash401d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Link Condition=" '$(Configuration)' == 'Release' ">
-      <AdditionalDependencies>opencv_world401.lib;opencv_img_hash401.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

@@ -17,7 +17,6 @@
 #include <map>
 #include <tchar.h>
 
-//当编译器非gcc时,不包含cxxabi.h头文件
 #ifdef __GNUC__
 #include <cxxabi.h>
 #endif
@@ -100,21 +99,19 @@ namespace common {
             }
 
             /**
-            *@brief 符号重组
+            *@brief 获取类型
             */
             static inline std::string demangle(const std::string &name) noexcept
             {
 #ifdef _MSC_VER
-                return name; // 为MSVC编译器时直接返回name
+                return name;
 #elif defined(__GNUC__)
-                // 为gcc编译器时还调用原来的代码
                 int status = 0;
                 char *p = abi::__cxa_demangle(name.c_str(), 0, 0, &status);
                 std::string ret(p);
                 free(p);
                 return ret;
 #else
-                // 其他不支持的编译器需要自己实现这个方法
 #error unexpected c complier (msc/gcc), Need to implement this method for demangle
 #endif
             }
@@ -127,7 +124,6 @@ namespace common {
             {
                 return demangle(typeid(T).name());
             }
-
             template <>
             inline std::string readable_typename<std::string>() noexcept
             {
@@ -152,13 +148,11 @@ namespace common {
         /**
         *@brief 模块异常类
         */
-
-        class[[deprecated("unnecessary")]]
-            cmdline_error : public std::exception{
+        class[[deprecated("unnecessary")]]cmdline_error : public std::exception{
         public:
             cmdline_error(const std::string msg) : m_msg(std::move(msg)) {}
             ~cmdline_error() {}
-            const char *what() const noexcept { return m_msg.c_str(); }
+            const char *what() const { return m_msg.c_str(); }
         private:
             std::string m_msg;
         };
@@ -287,8 +281,7 @@ namespace common {
         public:
             parser() {}
             ~parser() {
-                for (std::map<std::string, option_base*>::iterator p = options.begin();
-                    p != options.end(); p++)
+                for (std::map<std::string, option_base*>::iterator p = options.begin(); p != options.end(); p++)
                 {
                     delete_s(p->second);
                 }
@@ -300,9 +293,7 @@ namespace common {
             *@param short_name 短名称(\0:表示没有短名称)
             *@param desc       描述
             */
-            void add(const std::string &name,
-                char short_name = 0,
-                const std::string &desc = "") noexcept(false)
+            void add(const std::string &name, char short_name = 0, const std::string &desc = "") noexcept(false)
             {
                 if (options.count(name))
                 {
@@ -323,11 +314,8 @@ namespace common {
             *@param def        默认值(可选,当不必需时使用)
             */
             template <typename T>
-            void add(const std::string &name,
-                char short_name = 0,
-                const std::string &desc = "",
-                bool need = true,
-                const T def = T()) noexcept(false)
+            void add(const std::string &name, char short_name = 0, const std::string &desc = "",
+                bool need = true, const T def = T()) noexcept(false)
             {
                 add(name, short_name, desc, need, def, default_reader<T>());
             }
@@ -339,15 +327,11 @@ namespace common {
             *@param desc       描述
             *@param need       是否必需(可选)
             *@param def        默认值(可选,当不必需时使用)
-            *@param reader     可读包装类型
+            *@param reader     解析类型
             */
             template <class T, class F>
-            void add(const std::string &name,
-                char short_name = 0,
-                const std::string &desc = "",
-                bool need = true,
-                const T def = T(),
-                F reader = F()) noexcept(false)
+            void add(const std::string &name, char short_name = 0, const std::string &desc = "",
+                bool need = true, const T def = T(), F reader = F()) noexcept(false)
             {
                 if (options.count(name))
                 {
@@ -363,13 +347,13 @@ namespace common {
             *@brief usage尾部添加说明(如果需要解析未指定参数)
             *@param f 补充说明
             */
-            void footer(const std::string f) noexcept { ftr = std::move(f); }
+            void footer(std::string f) noexcept { ftr = std::move(f); }
 
             /**
             *@brief 设置usage程序名,默认由argv[0]确定
             *@param name usage程序名
             */
-            void set_program_name(const std::string name) noexcept { prog_name = std::move(name); }
+            void set_program_name(std::string name) noexcept { prog_name = std::move(name); }
 
             /**
             *@brief 判断bool参数是否被指定
@@ -671,7 +655,7 @@ namespace common {
             /**
             *@brief 返回第一条错误消息
             */
-            std::string error() const noexcept { return errors.size() > 0 ? errors[0] : ""; }
+            std::string error() const { return std::move(errors.size() > 0 ? errors[0] : ""); }
 
             /**
             *@brief 返回所有错误消息
@@ -805,9 +789,7 @@ namespace common {
             */
             class option_without_value : public option_base {
             public:
-                option_without_value(const std::string &name,
-                    char short_name,
-                    const std::string &desc)
+                option_without_value(const std::string &name,char short_name,const std::string &desc)
                     :m_name(name), m_short_name(short_name), m_desc(desc), m_has(false) {}
                 ~option_without_value() {}
 
@@ -843,10 +825,8 @@ namespace common {
                 *@param def        默认值
                 *@param desc       描述
                 */
-                option_with_value(const std::string &name, char short_name,
-                    bool need, const T &def, const std::string &desc)
-                    : m_name(name), m_short_name(short_name), m_need(need),
-                    m_has(false), m_def(def), m_actual(def)
+                option_with_value(const std::string &name, char short_name,bool need, const T &def, const std::string &desc)
+                    : m_name(name), m_short_name(short_name), m_need(need),m_has(false), m_def(def), m_actual(def)
                 {
                     this->desc = full_description(desc);
                 }
