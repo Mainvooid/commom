@@ -46,7 +46,7 @@ namespace common {
             std::strftime(tmp, sizeof(tmp), "%Y-%m-%d_%H-%M-%S", &_tm);
             std::default_random_engine engine(_tm.tm_sec);
             char fname[260];
-            sprintf_s(fname, "%s\\%s_%s_%d.png", dir.data(), tmp, desc.data(), static_cast<size_t>(engine() % 10000));
+            sprintf_s(fname, "%s\\%s_%s_%d.png", dir.data(), tmp, desc.data(), static_cast<size_t>(engine()));
             cv::imwrite(fname, image);
             return true;
         }

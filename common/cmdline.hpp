@@ -133,6 +133,11 @@ namespace common {
             {
                 return "string";
             }
+            template <>
+            inline std::string readable_typename<std::wstring>() noexcept
+            {
+                return "wstring";
+            }
 
             /**
             *@brief T -> string
