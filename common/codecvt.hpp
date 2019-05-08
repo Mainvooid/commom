@@ -55,19 +55,16 @@ namespace common {
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int16_t>, int16_t> cvt;
             auto p = reinterpret_cast<const int16_t *>(utf16_string.data());
-            try
-            {
+            try{
                 result = cvt.to_bytes(p, p + utf16_string.size());
             }
 #else
             std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> cvt;
-            try
-            {
+            try{
                 result = cvt.to_bytes(utf16_string);
             }
 #endif
-            catch (const std::range_error&)
-            {
+            catch (const std::range_error&){
                 return u8"";
             }
             return result;
@@ -83,8 +80,7 @@ namespace common {
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int16_t>, int16_t> cvt;
             auto p = reinterpret_cast<const char *>(utf8_string.data());
-            try
-            {
+            try{
                 auto str = cvt.from_bytes(p, p + utf8_string.size());
                 result.assign(str.begin(), str.end());
             }
@@ -95,8 +91,7 @@ namespace common {
                 result = cvt.from_bytes(utf8_string);
             }
 #endif
-            catch (const std::range_error&)
-            {
+            catch (const std::range_error&){
                 return u"";
             }
             return result;
@@ -113,19 +108,16 @@ namespace common {
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int32_t>, int32_t> cvt;
             auto p = reinterpret_cast<const int32_t *>(utf32_string.data());
-            try
-            {
+            try{
                 result = cvt.to_bytes(p, p + utf32_string.size());
             }
 #else
             std::wstring_convert<std::codecvt_utf8_utf16<char32_t>, char32_t> cvt;
-            try
-            {
+            try{
                 result = cvt.to_bytes(utf32_string);
             }
 #endif
-            catch (const std::range_error&)
-            {
+            catch (const std::range_error&){
                 return u8"";
             }
             return result;
@@ -141,20 +133,17 @@ namespace common {
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int32_t>, int32_t> cvt;
             auto p = reinterpret_cast<const char *>(utf8_string.data());
-            try
-            {
+            try{
                 auto str = cvt.from_bytes(p, p + utf8_string.size());
                 result.assign(str.begin(), str.end());
             }
 #else
             std::wstring_convert<std::codecvt_utf8_utf16<char32_t>, char32_t> cvt;
-            try
-            {
+            try{
                 result = cvt.from_bytes(utf8_string);
             }
 #endif
-            catch (const std::range_error&)
-            {
+            catch (const std::range_error&){
                 return U"";
             }
             return result;
@@ -188,13 +177,11 @@ namespace common {
         static std::string unicode_to_utf8(const std::wstring& wstring) noexcept
         {
             std::string result = u8"";
-            try
-            {
+            try{
                 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> cvt;
                 result = cvt.to_bytes(wstring);
             }
-            catch (const std::range_error&)
-            {
+            catch (const std::range_error&){
                 return u8"";
             }
             return result;
@@ -206,15 +193,13 @@ namespace common {
         */
         static std::wstring utf8_to_unicode(const std::string& utf8_string) noexcept
         {
-            std::wstring result = _T("");
-            try
-            {
+            std::wstring result = L"";
+            try{
                 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> cvt;
                 result = cvt.from_bytes(utf8_string);
             }
-            catch (const std::range_error&)
-            {
-                return _T("");
+            catch (const std::range_error&){
+                return L"";
             }
             return result;
         }
@@ -234,8 +219,7 @@ namespace common {
                 wstring.data(), wstring.data() + wstring.size(), pws,
                 buffer.get(), buffer.get() + wstring.size() * sizeof(wchar_t), ps);
 
-            if (std::codecvt_base::ok == res)
-            {
+            if (std::codecvt_base::ok == res){
                 return std::string(buffer.get(), ps);
             }
             return "";
@@ -256,8 +240,7 @@ namespace common {
                 ansi_string.data(), ansi_string.data() + ansi_string.size(), ps,
                 buffer.get(), buffer.get() + ansi_string.size(), pws);
 
-            if (std::codecvt_base::ok == res)
-            {
+            if (std::codecvt_base::ok == res){
                 return std::wstring(buffer.get(), pws);
             }
             return L"";

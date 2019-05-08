@@ -11,39 +11,42 @@ using namespace common::debuglog;
 
 void func()
 {
-    logger log(_T("test"), level_e::Info);
-    std::wstring wstr = _T("Test测试123");
+    logger<> log(_T("TEST"), level_e::Trace);
+    std::wstring wstr = L"Test测试123";
     std::string str = "Test测试123";
 
-    log.Log(str, level_e::Info);
-    log.Log(wstr, level_e::Info);
-    log.Log(str, level_e::Info, __FUNCTION__, __FILE__, __LINE__);
-    log.Log(wstr, level_e::Info, __FUNCTION__, __FILE__, __LINE__);
-
-    LOGT(wstr);
-    LOGI(wstr.data());
-    LOGD(str);
+#if defined(_UNICODE) or defined(UNICODE)
+    log.Log(wstr, level_e::Trace);
+    log.Log(wstr, level_e::Debug, __FUNCTION__, __FILE__, __LINE__);
+    LOGI(wstr);
+    LOGW(wstr.data());
+    LOGE(wstr, __FUNCTION__, __FILE__, __LINE__);
+    LOGF(wstr.data(), __FUNCTION__, __FILE__, __LINE__);
+#else
+    log.Log(str, level_e::Trace);
+    log.Log(str, level_e::Debug, __FUNCTION__, __FILE__, __LINE__);
+    LOGI(str);
     LOGW(str.data());
     LOGE(str, __FUNCTION__, __FILE__, __LINE__);
     LOGF(str.data(), __FUNCTION__, __FILE__, __LINE__);
-    LOGD(wstr, __FUNCTION__, __FILE__, __LINE__);
-    LOGD(wstr.data(), __FUNCTION__, __FILE__, __LINE__);
+#endif
 }
 int main()
 {
     func();
 }
 /*
-Info  [test] : Test测试123
-Info  [test] : Test测试123
-Info  [test] : Test测试123   [...\common\samples\debuglog.cpp(20) func]
-Info  [test] : Test测试123   [...\common\samples\debuglog.cpp(21) func]
-Trace [G] : Test测试123
+Trace [TEST] : Test测试123
+Debug [TEST] : Test测试123   [...\common\samples\debuglog.cpp(37) func]
 Info  [G] : Test测试123
-Debug [G] : Test测试123
 Warn  [G] : Test测试123
-Error [G] : Test测试123   [...\common\samples\debuglog.cpp(27) func]
-Fatal [G] : Test测试123   [...\common\samples\debuglog.cpp(28) func]
-Debug [G] : Test测试123   [...\common\samples\debuglog.cpp(29) func]
-Debug [G] : Test测试123   [...\common\samples\debuglog.cpp(30) func]
+Error [G] : Test测试123   [...\common\samples\debuglog.cpp(40) func]
+Fatal [G] : Test测试123   [...\common\samples\debuglog.cpp(41) func]
+
+Trace [TEST] : Test测试123
+Debug [TEST] : Test测试123   [...\common\samples\debuglog.cpp(44) func]
+Info  [G] : Test测试123
+Warn  [G] : Test测试123
+Error [G] : Test测试123   [...\common\samples\debuglog.cpp(47) func]
+Fatal [G] : Test测试123   [...\common\samples\debuglog.cpp(48) func]
 */

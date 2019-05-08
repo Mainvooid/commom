@@ -36,27 +36,35 @@ namespace common {
         };
 
         /**
-        *@brief OutputDebugStringW扩展版
+        *@brief OutputDebugString扩展版
         *@param format 格式 e.g. L"Error [%s] : %s\n"
         *@param ... 相应参数包
         */
-        static void OutputDebugStringEx(const wchar_t * format, ...) noexcept
+        template<typename T>
+        static void OutputDebugStringEx(const T* format, ...) noexcept
         {
-            wchar_t buf[BUFSIZ];
+            T buf[BUFSIZ];
             va_list args;//可变长参数列表
             va_start(args, format);//获取列表第一个参数
             _vstprintf_s(buf, format, args);//按格式执行拼接
             va_end(args);//清空列表
-            ::OutputDebugStringW(buf);
+            ::OutputDebugString(buf);
         }
 
         /*
        *@brief 调试日志类
        */
-        class logger
+        template<typename T =
+#if defined(_UNICODE) or defined(UNICODE)
+            std::wstring
+#else
+            std::string
+#endif
+        >
+            class logger
         {
         public:
-            logger(std::wstring logger_name = _T(""), level_e log_level = level_e::Error)
+            logger(T logger_name = _T(""), level_e log_level = level_e::Error)
                 :m_name(std::move(logger_name)), m_level(log_level) {}
             virtual ~logger() {}
             logger(const logger & logger) :m_name(logger.m_name), m_level(logger.m_level) {};
@@ -66,49 +74,41 @@ namespace common {
         public:
             void setLevel(level_e log_level) { m_level = log_level; }
             level_e getLevel() const { return m_level; }
-            void setName(std::wstring logger_name) { m_name = logger_name; }
-            std::wstring getName() const { return m_name; }
+            void setName(T logger_name) { m_name = std::move(logger_name); }
+            const T& getName() const { return m_name; }
 
             /*
             *@brief 打印Debug信息
             */
-            void Log(const std::wstring& wmsg, const level_e nLevel) const
+            void Log(T msg, const level_e nLevel) const
             {
                 if (nLevel < m_level || nLevel == level_e::Off) { return; }
+                T _name = m_name;
+                if (m_name == _T("")) { _name = _T("G"); }
 
-                std::wstring _name = m_name;
-                if (m_name == _T(""))
-                {
-                    _name = _T("G");
-                }
                 switch (nLevel)
                 {
                 case level_e::Trace:
-                    OutputDebugStringEx(L"Trace [%s] : %s\n", _name.data(), wmsg.data());
+                    OutputDebugStringEx(_T("Trace [%s] : %s\n"), _name.data(), msg.data());
                     break;
                 case level_e::Debug:
-                    OutputDebugStringEx(L"Debug [%s] : %s\n", _name.data(), wmsg.data());
+                    OutputDebugStringEx(_T("Debug [%s] : %s\n"), _name.data(), msg.data());
                     break;
                 case level_e::Info:
-                    OutputDebugStringEx(L"Info  [%s] : %s\n", _name.data(), wmsg.data());
+                    OutputDebugStringEx(_T("Info  [%s] : %s\n"), _name.data(), msg.data());
                     break;
                 case level_e::Warn:
-                    OutputDebugStringEx(L"Warn  [%s] : %s\n", _name.data(), wmsg.data());
+                    OutputDebugStringEx(_T("Warn  [%s] : %s\n"), _name.data(), msg.data());
                     break;
                 case level_e::Error:
-                    OutputDebugStringEx(L"Error [%s] : %s\n", _name.data(), wmsg.data());
+                    OutputDebugStringEx(_T("Error [%s] : %s\n"), _name.data(), msg.data());
                     break;
                 case level_e::Fatal:
-                    OutputDebugStringEx(L"Fatal [%s] : %s\n", _name.data(), wmsg.data());
+                    OutputDebugStringEx(_T("Fatal [%s] : %s\n"), _name.data(), msg.data());
                     break;
                 default:
                     break;
                 }
-            }
-            void Log(const std::string& msg, const level_e nLevel) const
-            {
-                if (nLevel < m_level || nLevel == level_e::Off) { return; }
-                Log(codecvt::ansi_to_unicode(msg), nLevel);
             }
 
             /*
@@ -117,123 +117,122 @@ namespace common {
             *@param _file 宏 __FILE__ 文件名
             *@param _line 宏 __LINE__ 行数
             */
-            void Log(const std::wstring& wmsg, const level_e nLevel, const char* _func, const char * _file, const int _line)const
+            void Log(T msg, const level_e nLevel, const char* _func, const char * _file, const int _line)const
             {
                 if (nLevel < m_level || nLevel == level_e::Off) { return; }
-
-                std::wstring wfunc = codecvt::ansi_to_unicode(_func);
-
-                std::wstring wfile = codecvt::ansi_to_unicode(_file);
-                size_t n = wfile.find_last_of('\\');
-                n = wfile.find_last_of('\\', n - 1);
-                n = wfile.find_last_of('\\', n - 1);
-                if (n == static_cast<size_t>(-1)) { n = 0; }
-                std::wstring wfile_fmt = std::wstring(wfile.begin() + n, wfile.end());
-
-                std::wstring _name = m_name;
-                if (m_name == _T(""))
-                {
-                    _name = _T("G");
+                T func, file;
+#if defined(_UNICODE) or defined(UNICODE)
+                if (std::is_same<T, std::wstring>::value) {
+                    func = codecvt::ansi_to_unicode(_func);
+                    file = codecvt::ansi_to_unicode(_file);
                 }
+#else
+                if (std::is_same<T, std::string>::value) {
+                    func = _func;
+                    file = _file;
+                }
+#endif
+                size_t n = file.find_last_of('\\');
+                n = file.find_last_of('\\', n - 1);
+                n = file.find_last_of('\\', n - 1);
+                if (n == static_cast<size_t>(-1)) { n = 0; }
+                T file_fmt = T(file.begin() + n, file.end());
+
+                T _name = m_name;
+                if (m_name == _T("")) { _name = _T(" "); }
 
                 switch (nLevel)
                 {
                 case level_e::Trace:
                     OutputDebugStringEx(_T("Trace [%s] : %s   [...%s(%d) %s]\n"),
-                        _name.data(), wmsg.data(), wfile_fmt.data(), _line, wfunc.data());
+                        _name.data(), msg.data(), file_fmt.data(), _line, func.data());
                     break;
                 case level_e::Debug:
                     OutputDebugStringEx(_T("Debug [%s] : %s   [...%s(%d) %s]\n"),
-                        _name.data(), wmsg.data(), wfile_fmt.data(), _line, wfunc.data());
+                        _name.data(), msg.data(), file_fmt.data(), _line, func.data());
                     break;
                 case level_e::Info:
                     OutputDebugStringEx(_T("Info  [%s] : %s   [...%s(%d) %s]\n"),
-                        _name.data(), wmsg.data(), wfile_fmt.data(), _line, wfunc.data());
+                        _name.data(), msg.data(), file_fmt.data(), _line, func.data());
                     break;
                 case level_e::Warn:
                     OutputDebugStringEx(_T("Warn  [%s] : %s   [...%s(%d) %s]\n"),
-                        _name.data(), wmsg.data(), wfile_fmt.data(), _line, wfunc.data());
+                        _name.data(), msg.data(), file_fmt.data(), _line, func.data());
                     break;
                 case level_e::Error:
                     OutputDebugStringEx(_T("Error [%s] : %s   [...%s(%d) %s]\n"),
-                        _name.data(), wmsg.data(), wfile_fmt.data(), _line, wfunc.data());
+                        _name.data(), msg.data(), file_fmt.data(), _line, func.data());
                     break;
                 case level_e::Fatal:
                     OutputDebugStringEx(_T("Fatal [%s] : %s   [...%s(%d) %s]\n"),
-                        _name.data(), wmsg.data(), wfile_fmt.data(), _line, wfunc.data());
+                        _name.data(), msg.data(), file_fmt.data(), _line, func.data());
                     break;
                 default:
                     break;
                 }
             }
-            void Log(const std::string& msg, const level_e nLevel, const char* _func, const char * _file, const int _line) const
-            {
-                if (nLevel < m_level || nLevel == level_e::Off) { return; }
-                Log(codecvt::ansi_to_unicode(msg), nLevel, _func, _file, _line);
-            }
 
             template<typename T>
-            void Trace(const T msg) { Log(std::move(msg), debuglog::level_e::Trace); }
+            void Trace(T msg) { Log(std::move(msg), debuglog::level_e::Trace); }
             template<typename T>
-            void Debug(const T msg) { Log(std::move(msg), debuglog::level_e::Debug); }
+            void Debug(T msg) { Log(std::move(msg), debuglog::level_e::Debug); }
             template<typename T>
-            void Info(const T msg) { Log(std::move(msg), debuglog::level_e::Info); }
+            void Info(T msg) { Log(std::move(msg), debuglog::level_e::Info); }
             template<typename T>
-            void Warn(const T msg) { Log(std::move(msg), debuglog::level_e::Warn); }
+            void Warn(T msg) { Log(std::move(msg), debuglog::level_e::Warn); }
             template<typename T>
-            void Error(const T msg) { Log(std::move(msg), debuglog::level_e::Error); }
+            void Error(T msg) { Log(std::move(msg), debuglog::level_e::Error); }
             template<typename T>
-            void Fatal(const T msg) { Log(std::move(msg), debuglog::level_e::Fatal); }
+            void Fatal(T msg) { Log(std::move(msg), debuglog::level_e::Fatal); }
 
             template<typename T>
-            void Trace(const T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Trace, _func, _file, _line); }
+            void Trace(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Trace, _func, _file, _line); }
             template<typename T>
-            void Debug(const T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Debug, _func, _file, _line); }
+            void Debug(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Debug, _func, _file, _line); }
             template<typename T>
-            void Info(const T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Info, _func, _file, _line); }
+            void Info(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Info, _func, _file, _line); }
             template<typename T>
-            void Warn(const T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Warn, _func, _file, _line); }
+            void Warn(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Warn, _func, _file, _line); }
             template<typename T>
-            void Error(const T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Error, _func, _file, _line); }
+            void Error(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Error, _func, _file, _line); }
             template<typename T>
-            void Fatal(const T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Fatal, _func, _file, _line); }
-
+            void Fatal(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Fatal, _func, _file, _line); }
 
         private:
-            std::wstring m_name;
+            T m_name;
             level_e m_level;
         };
 
     } // namespace debuglog
 
     /// common 全局logger
-    static debuglog::logger g_logger(L"", debuglog::level_e::Trace);
+    static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), debuglog::level_e::Trace));
 
     template<typename T>
-    void LOGT(const T msg) { g_logger.Trace(std::move(msg)); };
+    void LOGT(T msg) { g_logger->Trace(std::move(msg)); };
     template<typename T>
-    void LOGD(const T msg) { g_logger.Debug(std::move(msg)); };
+    void LOGD(T msg) { g_logger->Debug(std::move(msg)); };
     template<typename T>
-    void LOGI(const T msg) { g_logger.Info(std::move(msg)); };
+    void LOGI(T msg) { g_logger->Info(std::move(msg)); };
     template<typename T>
-    void LOGW(const T msg) { g_logger.Warn(std::move(msg)); };
+    void LOGW(T msg) { g_logger->Warn(std::move(msg)); };
     template<typename T>
-    void LOGE(const T msg) { g_logger.Error(std::move(msg)); };
+    void LOGE(T msg) { g_logger->Error(std::move(msg)); };
     template<typename T>
-    void LOGF(const T msg) { g_logger.Fatal(std::move(msg)); };
+    void LOGF(T msg) { g_logger->Fatal(std::move(msg)); };
 
     template<typename T>
-    void LOGT(const T msg, const char* _func, const char * _file, const int _line) { g_logger.Trace(std::move(msg), _func, _file, _line); };
+    void LOGT(T msg, const char* _func, const char * _file, const int _line) { g_logger->Trace(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGD(const T msg, const char* _func, const char * _file, const int _line) { g_logger.Debug(std::move(msg), _func, _file, _line); };
+    void LOGD(T msg, const char* _func, const char * _file, const int _line) { g_logger->Debug(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGI(const T msg, const char* _func, const char * _file, const int _line) { g_logger.Info(std::move(msg), _func, _file, _line); };
+    void LOGI(T msg, const char* _func, const char * _file, const int _line) { g_logger->Info(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGW(const T msg, const char* _func, const char * _file, const int _line) { g_logger.Warn(std::move(msg), _func, _file, _line); };
+    void LOGW(T msg, const char* _func, const char * _file, const int _line) { g_logger->Warn(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGE(const T msg, const char* _func, const char * _file, const int _line) { g_logger.Error(std::move(msg), _func, _file, _line); };
+    void LOGE(T msg, const char* _func, const char * _file, const int _line) { g_logger->Error(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGF(const T msg, const char* _func, const char * _file, const int _line) { g_logger.Fatal(std::move(msg), _func, _file, _line); };
+    void LOGF(T msg, const char* _func, const char * _file, const int _line) { g_logger->Fatal(std::move(msg), _func, _file, _line); };
 
 } // namespace common
 

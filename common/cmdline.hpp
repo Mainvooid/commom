@@ -81,8 +81,7 @@ namespace common {
                 {
                     Target ret;
                     std::istringstream ss(arg);
-                    if (!(ss >> ret && ss.eof()))
-                    {
+                    if (!(ss >> ret && ss.eof())) {
                         throw std::bad_cast();
                     }
                     return ret;
@@ -125,15 +124,9 @@ namespace common {
                 return demangle(typeid(T).name());
             }
             template <>
-            inline std::string readable_typename<std::string>() noexcept
-            {
-                return "string";
-            }
+            inline std::string readable_typename<std::string>() noexcept { return "string"; }
             template <>
-            inline std::string readable_typename<std::wstring>() noexcept
-            {
-                return "wstring";
-            }
+            inline std::string readable_typename<std::wstring>() noexcept { return "wstring"; }
 
             /**
             *@brief T -> string
@@ -148,7 +141,8 @@ namespace common {
         /**
         *@brief 模块异常类
         */
-        class[[deprecated("unnecessary")]]cmdline_error : public std::exception{
+        class[[deprecated("unnecessary")]]cmdline_error : public std::exception
+        {
         public:
             cmdline_error(const std::string msg) : m_msg(std::move(msg)) {}
             ~cmdline_error() {}
@@ -174,14 +168,14 @@ namespace common {
         *@brief 参数范围检查器
         */
         template <typename T>
-        class range_reader {
+        class range_reader
+        {
         public:
             range_reader(const T &low, const T &high) : m_low(low), m_high(high) {}
             T operator()(const std::string &s) const noexcept(false)
             {
                 T ret = default_reader<T>()(s);
-                if (!(ret >= m_low && ret <= m_high))
-                {
+                if (!(ret >= m_low && ret <= m_high)) {
                     std::ostringstream msg;
                     msg << _TAG << "..range error";
                     throw std::range_error(msg.str());
@@ -205,10 +199,12 @@ namespace common {
         *@brief 可选值检查器
         */
         template <typename T>
-        class oneof_reader {
+        class oneof_reader
+        {
         public:
             oneof_reader() {}
-            oneof_reader(const std::initializer_list<T> &list) noexcept {
+            oneof_reader(const std::initializer_list<T> &list) noexcept
+            {
                 for (T item : list) {
                     m_values.push_back(item);
                 }
@@ -230,8 +226,7 @@ namespace common {
             T operator()(const std::string &s) noexcept(false)
             {
                 T ret = default_reader<T>()(s);
-                if (std::find(m_values.begin(), m_values.end(), ret) == m_values.end())
-                {
+                if (std::find(m_values.begin(), m_values.end(), ret) == m_values.end()) {
                     std::ostringstream msg;
                     msg << _TAG << "..oneof error";
                     throw std::invalid_argument(msg.str());
@@ -277,12 +272,13 @@ namespace common {
         /**
         *@brief 命令行解析类
         */
-        class parser {
+        class parser
+        {
         public:
             parser() {}
-            ~parser() {
-                for (std::map<std::string, option_base*>::iterator p = options.begin(); p != options.end(); p++)
-                {
+            ~parser()
+            {
+                for (std::map<std::string, option_base*>::iterator p = options.begin(); p != options.end(); p++) {
                     delete_s(p->second);
                 }
             }
@@ -295,8 +291,7 @@ namespace common {
             */
             void add(const std::string &name, char short_name = 0, const std::string &desc = "") noexcept(false)
             {
-                if (options.count(name))
-                {
+                if (options.count(name)) {
                     std::ostringstream msg;
                     msg << _TAG << "..multiple definition:" << name;
                     throw std::invalid_argument(msg.str());
@@ -333,8 +328,7 @@ namespace common {
             void add(const std::string &name, char short_name = 0, const std::string &desc = "",
                 bool need = true, const T def = T(), F reader = F()) noexcept(false)
             {
-                if (options.count(name))
-                {
+                if (options.count(name)) {
                     std::ostringstream msg;
                     msg << _TAG << "..multiple definition:" << name;
                     throw std::invalid_argument(msg.str());
@@ -361,8 +355,7 @@ namespace common {
             */
             bool exist(const std::string &name) const noexcept(false)
             {
-                if (options.count(name) == 0)
-                {
+                if (options.count(name) == 0) {
                     std::ostringstream msg;
                     msg << _TAG << "..there is no flag: --" << name;
                     throw std::invalid_argument(msg.str());
@@ -378,15 +371,13 @@ namespace common {
             template <class T>
             const T &get(const std::string &name) const noexcept(false)
             {
-                if (options.count(name) == 0)
-                {
+                if (options.count(name) == 0) {
                     std::ostringstream msg;
                     msg << _TAG << "..there is no flag: --" << name;
                     throw std::invalid_argument(msg.str());
                 }
                 const option_with_value<T> *p = dynamic_cast<const option_with_value<T>*>(options.find(name)->second);
-                if (p == nullptr)
-                {
+                if (p == nullptr) {
                     std::ostringstream msg;
                     msg << _TAG << "..type mismatch flag '" << name << "'";
                     throw std::invalid_argument(msg.str());
@@ -409,47 +400,35 @@ namespace common {
                 std::vector<std::string> args;
                 std::string buf;
                 bool in_quote = false;//是否有""
-                for (std::string::size_type i = 0; i < arg.length(); i++)
-                {
+                for (std::string::size_type i = 0; i < arg.length(); i++) {
                     if (arg[i] == '\"') {
                         in_quote = !in_quote;
                         continue;
                     }
-
                     if (arg[i] == ' ' && !in_quote) {
                         args.push_back(buf);
                         buf = "";
                         continue;
                     }
-
-                    if (arg[i] == '\\') //跳过'\'
-                    {
+                    if (arg[i] == '\\') { //跳过'\'
                         i++;
-                        if (i >= arg.length())
-                        {
+                        if (i >= arg.length()) {
                             errors.push_back("unexpected occurrence of '\\' at end of string");
                             return false;
                         }
                     }
                     buf += arg[i];
                 }
-
-                if (in_quote)
-                {
+                if (in_quote) {
                     errors.push_back("quote is not closed");
                     return false;
                 }
-
-                if (buf.length() > 0)
-                {
+                if (buf.length() > 0) {
                     args.push_back(buf);
                 }
-
-                for (std::vector<std::string>::size_type i = 0; i < args.size(); i++)
-                {
+                for (size_t i = 0; i < args.size(); i++) {
                     std::cout << "\"" << args[i] << "\"" << std::endl;
                 }
-
                 return parse(args);
             }
 
@@ -462,9 +441,7 @@ namespace common {
             {
                 int argc = static_cast<int>(args.size());
                 std::vector<const char*> argv(argc);
-
-                for (int i = 0; i < argc; i++)
-                {
+                for (int i = 0; i < argc; i++) {
                     argv[i] = args[i].c_str();
                 }
                 return parse(argc, &argv[0]);
@@ -480,88 +457,65 @@ namespace common {
             {
                 errors.clear();
                 others.clear();
-
                 if (argc < 1) {
                     errors.push_back("argument number must be bigger than 0");
                     return false;
                 }
-
-                if (prog_name == "")
-                {
-                    prog_name = argv[0];
-                }
+                if (prog_name == "") { prog_name = argv[0]; }
 
                 std::map<char, std::string> lookup;
-                for (std::map<std::string, option_base*>::iterator p = options.begin();
-                    p != options.end(); p++)
-                {
-                    if (p->first.length() == 0) //key不存在
-                    {
-                        continue;
+                for (std::map<std::string, option_base*>::iterator p = options.begin(); p != options.end(); p++) {
+                    if (p->first.length() == 0) {
+                        continue;//key不存在
                     }
-
                     char initial = p->second->short_name();
-                    if (initial)
-                    {
+                    if (initial) {
                         if (lookup.count(initial) > 0) {
                             lookup[initial] = "";
                             errors.push_back(std::string("short option '") + initial + "' is ambiguous");
                             return false;
                         }
-                        else
-                        {
+                        else {
                             lookup[initial] = p->first;
                         }
                     }
                 }
 
-                for (int i = 1; i < argc; i++)
-                {
-                    if (strncmp(argv[i], "--", 2) == 0)//长名称
-                    {
+                for (int i = 1; i < argc; i++) {
+                    if (strncmp(argv[i], "--", 2) == 0) {//长名称
                         const char *p = strchr(argv[i] + 2, '=');
-                        if (p)
-                        {
+                        if (p) {
                             std::string name(argv[i] + 2, p);
                             std::string val(p + 1);
                             set_option(name, val);
                         }
-                        else
-                        {
+                        else {
                             std::string name(argv[i] + 2);
-                            if (options.count(name) == 0)
-                            {
+                            if (options.count(name) == 0) {
                                 errors.push_back("undefined option: --" + name);
                                 continue;
                             }
-                            if (options[name]->has_value())
-                            {
-                                if (i + 1 >= argc)
-                                {
+                            if (options[name]->has_value()) {
+                                if (i + 1 >= argc) {
                                     errors.push_back("option needs value: --" + name);
                                     continue;
                                 }
-                                else
-                                {
+                                else {
                                     i++;
                                     set_option(name, argv[i]);
                                 }
                             }
-                            else //bool
-                            {
-                                set_option(name);
+                            else {
+                                set_option(name); //bool
                             }
                         }
                     }
-                    else if (strncmp(argv[i], "-", 1) == 0) //短名称
-                    {
-                        if (!argv[i][1]) //若'-'后无值
-                        {
+                    else if (strncmp(argv[i], "-", 1) == 0) {//短名称
+                        if (!argv[i][1]) {//若'-'后无值
                             continue;
                         }
                         char last = argv[i][1];
-                        for (int j = 2; argv[i][j]; j++)
-                        {
+                        for (int j = 2; argv[i][j]; j++) {
                             last = argv[i][j];
                             if (lookup.count(argv[i][j - 1]) == 0) {
                                 errors.push_back(std::string("undefined short option: -") + argv[i][j - 1]);
@@ -583,13 +537,11 @@ namespace common {
                             continue;
                         }
 
-                        if (i + 1 < argc && options[lookup[last]]->has_value())
-                        {
+                        if (i + 1 < argc && options[lookup[last]]->has_value()) {
                             set_option(lookup[last], argv[i + 1]);
                             i++;
                         }
-                        else
-                        {
+                        else {
                             set_option(lookup[last]);
                         }
                     }
@@ -598,11 +550,8 @@ namespace common {
                     }
                 }
 
-                for (std::map<std::string, option_base*>::iterator p = options.begin();
-                    p != options.end(); p++)
-                {
-                    if (!p->second->valid())//值是否有效
-                    {
+                for (std::map<std::string, option_base*>::iterator p = options.begin(); p != options.end(); p++) {
+                    if (!p->second->valid()) {
                         errors.push_back("need option: --" + std::string(p->first));
                     }
                 }
@@ -615,8 +564,7 @@ namespace common {
             */
             void parse_check(const std::string &arg) noexcept(false)
             {
-                if (!options.count("help"))
-                {
+                if (!options.count("help")) {
                     add("help", '?', "print this message");
                 }
                 check(0, parse(arg));
@@ -628,8 +576,7 @@ namespace common {
             */
             void parse_check(const std::vector<std::string> &args) noexcept(false)
             {
-                if (!options.count("help"))
-                {
+                if (!options.count("help")) {
                     add("help", '?', "print this message");
                 }
                 check(args.size(), parse(args));
@@ -645,8 +592,7 @@ namespace common {
             */
             void parse_check(int argc, char *argv[]) noexcept(false)
             {
-                if (!options.count("help"))
-                {
+                if (!options.count("help")) {
                     add("help", '?', "print this message");
                 }
                 check(argc, parse(argc, argv));
@@ -655,7 +601,7 @@ namespace common {
             /**
             *@brief 返回第一条错误消息
             */
-            std::string error() const { return std::move(errors.size() > 0 ? errors[0] : ""); }
+            std::string error() const { return errors.size() > 0 ? errors[0] : ""; }
 
             /**
             *@brief 返回所有错误消息
@@ -663,8 +609,7 @@ namespace common {
             std::string error_full() const noexcept
             {
                 std::ostringstream oss;
-                for (std::vector<std::string>::size_type i = 0; i < errors.size(); i++)
-                {
+                for (size_t i = 0; i < errors.size(); i++) {
                     oss << errors[i] << std::endl;
                 }
                 return oss.str();
@@ -677,10 +622,8 @@ namespace common {
             {
                 std::ostringstream oss;
                 oss << "usage: " << prog_name << " ";
-                for (std::vector<std::string>::size_type i = 0; i < ordered.size(); i++)
-                {
-                    if (ordered[i]->must())
-                    {
+                for (size_t i = 0; i < ordered.size(); i++) {
+                    if (ordered[i]->must()) {
                         oss << ordered[i]->short_description() << " ";
                     }
                 }
@@ -688,14 +631,12 @@ namespace common {
                 oss << "[options] ... " << ftr << std::endl;
                 oss << "options:" << std::endl;
 
-                std::vector<std::string>::size_type max_width = 0;
-                for (std::vector<std::string>::size_type i = 0; i < ordered.size(); i++)
-                {
+                size_t max_width = 0;
+                for (size_t i = 0; i < ordered.size(); i++) {
                     max_width = std::max(max_width, ordered[i]->name().length());
                 }
 
-                for (std::vector<std::string>::size_type i = 0; i < ordered.size(); i++)
-                {
+                for (size_t i = 0; i < ordered.size(); i++) {
                     if (ordered[i]->short_name()) {
                         oss << "  -" << ordered[i]->short_name() << ", ";
                     }
@@ -704,9 +645,7 @@ namespace common {
                     }
 
                     oss << "--" << ordered[i]->name();
-                    for (std::vector<std::string>::size_type j = ordered[i]->name().length();
-                        j < max_width + 4; j++)
-                    {
+                    for (size_t j = ordered[i]->name().length(); j < max_width + 4; j++) {
                         oss << ' ';
                     }
                     oss << ordered[i]->description() << std::endl;
@@ -720,13 +659,12 @@ namespace common {
             *@param argc 参数数量
             *@param ok 是否解析成功
             */
-            void check(size_t argc, bool ok) noexcept {
-                if ((argc == 1 && !ok) || exist("help"))
-                {
+            void check(size_t argc, bool ok) noexcept
+            {
+                if ((argc == 1 && !ok) || exist("help")) {
                     std::cerr << usage();
                     exit(0);
                 }
-
                 if (!ok) {
                     std::cerr << error() << std::endl << usage();
                     exit(1);
@@ -737,7 +675,8 @@ namespace common {
             *@brief 设置参数选项
             *@param name 参数名
             */
-            void set_option(const std::string &name) noexcept {
+            void set_option(const std::string &name) noexcept
+            {
                 if (options.count(name) == 0) {
                     errors.push_back("undefined option: --" + name);
                     return;
@@ -789,7 +728,7 @@ namespace common {
             */
             class option_without_value : public option_base {
             public:
-                option_without_value(const std::string &name,char short_name,const std::string &desc)
+                option_without_value(const std::string &name, char short_name, const std::string &desc)
                     :m_name(name), m_short_name(short_name), m_desc(desc), m_has(false) {}
                 ~option_without_value() {}
 
@@ -825,18 +764,19 @@ namespace common {
                 *@param def        默认值
                 *@param desc       描述
                 */
-                option_with_value(const std::string &name, char short_name,bool need, const T &def, const std::string &desc)
-                    : m_name(name), m_short_name(short_name), m_need(need),m_has(false), m_def(def), m_actual(def)
+                option_with_value(const std::string &name, char short_name, bool need, const T &def, const std::string &desc)
+                    : m_name(name), m_short_name(short_name), m_need(need), m_has(false), m_def(def), m_actual(def)
                 {
                     this->desc = full_description(desc);
                 }
                 ~option_with_value() {}
 
-                const T &get() const noexcept { return m_actual; }
-                bool has_value() const noexcept { return true; }
-                bool set() noexcept { return false; }
+                const T &get() const { return m_actual; }
+                bool has_value() const { return true; }
+                bool set() { return false; }
 
-                bool set(const std::string &value) noexcept {
+                bool set(const std::string &value) noexcept
+                {
                     try {
                         m_actual = read(value);
                         m_has = true;
@@ -847,17 +787,12 @@ namespace common {
                     return true;
                 }
 
-                bool has_set() const noexcept { return m_has; }
-
-                bool valid() const noexcept {
-                    if (m_need && !m_has) return false;
-                    return true;
-                }
-
-                bool must() const noexcept { return m_need; }
-                const std::string &name() const noexcept { return m_name; }
-                char short_name() const noexcept { return m_short_name; }
-                const std::string &description() const noexcept { return desc; }
+                bool has_set() const { return m_has; }
+                bool valid() const { return (m_need && !m_has) ? false : true; }
+                bool must() const { return m_need; }
+                const std::string &name() const { return m_name; }
+                char short_name() const { return m_short_name; }
+                const std::string &description() const { return desc; }
 
                 std::string short_description() const noexcept
                 {
