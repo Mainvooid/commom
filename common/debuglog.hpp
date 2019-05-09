@@ -173,30 +173,30 @@ namespace common {
             }
 
             template<typename T>
-            void Trace(T msg) { Log(std::move(msg), level_e::Trace); }
+            void Trace(T msg) const { Log(std::move(msg), level_e::Trace); }
             template<typename T>
-            void Debug(T msg) { Log(std::move(msg), level_e::Debug); }
+            void Debug(T msg) const { Log(std::move(msg), level_e::Debug); }
             template<typename T>
-            void Info(T msg) { Log(std::move(msg), level_e::Info); }
+            void Info(T msg) const { Log(std::move(msg), level_e::Info); }
             template<typename T>
-            void Warn(T msg) { Log(std::move(msg), level_e::Warn); }
+            void Warn(T msg) const { Log(std::move(msg), level_e::Warn); }
             template<typename T>
-            void Error(T msg) { Log(std::move(msg), level_e::Error); }
+            void Error(T msg) const { Log(std::move(msg), level_e::Error); }
             template<typename T>
-            void Fatal(T msg) { Log(std::move(msg), level_e::Fatal); }
+            void Fatal(T msg) const { Log(std::move(msg), level_e::Fatal); }
 
             template<typename T>
-            void Trace(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Trace, _func, _file, _line); }
+            void Trace(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Trace, _func, _file, _line); }
             template<typename T>
-            void Debug(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Debug, _func, _file, _line); }
+            void Debug(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Debug, _func, _file, _line); }
             template<typename T>
-            void Info(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Info, _func, _file, _line); }
+            void Info(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Info, _func, _file, _line); }
             template<typename T>
-            void Warn(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Warn, _func, _file, _line); }
+            void Warn(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Warn, _func, _file, _line); }
             template<typename T>
-            void Error(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Error, _func, _file, _line); }
+            void Error(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Error, _func, _file, _line); }
             template<typename T>
-            void Fatal(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Fatal, _func, _file, _line); }
+            void Fatal(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Fatal, _func, _file, _line); }
 
         private:
             T m_name;
