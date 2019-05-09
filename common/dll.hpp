@@ -42,25 +42,30 @@ namespace common {
         *@param sub_dll_name 子dll名 xxx.dll
         *@return 子dll的绝对加载路径
         */
-        static std::wstring getSubDllFileName(const HMODULE& g_dll_module, const std::wstring& sub_dll_name) noexcept
+        template<typename T>
+        static const T* getSubDllFileName(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
         {
-            wchar_t current_dll_fname[MAX_PATH];
-            wchar_t _Dir[MAX_PATH];
-            wchar_t _Driver[sizeof(wchar_t) * 2];
-            wchar_t sub_dll_fname[MAX_PATH];
-            ::GetModuleFileNameW(g_dll_module, current_dll_fname, MAX_PATH);
-            ::_wsplitpath_s(current_dll_fname, _Driver, sizeof(wchar_t) * 2,
-                _Dir, MAX_PATH, NULL, 0, NULL, 0);
-            ::wsprintfW(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, sub_dll_name.data());
+            T current_dll_fname[MAX_PATH];
+            T _Dir[MAX_PATH];
+            T _Driver[sizeof(T) * 2];
+            T sub_dll_fname[MAX_PATH];
+            ::GetModuleFileName(g_dll_module, current_dll_fname, MAX_PATH);
+#if defined(_UNICODE) or defined(UNICODE)
+            ::_wsplitpath_s(current_dll_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, NULL, 0, NULL, 0);
+#else
+            ::_splitpath_s(current_dll_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, NULL, 0, NULL, 0);
+#endif
+            ::wsprintf(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, sub_dll_name);
             return sub_dll_fname;
         };
 
         /**
         *@brief 运行时目录下搜索DLL及其依赖项
         */
-        static HMODULE loadSubDll(const HMODULE& g_dll_module, const std::wstring& sub_dll_name) noexcept
+        template<typename T>
+        static HMODULE loadSubDll(const HMODULE& g_dll_module, T sub_dll_name) noexcept
         {
-            std::wstring sub_dll_path = getSubDllFileName(g_dll_module, sub_dll_name);
+            T sub_dll_path = getSubDllFileName(g_dll_module, sub_dll_name);
             return LoadLibraryEx(sub_dll_path.data(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
         }
 
@@ -70,13 +75,14 @@ namespace common {
         static HMODULE loadSubDll(const std::wstring& sub_dll_dir, const std::wstring& sub_dll_name) noexcept
         {
             ::AddDllDirectory(sub_dll_dir.data());
-            return LoadLibraryEx(sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_USER_DIRS);
+            return LoadLibraryExW(sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_USER_DIRS);
         }
 
         /**
         *@brief 在应用程序的安装目录中搜索DLL及其依赖项
         */
-        static HMODULE loadSubDll(const std::wstring& sub_dll_name) noexcept
+        template<typename T>
+        static HMODULE loadSubDll(T& sub_dll_name) noexcept
         {
             return LoadLibraryEx(sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
         }

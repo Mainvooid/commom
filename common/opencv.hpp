@@ -39,25 +39,29 @@ namespace common {
         *@brief debug保存图像,路径由时间＋描述+随机数产生
         *@return 是否保存成功
         */
-        static bool saveDebugImage(const cv::Mat& save_image, const std::string& save_dir, const std::string& desc)
+        static void saveDebugImage(const cv::Mat& save_image, const std::string& save_dir, const std::string& desc)
+            noexcept(noexcept(!save_image.empty() && save_dir != ""))
         {
-            if (save_dir == "" || save_image.empty()) { return false; }
+            if (save_dir == "" || save_image.empty()) {
+                std::ostringstream msg;
+                msg << _TAG << "..save_image or save_dir is empty";
+                throw std::invalid_argument(msg.str());
+            }
             time_t now_time = time(nullptr);
-            char tmp[64];
+            char time_stamp[64];
             tm _tm;
             ::localtime_s(&_tm, &now_time);
-            std::strftime(tmp, sizeof(tmp), "%Y-%m-%d_%H-%M-%S", &_tm);
+            strftime(time_stamp, sizeof(time_stamp), "%Y-%m-%d_%H-%M-%S", &_tm);
             std::default_random_engine engine(_tm.tm_sec);
             char fname[260];
-            sprintf_s(fname, "%s\\%s_%s_%d.png", save_dir.data(), tmp, desc.data(), static_cast<size_t>(engine()));
+            sprintf_s(fname, "%s\\%s_%s_%d.png", save_dir.data(), time_stamp, desc.data(), static_cast<size_t>(engine()));
             cv::imwrite(fname, save_image);
-            return true;
         }
 
         /**
         *@brief 显示指定大小的图像
         */
-        static void imshowR(std::string img_name, const cv::InputArray& image, cv::Size img_size = cv::Size(960, 540))
+        static void imshowR(const std::string& img_name, const cv::InputArray& image, cv::Size img_size = cv::Size(960, 540))
         {
             cv::namedWindow(img_name, cv::WindowFlags::WINDOW_NORMAL);
             if (image.total() > static_cast<size_t>(img_size.height*img_size.width)) {
@@ -70,12 +74,12 @@ namespace common {
         *@brief 合并俩个图像
         */
         static cv::Mat mergeImage(const cv::InputArray & left, const cv::InputArray & right)
-            noexcept(noexcept(!left.empty() || !right.empty()))
+            noexcept(noexcept(!left.empty() && !right.empty()))
         {
             if (left.empty() || right.empty()) {
                 std::ostringstream msg;
                 msg << _TAG << "..InputArray is empty";
-                throw std::invalid_argument(msg.str());
+                throw std::runtime_error(msg.str());
             }
             cv::Mat img_merge(cv::Size(left.cols() + right.cols(), left.rows()), CV_MAKETYPE(left.depth(), 3), cv::Scalar::all(0));
             cv::Mat dst_leftMat = img_merge(cv::Rect(0, 0, left.cols(), left.rows()));
