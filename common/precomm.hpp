@@ -16,24 +16,30 @@ namespace common {
 
     /**
     *@brief memset 0
-    *@param p 类型指针
-    *@parma length 长度
     */
     template<typename T>
     inline void zeroset(T& p, size_t length)
     {
         std::memset(p, 0, sizeof(*p)*length);
     }
+    template<unsigned N, typename T>
+    inline void zeroset(T(&p)[N])
+    {
+        std::memset(p, 0, N);
+    }
 
     /**
     *@brief wmemset 0
-    *@param p 类型指针
-    *@parma length 长度
     */
     template<typename T>
     inline void wzeroset(T& p, size_t length)
     {
         std::wmemset(p, 0, sizeof(*p)*length);
+    }
+    template<unsigned N, typename T>
+    inline void wzeroset(T(&p)[N])
+    {
+        std::wmemset(p, 0, N);
     }
 
     ///----------资源安全释放----------
