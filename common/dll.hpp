@@ -31,9 +31,7 @@ namespace common {
         template<class interfaceCls, class implCls>
         std::shared_ptr<interfaceCls> getClsPtr() noexcept
         {
-            std::shared_ptr<interfaceCls> ptr;
-            ptr.reset(new implCls);
-            return ptr;
+            return std::make_shared<implCls>();
         }
 
         ///DLL导入

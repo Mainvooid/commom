@@ -14,26 +14,26 @@
 
 namespace common {
 
-    namespace debuglog {
+    /*调试日志级别
+    Trace    = 0, // 更细粒度的消息记录
+    Debug    = 1, // 细粒度调试信息事件
+    Info     = 2, // 粗粒度记录应用程序的正常运行过程
+    Warn     = 3, // 可能导致潜在错误
+    Error    = 4, // 不影响系统继续运行的错误事件
+    Fatal    = 5, // 会导致应用程序退出的致命事件
+    Off      = 6  // 关闭日志记录
+    */
+    enum level_e {
+        Trace = 0,
+        Debug = 1,
+        Info = 2,
+        Warn = 3,
+        Error = 4,
+        Fatal = 5,
+        Off = 6
+    };
 
-        /*调试日志级别
-        Trace    = 0, // 更细粒度的消息记录
-        Debug    = 1, // 细粒度调试信息事件
-        Info     = 2, // 粗粒度记录应用程序的正常运行过程
-        Warn     = 3, // 可能导致潜在错误
-        Error    = 4, // 不影响系统继续运行的错误事件
-        Fatal    = 5, // 会导致应用程序退出的致命事件
-        Off      = 6  // 关闭日志记录
-        */
-        enum level_e {
-            Trace = 0,
-            Debug = 1,
-            Info = 2,
-            Warn = 3,
-            Error = 4,
-            Fatal = 5,
-            Off = 6
-        };
+    namespace debuglog {
 
         /**
         *@brief OutputDebugString扩展版
@@ -173,30 +173,30 @@ namespace common {
             }
 
             template<typename T>
-            void Trace(T msg) { Log(std::move(msg), debuglog::level_e::Trace); }
+            void Trace(T msg) { Log(std::move(msg), level_e::Trace); }
             template<typename T>
-            void Debug(T msg) { Log(std::move(msg), debuglog::level_e::Debug); }
+            void Debug(T msg) { Log(std::move(msg), level_e::Debug); }
             template<typename T>
-            void Info(T msg) { Log(std::move(msg), debuglog::level_e::Info); }
+            void Info(T msg) { Log(std::move(msg), level_e::Info); }
             template<typename T>
-            void Warn(T msg) { Log(std::move(msg), debuglog::level_e::Warn); }
+            void Warn(T msg) { Log(std::move(msg), level_e::Warn); }
             template<typename T>
-            void Error(T msg) { Log(std::move(msg), debuglog::level_e::Error); }
+            void Error(T msg) { Log(std::move(msg), level_e::Error); }
             template<typename T>
-            void Fatal(T msg) { Log(std::move(msg), debuglog::level_e::Fatal); }
+            void Fatal(T msg) { Log(std::move(msg), level_e::Fatal); }
 
             template<typename T>
-            void Trace(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Trace, _func, _file, _line); }
+            void Trace(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Trace, _func, _file, _line); }
             template<typename T>
-            void Debug(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Debug, _func, _file, _line); }
+            void Debug(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Debug, _func, _file, _line); }
             template<typename T>
-            void Info(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Info, _func, _file, _line); }
+            void Info(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Info, _func, _file, _line); }
             template<typename T>
-            void Warn(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Warn, _func, _file, _line); }
+            void Warn(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Warn, _func, _file, _line); }
             template<typename T>
-            void Error(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Error, _func, _file, _line); }
+            void Error(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Error, _func, _file, _line); }
             template<typename T>
-            void Fatal(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), debuglog::level_e::Fatal, _func, _file, _line); }
+            void Fatal(T msg, const char* _func, const char * _file, const int _line) { Log(std::move(msg), level_e::Fatal, _func, _file, _line); }
 
         private:
             T m_name;
@@ -206,7 +206,7 @@ namespace common {
     } // namespace debuglog
 
     /// common 全局logger
-    static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), debuglog::level_e::Trace));
+    static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), level_e::Trace));
 
     template<typename T>
     void LOGT(T msg) { g_logger->Trace(std::move(msg)); };
