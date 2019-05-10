@@ -63,10 +63,10 @@ namespace common {
         *@brief 运行时目录下搜索DLL及其依赖项
         */
         template<typename T>
-        static HMODULE loadSubDll(const HMODULE& g_dll_module, T sub_dll_name) noexcept
+        static HMODULE loadSubDll(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
         {
-            T sub_dll_path = getSubDllFileName(g_dll_module, sub_dll_name);
-            return LoadLibraryEx(sub_dll_path.data(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
+            const T* sub_dll_path = getSubDllFileName(g_dll_module, sub_dll_name);
+            return LoadLibraryEx(sub_dll_path, nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
         }
 
         /**
@@ -82,9 +82,9 @@ namespace common {
         *@brief 在应用程序的安装目录中搜索DLL及其依赖项
         */
         template<typename T>
-        static HMODULE loadSubDll(T& sub_dll_name) noexcept
+        static HMODULE loadSubDll(const T* sub_dll_name) noexcept
         {
-            return LoadLibraryEx(sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
+            return LoadLibraryEx(sub_dll_name, nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
         }
 
         /**
