@@ -43,7 +43,7 @@ namespace common {
         *@return 子dll的绝对加载路径
         */
         template<typename T>
-        static const T* getSubDllFileName(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
+        auto getSubDllFileName(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
         {
             T current_dll_fname[MAX_PATH];
             T _Dir[MAX_PATH];
@@ -56,17 +56,17 @@ namespace common {
             ::_splitpath_s(current_dll_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, NULL, 0, NULL, 0);
 #endif
             ::wsprintf(sub_dll_fname, _T("%s%s%s"), _Driver, _Dir, sub_dll_name);
-            return sub_dll_fname;
+            return std::basic_string<T, std::char_traits<T>, std::allocator<T>>(sub_dll_fname);
         };
 
         /**
         *@brief 运行时目录下搜索DLL及其依赖项
         */
         template<typename T>
-        static HMODULE loadSubDll(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
+        HMODULE loadSubDll(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
         {
-            const T* sub_dll_path = getSubDllFileName(g_dll_module, sub_dll_name);
-            return LoadLibraryEx(sub_dll_path, nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
+            std::basic_string<T, std::char_traits<T>, std::allocator<T>> sub_dll_path = getSubDllFileName<T>(g_dll_module, sub_dll_name);
+            return LoadLibraryEx(sub_dll_path.data(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
         }
 
         /**
@@ -82,9 +82,10 @@ namespace common {
         *@brief 在应用程序的安装目录中搜索DLL及其依赖项
         */
         template<typename T>
-        static HMODULE loadSubDll(const T* sub_dll_name) noexcept
+        HMODULE loadSubDll(const T* sub_dll_name) noexcept
         {
-            return LoadLibraryEx(sub_dll_name, nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
+            std::basic_string<T, std::char_traits<T>, std::allocator<T>> _sub_dll_name = sub_dll_name;
+            return LoadLibraryEx(_sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
         }
 
         /**
