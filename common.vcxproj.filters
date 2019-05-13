@@ -30,9 +30,6 @@
     <ClInclude Include="common\debuglog.hpp">
       <Filter>头文件\common</Filter>
     </ClInclude>
-    <ClInclude Include="common\dll.hpp">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
     <ClInclude Include="common\opencv.hpp">
       <Filter>头文件\common</Filter>
     </ClInclude>
@@ -44,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="common_all.hpp">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\windows.hpp">
+      <Filter>头文件\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

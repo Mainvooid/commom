@@ -6,11 +6,12 @@
 #pragma once
 #endif
 
-#if !defined(_COMMON_DLL_HPP_) && defined(_WIN32)
-#define _COMMON_DLL_HPP_
+#if !defined(_COMMON_WINDOWS_HPP_) && defined(_WIN32)
+#define _COMMON_WINDOWS_HPP_
 
 #include <common/precomm.hpp>
 #include <memory>
+#include <iostream>
 #include <windows.h>
 
 #ifndef DLLAPI
@@ -21,7 +22,7 @@
 
 namespace common {
 
-    namespace dll {
+    namespace windows {
 
         ///DLL导出
 
@@ -35,6 +36,26 @@ namespace common {
         }
 
         ///DLL导入
+
+       /**
+        *@brief 返回工作目录
+        */
+        template<typename T>
+        auto getWorkDir() noexcept
+        {
+            T current_exe_fname[MAX_PATH];
+            T _Dir[MAX_PATH];
+            T _Driver[sizeof(T) * 2];
+            T word_dir[MAX_PATH];
+            ::GetModuleFileName(nullptr, current_exe_fname, MAX_PATH);
+#if defined(_UNICODE) or defined(UNICODE)
+            ::_wsplitpath_s(current_exe_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, nullptr, 0, nullptr, 0);
+#else
+            ::_splitpath_s(current_exe_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, nullptr, 0, nullptr, 0);
+#endif
+            ::wsprintf(word_dir, _T("%s%s"), _Driver, _Dir);
+            return std::basic_string<T, std::char_traits<T>, std::allocator<T>>(word_dir);
+        }
 
         /**
         *@brief dll下根据运行时环境获取子dll的绝对加载路径
@@ -126,8 +147,8 @@ namespace common {
             }
         };
 
-    } // namespace dll
+    } // namespace windows
 
 } // namespace common
 
-#endif // _COMMON_DLL_HPP_
+#endif // _COMMON_WINDOWS_HPP_
