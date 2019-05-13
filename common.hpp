@@ -26,10 +26,11 @@ namespace common {
     */
     template<typename T>
     auto fillDir(const T* dir) {
-        size_t n = dir.find_last_of('\\');
+        std::basic_string<T, std::char_traits<T>, std::allocator<T>> _dir = dir;
+        size_t n = _dir.find_last_of(_T("\\"));
         if (n == static_cast<size_t>(-1)) {}
-        else if (n != dir.size() - 1) { dir = dir + _T("\\"); }
-        return std::basic_string<T, std::char_traits<T>, std::allocator<T>>(dir);
+        else if (n != _dir.size() - 1) { _dir += _T("\\"); }
+        return _dir;
     }
 
 } // namespace common
