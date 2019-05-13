@@ -46,15 +46,15 @@ namespace common {
             T current_exe_fname[MAX_PATH];
             T _Dir[MAX_PATH];
             T _Driver[sizeof(T) * 2];
-            T word_dir[MAX_PATH];
+            T work_dir[MAX_PATH];
             ::GetModuleFileName(nullptr, current_exe_fname, MAX_PATH);
 #if defined(_UNICODE) or defined(UNICODE)
             ::_wsplitpath_s(current_exe_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, nullptr, 0, nullptr, 0);
 #else
             ::_splitpath_s(current_exe_fname, _Driver, sizeof(T) * 2, _Dir, MAX_PATH, nullptr, 0, nullptr, 0);
 #endif
-            ::wsprintf(word_dir, _T("%s%s"), _Driver, _Dir);
-            return std::basic_string<T, std::char_traits<T>, std::allocator<T>>(word_dir);
+            ::wsprintf(work_dir, _T("%s%s"), _Driver, _Dir);
+            return std::basic_string<T, std::char_traits<T>, std::allocator<T>>(work_dir);
         }
 
         /**
