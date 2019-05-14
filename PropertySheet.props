@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup>
     <!-- 指定第三方依赖目录 -->
-    <OpenCV>D:\ProgramData\opencv401_with_contrib\opencv\sources\build\install</OpenCV>
+    <OpenCV>./opencv</OpenCV>
     
     <!-- 指定include目录 -->
     <IncludePath>./;../;$(common)/common;$(OpenCV)\include;$(IncludePath)</IncludePath>

@@ -35,7 +35,7 @@
 *.out
 *.app
 
-/.vs
+/opencv
 /Release
 /Debug
 /x64
