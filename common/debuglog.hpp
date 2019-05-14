@@ -60,7 +60,7 @@ namespace common {
 #else
             std::string
 #endif
-        >
+        >//TODO T更改为const T* 以支持更多形式的字符串类型
             class logger
         {
         public:
