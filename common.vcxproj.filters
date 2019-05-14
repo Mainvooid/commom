@@ -62,6 +62,9 @@
     <ClCompile Include="samples\opencv.cpp">
       <Filter>源文件\samples</Filter>
     </ClCompile>
+    <ClCompile Include="samples\common.cpp">
+      <Filter>源文件\samples</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.props">

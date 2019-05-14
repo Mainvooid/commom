@@ -16,6 +16,8 @@
 #include <common/windows.hpp>
 #include <common/opencv.hpp>
 
+#include <chrono>
+
 namespace common {
 
     static const std::string _TAG = "common";
@@ -41,6 +43,20 @@ namespace common {
         n = _dir.find_last_of(separator);
         if (n == static_cast<size_t>(-1) || n != _dir.size() - 1) { _dir += separator; }//无结尾分隔符
         return _dir;
+    }
+
+    /**
+    *@brief 函数计时
+    *@param Fn 函数对象
+    *@param args 函数参数
+    */
+    template< typename T = std::chrono::milliseconds, typename R, typename ...FArgs, typename ...Args>
+    auto getFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
+        auto start = std::chrono::system_clock::now();
+        Fn(args...);
+        auto end = std::chrono::system_clock::now();
+        auto duration = std::chrono::duration_cast<T>(end - start);
+        return static_cast<double>(duration.count());
     }
 
 
