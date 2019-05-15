@@ -12,6 +12,7 @@
 #include <tchar.h>
 #include <iostream>
 #include <vector>
+#include <functional>
 
 namespace common {
 
@@ -142,7 +143,7 @@ namespace common {
         release_s(args...);
     }
 
-    ///----------字符串模板类型辅助----------
+    ///----------模板类型辅助----------
 
     template<typename _char_t, typename TA, typename TW>
     struct ttype;
@@ -177,10 +178,16 @@ namespace common {
         return tvalue<TA, TW>(static_cast<_char_t*>(0), a, w);
     }
 
+    template<typename T>
+    size_t cslen(const T* str)
+    {
+        return tvalue<T>(strlen, wcslen)(str);
+    }
+
     ///----------其他----------
 
     /**
-    *@brief 目录检查,分隔符统一且末尾分隔符补全
+    *@brief 目录路径检查,统一分隔符且补全末尾分隔符
     */
     template<typename T>
     auto fillDir(const T* dir, const T* separator = tvalue<T>("\\", L"\\"))

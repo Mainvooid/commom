@@ -9,11 +9,6 @@
 using namespace common;
 using namespace std;
 
-template<typename T>
-size_t cslen(const T* str)
-{
-    return tvalue<T>(strlen, wcslen)(str);
-}
 int main() {
     std::wstring wstr;
     wstr = fillDir(L"D:\\a\\b\\c\\", L"/");//"D:/a/b/c/"
