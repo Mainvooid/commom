@@ -9,6 +9,7 @@
 #ifndef _COMMON_OPENCV_HPP_
 #define _COMMON_OPENCV_HPP_
 
+#include <common/precomm.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/img_hash.hpp>
 #include <random>
@@ -54,7 +55,7 @@ namespace common {
             strftime(time_stamp, sizeof(time_stamp), "%Y-%m-%d_%H-%M-%S", &_tm);
             std::default_random_engine engine(_tm.tm_sec);
             char fname[260];
-            sprintf_s(fname, "%s\\%s_%s_%d.png", save_dir.data(), time_stamp, desc.data(), static_cast<size_t>(engine()));
+            sprintf_s(fname, "%s%s_%s_%d.png", fillDir(save_dir.data()).data(), time_stamp, desc.data(), static_cast<size_t>(engine()));
             cv::imwrite(fname, save_image);
         }
 

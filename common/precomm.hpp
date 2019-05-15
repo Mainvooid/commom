@@ -9,6 +9,9 @@
 #ifndef _COMMON_PRECOMM_HPP_
 #define _COMMON_PRECOMM_HPP_
 #include <cstdlib>
+#include <tchar.h>
+#include <iostream>
+#include <vector>
 
 namespace common {
 
@@ -137,6 +140,66 @@ namespace common {
     {
         if (p != nullptr) { p->release(); p = nullptr; }
         release_s(args...);
+    }
+
+    ///----------字符串模板类型辅助----------
+
+    template<typename _char_t, typename TA, typename TW>
+    struct ttype;
+
+    template<typename TA, typename TW>
+    struct ttype<char, TA, TW>
+    {
+        typedef TA type;
+    };
+
+    template<typename TA, typename TW>
+    struct ttype<wchar_t, TA, TW>
+    {
+        typedef TW type;
+    };
+
+    template<typename TA, typename TW>
+    inline typename ttype<char, TA, TW>::type tvalue(char*, TA a, TW w)
+    {
+        return a;
+    };
+
+    template<typename TA, typename TW>
+    inline typename ttype<wchar_t, TA, TW>::type tvalue(wchar_t*, TA a, TW w)
+    {
+        return w;
+    }
+
+    template<typename _char_t, typename TA, typename TW>
+    inline typename ttype<_char_t, TA, TW>::type tvalue(TA a, TW w)
+    {
+        return tvalue<TA, TW>(static_cast<_char_t*>(0), a, w);
+    }
+
+    ///----------其他----------
+
+    /**
+    *@brief 目录检查,分隔符统一且末尾分隔符补全
+    */
+    template<typename T>
+    auto fillDir(const T* dir, const T* separator = tvalue<T>("\\", L"\\"))
+    {
+        std::basic_string<T, std::char_traits<T>, std::allocator<T>> _dir = dir;
+        std::vector<const T*> separators = { tvalue<T>("\\",L"\\"), tvalue<T>("/",L"/") };
+        if (*separator == *separators[0]) {
+            separators.erase(separators.begin());
+        }
+        size_t n = 0;
+        while (true) {
+            n = _dir.find_first_of(separators[0]);
+            if (n == static_cast<size_t>(-1)) { break; }
+            _dir.replace(n, 1, separator);
+        }
+
+        n = _dir.find_last_of(separator);
+        if (n == static_cast<size_t>(-1) || n != _dir.size() - 1) { _dir += separator; }//无结尾分隔符
+        return _dir;
     }
 
 } // namespace common

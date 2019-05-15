@@ -17,33 +17,11 @@
 #include <common/opencv.hpp>
 
 #include <chrono>
+#include <functional>
 
 namespace common {
 
     static const std::string _TAG = "common";
-
-    /**
-    *@brief 目录检查,分隔符统一且末尾分隔符补全
-    */
-    template<typename T>
-    auto fillDir(const T* dir, const T* separator = _T("\\")) {
-        std::basic_string<T, std::char_traits<T>, std::allocator<T>> _dir = dir;
-
-        std::vector<const T*> separators = { _T("\\"), _T("/") };
-        if (*separator == *separators[0]) {
-            separators.erase(separators.begin());
-        }
-        size_t n = 0;
-        while (true) {
-            n = _dir.find_first_of(separators[0]);
-            if (n == static_cast<size_t>(-1)) { break; }
-            _dir.replace(n, 1, separator);
-        }
-
-        n = _dir.find_last_of(separator);
-        if (n == static_cast<size_t>(-1) || n != _dir.size() - 1) { _dir += separator; }//无结尾分隔符
-        return _dir;
-    }
 
     /**
     *@brief 函数计时(默认std::chrono::milliseconds)
