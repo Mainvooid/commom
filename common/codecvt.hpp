@@ -37,11 +37,17 @@ namespace common {
 
     namespace codecvt {
 
+        /**
+        *@brief 本地编码转换器
+        */
+        class local_codecvt : public std::codecvt_byname<wchar_t, char, std::mbstate_t> {
+        public:
 #ifdef _MSC_VER
-        static std::locale locale("zh-CN");//设置本地语言环境
+            local_codecvt() : codecvt_byname("zh-CN") {}//设置本地语言环境
 #else
-        static std::locale locale("zh_CN.GB18030");
+            local_codecvt() : codecvt_byname("zh_CN.GB18030") {}
 #endif
+        };
 
         ///std::string(utf8) std::u16string(utf16) std::u32string(utf32)
         /**
@@ -54,17 +60,17 @@ namespace common {
             std::string result = u8"";
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int16_t>, int16_t> cvt;
-            auto p = reinterpret_cast<const int16_t *>(utf16_string.data());
-            try{
+            auto p = reinterpret_cast<const int16_t*>(utf16_string.data());
+            try {
                 result = cvt.to_bytes(p, p + utf16_string.size());
             }
 #else
             std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> cvt;
-            try{
+            try {
                 result = cvt.to_bytes(utf16_string);
             }
 #endif
-            catch (const std::range_error&){
+            catch (const std::range_error&) {
                 return u8"";
             }
             return result;
@@ -74,13 +80,13 @@ namespace common {
         *@brief std::string(utf8) -> std::u16string
         *@return 若失败返回空字符串
         */
-        static std::u16string utf8_to_utf16(const std::string& utf8_string) noexcept
+        static std::u16string utf8_to_utf16(const std::string & utf8_string) noexcept
         {
             std::u16string result = u"";
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int16_t>, int16_t> cvt;
-            auto p = reinterpret_cast<const char *>(utf8_string.data());
-            try{
+            auto p = reinterpret_cast<const char*>(utf8_string.data());
+            try {
                 auto str = cvt.from_bytes(p, p + utf8_string.size());
                 result.assign(str.begin(), str.end());
             }
@@ -91,7 +97,7 @@ namespace common {
                 result = cvt.from_bytes(utf8_string);
             }
 #endif
-            catch (const std::range_error&){
+            catch (const std::range_error&) {
                 return u"";
             }
             return result;
@@ -102,22 +108,22 @@ namespace common {
         *@return 若失败返回空字符串
         *@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
         */
-        static std::string utf32_to_utf8(const std::u32string& utf32_string) noexcept
+        static std::string utf32_to_utf8(const std::u32string & utf32_string) noexcept
         {
             std::string result = u8"";
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int32_t>, int32_t> cvt;
-            auto p = reinterpret_cast<const int32_t *>(utf32_string.data());
-            try{
+            auto p = reinterpret_cast<const int32_t*>(utf32_string.data());
+            try {
                 result = cvt.to_bytes(p, p + utf32_string.size());
             }
 #else
             std::wstring_convert<std::codecvt_utf8_utf16<char32_t>, char32_t> cvt;
-            try{
+            try {
                 result = cvt.to_bytes(utf32_string);
             }
 #endif
-            catch (const std::range_error&){
+            catch (const std::range_error&) {
                 return u8"";
             }
             return result;
@@ -127,23 +133,23 @@ namespace common {
         *@brief std::string(utf8) -> std::u32string
         *@return 若失败返回空字符串
         */
-        static std::u32string utf8_to_utf32(const std::string& utf8_string) noexcept
+        static std::u32string utf8_to_utf32(const std::string & utf8_string) noexcept
         {
             std::u32string result = U"";
 #if _MSC_VER >= 1900
             std::wstring_convert<std::codecvt_utf8_utf16<int32_t>, int32_t> cvt;
-            auto p = reinterpret_cast<const char *>(utf8_string.data());
-            try{
+            auto p = reinterpret_cast<const char*>(utf8_string.data());
+            try {
                 auto str = cvt.from_bytes(p, p + utf8_string.size());
                 result.assign(str.begin(), str.end());
             }
 #else
             std::wstring_convert<std::codecvt_utf8_utf16<char32_t>, char32_t> cvt;
-            try{
+            try {
                 result = cvt.from_bytes(utf8_string);
             }
 #endif
-            catch (const std::range_error&){
+            catch (const std::range_error&) {
                 return U"";
             }
             return result;
@@ -153,7 +159,7 @@ namespace common {
         *@brief std::u32string -> std::u16string
         *@return 若失败返回空字符串
         */
-        static std::u16string utf32_to_utf16(const std::u32string& utf32_string) noexcept
+        static std::u16string utf32_to_utf16(const std::u32string & utf32_string) noexcept
         {
             return utf8_to_utf16(utf32_to_utf8(utf32_string));
         }
@@ -162,7 +168,7 @@ namespace common {
         *@brief std::u16string -> std::u32string
         *@return 若失败返回空字符串
         */
-        static std::u32string utf16_to_utf32(const std::u16string& utf16_string) noexcept
+        static std::u32string utf16_to_utf32(const std::u16string & utf16_string) noexcept
         {
             return utf8_to_utf32(utf16_to_utf8(utf16_string));
         }
@@ -174,14 +180,14 @@ namespace common {
         *@return 若失败返回空字符串,
         *@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
         */
-        static std::string unicode_to_utf8(const std::wstring& wstring) noexcept
+        static std::string unicode_to_utf8(const std::wstring & wstring) noexcept
         {
             std::string result = u8"";
-            try{
+            try {
                 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> cvt;
                 result = cvt.to_bytes(wstring);
             }
-            catch (const std::range_error&){
+            catch (const std::range_error&) {
                 return u8"";
             }
             return result;
@@ -191,14 +197,14 @@ namespace common {
         *@brief std::string(utf8) -> std::wstring(unicode)
         *@return 若失败返回空字符串
         */
-        static std::wstring utf8_to_unicode(const std::string& utf8_string) noexcept
+        static std::wstring utf8_to_unicode(const std::string & utf8_string) noexcept
         {
             std::wstring result = L"";
-            try{
+            try {
                 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> cvt;
                 result = cvt.from_bytes(utf8_string);
             }
-            catch (const std::range_error&){
+            catch (const std::range_error&) {
                 return L"";
             }
             return result;
@@ -208,49 +214,43 @@ namespace common {
         *@brief std::wstring(unicode) -> std::string(ansi)
         *@return 若失败返回空字符串
         */
-        static std::string unicode_to_ansi(const std::wstring& wstring) noexcept
+        static std::string unicode_to_ansi(const std::wstring & wstring) noexcept
         {
-            const wchar_t* pws = nullptr;
-            char* ps = nullptr;
-            mbstate_t state = {};
-            std::unique_ptr<char> buffer(new char[wstring.size() * sizeof(wchar_t)]);
-            int res = std::use_facet<std::codecvt<wchar_t, char, mbstate_t> >
-            (locale).out(state,
-                wstring.data(), wstring.data() + wstring.size(), pws,
-                buffer.get(), buffer.get() + wstring.size() * sizeof(wchar_t), ps);
-
-            if (std::codecvt_base::ok == res){
-                return std::string(buffer.get(), ps);
+            std::string result = "";
+            std::wstring_convert<local_codecvt> cvt;
+            try
+            {
+                result = cvt.to_bytes(wstring);
             }
-            return "";
+            catch (const std::range_error&) {
+                return u8"";
+            }
+            return result;
         }
 
         /**
         *@brief std::string(ansi) -> std::wstring(unicode)
         *@return 若失败返回空字符串
         */
-        static std::wstring ansi_to_unicode(const std::string& ansi_string) noexcept
+        static std::wstring ansi_to_unicode(const std::string & ansi_string) noexcept
         {
-            const char* ps = nullptr;
-            wchar_t* pws = nullptr;
-            mbstate_t state = {};
-            std::unique_ptr<wchar_t> buffer(new wchar_t[ansi_string.size()]);
-            int res = std::use_facet<std::codecvt<wchar_t, char, mbstate_t> >
-            (locale).in(state,
-                ansi_string.data(), ansi_string.data() + ansi_string.size(), ps,
-                buffer.get(), buffer.get() + ansi_string.size(), pws);
-
-            if (std::codecvt_base::ok == res){
-                return std::wstring(buffer.get(), pws);
+            std::wstring result = L"";
+            std::wstring_convert<local_codecvt> cvt;
+            try
+            {
+                result = cvt.from_bytes(ansi_string);
             }
-            return L"";
+            catch (const std::range_error&) {
+                return L"";
+            }
+            return result;
         }
 
         /**
         *@brief std::string(utf8) -> std::string(ansi)
         *@return 若失败返回空字符串
         */
-        static std::string utf8_to_ansi(const std::string& utf8_string) noexcept
+        static std::string utf8_to_ansi(const std::string & utf8_string) noexcept
         {
             return unicode_to_ansi(utf8_to_unicode(utf8_string));
         }

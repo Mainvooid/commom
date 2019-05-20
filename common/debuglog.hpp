@@ -52,15 +52,17 @@ namespace common {
             ::OutputDebugStringA(buf);
         }
 
+#if defined(_UNICODE) or defined(UNICODE)
         static void OutputDebugStringEx(const wchar_t* format, ...) noexcept
         {
             wchar_t buf[BUFSIZ];
-            va_list args;//可变长参数列表
-            va_start(args, format);//获取列表第一个参数
-            swprintf_s(buf, format, args);//按格式执行拼接
-            va_end(args);//清空列表
+            va_list args;
+            va_start(args, format);
+            swprintf_s(buf, format, args);
+            va_end(args);
             ::OutputDebugStringW(buf);
         }
+#endif
 
         /*
        *@brief 调试日志类
@@ -212,11 +214,11 @@ namespace common {
         private:
             T m_name;
             level_e m_level;
-    };
+        };
 
-} // namespace debuglog
+    } // namespace debuglog
 
-/// common 全局logger
+    /// common 全局logger
     static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), level_e::Trace));
 
     template<typename T>
