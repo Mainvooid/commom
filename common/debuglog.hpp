@@ -5,11 +5,13 @@
 #ifdef _MSC_VER
 #pragma once
 #endif
+#pragma warning(disable:4067)
 
 #if !defined(_COMMON_DEBUGLOG_HPP_) && defined(_WIN32)
 #define _COMMON_DEBUGLOG_HPP_
 
 #include <common/codecvt.hpp>
+#include <algorithm>
 #include <windows.h>
 
 namespace common {
@@ -37,18 +39,27 @@ namespace common {
 
         /**
         *@brief OutputDebugString扩展版
-        *@param format 格式 e.g. L"Error [%s] : %s\n"
+        *@param format 格式 e.g. "Error [%s] : %s\n"
         *@param ... 相应参数包
         */
-        template<typename T>
-        static void OutputDebugStringEx(const T* format, ...) noexcept
+        static void OutputDebugStringEx(const char* format, ...) noexcept
         {
-            T buf[BUFSIZ];
+            char buf[BUFSIZ];
             va_list args;//可变长参数列表
             va_start(args, format);//获取列表第一个参数
-            _vstprintf_s(buf, format, args);//按格式执行拼接
+            sprintf_s(buf, format, args);//按格式执行拼接
             va_end(args);//清空列表
-            ::OutputDebugString(buf);
+            ::OutputDebugStringA(buf);
+        }
+
+        static void OutputDebugStringEx(const wchar_t* format, ...) noexcept
+        {
+            wchar_t buf[BUFSIZ];
+            va_list args;//可变长参数列表
+            va_start(args, format);//获取列表第一个参数
+            swprintf_s(buf, format, args);//按格式执行拼接
+            va_end(args);//清空列表
+            ::OutputDebugStringW(buf);
         }
 
         /*
@@ -60,15 +71,15 @@ namespace common {
 #else
             std::string
 #endif
-        >//TODO T更改为const T* 以支持更多形式的字符串类型
+        >
             class logger
         {
         public:
             logger(T logger_name = _T(""), level_e log_level = level_e::Error)
                 :m_name(std::move(logger_name)), m_level(log_level) {}
             virtual ~logger() {}
-            logger(const logger & logger) :m_name(logger.m_name), m_level(logger.m_level) {};
-            logger &operator=(const logger & logger) { m_name = logger.m_name; m_level = logger.m_level; return *this; }
+            logger(const logger& logger) :m_name(logger.m_name), m_level(logger.m_level) {};
+            logger& operator=(const logger& logger) { m_name = logger.m_name; m_level = logger.m_level; return *this; }
             logger(const logger&&) = delete;
             logger& operator=(const logger&&) = delete;
         public:
@@ -117,7 +128,7 @@ namespace common {
             *@param _file 宏 __FILE__ 文件名
             *@param _line 宏 __LINE__ 行数
             */
-            void Log(T msg, const level_e nLevel, const char* _func, const char * _file, const int _line)const
+            void Log(T msg, const level_e nLevel, const char* _func, const char* _file, const int _line)const
             {
                 if (nLevel < m_level || nLevel == level_e::Off) { return; }
                 T func, file;
@@ -186,26 +197,26 @@ namespace common {
             void Fatal(T msg) const { Log(std::move(msg), level_e::Fatal); }
 
             template<typename T>
-            void Trace(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Trace, _func, _file, _line); }
+            void Trace(T msg, const char* _func, const char* _file, const int _line) const { Log(std::move(msg), level_e::Trace, _func, _file, _line); }
             template<typename T>
-            void Debug(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Debug, _func, _file, _line); }
+            void Debug(T msg, const char* _func, const char* _file, const int _line) const { Log(std::move(msg), level_e::Debug, _func, _file, _line); }
             template<typename T>
-            void Info(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Info, _func, _file, _line); }
+            void Info(T msg, const char* _func, const char* _file, const int _line) const { Log(std::move(msg), level_e::Info, _func, _file, _line); }
             template<typename T>
-            void Warn(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Warn, _func, _file, _line); }
+            void Warn(T msg, const char* _func, const char* _file, const int _line) const { Log(std::move(msg), level_e::Warn, _func, _file, _line); }
             template<typename T>
-            void Error(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Error, _func, _file, _line); }
+            void Error(T msg, const char* _func, const char* _file, const int _line) const { Log(std::move(msg), level_e::Error, _func, _file, _line); }
             template<typename T>
-            void Fatal(T msg, const char* _func, const char * _file, const int _line) const { Log(std::move(msg), level_e::Fatal, _func, _file, _line); }
+            void Fatal(T msg, const char* _func, const char* _file, const int _line) const { Log(std::move(msg), level_e::Fatal, _func, _file, _line); }
 
         private:
             T m_name;
             level_e m_level;
-        };
+    };
 
-    } // namespace debuglog
+} // namespace debuglog
 
-    /// common 全局logger
+/// common 全局logger
     static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), level_e::Trace));
 
     template<typename T>
@@ -222,17 +233,17 @@ namespace common {
     void LOGF(T msg) { g_logger->Fatal(std::move(msg)); };
 
     template<typename T>
-    void LOGT(T msg, const char* _func, const char * _file, const int _line) { g_logger->Trace(std::move(msg), _func, _file, _line); };
+    void LOGT(T msg, const char* _func, const char* _file, const int _line) { g_logger->Trace(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGD(T msg, const char* _func, const char * _file, const int _line) { g_logger->Debug(std::move(msg), _func, _file, _line); };
+    void LOGD(T msg, const char* _func, const char* _file, const int _line) { g_logger->Debug(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGI(T msg, const char* _func, const char * _file, const int _line) { g_logger->Info(std::move(msg), _func, _file, _line); };
+    void LOGI(T msg, const char* _func, const char* _file, const int _line) { g_logger->Info(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGW(T msg, const char* _func, const char * _file, const int _line) { g_logger->Warn(std::move(msg), _func, _file, _line); };
+    void LOGW(T msg, const char* _func, const char* _file, const int _line) { g_logger->Warn(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGE(T msg, const char* _func, const char * _file, const int _line) { g_logger->Error(std::move(msg), _func, _file, _line); };
+    void LOGE(T msg, const char* _func, const char* _file, const int _line) { g_logger->Error(std::move(msg), _func, _file, _line); };
     template<typename T>
-    void LOGF(T msg, const char* _func, const char * _file, const int _line) { g_logger->Fatal(std::move(msg), _func, _file, _line); };
+    void LOGF(T msg, const char* _func, const char* _file, const int _line) { g_logger->Fatal(std::move(msg), _func, _file, _line); };
 
 } // namespace common
 
