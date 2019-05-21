@@ -97,6 +97,7 @@ int main(int argc, char* argv[])
 {
     argc = 10;
     argv = (char **)malloc(sizeof(char*) * argc);
+    zeroset(argv, argc);
     argv[0] = const_cast<char*>("common.exe");
     argv[1] = const_cast<char*>("-i");
     argv[2] = const_cast<char*>("in");

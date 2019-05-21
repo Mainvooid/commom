@@ -30,11 +30,11 @@ int main() {
     cout << getFnDuration<std::chrono::nanoseconds>(fn2) << endl;  //100,203,300ns
 
     //条件类型判断
-    ttype<char, char, wchar_t>::type;    //char
-    ttype<wchar_t, char, wchar_t>::type; //wchar_t
-    ttype<std::string, std::string, std::wstring>::type;  //std::string
-    ttype<std::wstring, std::string, std::wstring>::type; //std::wstring
-    ttype<std::string, std::function<size_t(size_t, size_t)>, std::function<int(int, int)>>::type; //std::function<size_t(size_t, size_t)>
+    ttype_t<char, char, wchar_t>::type;    //char
+    ttype_t<wchar_t, char, wchar_t>::type; //wchar_t
+    ttype_t<std::string, std::string, std::wstring>::type;  //std::string
+    ttype_t<std::wstring, std::string, std::wstring>::type; //std::wstring
+    ttype_t<std::string, std::function<size_t(size_t, size_t)>, std::function<int(int, int)>>::type; //std::function<size_t(size_t, size_t)>
 
     //根据模板参数进行值推断
     const char* str = tvalue<char>("ansi", L"wide");  //ansi
@@ -51,4 +51,9 @@ int main() {
     //字符数组长度
     size_t n = cslen(str);  //4
     n = cslen(wstr.data()); //4
+
+    //convert to string
+    double d = 1.23;
+    std::string cstr=convert_to_string<char>(d);//"1.23"
+    float f=convert_from_string<float>(cstr);   //1.23000002
 }

@@ -10,6 +10,7 @@
 #define _COMMON_PRECOMM_HPP_
 #include <cstdlib>
 #include <tchar.h>
+#include <sstream>
 #include <iostream>
 #include <vector>
 #include <functional>
@@ -146,34 +147,36 @@ namespace common {
     ///----------模板类型辅助----------
 
     template<typename CS, typename TA, typename TW>
-    struct ttype;
+    struct ttype_t;
 
     template<typename TA, typename TW>
-    struct ttype<char, TA, TW> { typedef TA type; };
+    struct ttype_t<char, TA, TW> { typedef TA type; };
 
     template<typename TA, typename TW>
-    struct ttype<wchar_t, TA, TW> { typedef TW type; };
+    struct ttype_t<wchar_t, TA, TW> { typedef TW type; };
 
     template<typename TA, typename TW>
-    struct ttype<std::string, TA, TW> { typedef TA type; };
+    struct ttype_t<std::string, TA, TW> { typedef TA type; };
 
     template<typename TA, typename TW>
-    struct ttype<std::wstring, TA, TW> { typedef TW type; };
+    struct ttype_t<std::wstring, TA, TW> { typedef TW type; };
+
+    ///----------模板条件参数推断及条件函数调用----------
 
     template<typename TA, typename TW>
-    inline typename ttype<char, TA, TW>::type tvalue(char*, TA a, TW w) { return a; };
+    inline typename ttype_t<char, TA, TW>::type tvalue(char*, TA a, TW w) { return a; };
 
     template<typename TA, typename TW>
-    inline typename ttype<wchar_t, TA, TW>::type tvalue(wchar_t*, TA a, TW w) { return w; }
+    inline typename ttype_t<wchar_t, TA, TW>::type tvalue(wchar_t*, TA a, TW w) { return w; }
 
     template<typename TA, typename TW>
-    inline typename ttype<std::string, TA, TW>::type tvalue(std::string*, TA a, TW w) { return a; };
+    inline typename ttype_t<std::string, TA, TW>::type tvalue(std::string*, TA a, TW w) { return a; };
 
     template<typename TA, typename TW>
-    inline typename ttype<std::wstring, TA, TW>::type tvalue(std::wstring*, TA a, TW w) { return w; }
+    inline typename ttype_t<std::wstring, TA, TW>::type tvalue(std::wstring*, TA a, TW w) { return w; }
 
     template<typename CS/*char&string*/, typename TA, typename TW>
-    inline typename ttype<CS, TA, TW>::type tvalue(TA a, TW w)
+    inline typename ttype_t<CS, TA, TW>::type tvalue(TA a, TW w)
     {
         return tvalue<TA, TW>(static_cast<CS*>(0), a, w);
     }
@@ -182,6 +185,25 @@ namespace common {
     size_t cslen(const T* str)
     {
         return tvalue<T>(strlen, wcslen)(str);
+    }
+
+    ///----------基于流的基本类型转换----------
+
+    template<typename char_t, typename TI>
+    auto convert_to_string(const TI& arg)
+    {
+        std::basic_stringstream<char_t, std::char_traits<char_t>, std::allocator<char_t>> str;
+        str << arg;
+        return str.str();
+    }
+
+    template<typename TO, typename TI>
+    auto convert_from_string(const TI& arg) noexcept(false)
+    {
+        TO ret;
+        ttype_t<TI, std::istringstream, std::wistringstream>::type iss(arg);
+        if (!(iss >> ret && iss.eof())) { throw std::bad_cast(); }
+        return ret;
     }
 
     ///----------其他----------

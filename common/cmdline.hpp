@@ -27,76 +27,6 @@ namespace common {
         static const std::string _TAG = "cmdline";
 
         namespace detail {
-
-            /**
-            *@brief 通用转换模板类.基于流的类型转换.
-            *@param Same 用于模板重载,标识是否同类转换
-            */
-            template <typename Target, typename Source, bool Same>
-            class lexical_cast_t
-            {
-            public:
-                static Target cast(const Source &arg) noexcept(false)
-                {
-                    Target ret;
-                    std::stringstream ss;
-                    if (!(ss << arg && ss >> ret && ss.eof())) { throw std::bad_cast(); }
-                    return ret;
-                }
-            };
-
-            /**
-            *@brief 同类转换
-            */
-            template <typename Target, typename Source>
-            class lexical_cast_t<Target, Source, true>
-            {
-            public:
-                static Target cast(const Source &arg) noexcept { return arg; }
-            };
-
-            /**
-            *@brief Source -> std::string
-            */
-            template <typename Source>
-            class lexical_cast_t<std::string, Source, false>
-            {
-            public:
-                static std::string cast(const Source &arg) noexcept
-                {
-                    std::ostringstream ss;
-                    ss << arg;
-                    return ss.str();
-                }
-            };
-
-            /**
-            *@brief std::string -> Target
-            */
-            template <typename Target>
-            class lexical_cast_t<Target, std::string, false>
-            {
-            public:
-                static Target cast(const std::string &arg) noexcept(false)
-                {
-                    Target ret;
-                    std::istringstream ss(arg);
-                    if (!(ss >> ret && ss.eof())) {
-                        throw std::bad_cast();
-                    }
-                    return ret;
-                }
-            };
-
-            /**
-            *@brief 通用类型转换模板函数
-            */
-            template<typename Target, typename Source>
-            Target lexical_cast(const Source &arg) noexcept(false)
-            {
-                return lexical_cast_t<Target, Source, std::is_same<Target, Source>::value>::cast(arg);
-            }
-
             /**
             *@brief 获取类型
             */
@@ -134,7 +64,7 @@ namespace common {
             template <typename T>
             std::string default_value(T def) noexcept
             {
-                return detail::lexical_cast<std::string>(def);
+                return convert_to_string<char>(def);
             }
         } // detail --------------------------------------------------
 
@@ -160,7 +90,7 @@ namespace common {
         public:
             T operator()(const std::string &str) noexcept(false)
             {
-                return detail::lexical_cast<T>(str);
+                return convert_from_string<T>(str);
             }
         };
 
