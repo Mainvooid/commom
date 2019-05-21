@@ -43,7 +43,7 @@ namespace common {
         class local_codecvt : public std::codecvt_byname<wchar_t, char, std::mbstate_t> {
         public:
 #ifdef _MSC_VER
-            local_codecvt() : codecvt_byname("zh-CN") {}//设置本地语言环境
+            local_codecvt() : codecvt_byname("zh-CN") {} ///设置本地语言环境
 #else
             local_codecvt() : codecvt_byname("zh_CN.GB18030") {}
 #endif

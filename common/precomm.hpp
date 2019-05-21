@@ -24,7 +24,7 @@ namespace common {
     template<typename T>
     inline void zeroset(T& p, size_t length)
     {
-        std::memset(p, 0, sizeof(*p)*length);
+        std::memset(p, 0, sizeof(*p) * length);
     }
     template<unsigned N, typename T>
     inline void zeroset(T(&p)[N])
@@ -38,7 +38,7 @@ namespace common {
     template<typename T>
     inline void wzeroset(T& p, size_t length)
     {
-        std::wmemset(p, 0, sizeof(*p)*length);
+        std::wmemset(p, 0, sizeof(*p) * length);
     }
     template<unsigned N, typename T>
     inline void wzeroset(T(&p)[N])
@@ -61,7 +61,7 @@ namespace common {
     *@brief free_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void free_s(T& p, Args&... args)
+    inline void free_s(T& p, Args& ... args)
     {
         if (p != nullptr) { std::free(static_cast<void*>(p)); p = nullptr; }
         free_s(args...);
@@ -80,7 +80,7 @@ namespace common {
     *@brief delete_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void delete_s(T& p, Args&... args)
+    inline void delete_s(T& p, Args& ... args)
     {
         if (p != nullptr) { delete(p); p = nullptr; }
         delete_s(args...);
@@ -99,7 +99,7 @@ namespace common {
     *@brief delete[]_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void deleteA_s(T& p, Args&... args)
+    inline void deleteA_s(T& p, Args& ... args)
     {
         if (p != nullptr) { delete[](p); p = nullptr; }
         deleteA_s(args...);
@@ -118,7 +118,7 @@ namespace common {
     *@brief Release_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void Release_s(T& p, Args&... args)
+    inline void Release_s(T& p, Args& ... args)
     {
         if (p != nullptr) { p->Release(); p = nullptr; }
         Release_s(args...);
@@ -137,7 +137,7 @@ namespace common {
     *@brief release_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void release_s(T& p, Args&... args)
+    inline void release_s(T& p, Args& ... args)
     {
         if (p != nullptr) { p->release(); p = nullptr; }
         release_s(args...);
@@ -145,37 +145,37 @@ namespace common {
 
     ///----------模板类型辅助----------
 
-    template<typename _char_t, typename TA, typename TW>
+    template<typename CS, typename TA, typename TW>
     struct ttype;
 
     template<typename TA, typename TW>
-    struct ttype<char, TA, TW>
-    {
-        typedef TA type;
-    };
+    struct ttype<char, TA, TW> { typedef TA type; };
 
     template<typename TA, typename TW>
-    struct ttype<wchar_t, TA, TW>
-    {
-        typedef TW type;
-    };
+    struct ttype<wchar_t, TA, TW> { typedef TW type; };
 
     template<typename TA, typename TW>
-    inline typename ttype<char, TA, TW>::type tvalue(char*, TA a, TW w)
-    {
-        return a;
-    };
+    struct ttype<std::string, TA, TW> { typedef TA type; };
 
     template<typename TA, typename TW>
-    inline typename ttype<wchar_t, TA, TW>::type tvalue(wchar_t*, TA a, TW w)
-    {
-        return w;
-    }
+    struct ttype<std::wstring, TA, TW> { typedef TW type; };
 
-    template<typename _char_t, typename TA, typename TW>
-    inline typename ttype<_char_t, TA, TW>::type tvalue(TA a, TW w)
+    template<typename TA, typename TW>
+    inline typename ttype<char, TA, TW>::type tvalue(char*, TA a, TW w) { return a; };
+
+    template<typename TA, typename TW>
+    inline typename ttype<wchar_t, TA, TW>::type tvalue(wchar_t*, TA a, TW w) { return w; }
+
+    template<typename TA, typename TW>
+    inline typename ttype<std::string, TA, TW>::type tvalue(std::string*, TA a, TW w) { return a; };
+
+    template<typename TA, typename TW>
+    inline typename ttype<std::wstring, TA, TW>::type tvalue(std::wstring*, TA a, TW w) { return w; }
+
+    template<typename CS/*char&string*/, typename TA, typename TW>
+    inline typename ttype<CS, TA, TW>::type tvalue(TA a, TW w)
     {
-        return tvalue<TA, TW>(static_cast<_char_t*>(0), a, w);
+        return tvalue<TA, TW>(static_cast<CS*>(0), a, w);
     }
 
     template<typename T>
