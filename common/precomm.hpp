@@ -187,7 +187,7 @@ namespace common {
         return tvalue<T>(strlen, wcslen)(str);
     }
 
-    ///----------基于流的string/wstring与基本类型互转----------
+    ///----------基于流的string/wstring与基本类型的互转----------
 
     template<typename char_t, typename TI>
     auto convert_to_string(const TI& arg)

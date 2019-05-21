@@ -790,8 +790,9 @@ namespace common {
             std::vector<std::string> others;            //其他为指定参数
             std::vector<std::string> errors;            //错误消息
         };
+
     } // cmdline
+
 } // common
 
 #endif // _COMMON_CMDLINE_HPP_
-

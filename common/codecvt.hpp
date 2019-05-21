@@ -218,8 +218,7 @@ namespace common {
         {
             std::string result = "";
             std::wstring_convert<local_codecvt> cvt;
-            try
-            {
+            try{
                 result = cvt.to_bytes(wstring);
             }
             catch (const std::range_error&) {
@@ -236,8 +235,7 @@ namespace common {
         {
             std::wstring result = L"";
             std::wstring_convert<local_codecvt> cvt;
-            try
-            {
+            try{
                 result = cvt.from_bytes(ansi_string);
             }
             catch (const std::range_error&) {
