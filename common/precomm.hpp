@@ -187,7 +187,7 @@ namespace common {
         return tvalue<T>(strlen, wcslen)(str);
     }
 
-    ///----------基于流的基本类型转换----------
+    ///----------基于流的string/wstring与基本类型互转----------
 
     template<typename char_t, typename TI>
     auto convert_to_string(const TI& arg)
@@ -201,7 +201,7 @@ namespace common {
     auto convert_from_string(const TI& arg) noexcept(false)
     {
         TO ret;
-        ttype_t<TI, std::istringstream, std::wistringstream>::type iss(arg);
+        typename ttype_t<TI, std::istringstream, std::wistringstream>::type iss(arg);
         if (!(iss >> ret && iss.eof())) { throw std::bad_cast(); }
         return ret;
     }
