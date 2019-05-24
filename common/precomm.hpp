@@ -164,16 +164,16 @@ namespace common {
     ///----------模板条件参数推断及条件函数调用----------
 
     template<typename TA, typename TW>
-    inline typename ttype_t<char, TA, TW>::type tvalue(char*, TA a, TW w) { return a; };
+    inline typename ttype_t<char, TA, TW>::type tvalue(char*, TA a, TW) { return a; };
 
     template<typename TA, typename TW>
-    inline typename ttype_t<wchar_t, TA, TW>::type tvalue(wchar_t*, TA a, TW w) { return w; }
+    inline typename ttype_t<wchar_t, TA, TW>::type tvalue(wchar_t*, TA, TW w) { return w; }
 
     template<typename TA, typename TW>
-    inline typename ttype_t<std::string, TA, TW>::type tvalue(std::string*, TA a, TW w) { return a; };
+    inline typename ttype_t<std::string, TA, TW>::type tvalue(std::string*, TA a, TW) { return a; };
 
     template<typename TA, typename TW>
-    inline typename ttype_t<std::wstring, TA, TW>::type tvalue(std::wstring*, TA a, TW w) { return w; }
+    inline typename ttype_t<std::wstring, TA, TW>::type tvalue(std::wstring*, TA, TW w) { return w; }
 
     template<typename CS/*char&string*/, typename TA, typename TW>
     inline typename ttype_t<CS, TA, TW>::type tvalue(TA a, TW w)

@@ -47,7 +47,7 @@ namespace common {
             char buf[BUFSIZ];
             va_list args;//可变长参数列表
             va_start(args, format);//获取列表第一个参数
-            sprintf_s(buf, format, args);//按格式执行拼接
+            vsprintf_s(buf, format, args);//按格式执行拼接
             va_end(args);//清空列表
             ::OutputDebugStringA(buf);
         }
@@ -58,7 +58,7 @@ namespace common {
             wchar_t buf[BUFSIZ];
             va_list args;
             va_start(args, format);
-            swprintf_s(buf, format, args);
+            vswprintf_s(buf, format, args);
             va_end(args);
             ::OutputDebugStringW(buf);
         }
@@ -246,6 +246,13 @@ namespace common {
     void LOGE(T msg, const char* _func, const char* _file, const int _line) { g_logger->Error(std::move(msg), _func, _file, _line); };
     template<typename T>
     void LOGF(T msg, const char* _func, const char* _file, const int _line) { g_logger->Fatal(std::move(msg), _func, _file, _line); };
+
+#define LOGT_(msg) LOGT(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGD_(msg) LOGD(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGI_(msg) LOGI(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGW_(msg) LOGW(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGE_(msg) LOGE(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGF_(msg) LOGF(msg, __FUNCTION__, __FILE__, __LINE__)
 
 } // namespace common
 

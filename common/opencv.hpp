@@ -15,7 +15,7 @@
 #include <random>
 
 #pragma comment(lib,"opencv_world401.lib")
-#pragma comment(lib,"opencv_img_hash401.lib")
+#pragma comment(lib,"opencv_img_hash401.lib")//build opencv with contrib
 
 namespace common {
 
@@ -27,7 +27,7 @@ namespace common {
         *@return 图像哈希距离
         */
         template<typename T>
-        double HashCompare(const cv::InputArray & aMat, const cv::InputArray & bMat)
+        double HashCompare(const cv::InputArray& aMat, const cv::InputArray& bMat)
         {
             cv::Mat hashA, hashB;
             std::shared_ptr<cv::img_hash::ImgHashBase> func(T::create());
@@ -55,7 +55,7 @@ namespace common {
             strftime(time_stamp, sizeof(time_stamp), "%Y-%m-%d_%H-%M-%S", &_tm);
             std::default_random_engine engine(_tm.tm_sec);
             char fname[260];
-            sprintf_s(fname, "%s%s_%s_%d.png", fillDir(save_dir.data()).data(), time_stamp, desc.data(), static_cast<size_t>(engine()));
+            sprintf_s(fname, "%s%s_%s_%u.png", fillDir(save_dir.data()).data(), time_stamp, desc.data(), engine());
             cv::imwrite(fname, save_image);
         }
 
@@ -65,7 +65,7 @@ namespace common {
         static void imshowR(const std::string& img_name, const cv::InputArray& image, cv::Size img_size = cv::Size(960, 540))
         {
             cv::namedWindow(img_name, cv::WindowFlags::WINDOW_NORMAL);
-            if (image.total() > static_cast<size_t>(img_size.height*img_size.width)) {
+            if (image.total() > static_cast<size_t>(img_size.height) * static_cast<size_t>(img_size.width)) {
                 cv::resizeWindow(img_name, img_size);
             }
             cv::imshow(img_name, image.getMat());
@@ -74,7 +74,7 @@ namespace common {
         /**
         *@brief 合并俩个图像
         */
-        static cv::Mat mergeImage(const cv::InputArray & left, const cv::InputArray & right)
+        static cv::Mat mergeImage(const cv::InputArray& left, const cv::InputArray& right)
             noexcept(noexcept(!left.empty() && !right.empty()))
         {
             if (left.empty() || right.empty()) {

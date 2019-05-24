@@ -22,6 +22,7 @@ void func()
     LOGW(wstr.data());
     LOGE(wstr, __FUNCTION__, __FILE__, __LINE__);
     LOGF(wstr.data(), __FUNCTION__, __FILE__, __LINE__);
+    LOGE_(wstr);
 #else
     log.Log(str, level_e::Trace);
     log.Log(str, level_e::Debug, __FUNCTION__, __FILE__, __LINE__);
@@ -29,6 +30,7 @@ void func()
     LOGW(str.data());
     LOGE(str, __FUNCTION__, __FILE__, __LINE__);
     LOGF(str.data(), __FUNCTION__, __FILE__, __LINE__);
+    LOGE_(str);
 #endif
 }
 int main()
