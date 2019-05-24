@@ -247,12 +247,12 @@ namespace common {
     template<typename T>
     void LOGF(T msg, const char* _func, const char* _file, const int _line) { g_logger->Fatal(std::move(msg), _func, _file, _line); };
 
-#define LOGT_(msg) LOGT(msg, __FUNCTION__, __FILE__, __LINE__)
-#define LOGD_(msg) LOGD(msg, __FUNCTION__, __FILE__, __LINE__)
-#define LOGI_(msg) LOGI(msg, __FUNCTION__, __FILE__, __LINE__)
-#define LOGW_(msg) LOGW(msg, __FUNCTION__, __FILE__, __LINE__)
-#define LOGE_(msg) LOGE(msg, __FUNCTION__, __FILE__, __LINE__)
-#define LOGF_(msg) LOGF(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGT_(msg) common::LOGT(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGD_(msg) common::LOGD(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGI_(msg) common::LOGI(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGW_(msg) common::LOGW(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGE_(msg) common::LOGE(msg, __FUNCTION__, __FILE__, __LINE__)
+#define LOGF_(msg) common::LOGF(msg, __FUNCTION__, __FILE__, __LINE__)
 
 } // namespace common
 
