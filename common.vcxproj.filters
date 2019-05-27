@@ -45,6 +45,9 @@
     <ClInclude Include="common\windows.hpp">
       <Filter>头文件\common</Filter>
     </ClInclude>
+    <ClInclude Include="common\cuda.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">

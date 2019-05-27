@@ -39,4 +39,6 @@
 /Release
 /Debug
 /x64
-test*.cpp
+/Microsoft DirectX SDK (June 2010)
+
+test.*

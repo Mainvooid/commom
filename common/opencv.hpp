@@ -6,6 +6,8 @@
 #pragma once
 #endif
 
+#ifdef HAVE_OPENCV
+
 #ifndef _COMMON_OPENCV_HPP_
 #define _COMMON_OPENCV_HPP_
 
@@ -95,3 +97,4 @@ namespace common {
 } // namespace common
 
 #endif // _COMMON_OPENCV_HPP_
+#endif // HAVE_OPENCV

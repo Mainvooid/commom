@@ -7,6 +7,8 @@
 #endif
 #pragma warning(disable:4067)
 
+#ifdef HAVE_WINDOWS
+
 #if !defined(_COMMON_DEBUGLOG_HPP_) && defined(_WIN32)
 #define _COMMON_DEBUGLOG_HPP_
 
@@ -257,4 +259,4 @@ namespace common {
 } // namespace common
 
 #endif // _COMMON_DEBUGLOG_HPP_
-
+#endif // HAVE_WINDOWS

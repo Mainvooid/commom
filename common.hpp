@@ -9,12 +9,24 @@
 #ifndef _COMMON_HPP_
 #define _COMMON_HPP_
 
+//默认开启所有库支持
+#define HAVE_CUDA
+#define HAVE_OPENCL
+#define HAVE_OPENCV
+#define HAVE_WINDOWS
+#define HAVE_DIRECTX
+
+#ifdef HAVE_DIRECTX
+#define HAVE_WINDOWS
+#endif
+
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>
 #include <common/codecvt.hpp>
 #include <common/debuglog.hpp>
 #include <common/windows.hpp>
 #include <common/opencv.hpp>
+#include <common/cuda.hpp>
 
 #include <chrono>
 #include <functional>
@@ -37,7 +49,6 @@ namespace common {
         auto duration = std::chrono::duration_cast<T>(end - start);
         return static_cast<double>(duration.count());
     }
-
 
 } // namespace common
 

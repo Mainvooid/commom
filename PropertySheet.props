@@ -4,17 +4,20 @@
   <PropertyGroup>
     <!-- 指定第三方依赖目录 -->
     <OpenCV>./opencv</OpenCV>
+    <CUDA>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0</CUDA>
+    <CUDA_HELP>C:\ProgramData\NVIDIA Corporation\CUDA Samples\v10.0\common</CUDA_HELP>
+    <D3DX>./Microsoft DirectX SDK (June 2010)</D3DX>
     
     <!-- 指定include目录 -->
-    <IncludePath>./;../;$(common)/common;$(OpenCV)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(WindowsSDK_IncludePath);./;../;$(common)/common;$(CUDA)/include;$(CUDA_HELP)/inc;$(D3DX)/Include;$(OpenCV)\include;$(IncludePath)</IncludePath>
 
     <!-- 指定lib目录 -->
-    <LibraryPath Condition="'$(Platform)'=='X64'">$(OpenCV)\x64\vc15\lib;$(LibraryPath)</LibraryPath>
-    <LibraryPath Condition="'$(Platform)'=='Win32'">$(OpenCV)\x86\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Platform)'=='X64'">$(D3DX)/Lib/x64;$(OpenCV)\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Platform)'=='Win32'">$(D3DX)/Lib/x86;$(OpenCV)\x86\vc15\lib;$(LibraryPath)</LibraryPath>
     
     <!-- 让系统PATH临时包含指定的dll目录 -->
-    <LocalDebuggerEnvironment Condition="'$(Platform)'=='X64'">PATH=$(OpenCV)\x64\vc15\bin;%PATH%;</LocalDebuggerEnvironment>
-    <LocalDebuggerEnvironment Condition="'$(Platform)'=='Win32'">PATH=$(OpenCV)\x86\vc15\bin;%PATH%;</LocalDebuggerEnvironment>
+    <LocalDebuggerEnvironment Condition="'$(Platform)'=='X64'">PATH=$(D3DX)/dll/x64;$(OpenCV)\x64\vc15\bin;%PATH%;</LocalDebuggerEnvironment>
+    <LocalDebuggerEnvironment Condition="'$(Platform)'=='Win32'">PATH=$(D3DX)/dll/x86;$(OpenCV)\x86\vc15\bin;%PATH%;</LocalDebuggerEnvironment>
     
   </PropertyGroup>
 

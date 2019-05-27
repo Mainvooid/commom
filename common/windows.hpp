@@ -6,6 +6,8 @@
 #pragma once
 #endif
 
+#ifdef HAVE_WINDOWS
+
 #if !defined(_COMMON_WINDOWS_HPP_) && defined(_WIN32)
 #define _COMMON_WINDOWS_HPP_
 
@@ -13,6 +15,8 @@
 #include <memory>
 #include <iostream>
 #include <windows.h>
+#include <d3d11.h>
+#include <d3dx11.h>
 
 #ifndef DLLAPI
 #define DLLAPI __declspec(dllexport)
@@ -147,8 +151,41 @@ namespace common {
             }
         };
 
+        ///directX
+
+#ifdef HAVE_DIRECTX
+
+        HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr, ID3D11DeviceContext** ppImmediateContext = nullptr) {
+            UINT createDeviceFlags = 0;
+
+#if defined(_DEBUG) or defined(DEBUG)
+            createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
+#endif
+            createDeviceFlags |= D3D11_CREATE_DEVICE_BGRA_SUPPORT;
+
+            D3D_FEATURE_LEVEL featureLevel;
+            HRESULT  hr = D3D11CreateDevice(
+                pAdapter,                  //IDXGIAdapter* 默认显示适配器
+                D3D_DRIVER_TYPE_HARDWARE,  //D3D_DRIVER_TYPE 驱动类型
+                0,                         //HMODULE 不使用软件驱动
+                createDeviceFlags,
+                0,                         //若为nullptr则为默认特性等级，否则需要提供特性等级数组
+                0,                         //特性等级数组的元素数目
+                D3D11_SDK_VERSION,         //SDK版本
+                ppDevice,                  //输出D3D设备
+                &featureLevel,             //输出当前应用D3D特性等级
+                ppImmediateContext);       //输出D3D设备上下文
+
+            if (FAILED(hr) || featureLevel != D3D_FEATURE_LEVEL_11_0) {
+                return S_FALSE;
+            }
+            return S_OK;
+        }
+#endif // HAVE_DIRECTX
+
     } // namespace windows
 
 } // namespace common
 
 #endif // _COMMON_WINDOWS_HPP_
+#endif // HAVE_WINDOWS
