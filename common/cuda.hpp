@@ -86,10 +86,10 @@ namespace common {
             }
 
             Microsoft::WRL::ComPtr<IDXGIAdapter> _pAdapter;
-            for (UINT adapter = 0; !pAdapter; ++adapter)
+            for (UINT i = 0; !pAdapter; ++i)
             {
                 //获取一个候选DXGI适配器
-                hr = pFactory->EnumAdapters(adapter, _pAdapter.ReleaseAndGetAddressOf());
+                hr = pFactory->EnumAdapters(i, _pAdapter.ReleaseAndGetAddressOf());
                 if (FAILED(hr)) { break; }
 
                 //查询是否存在相应的计算设备

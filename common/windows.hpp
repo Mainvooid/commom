@@ -151,11 +151,19 @@ namespace common {
             }
         };
 
-        ///directX
-
 #ifdef HAVE_DIRECTX
 
-        HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr, ID3D11DeviceContext** ppImmediateContext = nullptr) {
+        ///一般性directX函数，基于D3D11
+
+        /*
+        *@brief 创建D3D11设备
+        *@param ppDevice 设备
+        *@param pAdapter 适配器
+        *@param ppImmediateContext 上下文
+        */
+        HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr,
+            ID3D11DeviceContext** ppImmediateContext = nullptr)
+        {
             UINT createDeviceFlags = 0;
 
 #if defined(_DEBUG) or defined(DEBUG)
@@ -181,6 +189,90 @@ namespace common {
             }
             return S_OK;
         }
+
+        /*
+        *@brief 保存Texture到文件
+        *@param pDevice    Device对象
+        *@param pTexture2D Texture2D对象
+        *@param path       以(.png)结尾的路径
+        */
+        template<typename T>
+        HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pTexture2D, T path,
+            D3DX11_IMAGE_FILE_FORMAT format = D3DX11_IFF_PNG)
+        {
+            Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
+            pDevice->GetImmediateContext(ctx.GetAddressOf();
+            return tvalue<T, D3DX11SaveTextureToFileA, D3DX11SaveTextureToFileW>(ctx.Get(), pTexture2D, format, path.data());
+        }
+
+        /*
+        *@brief 从文件读取Texture
+        *@param d3dDevice  Device对象
+        *@param path       要读取的图像文件路径
+        *@param pTexture2D Texture2D对象
+        *@param format     读取格式
+        */
+        template<typename T>
+        HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, T path, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM)
+        {
+            D3DX11_IMAGE_LOAD_INFO loadInfo;
+            ZeroMemory(&loadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
+            loadInfo.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+            loadInfo.Format = format;
+            loadInfo.MipLevels = D3DX11_DEFAULT; //产生最大的mipmaps层
+            loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
+
+            Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
+            return tvalue<T, D3DX11CreateTextureFromFileA, D3DX11CreateTextureFromFileW>
+                (pDevice, path.data(), &loadInfo, pump.Get(), (ID3D11Resource**)&pTexture2D, nullptr);
+        }
+
+        /*
+        *@brief 创建2D纹理配置
+        *@param textureDesc Texture配置
+        *@param width       宽度
+        *@param height      高度
+        *@param format      DXGI支持的数据格式
+        *@param bindFlags   数据使用类型
+        */
+        void createTextureDesc(D3D11_TEXTURE2D_DESC &desc, UINT width, UINT height,
+            DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
+            UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE)
+        {
+            ZeroMemory(&desc, sizeof(desc));
+            desc.Width = width;
+            desc.Height = height;
+            desc.MipLevels = 1;                          //纹理中最大的mipmap等级数(1,只包含最大的位图本身)
+            desc.ArraySize = 1;                          //纹理数目(可创建数组)
+            desc.Format = format;                        //DXGI支持的数据格式
+            desc.SampleDesc.Count = 1;                   //MSAA采样数(纹理通常不开启MSAA)
+            desc.Usage = D3D11_USAGE_DEFAULT;            //指定数据的CPU/GPU访问权限(GPU读写)
+            desc.BindFlags = bindFlags;                  //数据使用类型
+            desc.CPUAccessFlags = 0;                     //CPU访问权限(0不需要)
+            desc.MiscFlags = D3D11_RESOURCE_MISC_SHARED; // 资源标识
+        }
+
+        /*
+        *@brief 创建2D纹理共享句柄
+        *@param pDevice    设备对象
+        *@param pTexture2D 纹理对象
+        *@param desc       纹理配置
+        *@param dstHandle  目标句柄
+        */
+        HRESULT createSharedTexture2DHandle(ID3D11Device *pDevice, ID3D11Texture2D* pTexture2D, D3D11_TEXTURE2D_DESC& desc, HANDLE* dstHandle)
+        {
+            HRESULT hr = pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
+            if (FAILED(hr)) { return S_FALSE; }
+
+            Microsoft::WRL::ComPtr<IDXGIResource> pSharedResource;
+            hr = pTexture2D->QueryInterface(__uuidof(IDXGIResource), reinterpret_cast<void**>(pSharedResource.GetAddressOf()));
+            if (FAILED(hr)) { return S_FALSE; }
+
+            hr = pSharedResource->GetSharedHandle(dstHandle);
+            if (FAILED(hr)) { return S_FALSE; }
+            return S_OK;
+        }
+
 #endif // HAVE_DIRECTX
 
     } // namespace windows

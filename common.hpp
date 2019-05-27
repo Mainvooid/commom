@@ -10,11 +10,21 @@
 #define _COMMON_HPP_
 
 //默认开启所有库支持
+#ifndef HAVE_CUDA
 #define HAVE_CUDA
+#endif
+#ifndef HAVE_OPENCL
 #define HAVE_OPENCL
+#endif
+#ifndef HAVE_OPENCV
 #define HAVE_OPENCV
+#endif
+#ifndef HAVE_WINDOWS
 #define HAVE_WINDOWS
+#endif
+#ifndef HAVE_DIRECTX
 #define HAVE_DIRECTX
+#endif
 
 #ifdef HAVE_DIRECTX
 #define HAVE_WINDOWS
