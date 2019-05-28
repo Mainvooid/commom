@@ -198,12 +198,12 @@ namespace common {
         *@param path       以(.png)结尾的路径
         */
         template<typename T>
-        HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, T path,
+        HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, const T* path,
             D3DX11_IMAGE_FILE_FORMAT format = D3DX11_IFF_PNG)
         {
             Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
             pDevice->GetImmediateContext(ctx.GetAddressOf());
-            return tvalue<T>(getFunction(D3DX11SaveTextureToFileA), getFunction(D3DX11SaveTextureToFileW))(ctx.Get(), pSrcTexture, format, path.data());
+            return tvalue<T>(getFunction(D3DX11SaveTextureToFileA), getFunction(D3DX11SaveTextureToFileW))(ctx.Get(), pSrcTexture, format, path);
         }
 
         /*
@@ -212,8 +212,8 @@ namespace common {
         *@param path       以(.png)结尾的路径
         */
         template<typename T>
-        HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, T path) {
-            return tvalue<T>(getFunction(D3DXSaveTextureToFileA), getFunction(D3DXSaveTextureToFileW))(path.data(), D3DXIFF_PNG, pSrcTexture, nullptr);
+        HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, const T* path) {
+            return tvalue<T>(getFunction(D3DXSaveTextureToFileA), getFunction(D3DXSaveTextureToFileW))(path, D3DXIFF_PNG, pSrcTexture, nullptr);
         }
 
         /*
@@ -225,7 +225,7 @@ namespace common {
         *@param format     读取格式
         */
         template<typename T>
-        HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, T path,
+        HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T* path,
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
             UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE)
         {
@@ -238,7 +238,7 @@ namespace common {
 
             Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
             return tvalue<T>(getFunction(D3DX11CreateTextureFromFileA), getFunction(D3DX11CreateTextureFromFileW))
-                (pDevice, path.data(), &loadInfo, pump.Get(), (ID3D11Resource**)&pTexture2D, nullptr);
+                (pDevice, path, &loadInfo, pump.Get(), (ID3D11Resource**)&pTexture2D, nullptr);
         }
 
         /*

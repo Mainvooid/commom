@@ -42,6 +42,7 @@ namespace common {
             if (deviceCount == 0) {
                 return cudaError::cudaErrorNoDevice;
             }
+            return cudaError::cudaSuccess;
         }
 
 #ifdef HAVE_DIRECTX
