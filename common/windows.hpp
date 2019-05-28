@@ -203,7 +203,7 @@ namespace common {
         {
             Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
             pDevice->GetImmediateContext(ctx.GetAddressOf());
-            return tvalue<T>(D3DX11SaveTextureToFileA, D3DX11SaveTextureToFileW)(ctx.Get(), pSrcTexture, format, path.data());
+            return tvalue<T>(getFunction(D3DX11SaveTextureToFileA), getFunction(D3DX11SaveTextureToFileW))(ctx.Get(), pSrcTexture, format, path.data());
         }
 
         /*
@@ -213,7 +213,7 @@ namespace common {
         */
         template<typename T>
         HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, T path) {
-            return tvalue<T>(D3DXSaveTextureToFileA, D3DXSaveTextureToFileW)(path.data(), D3DXIFF_PNG, pSrcTexture, nullptr);
+            return tvalue<T>(getFunction(D3DXSaveTextureToFileA), getFunction(D3DXSaveTextureToFileW))(path.data(), D3DXIFF_PNG, pSrcTexture, nullptr);
         }
 
         /*
@@ -237,7 +237,7 @@ namespace common {
             loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
 
             Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
-            return tvalue<T>(D3DX11CreateTextureFromFileA, D3DX11CreateTextureFromFileW)
+            return tvalue<T>(getFunction(D3DX11CreateTextureFromFileA), getFunction(D3DX11CreateTextureFromFileW))
                 (pDevice, path.data(), &loadInfo, pump.Get(), (ID3D11Resource**)&pTexture2D, nullptr);
         }
 

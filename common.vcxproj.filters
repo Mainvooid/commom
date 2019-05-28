@@ -36,9 +36,6 @@
     <ClInclude Include="common\precomm.hpp">
       <Filter>头文件\common</Filter>
     </ClInclude>
-    <ClInclude Include="common.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="common_all.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -47,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="common\cuda.hpp">
       <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common.hpp">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

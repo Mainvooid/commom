@@ -205,6 +205,20 @@ namespace common {
         if (!(iss >> ret && iss.eof())) { throw std::bad_cast(); }
         return ret;
     }
+    ///----------获取std::function对象----------
+
+    template<typename R, typename ...FArgs>
+    std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) {
+        return Fn;
+    }
+    template<typename R, typename ...FArgs>
+    std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) {
+        return Fn;
+    }
+    template<typename R, typename ...FArgs>
+    std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) {
+        return Fn;
+    }
 
     ///----------其他----------
 
