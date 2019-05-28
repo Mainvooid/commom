@@ -35,12 +35,12 @@ namespace common {
         /**
         *@brief CUDA设备检查
         */
-        void checkCUDADevice() noexcept(false)
+        cudaError_t checkCUDADevice()
         {
             int deviceCount = 0;
             checkCudaErrors(cudaGetDeviceCount(&deviceCount));
             if (deviceCount == 0) {
-                throw std::runtime_error("There are no device(s) supporting CUDA");
+                return cudaError::cudaErrorNoDevice;
             }
         }
 

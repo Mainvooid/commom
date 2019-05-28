@@ -17,6 +17,7 @@
 #include <windows.h>
 #include <d3d11.h>
 #include <d3dx11.h>
+#include <wrl\client.h>
 
 #ifndef DLLAPI
 #define DLLAPI __declspec(dllexport)
@@ -201,7 +202,7 @@ namespace common {
             D3DX11_IMAGE_FILE_FORMAT format = D3DX11_IFF_PNG)
         {
             Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
-            pDevice->GetImmediateContext(ctx.GetAddressOf();
+            pDevice->GetImmediateContext(ctx.GetAddressOf());
             return tvalue<T, D3DX11SaveTextureToFileA, D3DX11SaveTextureToFileW>(ctx.Get(), pTexture2D, format, path.data());
         }
 

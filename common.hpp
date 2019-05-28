@@ -26,7 +26,7 @@
 #define HAVE_DIRECTX
 #endif
 
-#ifdef HAVE_DIRECTX
+#if defined(HAVE_DIRECTX) && !defined(HAVE_WINDOWS)
 #define HAVE_WINDOWS
 #endif
 
