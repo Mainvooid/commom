@@ -13,6 +13,8 @@
 #include <memory>
 #include <iostream>
 #include <windows.h>
+#include <d3d9.h>
+#include <d3dx9.h>
 #include <d3d11.h>
 #include <d3dx11.h>
 #include <wrl\client.h>
@@ -152,7 +154,7 @@ namespace common {
 
 #ifdef HAVE_DIRECTX
 
-        ///一般性directX函数，基于D3D11
+        ///一般性directX函数
 
         /*
         *@brief 创建D3D11设备
@@ -190,18 +192,28 @@ namespace common {
         }
 
         /*
-        *@brief 保存Texture到文件
+        *@brief D3D11保存Texture到文件
         *@param pDevice    Device对象
-        *@param pTexture2D Texture2D对象
+        *@param pSrcTexture Texture对象
         *@param path       以(.png)结尾的路径
         */
         template<typename T>
-        HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pTexture2D, T path,
+        HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, T path,
             D3DX11_IMAGE_FILE_FORMAT format = D3DX11_IFF_PNG)
         {
             Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
             pDevice->GetImmediateContext(ctx.GetAddressOf());
-            return tvalue<T, D3DX11SaveTextureToFileA, D3DX11SaveTextureToFileW>(ctx.Get(), pTexture2D, format, path.data());
+            return tvalue<T>(D3DX11SaveTextureToFileA, D3DX11SaveTextureToFileW)(ctx.Get(), pSrcTexture, format, path.data());
+        }
+
+        /*
+        *@brief D3D9保存Texture到文件
+        *@param pSrcTexture Texture对象
+        *@param path       以(.png)结尾的路径
+        */
+        template<typename T>
+        HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, T path) {
+            return tvalue<T>(D3DXSaveTextureToFileA, D3DXSaveTextureToFileW)(path.data(), D3DXIFF_PNG, pSrcTexture, nullptr);
         }
 
         /*
@@ -222,7 +234,7 @@ namespace common {
             loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
 
             Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
-            return tvalue<T, D3DX11CreateTextureFromFileA, D3DX11CreateTextureFromFileW>
+            return tvalue<T>(D3DX11CreateTextureFromFileA, D3DX11CreateTextureFromFileW)
                 (pDevice, path.data(), &loadInfo, pump.Get(), (ID3D11Resource**)&pTexture2D, nullptr);
         }
 
@@ -238,7 +250,7 @@ namespace common {
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
             UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE)
         {
-            ZeroMemory(&desc, sizeof(desc));
+            ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
             desc.Width = width;
             desc.Height = height;
             desc.MipLevels = 1;                          //纹理中最大的mipmap等级数(1,只包含最大的位图本身)
