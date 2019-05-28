@@ -221,14 +221,17 @@ namespace common {
         *@param d3dDevice  Device对象
         *@param path       要读取的图像文件路径
         *@param pTexture2D Texture2D对象
+        *@param bindFlags  数据使用类型
         *@param format     读取格式
         */
         template<typename T>
-        HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, T path, DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM)
+        HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, T path,
+            DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
+            UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE)
         {
             D3DX11_IMAGE_LOAD_INFO loadInfo;
             ZeroMemory(&loadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
-            loadInfo.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+            loadInfo.BindFlags = bindFlags;
             loadInfo.Format = format;
             loadInfo.MipLevels = D3DX11_DEFAULT; //产生最大的mipmaps层
             loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
