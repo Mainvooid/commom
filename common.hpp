@@ -19,15 +19,8 @@
 #ifndef HAVE_OPENCV
 #define HAVE_OPENCV
 #endif
-#ifndef HAVE_WINDOWS
-#define HAVE_WINDOWS
-#endif
 #ifndef HAVE_DIRECTX
 #define HAVE_DIRECTX
-#endif
-
-#if defined(HAVE_DIRECTX) && !defined(HAVE_WINDOWS)
-#define HAVE_WINDOWS
 #endif
 
 #include <common/precomm.hpp>

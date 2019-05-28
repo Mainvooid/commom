@@ -6,8 +6,6 @@
 #pragma once
 #endif
 
-#ifdef HAVE_WINDOWS
-
 #if !defined(_COMMON_WINDOWS_HPP_) && defined(_WIN32)
 #define _COMMON_WINDOWS_HPP_
 
@@ -281,4 +279,3 @@ namespace common {
 } // namespace common
 
 #endif // _COMMON_WINDOWS_HPP_
-#endif // HAVE_WINDOWS
