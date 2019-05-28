@@ -166,19 +166,22 @@ namespace common {
             ID3D11DeviceContext** ppImmediateContext = nullptr)
         {
             UINT createDeviceFlags = 0;
-
 #if defined(_DEBUG) or defined(DEBUG)
             createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
             createDeviceFlags |= D3D11_CREATE_DEVICE_BGRA_SUPPORT;
 
             D3D_FEATURE_LEVEL featureLevel;
+            D3D_DRIVER_TYPE deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN;
+            if (pAdapter==nullptr){
+                deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_HARDWARE;
+            }
             HRESULT  hr = D3D11CreateDevice(
-                pAdapter,                  //IDXGIAdapter* 默认显示适配器
-                D3D_DRIVER_TYPE_HARDWARE,  //D3D_DRIVER_TYPE 驱动类型
+                pAdapter,                  //IDXGIAdapter 默认显示适配器
+                deiverType,                //D3D_DRIVER_TYPE 驱动类型
                 0,                         //HMODULE 不使用软件驱动
                 createDeviceFlags,
-                0,                         //若为nullptr则为默认特性等级，否则需要提供特性等级数组
+                nullptr,                   //若为nullptr则为默认特性等级，否则需要提供特性等级数组
                 0,                         //特性等级数组的元素数目
                 D3D11_SDK_VERSION,         //SDK版本
                 ppDevice,                  //输出D3D设备

@@ -78,28 +78,28 @@ namespace common {
         /**
        *@brief CUDA获取D3D11设备适配器
        */
-        void getD3D11Adapter(IDXGIAdapter* pAdapter) noexcept(false)
+        void getD3D11Adapter(IDXGIAdapter** pAdapter) noexcept(false)
         {
             Microsoft::WRL::ComPtr<IDXGIFactory> pFactory;
-            HRESULT hr = CreateDXGIFactory1(__uuidof(IDXGIFactory), (void**)(pFactory.GetAddressOf()));
+            HRESULT hr = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)(pFactory.GetAddressOf()));
             if (FAILED(hr)) {
                 throw std::runtime_error("No DXGI Factory created");
             }
-
+            
             Microsoft::WRL::ComPtr<IDXGIAdapter> _pAdapter;
-            for (UINT i = 0; !pAdapter; ++i)
+            for (UINT i = 0; *pAdapter==nullptr; ++i)
             {
                 //获取一个候选DXGI适配器
-                hr = pFactory->EnumAdapters(i, _pAdapter.ReleaseAndGetAddressOf());
+                hr = pFactory->EnumAdapters(i, _pAdapter.GetAddressOf());
                 if (FAILED(hr)) { break; }
 
                 //查询是否存在相应的计算设备
                 int cuDevice;
                 checkCudaErrors(cudaD3D11GetDevice(&cuDevice, _pAdapter.Get()));
-                pAdapter = _pAdapter.Get();
-                //pAdapter->AddRef();
+                *pAdapter = _pAdapter.Get();
+                (*pAdapter)->AddRef();
             }
-            if (!pAdapter) {
+            if (*pAdapter == nullptr) {
                 throw std::runtime_error("No IDXGIAdapter");
             }
         }

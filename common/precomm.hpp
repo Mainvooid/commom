@@ -175,7 +175,7 @@ namespace common {
     template<typename TA, typename TW>
     inline typename ttype_t<std::wstring, TA, TW>::type tvalue(std::wstring*, TA, TW w) { return w; }
 
-    template<typename CS/*char&string*/, typename TA, typename TW>
+    template<typename CS, typename TA, typename TW>
     inline typename ttype_t<CS, TA, TW>::type tvalue(TA a, TW w)
     {
         return tvalue<TA, TW>(static_cast<CS*>(0), a, w);
@@ -186,6 +186,18 @@ namespace common {
     {
         return tvalue<T>(strlen, wcslen)(str);
     }
+
+    ///----------获取std::function对象----------
+    template<typename R, typename ...FArgs>
+    std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) { return Fn; }
+
+    template<typename R, typename ...FArgs>
+    std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) { return Fn; }//*@note _WIN64下__stdcall的调用约定会被隐式转为__cdecl(缺省)
+
+#ifndef _WIN64
+    template<typename R, typename ...FArgs>
+    std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) { return Fn; }
+#endif 
 
     ///----------基于流的string/wstring与基本类型的互转----------
 
@@ -204,15 +216,6 @@ namespace common {
         typename ttype_t<TI, std::istringstream, std::wistringstream>::type iss(arg);
         if (!(iss >> ret && iss.eof())) { throw std::bad_cast(); }
         return ret;
-    }
-    ///----------获取std::function对象----------
-    template<typename R, typename ...FArgs>
-    std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) {
-        return Fn;
-    }
-    template<typename R, typename ...FArgs>
-    std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) {
-        return Fn;
     }
 
     ///----------其他----------
