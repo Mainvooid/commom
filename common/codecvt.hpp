@@ -19,10 +19,6 @@
         char16_t	 UTF-16编码
         char32_t	 UTF-32编码
 */
-#ifdef _MSC_VER
-#pragma once
-#endif
-
 #ifndef _COMMON_CODECVT_HPP_
 #define _COMMON_CODECVT_HPP_
 

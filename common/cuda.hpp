@@ -55,7 +55,7 @@ namespace common {
 #else
                 std::ostringstream oss;
 #endif
-                oss << _cudaGetErrorEnum(result);
+                oss << cudaGetErrorName(result);
                 common::LOGE(oss.str(), func, file, line);
                 cudaDeviceReset();
                 // Make sure we call CUDA Device Reset before exiting

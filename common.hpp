@@ -2,10 +2,6 @@
 @brief common library
 @author guobao.v@gmail.com
 */
-#ifdef _MSC_VER
-#pragma once
-#endif
-
 #ifndef _COMMON_HPP_
 #define _COMMON_HPP_
 

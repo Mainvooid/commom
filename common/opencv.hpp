@@ -19,7 +19,6 @@
 #endif
 
 namespace common {
-
     namespace opencv {
         static const std::string _TAG = "opencv";
 

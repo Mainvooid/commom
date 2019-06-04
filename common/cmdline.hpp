@@ -2,10 +2,6 @@
 @brief  a simple command line parser
 @author guobao.v@gmail.com
 */
-#ifdef _MSC_VER
-#pragma once
-#endif
-
 #ifndef _COMMON_CMDLINE_HPP_
 #define _COMMON_CMDLINE_HPP_
 
@@ -22,7 +18,6 @@
 #endif
 
 namespace common {
-
     namespace cmdline {
         static const std::string _TAG = "cmdline";
 

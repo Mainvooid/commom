@@ -2,10 +2,6 @@
 @brief pre common header.
 @author guobao.v@gmail.com
 */
-#ifdef _MSC_VER
-#pragma once
-#endif
-
 #ifndef _COMMON_PRECOMM_HPP_
 #define _COMMON_PRECOMM_HPP_
 #include <cstdlib>

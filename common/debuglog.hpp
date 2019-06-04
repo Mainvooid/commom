@@ -2,9 +2,6 @@
 @brief a simple debug logger
 @author guobao.v@gmail.com
 */
-#ifdef _MSC_VER
-#pragma once
-#endif
 #pragma warning(disable:4067)
 
 #if !defined(_COMMON_DEBUGLOG_HPP_) && defined(_WIN32)

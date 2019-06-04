@@ -2,10 +2,6 @@
 @brief dll helper
 @author guobao.v@gmail.com
 */
-#ifdef _MSC_VER
-#pragma once
-#endif
-
 #if !defined(_COMMON_WINDOWS_HPP_) && defined(_WIN32)
 #define _COMMON_WINDOWS_HPP_
 
@@ -26,7 +22,6 @@
 #endif
 
 namespace common {
-
     namespace windows {
 
         ///DLL导出
@@ -176,7 +171,7 @@ namespace common {
             if (pAdapter == nullptr) {
                 deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_HARDWARE;
             }
-            Release_s(*ppDevice, *ppImmediateContext);
+            Release_s(*ppDevice);
             HRESULT  hr = D3D11CreateDevice(
                 pAdapter,                  //IDXGIAdapter 默认显示适配器
                 deiverType,                //D3D_DRIVER_TYPE 驱动类型
@@ -296,11 +291,11 @@ namespace common {
         *@brief 检查D3D对象是否释放(一般放在device->Release()之前)
         *@param pDevice 设备对象
         */
-        HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice) 
+        HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice)
         {
             Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
             HRESULT hr = pDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(d3dDebug.GetAddressOf()));
-            if (SUCCEEDED(hr)){
+            if (SUCCEEDED(hr)) {
                 hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
             }
             return hr;
