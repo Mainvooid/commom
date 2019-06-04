@@ -44,7 +44,6 @@ remove("dst.png");
 cv::waitKey(1000);
 }
 
-
 int main() {
     checkCudaRet(cuda_get_texture_reference<uchar4>(&g_texture_2d.texture_ref));
 

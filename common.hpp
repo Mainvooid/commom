@@ -39,6 +39,7 @@
 #include <common/windows.hpp>
 #include <common/opencv.hpp>
 #include <common/cuda.hpp>
+#include <common/opencl.hpp>
 
 #include <chrono>
 #include <functional>

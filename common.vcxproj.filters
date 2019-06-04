@@ -54,6 +54,9 @@
     <ClInclude Include="common\cuda\texture_reference.cuh">
       <Filter>头文件\common\cuda</Filter>
     </ClInclude>
+    <ClInclude Include="common\opencl.hpp">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
