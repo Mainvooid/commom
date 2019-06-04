@@ -94,7 +94,7 @@ namespace common {
             };
 #endif
             //TODO 考虑基类使用ID3D11Resource
-            const textureReference* texture_ref = nullptr;//纹理参考系,需要初始化
+            const textureReference* texture_ref = nullptr;//纹理参考系引用,需要初始化
             cudaGraphicsResource* cuda_resource = nullptr;
             cudaArray* cuda_array = nullptr;
             cudaChannelFormatDesc cuda_array_desc = cudaCreateChannelDesc<T>();
@@ -166,6 +166,7 @@ namespace common {
                 mp_cuda_capable_adater.~ComPtr();
                 mp_d3d11_device.~ComPtr();
             };
+
             bool init(ID3D11Device* p_d3d11_device) {
                 mp_d3d11_device = p_d3d11_device;
                 getD3D11Adapter(mp_cuda_capable_adater.GetAddressOf());

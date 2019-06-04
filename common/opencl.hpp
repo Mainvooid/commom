@@ -13,6 +13,9 @@
 namespace common {
     namespace opencl {
 
+        /*
+        *@brief 打印opencl设备信息
+        */
         void printPlatformInfo()
         {
             cl_platform_id *platform;
@@ -28,7 +31,7 @@ namespace common {
             std::wstringstream ss;
             for (cl_uint i = 0; i < num_platform; i++)
             {
-                // get name
+                // name
                 err = clGetPlatformInfo(platform[i], CL_PLATFORM_NAME, 0, NULL, &size);
                 char *name = (char *)malloc(size);
                 err = clGetPlatformInfo(platform[i], CL_PLATFORM_NAME, size, name, NULL);
