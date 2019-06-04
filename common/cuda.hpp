@@ -2,8 +2,6 @@
 @brief cuda common, cuda_d3d11_interop
 @author guobao.v@gmail.com
 */
-#ifdef HAVE_CUDA
-
 #ifndef _COMMON_CUDA_HPP_
 #define _COMMON_CUDA_HPP_
 
@@ -13,15 +11,13 @@
 #include <cuda_runtime_api.h>
 #include <cuda_runtime.h>
 #include <cuda_d3d11_interop.h>
-#include <helper_cuda.h>
-#include <helper_functions.h> 
 
 #ifdef HAVE_CUDA_KERNEL
 #include <common/cuda/texture_reference.cuh>
 #endif
 
 #ifndef _WIN64
-#error cuda need win64 , define macro to block : HAVE_CUDA
+#error cuda need win64 , undefine macro to block : HAVE_CUDA
 #else
 #pragma comment(lib,"cudart.lib")
 #endif
@@ -49,18 +45,8 @@ namespace common {
     namespace cuda {
 
         /**
-        *@brief CUDA设备检查
+        *@brief cudaError_t检查,若失败会中断程序
         */
-        cudaError_t checkCUDADevice()
-        {
-            int deviceCount = 0;
-            checkCudaErrors(cudaGetDeviceCount(&deviceCount));
-            if (deviceCount == 0) {
-                return cudaError::cudaErrorNoDevice;
-            }
-            return cudaError::cudaSuccess;
-        }
-
         template <typename T>
         void checkCudaRet(T result, char const *const func, const char *const file, int const line) {
             if (result) {
@@ -77,6 +63,19 @@ namespace common {
             }
         }
 #define checkCudaRet(val) checkCudaRet((val), #val, __FILE__, __LINE__)
+
+        /**
+        *@brief CUDA设备检查
+        */
+        cudaError_t checkCUDADevice()
+        {
+            int deviceCount = 0;
+            checkCudaRet(cudaGetDeviceCount(&deviceCount));
+            if (deviceCount == 0) {
+                return cudaError::cudaErrorNoDevice;
+            }
+            return cudaError::cudaSuccess;
+        }
 
 #ifdef HAVE_DIRECTX
         /// cuda_d3d11_interop
@@ -143,7 +142,7 @@ namespace common {
 
                 //查询是否存在相应的计算设备
                 int cuDevice;
-                checkCudaErrors(cudaD3D11GetDevice(&cuDevice, _pAdapter.Get()));
+                checkCudaRet(cudaD3D11GetDevice(&cuDevice, _pAdapter.Get()));
                 Release_s(*pAdapter);
                 *pAdapter = _pAdapter.Get();
                 (*pAdapter)->AddRef();
@@ -258,4 +257,3 @@ namespace common {
 } // namespace common
 
 #endif // _COMMON_CUDA_HPP_
-#endif // HAVE_CUDA

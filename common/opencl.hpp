@@ -2,8 +2,6 @@
 @brief opencl helper
 @author guobao.v@gmail.com
 */
-#ifdef HAVE_OPENCL
-
 #ifndef _COMMON_OPENCL_HPP_
 #define _COMMON_OPENCL_HPP_
 
@@ -85,5 +83,3 @@ namespace common {
     } // namespace opencl
 } // namespace common
 #endif // _COMMON_OPENCL_HPP_
-
-#endif // HAVE_OPENCL
