@@ -19,6 +19,9 @@
     <Filter Include="源文件\samples">
       <UniqueIdentifier>{30f70d75-5a77-46c5-959e-144ddd28cdcb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\common\cuda">
+      <UniqueIdentifier>{0645b57e-76f4-43e6-9d5c-7f05f703b235}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\cmdline.hpp">
@@ -48,6 +51,9 @@
     <ClInclude Include="common.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="common\cuda\texture_reference.cuh">
+      <Filter>头文件\common\cuda</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
@@ -68,11 +74,22 @@
     <ClCompile Include="samples\common.cpp">
       <Filter>源文件\samples</Filter>
     </ClCompile>
+    <ClCompile Include="samples\cuda.cpp">
+      <Filter>源文件\samples</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.props">
       <Filter>资源文件</Filter>
     </None>
     <None Include="RuleSet.ruleset" />
+    <None Include="common\cuda\README.md">
+      <Filter>头文件\common\cuda</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="common\cuda\texture_reference.cu">
+      <Filter>头文件\common\cuda</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>

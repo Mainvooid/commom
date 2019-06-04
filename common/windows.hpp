@@ -173,9 +173,10 @@ namespace common {
 
             D3D_FEATURE_LEVEL featureLevel;
             D3D_DRIVER_TYPE deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN;
-            if (pAdapter==nullptr){
+            if (pAdapter == nullptr) {
                 deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_HARDWARE;
             }
+            Release_s(*ppDevice, *ppImmediateContext);
             HRESULT  hr = D3D11CreateDevice(
                 pAdapter,                  //IDXGIAdapter 默认显示适配器
                 deiverType,                //D3D_DRIVER_TYPE 驱动类型
@@ -240,8 +241,9 @@ namespace common {
             loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
 
             Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
+            Release_s(*pTexture2D);
             return tvalue<T>(getFunction(D3DX11CreateTextureFromFileA), getFunction(D3DX11CreateTextureFromFileW))
-                (pDevice, path, &loadInfo, pump.Get(), (ID3D11Resource**)&pTexture2D, nullptr);
+                (pDevice, path, &loadInfo, pump.Get(), (ID3D11Resource**)pTexture2D, nullptr);
         }
 
         /*
@@ -289,6 +291,21 @@ namespace common {
             if (FAILED(hr)) { return S_FALSE; }
             return S_OK;
         }
+
+        /*
+        *@brief 检查D3D对象是否释放(一般放在device->Release()之前)
+        *@param pDevice 设备对象
+        */
+        HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice) 
+        {
+            Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
+            HRESULT hr = pDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(d3dDebug.GetAddressOf()));
+            if (SUCCEEDED(hr)){
+                hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
+            }
+            return hr;
+        }
+
 
 #endif // HAVE_DIRECTX
 

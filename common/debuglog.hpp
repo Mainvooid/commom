@@ -66,6 +66,7 @@ namespace common {
 
         /*
        *@brief 调试日志类
+       TODO 应同时支持宽窄字符打印,由用户控制调用,取消UNICODE宏判断
        */
         template<typename T =
 #if defined(_UNICODE) or defined(UNICODE)

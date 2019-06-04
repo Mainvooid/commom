@@ -2,6 +2,7 @@
 @brief usage sample for namespace common.
 @author guobao.v@gmail.com
 */
+#pragma warning(disable:4091)
 #include <common/precomm.hpp>
 #include <common.hpp>
 #include <windows.h>
@@ -30,7 +31,7 @@ int main() {
     std::function<std::wstring(const wchar_t*, const wchar_t*)> fn = fillDir<wchar_t>;
     cout << getFnDuration<std::chrono::microseconds>(fn, L"D:\\a\\b\\c\\", L"/") << endl; //6us
 
-    size_t delay = 100;
+    DWORD delay = 100;
     std::function<void()> fn2 = [&]()->void {::Sleep(delay); };
     cout << getFnDuration<std::chrono::seconds>(fn2) << endl;      //0s
     cout << getFnDuration<std::chrono::milliseconds>(fn2) << endl; //100ms
@@ -54,7 +55,7 @@ int main() {
     std::function<size_t(size_t, size_t)> add = [&](size_t x, size_t y) {return x + y; };
     std::function<int(int, int)> mul = [&](int x, int y) {return x * y; };
     int fn_result = tvalue<wchar_t>(add, mul)(2, 3); //6
-    fn_result = tvalue<std::string>([&](size_t x, size_t y) {return x + y; }, [&](int x, int y) {return x * y; })(2, 3); //5
+    fn_result = tvalue<std::wstring>([&](size_t x, size_t y) {return x + y; }, [&](int x, int y) {return x * y; })(2, 3); //5
     auto sum = addAW("test"); //5
 
     ///字符数组长度

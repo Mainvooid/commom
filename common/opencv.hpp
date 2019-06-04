@@ -16,8 +16,13 @@
 #include <opencv2/img_hash.hpp>
 #include <random>
 
+#if defined(_DEBUG) || defined(DEBUG)
+#pragma comment(lib,"opencv_world401d.lib")
+#pragma comment(lib,"opencv_img_hash401d.lib")
+#else
 #pragma comment(lib,"opencv_world401.lib")
-#pragma comment(lib,"opencv_img_hash401.lib")//build opencv with contrib
+#pragma comment(lib,"opencv_img_hash401.lib")
+#endif
 
 namespace common {
 
