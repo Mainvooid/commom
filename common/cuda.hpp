@@ -16,8 +16,8 @@
 #include <common/cuda/texture_reference.cuh>
 #endif
 
-#ifndef _WIN64
-#error cuda need win64 , undefine macro to block : HAVE_CUDA
+#if defined(_WIN32) && !defined(_WIN64)
+#error cuda need win64 in windows , undefine macro(HAVE_CUDA) to block
 #else
 #pragma comment(lib,"cudart.lib")
 #endif
@@ -39,11 +39,11 @@
 #ifdef HAVE_OPENCV
 #include <opencv2/cudaimgproc.hpp> 
 #endif // HAVE_OPENCV
+
 #endif // HAVE_DIRECTX
 
 namespace common {
     namespace cuda {
-
         /**
         *@brief cudaError_t检查,若失败会中断程序
         */
@@ -75,6 +75,24 @@ namespace common {
                 return cudaError::cudaErrorNoDevice;
             }
             return cudaError::cudaSuccess;
+        }
+
+        /**
+        *@brief 统计CUDA函数体的gpu时间(主要用于统计内核函数调用开销，包含CPU代码的时间可能是不完整的)
+        *@param Fn 函数对象,可用匿名函数包装代码片段来计时
+        *@param args 函数参数
+        *@return 单位ms
+        */
+        template<typename R, typename ...FArgs, typename ...Args>
+        float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
+            float duration;
+            cudaEvent_t start, stop;
+            checkCudaRet(cudaEventCreate(&start));            checkCudaRet(cudaEventCreate(&stop));
+            checkCudaRet(cudaEventRecord(start, 0));
+            Fn(args...);
+            checkCudaRet(cudaEventRecord(stop, 0));            checkCudaRet(cudaEventSynchronize(stop));
+            checkCudaRet(cudaEventElapsedTime(&duration, start, stop));            checkCudaRet(cudaEventDestroy(start));            checkCudaRet(cudaEventDestroy(stop));
+            return duration;
         }
 
 #ifdef HAVE_DIRECTX

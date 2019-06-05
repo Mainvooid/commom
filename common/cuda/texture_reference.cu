@@ -1,6 +1,5 @@
 ﻿#include <common/cuda/texture_reference.cuh>
 #include <cuda_runtime_api.h>
-
 #include <vector_types.h>
 #include <channel_descriptor.h>
 

@@ -2,7 +2,10 @@
 @brief a simple debug logger
 @author guobao.v@gmail.com
 */
+#ifdef _MSC_VER
+#pragma warning(push)
 #pragma warning(disable:4067)
+#endif
 
 #if !defined(_COMMON_DEBUGLOG_HPP_) && defined(_WIN32)
 #define _COMMON_DEBUGLOG_HPP_
@@ -255,3 +258,7 @@ namespace common {
 } // namespace common
 
 #endif // _COMMON_DEBUGLOG_HPP_
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
