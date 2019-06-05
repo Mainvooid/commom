@@ -12,7 +12,7 @@
 #include <cuda_runtime.h>
 #include <cuda_d3d11_interop.h>
 
-#ifdef HAVE_CUDA_KERNEL
+#ifdef HAVE_CUDA_DEVICE
 #include <common/cuda/texture_reference.cuh>
 #endif
 

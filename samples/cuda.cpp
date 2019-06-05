@@ -3,7 +3,7 @@
 @author guobao.v@gmail.com
 */
 
-#define HAVE_CUDA_KERNEL
+#define HAVE_CUDA_DEVICE
 #include <common.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
