@@ -10,7 +10,7 @@
 //#define HAVE_OPENCV      //基于OpenCV 4.0 with contrib
 //#define HAVE_DIRECTX     //基于Microsoft DirectX SDK (June 2010)
 //#define HAVE_CUDA        //基于CUDA 10.0
-//#define HAVE_CUDA_KERNEL //本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见cuda/README.md
+//#define HAVE_CUDA_DEVICE //本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见cuda/README.md
 
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>

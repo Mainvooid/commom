@@ -86,7 +86,7 @@ namespace common {
         template<class T>
         struct shared_texture_t
         {
-#ifdef HAVE_CUDA_KERNEL
+#ifdef HAVE_CUDA_DEVICE
             //TODO 暂只支持uchar4
             shared_texture_t() {
                 checkCudaRet(cuda_get_texture_reference<uchar4>(&texture_ref));
