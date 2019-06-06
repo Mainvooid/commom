@@ -37,7 +37,7 @@
 #pragma comment(lib,"dxerr.lib")
 
 #ifdef HAVE_OPENCV
-#include <opencv2/cudaimgproc.hpp> 
+#include <opencv2/cudaimgproc.hpp>
 #endif // HAVE_OPENCV
 
 #endif // HAVE_DIRECTX
@@ -87,11 +87,15 @@ namespace common {
         float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
             float duration;
             cudaEvent_t start, stop;
-            checkCudaRet(cudaEventCreate(&start));            checkCudaRet(cudaEventCreate(&stop));
+            checkCudaRet(cudaEventCreate(&start));
+            checkCudaRet(cudaEventCreate(&stop));
             checkCudaRet(cudaEventRecord(start, 0));
             Fn(args...);
-            checkCudaRet(cudaEventRecord(stop, 0));            checkCudaRet(cudaEventSynchronize(stop));
-            checkCudaRet(cudaEventElapsedTime(&duration, start, stop));            checkCudaRet(cudaEventDestroy(start));            checkCudaRet(cudaEventDestroy(stop));
+            checkCudaRet(cudaEventRecord(stop, 0));
+            checkCudaRet(cudaEventSynchronize(stop));
+            checkCudaRet(cudaEventElapsedTime(&duration, start, stop));
+            checkCudaRet(cudaEventDestroy(start));
+            checkCudaRet(cudaEventDestroy(stop));
             return duration;
         }
 
@@ -186,9 +190,9 @@ namespace common {
 
             bool init(ID3D11Device* p_d3d11_device) {
                 mp_d3d11_device = p_d3d11_device;
-                getD3D11Adapter(mp_cuda_capable_adater.GetAddressOf());
+                getD3D11Adapter(mp_cuda_capable_adater.ReleaseAndGetAddressOf());
                 if (p_d3d11_device == nullptr) {
-                    HRESULT hr = windows::createD3D11Device(mp_d3d11_device.GetAddressOf(), mp_cuda_capable_adater.Get());
+                    HRESULT hr = windows::createD3D11Device(mp_d3d11_device.ReleaseAndGetAddressOf(), mp_cuda_capable_adater.Get());
                     if (FAILED(hr)) {
                         return false;
                     }
@@ -214,11 +218,10 @@ namespace common {
                 checkCudaRet(cudaBindTextureToArray(mt_texture_2d.texture_ref, mt_texture_2d.cuda_array, &mt_texture_2d.cuda_array_desc));
 
                 dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(uchar4)));
-                cv::cuda::PtrStepSz<uchar4> dst_ptr_step_sz = dst_gpumat;
 
                 //src和dst的step可能不同
-                checkCudaRet(cudaMemcpy2DFromArrayAsync(dst_ptr_step_sz.data, dst_ptr_step_sz.step,
-                    mt_texture_2d.cuda_array, 0, 0, dst_ptr_step_sz.cols * sizeof(uchar4), dst_ptr_step_sz.rows, cudaMemcpyDeviceToDevice, stream));
+                checkCudaRet(cudaMemcpy2DFromArrayAsync(dst_gpumat.data, dst_gpumat.step,
+                    mt_texture_2d.cuda_array, 0, 0, dst_gpumat.cols * sizeof(uchar4), dst_gpumat.rows, cudaMemcpyDeviceToDevice, stream));
 
                 //保证输入输出为默认格式,D3D11默认RGBA格式,OPENCV默认BGRA格式
                 cv::cuda::cvtColor(dst_gpumat, dst_gpumat, cv::COLOR_RGBA2BGRA);
@@ -240,7 +243,7 @@ namespace common {
 
                 D3D11_TEXTURE2D_DESC desc;
                 windows::createTextureDesc(desc, src_gpumat.cols, src_gpumat.rows);
-                mp_d3d11_device->CreateTexture2D(&desc, nullptr, mt_texture_2d.p_d3d11_texture_2d.GetAddressOf());
+                mp_d3d11_device->CreateTexture2D(&desc, nullptr, mt_texture_2d.p_d3d11_texture_2d.ReleaseAndGetAddressOf());
 
                 //注册Direct3D 11资源以供CUDA访问
                 checkCudaRet(cudaGraphicsD3D11RegisterResource(&mt_texture_2d.cuda_resource, mt_texture_2d.p_d3d11_texture_2d.Get(), cudaGraphicsRegisterFlagsNone));
@@ -253,9 +256,7 @@ namespace common {
 
                 checkCudaRet(cudaBindTextureToArray(mt_texture_2d.texture_ref, mt_texture_2d.cuda_array, &mt_texture_2d.cuda_array_desc));
 
-                cv::cuda::PtrStepSz<uchar4> dst_cudamat = src_gpumat;
-
-                checkCudaRet(cudaMemcpy2DToArrayAsync(mt_texture_2d.cuda_array, 0, 0, dst_cudamat.data, dst_cudamat.step, dst_cudamat.cols * sizeof(uchar4), dst_cudamat.rows, cudaMemcpyDeviceToDevice, stream));
+                checkCudaRet(cudaMemcpy2DToArrayAsync(mt_texture_2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step, src_gpumat.cols * sizeof(uchar4), src_gpumat.rows, cudaMemcpyDeviceToDevice, stream));
 
                 checkCudaRet(cudaUnbindTexture(mt_texture_2d.texture_ref));
 

@@ -3,7 +3,12 @@
 @author guobao.v@gmail.com
 */
 
-#define HAVE_CUDA_DEVICE
+#define HAVE_OPENCL
+#define HAVE_OPENCV
+#define HAVE_DIRECTX
+#define HAVE_CUDA 
+#define HAVE_CUDA_DEVICE 
+
 #include <common.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
@@ -27,8 +32,9 @@ void test_texture2d_to_gpumat(texture2d_cvt_gpumat& cvt) {
     
     cv::Mat dstmat;
     dst.download(dstmat);
-    imshowR("dst", dstmat);
+    imshowR("texture2d_to_gpumat", dstmat);
     cv::waitKey(1000);
+    dst.release();
 }
 
 void test_gpumat_to_texture2d(texture2d_cvt_gpumat& cvt){
@@ -39,9 +45,10 @@ cvt.gpumat_to_texture2d_async(srcGpuMat, g_texture_2d.p_d3d11_texture_2d.GetAddr
 
 saveTextureToFile(g_pd3dDevice.Get(), g_texture_2d.p_d3d11_texture_2d.Get(), L"dst.png");
 cv::Mat dstmat2 = cv::imread("dst.png");
-imshowR("dst2", dstmat2);
+imshowR("gpumat_to_texture2d", dstmat2);
 remove("dst.png");
 cv::waitKey(1000);
+srcGpuMat.release();
 }
 
 int main() {
@@ -53,6 +60,6 @@ int main() {
     texture2d_cvt_gpumat cvt;
     cvt.init(g_pd3dDevice.Get());
 
-    test_gpumat_to_texture2d(cvt);// OK
     test_texture2d_to_gpumat(cvt);// OK
+    test_gpumat_to_texture2d(cvt);// OK
 }

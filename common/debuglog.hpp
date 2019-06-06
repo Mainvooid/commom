@@ -220,7 +220,7 @@ namespace common {
     } // namespace debuglog
 
     /// common 全局logger
-    static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), level_e::Trace));
+    static std::unique_ptr<debuglog::logger<>> g_logger(new debuglog::logger<>(_T("G"), level_e::Trace));//TODO 应可接受_TAG标签
 
     template<typename T>
     void LOGT(T msg) { g_logger->Trace(std::move(msg)); };
