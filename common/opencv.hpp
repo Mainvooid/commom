@@ -11,10 +11,16 @@
 #include <random>
 
 #if defined(_DEBUG) || defined(DEBUG)
-#pragma comment(lib,"opencv_world410d.lib")
+#pragma comment(lib,"opencv_core410d.lib")
+#pragma comment(lib,"opencv_imgproc410d.lib")
+#pragma comment(lib,"opencv_imgcodecs410d.lib")
+#pragma comment(lib,"opencv_highgui410d.lib")
 #pragma comment(lib,"opencv_img_hash410d.lib")
 #else
-#pragma comment(lib,"opencv_world410.lib")
+#pragma comment(lib,"opencv_core410.lib")
+#pragma comment(lib,"opencv_imgproc410.lib")
+#pragma comment(lib,"opencv_imgcodecs410.lib")
+#pragma comment(lib,"opencv_highgui410.lib")
 #pragma comment(lib,"opencv_img_hash410.lib")
 #endif
 

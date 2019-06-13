@@ -50,7 +50,7 @@ namespace common {
         *@brief 返回工作目录
         */
         template<typename T>
-        auto getWorkDir() noexcept
+        static auto getWorkDir() noexcept
         {
             T current_exe_fname[MAX_PATH];
             T _Dir[MAX_PATH];
@@ -73,7 +73,7 @@ namespace common {
         *@return 子dll的绝对加载路径
         */
         template<typename T>
-        auto getSubDllFileName(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
+        static auto getSubDllFileName(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
         {
             T current_dll_fname[MAX_PATH];
             T _Dir[MAX_PATH];
@@ -93,7 +93,7 @@ namespace common {
         *@brief 运行时目录下搜索DLL及其依赖项
         */
         template<typename T>
-        HMODULE loadSubDll(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
+        static HMODULE loadSubDll(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
         {
             std::basic_string<T, std::char_traits<T>, std::allocator<T>> sub_dll_path = getSubDllFileName<T>(g_dll_module, sub_dll_name);
             return LoadLibraryEx(sub_dll_path.data(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
@@ -112,7 +112,7 @@ namespace common {
         *@brief 在应用程序的安装目录中搜索DLL及其依赖项
         */
         template<typename T>
-        HMODULE loadSubDll(const T* sub_dll_name) noexcept
+        static HMODULE loadSubDll(const T* sub_dll_name) noexcept
         {
             std::basic_string<T, std::char_traits<T>, std::allocator<T>> _sub_dll_name = sub_dll_name;
             return LoadLibraryEx(_sub_dll_name.data(), nullptr, LOAD_LIBRARY_SEARCH_APPLICATION_DIR);
@@ -166,7 +166,7 @@ namespace common {
         *@param pAdapter 适配器
         *@param ppImmediateContext 上下文
         */
-        HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr,
+        static HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr,
             ID3D11DeviceContext** ppImmediateContext = nullptr)
         {
             UINT createDeviceFlags = 0;
@@ -206,7 +206,7 @@ namespace common {
         *@param path       以(.png)结尾的路径
         */
         template<typename T>
-        HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, const T* path,
+        static HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, const T* path,
             D3DX11_IMAGE_FILE_FORMAT format = D3DX11_IFF_PNG)
         {
             Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
@@ -220,7 +220,7 @@ namespace common {
         *@param path       以(.png)结尾的路径
         */
         template<typename T>
-        HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, const T* path) {
+        static HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, const T* path) {
             return tvalue<T>(getFunction(D3DXSaveTextureToFileA), getFunction(D3DXSaveTextureToFileW))(path, D3DXIFF_PNG, pSrcTexture, nullptr);
         }
 
@@ -233,7 +233,7 @@ namespace common {
         *@param format     读取格式
         */
         template<typename T>
-        HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T* path,
+        static HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T* path,
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
             UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE)
         {
@@ -258,7 +258,7 @@ namespace common {
         *@param format      DXGI支持的数据格式
         *@param bindFlags   数据使用类型
         */
-        void createTextureDesc(D3D11_TEXTURE2D_DESC &desc, UINT width, UINT height,
+        static void createTextureDesc(D3D11_TEXTURE2D_DESC &desc, UINT width, UINT height,
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
             UINT bindFlags = D3D11_BIND_SHADER_RESOURCE,
             UINT miscFlags = 0)
@@ -283,7 +283,7 @@ namespace common {
         *@param pDstDevice       目标设备
         *@param dst_handle       目标共享句柄
         */
-        HRESULT texture2d_to_texture2d(ID3D11Texture2D* pSrcTexture2D, ID3D11Texture2D** ppDstTexture2D, ID3D11Device* pDstDevice, HANDLE* dst_handle = (HANDLE*)malloc(0))
+        static HRESULT texture2d_to_texture2d(ID3D11Texture2D* pSrcTexture2D, ID3D11Texture2D** ppDstTexture2D, ID3D11Device* pDstDevice, HANDLE* dst_handle = (HANDLE*)malloc(0))
         {
             D3D11_TEXTURE2D_DESC desc;
             pSrcTexture2D->GetDesc(&desc);
@@ -322,7 +322,7 @@ namespace common {
         *@brief 检查D3D对象是否释放(一般放在device->Release()之前)
         *@param pDevice 设备对象
         */
-        HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice)
+        static HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice)
         {
             Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
             HRESULT hr = pDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(d3dDebug.GetAddressOf()));
