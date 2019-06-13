@@ -11,11 +11,11 @@
 #include <random>
 
 #if defined(_DEBUG) || defined(DEBUG)
-#pragma comment(lib,"opencv_world401d.lib")
-#pragma comment(lib,"opencv_img_hash401d.lib")
+#pragma comment(lib,"opencv_world410d.lib")
+#pragma comment(lib,"opencv_img_hash410d.lib")
 #else
-#pragma comment(lib,"opencv_world401.lib")
-#pragma comment(lib,"opencv_img_hash401.lib")
+#pragma comment(lib,"opencv_world410.lib")
+#pragma comment(lib,"opencv_img_hash410.lib")
 #endif
 
 namespace common {

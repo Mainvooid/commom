@@ -37,7 +37,10 @@
 #pragma comment(lib,"dxerr.lib")
 
 #ifdef HAVE_OPENCV
+#include <common/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
+#include <opencv2/core/cuda_stream_accessor.hpp>
+using namespace common::opencv;
 #endif // HAVE_OPENCV
 
 #endif // HAVE_DIRECTX
@@ -188,23 +191,24 @@ namespace common {
                 mp_d3d11_device.~ComPtr();
             };
 
-            bool init(ID3D11Device* p_d3d11_device) {
-                mp_d3d11_device = p_d3d11_device;
-                getD3D11Adapter(mp_cuda_capable_adater.ReleaseAndGetAddressOf());
-                if (p_d3d11_device == nullptr) {
-                    HRESULT hr = windows::createD3D11Device(mp_d3d11_device.ReleaseAndGetAddressOf(), mp_cuda_capable_adater.Get());
-                    if (FAILED(hr)) {
-                        return false;
-                    }
+            /*
+            *@brief pDevice 注意:device需由d3d11-cuda适配器创建
+            */
+            bool init() {
+                getD3D11Adapter(mp_cuda_capable_adater.GetAddressOf());
+                HRESULT hr = windows::createD3D11Device(mp_d3d11_device.GetAddressOf(), mp_cuda_capable_adater.Get());
+                if (FAILED(hr)) {
+                    return false;
                 }
                 return true;
             };
 
-            cudaError_t texture2d_to_gpumat_async(ID3D11Texture2D* p_src_texture, cv::cuda::GpuMat& dst_gpumat, cudaStream_t stream = 0) {
-                mt_texture_2d.p_d3d11_texture_2d = p_src_texture;
-
+            cudaError_t texture2d_to_gpumat(ID3D11Texture2D* p_src_texture, cv::cuda::GpuMat& dst_gpumat)
+            {
+                HRESULT hr = common::windows::texture2d_to_texture2d(p_src_texture, mt_texture_2d.p_d3d11_texture_2d.GetAddressOf(), mp_d3d11_device.Get());
+                if (FAILED(hr)) { return cudaError::cudaErrorUnknown; }
                 D3D11_TEXTURE2D_DESC desc;
-                mt_texture_2d.p_d3d11_texture_2d->GetDesc(&desc);
+                p_src_texture->GetDesc(&desc);
 
                 //注册Direct3D 11资源pD3DResource以供CUDA访问
                 checkCudaRet(cudaGraphicsD3D11RegisterResource(&mt_texture_2d.cuda_resource, mt_texture_2d.p_d3d11_texture_2d.Get(), cudaGraphicsRegisterFlagsNone));
@@ -220,8 +224,8 @@ namespace common {
                 dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(uchar4)));
 
                 //src和dst的step可能不同
-                checkCudaRet(cudaMemcpy2DFromArrayAsync(dst_gpumat.data, dst_gpumat.step,
-                    mt_texture_2d.cuda_array, 0, 0, dst_gpumat.cols * sizeof(uchar4), dst_gpumat.rows, cudaMemcpyDeviceToDevice, stream));
+                checkCudaRet(cudaMemcpy2DFromArray(dst_gpumat.data, dst_gpumat.step,
+                    mt_texture_2d.cuda_array, 0, 0, dst_gpumat.cols * sizeof(uchar4), dst_gpumat.rows, cudaMemcpyDeviceToDevice));
 
                 //保证输入输出为默认格式,D3D11默认RGBA格式,OPENCV默认BGRA格式
                 cv::cuda::cvtColor(dst_gpumat, dst_gpumat, cv::COLOR_RGBA2BGRA);
@@ -233,7 +237,8 @@ namespace common {
                 return cudaError::cudaSuccess;
             };
 
-            cudaError_t gpumat_to_texture2d_async(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, cudaStream_t stream = 0) {
+            cudaError_t gpumat_to_texture2d(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device)
+            {
                 if (src_gpumat.channels() == 4) {// 默认通道类型转换
                     cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_BGRA2RGBA);
                 }
@@ -242,7 +247,8 @@ namespace common {
                 }
 
                 D3D11_TEXTURE2D_DESC desc;
-                windows::createTextureDesc(desc, src_gpumat.cols, src_gpumat.rows);
+                windows::createTextureDesc(desc, src_gpumat.cols, src_gpumat.rows,
+                    DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_RESOURCE_MISC_SHARED);
                 mp_d3d11_device->CreateTexture2D(&desc, nullptr, mt_texture_2d.p_d3d11_texture_2d.ReleaseAndGetAddressOf());
 
                 //注册Direct3D 11资源以供CUDA访问
@@ -256,12 +262,12 @@ namespace common {
 
                 checkCudaRet(cudaBindTextureToArray(mt_texture_2d.texture_ref, mt_texture_2d.cuda_array, &mt_texture_2d.cuda_array_desc));
 
-                checkCudaRet(cudaMemcpy2DToArrayAsync(mt_texture_2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step, src_gpumat.cols * sizeof(uchar4), src_gpumat.rows, cudaMemcpyDeviceToDevice, stream));
+                checkCudaRet(cudaMemcpy2DToArray(mt_texture_2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step, src_gpumat.cols * sizeof(uchar4), src_gpumat.rows, cudaMemcpyDeviceToDevice));
 
                 checkCudaRet(cudaUnbindTexture(mt_texture_2d.texture_ref));
 
-                *pp_dst_texture = mt_texture_2d.p_d3d11_texture_2d.Get();
-                (*pp_dst_texture)->AddRef();
+                HRESULT hr = common::windows::texture2d_to_texture2d(mt_texture_2d.p_d3d11_texture_2d.Get(), pp_dst_texture, p_dst_device);
+                if (FAILED(hr)) { return cudaError::cudaErrorUnknown; }
                 return cudaError::cudaSuccess;
             };
         private:

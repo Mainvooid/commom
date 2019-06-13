@@ -9,11 +9,20 @@
 #include <memory>
 #include <iostream>
 #include <windows.h>
+
+#ifdef HAVE_DIRECTX
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <d3d11.h>
 #include <d3dx11.h>
 #include <wrl\client.h>
+
+#pragma comment ( lib, "d3d9.lib")
+#pragma comment ( lib, "d3dx9.lib")
+#pragma comment ( lib, "d3d11.lib")
+#pragma comment ( lib, "d3dx11.lib")
+
+#endif
 
 #ifndef DLLAPI
 #define DLLAPI __declspec(dllexport)
@@ -251,7 +260,8 @@ namespace common {
         */
         void createTextureDesc(D3D11_TEXTURE2D_DESC &desc, UINT width, UINT height,
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
-            UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE)
+            UINT bindFlags = D3D11_BIND_SHADER_RESOURCE,
+            UINT miscFlags = 0)
         {
             ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
             desc.Width = width;
@@ -263,27 +273,48 @@ namespace common {
             desc.Usage = D3D11_USAGE_DEFAULT;            //指定数据的CPU/GPU访问权限(GPU读写)
             desc.BindFlags = bindFlags;                  //数据使用类型
             desc.CPUAccessFlags = 0;                     //CPU访问权限(0不需要)
-            desc.MiscFlags = D3D11_RESOURCE_MISC_SHARED; // 资源标识
+            desc.MiscFlags = miscFlags;                  //资源标识[D3D11_RESOURCE_MISC_SHARED]
         }
 
         /*
-        *@brief 创建2D纹理共享句柄
-        *@param pDevice    设备对象
-        *@param pTexture2D 纹理对象
-        *@param desc       纹理配置
-        *@param dstHandle  目标句柄
+        *@brief 不同device的共享纹理间的转换
+        *@param pSrcTexture2D    源纹理
+        *@param pDstTexture2D    目标纹理
+        *@param pDstDevice       目标设备
+        *@param dst_handle       目标共享句柄
         */
-        HRESULT createSharedTexture2DHandle(ID3D11Device *pDevice, ID3D11Texture2D* pTexture2D, D3D11_TEXTURE2D_DESC& desc, HANDLE* dstHandle)
+        HRESULT texture2d_to_texture2d(ID3D11Texture2D* pSrcTexture2D, ID3D11Texture2D** ppDstTexture2D, ID3D11Device* pDstDevice, HANDLE* dst_handle = (HANDLE*)malloc(0))
         {
-            HRESULT hr = pDevice->CreateTexture2D(&desc, nullptr, &pTexture2D);
-            if (FAILED(hr)) { return S_FALSE; }
+            D3D11_TEXTURE2D_DESC desc;
+            pSrcTexture2D->GetDesc(&desc);
+
+            Microsoft::WRL::ComPtr<ID3D11Device> p_src_device;
+            pSrcTexture2D->GetDevice(p_src_device.GetAddressOf());
+            HRESULT hr = S_OK;
+            Microsoft::WRL::ComPtr <ID3D11Texture2D> p_new_src_texture;
+            if ((desc.MiscFlags & D3D11_RESOURCE_MISC_SHARED) != D3D11_RESOURCE_MISC_SHARED) {
+                Microsoft::WRL::ComPtr <ID3D11DeviceContext> p_ctx;
+                p_src_device->GetImmediateContext(&p_ctx);
+                desc.MiscFlags |= D3D11_RESOURCE_MISC_SHARED;
+                hr = p_src_device->CreateTexture2D(&desc, nullptr, p_new_src_texture.GetAddressOf());
+                if (FAILED(hr)) { return hr; }
+                p_ctx->CopyResource(p_new_src_texture.Get(), pSrcTexture2D);
+                p_ctx->Flush();
+            }
+            else {
+                p_new_src_texture = pSrcTexture2D;
+            }
 
             Microsoft::WRL::ComPtr<IDXGIResource> pSharedResource;
-            hr = pTexture2D->QueryInterface(__uuidof(IDXGIResource), reinterpret_cast<void**>(pSharedResource.GetAddressOf()));
-            if (FAILED(hr)) { return S_FALSE; }
+            hr = p_new_src_texture->QueryInterface(__uuidof(IDXGIResource), reinterpret_cast<void**>(pSharedResource.ReleaseAndGetAddressOf()));
+            if (FAILED(hr)) { return hr; }
 
-            hr = pSharedResource->GetSharedHandle(dstHandle);
-            if (FAILED(hr)) { return S_FALSE; }
+            hr = pSharedResource->GetSharedHandle(dst_handle);
+            if (FAILED(hr)) { return hr; }
+            hr = pDstDevice->OpenSharedResource(*dst_handle, __uuidof(IDXGIResource), (void**)(pSharedResource.ReleaseAndGetAddressOf()));
+            if (FAILED(hr)) { return hr; }
+            hr = pSharedResource->QueryInterface(__uuidof(ID3D11Texture2D), (void**)(ppDstTexture2D));
+            if (FAILED(hr)) { return hr; }
             return S_OK;
         }
 

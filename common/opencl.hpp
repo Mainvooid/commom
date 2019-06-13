@@ -5,9 +5,9 @@
 #ifndef _COMMON_OPENCL_HPP_
 #define _COMMON_OPENCL_HPP_
 
-#include <cl.hpp>
+#include <common/debuglog.hpp>
+#include <CL/cl.hpp>
 #pragma comment(lib,"opencl.lib")
-
 namespace common {
     namespace opencl {
 
