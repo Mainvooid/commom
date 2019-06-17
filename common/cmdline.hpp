@@ -13,11 +13,24 @@
 #include <cxxabi.h>
 #endif
 
+/**
+  @addtogroup common
+  @{
+    @defgroup cmdline cmdline - command line parser
+    @{
+      @defgroup detail detail
+    @}
+  @}
+*/
 namespace common {
     namespace cmdline {
+        /// @addtogroup cmdline
+        /// @{
         static const std::string _TAG = "cmdline";
 
         namespace detail {
+            /// @addtogroup detail
+            /// @{
             /**
             *@brief 获取类型
             */
@@ -57,6 +70,7 @@ namespace common {
             {
                 return convert_to_string<char>(def);
             }
+            /// @}
         } // detail --------------------------------------------------
 
         /**
@@ -781,7 +795,7 @@ namespace common {
             std::vector<std::string> others;            //其他为指定参数
             std::vector<std::string> errors;            //错误消息
         };
-
+        /// @}
     } // cmdline
 
 } // common

@@ -1,4 +1,4 @@
-﻿/*
+/*
 @brief a simple debug logger
 @author guobao.v@gmail.com
 */
@@ -14,8 +14,13 @@
 #include <algorithm>
 #include <windows.h>
 
+/**
+  @addtogroup common
+  @{
+    @defgroup debuglog debuglog - windows debug logger
+  @}
+*/
 namespace common {
-
     /*调试日志级别
     Trace    = 0, // 更细粒度的消息记录
     Debug    = 1, // 细粒度调试信息事件
@@ -36,7 +41,6 @@ namespace common {
     };
 
     namespace debuglog {
-
         /**
         *@brief OutputDebugString扩展版
         *@param format 格式 e.g. "Error [%s] : %s\n"
@@ -216,7 +220,6 @@ namespace common {
             T m_name;
             level_e m_level;
         };
-
     } // namespace debuglog
 
     // common 全局logger
@@ -254,7 +257,6 @@ namespace common {
 #define LOGW_(msg) common::LOGW(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGE_(msg) common::LOGE(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGF_(msg) common::LOGF(msg, __FUNCTION__, __FILE__, __LINE__)
-
 } // namespace common
 
 #endif // _COMMON_DEBUGLOG_HPP_

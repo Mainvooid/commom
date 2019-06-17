@@ -8,9 +8,17 @@
 #include <common/debuglog.hpp>
 #include <CL/cl.hpp>
 #pragma comment(lib,"opencl.lib")
+
+/**
+  @addtogroup common
+  @{
+    @defgroup opencl opencl - opencl utilities
+  @}
+*/
 namespace common {
     namespace opencl {
-
+        /// @addtogroup opencl
+        /// @{
         /*
         *@brief 打印opencl设备信息
         */
@@ -69,7 +77,7 @@ namespace common {
                 LOGI(ss.str());
                 ss.str(L"");
 
-                if (i<num_platform-1){
+                if (i < num_platform - 1) {
                     LOGI(L"");
                 }
                 free(name);
@@ -79,7 +87,7 @@ namespace common {
                 free(extensions);
             }
         }
-
+        /// @}
     } // namespace opencl
 } // namespace common
 #endif // _COMMON_OPENCL_HPP_

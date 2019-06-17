@@ -90,6 +90,7 @@
     <None Include="common\cuda\README.md">
       <Filter>common\cuda</Filter>
     </None>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="common\cuda\texture_reference.cu">

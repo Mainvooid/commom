@@ -1,8 +1,0 @@
-digraph "D:/code/common/common/samples" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  dir_6f9635d4fbfa321d4c00f29df5cd540c [shape=box, label="samples", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_6f9635d4fbfa321d4c00f29df5cd540c.html"];
-  dir_bdd9a5d540de89e9fe90efdfc6973a4f [shape=box label="common" URL="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html"];
-  dir_6f9635d4fbfa321d4c00f29df5cd540c->dir_bdd9a5d540de89e9fe90efdfc6973a4f [headlabel="7", labeldistance=1.5 headhref="dir_000001_000000.html"];
-}

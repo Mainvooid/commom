@@ -1,0 +1,10 @@
+<map id="common" name="common">
+<area shape="rect" id="node1" href="$group__cmdline.html" title=" " alt="" coords="134,5,294,45"/>
+<area shape="rect" id="node2" href="$group__debuglog.html" title=" " alt="" coords="147,69,281,109"/>
+<area shape="rect" id="node3" href="$group__windows.html" title=" " alt="" coords="125,134,303,159"/>
+<area shape="rect" id="node4" href="$group__cuda.html" title=" " alt="" coords="147,183,281,209"/>
+<area shape="rect" id="node5" href="$group__codecvt.html" title=" " alt="" coords="143,233,285,273"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,183,77,209"/>
+<area shape="rect" id="node7" href="$group__opencl.html" title=" " alt="" coords="137,298,291,323"/>
+<area shape="rect" id="node8" href="$group__opencv.html" title=" " alt="" coords="135,347,293,373"/>
+</map>

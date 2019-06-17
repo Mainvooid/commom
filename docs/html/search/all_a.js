@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['opencl_2ehpp',['opencl.hpp',['../opencl_8hpp.html',1,'']]],
-  ['opencv_2ehpp',['opencv.hpp',['../opencv_8hpp.html',1,'']]]
+  ['mergeimage',['mergeImage',['../group__opencv.html#ga5a8cfa223c21cc7f941ce295381f19de',1,'common::opencv']]]
 ];

@@ -1,13 +1,16 @@
 var searchData=
 [
-  ['unicode_5fto_5fansi',['unicode_to_ansi',['../namespacecommon_1_1codecvt.html#a3ad837ac2a490851f3193ec58709f070',1,'common::codecvt']]],
-  ['unicode_5fto_5futf8',['unicode_to_utf8',['../namespacecommon_1_1codecvt.html#a8ab56f2ea5605599af59ad88c48e8938',1,'common::codecvt']]],
-  ['utf16_5fto_5futf32',['utf16_to_utf32',['../namespacecommon_1_1codecvt.html#af9c1a5c6902227f48f841d2d9f7c2bf2',1,'common::codecvt']]],
-  ['utf16_5fto_5futf8',['utf16_to_utf8',['../namespacecommon_1_1codecvt.html#ad2cf5ae4482e03c3106d4549d319d83e',1,'common::codecvt']]],
-  ['utf32_5fto_5futf16',['utf32_to_utf16',['../namespacecommon_1_1codecvt.html#a55bcf3547fe92dbcf799242f60579ea0',1,'common::codecvt']]],
-  ['utf32_5fto_5futf8',['utf32_to_utf8',['../namespacecommon_1_1codecvt.html#ad6cf19d8117a006ff2974fa03d63950a',1,'common::codecvt']]],
-  ['utf8_5fto_5fansi',['utf8_to_ansi',['../namespacecommon_1_1codecvt.html#a2864220ce9f167c3caf596c2e034ea0b',1,'common::codecvt']]],
-  ['utf8_5fto_5funicode',['utf8_to_unicode',['../namespacecommon_1_1codecvt.html#abc1a169e6ef241b3afb238c9177e5b53',1,'common::codecvt']]],
-  ['utf8_5fto_5futf16',['utf8_to_utf16',['../namespacecommon_1_1codecvt.html#af75c20ea1a68ca0ea0eff7a39886f39f',1,'common::codecvt']]],
-  ['utf8_5fto_5futf32',['utf8_to_utf32',['../namespacecommon_1_1codecvt.html#a12adb9c91e4d656a6e98f2a48e415b85',1,'common::codecvt']]]
+  ['texture2d_5fcvt_5fgpumat',['texture2d_cvt_gpumat',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html',1,'common::cuda::texture2d_cvt_gpumat'],['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a330e51dfd2c892c2ed9de7494c78efeb',1,'common::cuda::texture2d_cvt_gpumat::texture2d_cvt_gpumat()']]],
+  ['texture2d_5fto_5fgpumat',['texture2d_to_gpumat',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a8dabf8cb7aba08e363dc9793f0f6a9e1',1,'common::cuda::texture2d_cvt_gpumat']]],
+  ['texture2d_5fto_5ftexture2d',['texture2d_to_texture2d',['../group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8',1,'common::windows']]],
+  ['texture_5fref',['texture_ref',['../structcommon_1_1cuda_1_1shared__texture__t.html#ae63bcb05bb28dab1da9d834a9c9ec264',1,'common::cuda::shared_texture_t']]],
+  ['texture_5freference_2ecuh',['texture_reference.cuh',['../texture__reference_8cuh.html',1,'']]],
+  ['trace',['Trace',['../classcommon_1_1debuglog_1_1logger.html#a8aafcd0d703cab4f35f921eebd09dfa1',1,'common::debuglog::logger::Trace(T msg) const'],['../classcommon_1_1debuglog_1_1logger.html#a37c2d35bbf2b8d92093d9027b03d6c30',1,'common::debuglog::logger::Trace(T msg, const char *_func, const char *_file, const int _line) const'],['../namespacecommon.html#af7659de5ece427c413cf7194eafe087daa30aac70d54371896a4eb7ad8fc7f791',1,'common::Trace()']]],
+  ['ttype_5ft',['ttype_t',['../structcommon_1_1ttype__t.html',1,'common']]],
+  ['ttype_5ft_3c_20char_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; char, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01char_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
+  ['ttype_5ft_3c_20std_3a_3astring_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; std::string, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01std_1_1string_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
+  ['ttype_5ft_3c_20std_3a_3awstring_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; std::wstring, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01std_1_1wstring_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
+  ['ttype_5ft_3c_20wchar_5ft_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; wchar_t, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01wchar__t_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
+  ['tvalue',['tvalue',['../group__common.html#ga38c54994e92e942dac88fc14499baa7c',1,'common::tvalue(char *, TA a, TW)'],['../group__common.html#ga2c7dfceac3f13338273e88af9d9f846f',1,'common::tvalue(wchar_t *, TA, TW w)'],['../group__common.html#ga6f2c640271a8f3f9e00871b374f0a4e3',1,'common::tvalue(std::string *, TA a, TW)'],['../group__common.html#gadb535610a998c6e8cdb4fbc7d4566cad',1,'common::tvalue(std::wstring *, TA, TW w)'],['../group__common.html#ga76d44589880cba75097dba4fe17f9f96',1,'common::tvalue(TA a, TW w)']]],
+  ['type',['type',['../structcommon_1_1ttype__t_3_01char_00_01_t_a_00_01_t_w_01_4.html#a73098dbfdc852045f7a96c8f07784655',1,'common::ttype_t&lt; char, TA, TW &gt;::type()'],['../structcommon_1_1ttype__t_3_01wchar__t_00_01_t_a_00_01_t_w_01_4.html#a534714af06c9342a829ded560e8c1ba0',1,'common::ttype_t&lt; wchar_t, TA, TW &gt;::type()'],['../structcommon_1_1ttype__t_3_01std_1_1string_00_01_t_a_00_01_t_w_01_4.html#a2bf5e7efe1b17c6b8063662eaca6f7f8',1,'common::ttype_t&lt; std::string, TA, TW &gt;::type()'],['../structcommon_1_1ttype__t_3_01std_1_1wstring_00_01_t_a_00_01_t_w_01_4.html#afe35b54fb1a202ba48df8377f0becf17',1,'common::ttype_t&lt; std::wstring, TA, TW &gt;::type()']]]
 ];

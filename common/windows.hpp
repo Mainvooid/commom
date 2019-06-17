@@ -7,7 +7,6 @@
 
 #include <common/precomm.hpp>
 #include <memory>
-#include <iostream>
 #include <windows.h>
 
 #ifdef HAVE_DIRECTX
@@ -30,8 +29,16 @@
 #define DLLAPI __declspec(dllimport)
 #endif
 
+/**
+  @addtogroup common
+  @{
+    @defgroup windows windows - windows utilities
+  @}
+*/
 namespace common {
     namespace windows {
+        /// @addtogroup windows
+        /// @{
 
         //DLL导出
 
@@ -68,7 +75,7 @@ namespace common {
 
         /**
         *@brief dll下根据运行时环境获取子dll的绝对加载路径
-        *@param g_dllModule DllMain函数的DLL_THREAD_ATTACH下通过g_dllModule = hModule获取
+        *@param g_dll_module DllMain函数的DLL_THREAD_ATTACH下通过g_dllModule = hModule获取
         *@param sub_dll_name 子dll名 xxx.dll
         *@return 子dll的绝对加载路径
         */
@@ -334,7 +341,7 @@ namespace common {
 
 
 #endif // HAVE_DIRECTX
-
+        /// @}
     } // namespace windows
 
 } // namespace common

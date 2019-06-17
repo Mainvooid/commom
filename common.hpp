@@ -5,12 +5,29 @@
 #ifndef _COMMON_HPP_
 #define _COMMON_HPP_
 
+/**
+@def HAVE_OPENCL
+@brief 基于OpenCL 1.2
+
+@def HAVE_OPENCV
+@brief 基于OpenCV 4.0 with contrib
+
+@def HAVE_DIRECTX
+@brief 基于Microsoft DirectX SDK (June 2010)
+
+@def HAVE_CUDA
+@brief 基于CUDA 10.0
+
+@def HAVE_CUDA_DEVICE
+@brief 本项目cuda目录下的.cu文件添加到工程后可以开启本宏
+@see common\cuda\README.md
+*/
 //默认关闭库支持
-//#define HAVE_OPENCL      //基于OpenCL 1.2
-//#define HAVE_OPENCV      //基于OpenCV 4.0 with contrib
-//#define HAVE_DIRECTX     //基于Microsoft DirectX SDK (June 2010)
-//#define HAVE_CUDA        //基于CUDA 10.0
-//#define HAVE_CUDA_DEVICE //本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见cuda/README.md
+//#define HAVE_OPENCL
+//#define HAVE_OPENCV
+//#define HAVE_DIRECTX
+//#define HAVE_CUDA
+//#define HAVE_CUDA_DEVICE
 
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>
@@ -31,8 +48,12 @@
 
 #include <chrono>
 
+/**
+  @defgroup common common
+*/
 namespace common {
-
+    /// @addtogroup common
+    /// @{
     static const std::string _TAG = "common";
 
     /**
@@ -49,7 +70,7 @@ namespace common {
         auto duration = std::chrono::duration_cast<T>(end - start);
         return static_cast<double>(duration.count());
     }
-
+    /// @}
 } // namespace common
 
 #endif // _COMMON_HPP_

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printplatforminfo',['printPlatformInfo',['../namespacecommon_1_1opencl.html#a7c307c1c449e7808d1d86f18b0ce821e',1,'common::opencl']]]
+  ['mergeimage',['mergeImage',['../group__opencv.html#ga5a8cfa223c21cc7f941ce295381f19de',1,'common::opencv']]]
 ];

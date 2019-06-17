@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imshowr',['imshowR',['../namespacecommon_1_1opencv.html#a0cebbd9840ef3013a64fd32f64ab7ccd',1,'common::opencv']]]
+  ['hashcompare',['HashCompare',['../group__opencv.html#ga316908c87e465d17a82fa4c2f585ab3f',1,'common::opencv']]]
 ];

@@ -5,10 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>common: D:/code/common/common/common/windows.hpp 文件参考</title>
+<title>common: common/windows.hpp 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('windows_8hpp.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,33 +84,161 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
   <div class="headertitle">
 <div class="title">windows.hpp 文件参考</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;<a class="el" href="precomm_8hpp_source.html">common/precomm.hpp</a>&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;windows.h&gt;</code><br />
+<code>#include &lt;d3d9.h&gt;</code><br />
+<code>#include &lt;d3dx9.h&gt;</code><br />
+<code>#include &lt;d3d11.h&gt;</code><br />
+<code>#include &lt;d3dx11.h&gt;</code><br />
+<code>#include &lt;wrl\client.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+windows.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="windows_8hpp__incl.png" border="0" usemap="#common_2windows_8hpp" alt=""/></div>
+<map name="common_2windows_8hpp" id="common_2windows_8hpp">
+<area shape="rect"  title=" " alt="" coords="559,5,709,32"/>
+<area shape="rect"  href="precomm_8hpp.html" title=" " alt="" coords="181,80,335,107"/>
+<area shape="rect"  title=" " alt="" coords="359,80,429,107"/>
+<area shape="rect"  title=" " alt="" coords="453,80,535,107"/>
+<area shape="rect"  title=" " alt="" coords="559,80,621,107"/>
+<area shape="rect"  title=" " alt="" coords="645,80,713,107"/>
+<area shape="rect"  title=" " alt="" coords="737,80,805,107"/>
+<area shape="rect"  title=" " alt="" coords="830,80,905,107"/>
+<area shape="rect"  title=" " alt="" coords="929,80,1013,107"/>
+<area shape="rect"  title=" " alt="" coords="5,155,65,181"/>
+<area shape="rect"  title=" " alt="" coords="89,155,152,181"/>
+<area shape="rect"  title=" " alt="" coords="177,155,246,181"/>
+<area shape="rect"  title=" " alt="" coords="270,155,342,181"/>
+<area shape="rect"  title=" " alt="" coords="366,155,422,181"/>
+<area shape="rect"  title=" " alt="" coords="446,155,523,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 此图展示该文件直接或间接的被哪些文件引用了:</div>
 <div class="dyncontent">
-<div class="center"><img src="windows_8hpp__dep__incl.png" border="0" usemap="#_d_1_2code_2common_2common_2common_2windows_8hppdep" alt=""/></div>
-<map name="_d_1_2code_2common_2common_2common_2windows_8hppdep" id="_d_1_2code_2common_2common_2common_2windows_8hppdep">
-<area shape="rect"  title=" " alt="" coords="5,5,180,47"/>
-<area shape="rect"  href="cuda_8hpp.html" title=" " alt="" coords="5,95,180,136"/>
+<div class="center"><img src="windows_8hpp__dep__incl.png" border="0" usemap="#common_2windows_8hppdep" alt=""/></div>
+<map name="common_2windows_8hppdep" id="common_2windows_8hppdep">
+<area shape="rect"  title=" " alt="" coords="45,5,196,32"/>
+<area shape="rect"  href="cuda_8hpp.html" title=" " alt="" coords="5,80,135,107"/>
+<area shape="rect"  href="common_8hpp.html" title=" " alt="" coords="72,155,169,181"/>
 </map>
 </div>
 </div>
 <p><a href="windows_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1windows_1_1_proc_address.html">common::windows::ProcAddress&lt; interfaceCls &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">外部调用dll函数获取类实例指针或函数地址  <a href="classcommon_1_1windows_1_1_proc_address.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacecommon"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html">common</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacecommon_1_1windows"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1windows.html">common::windows</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a95fd62a6309b04f5abd5f643d4191b5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="windows_8hpp.html#a95fd62a6309b04f5abd5f643d4191b5e">_COMMON_WINDOWS_HPP_</a></td></tr>
+<tr class="separator:a95fd62a6309b04f5abd5f643d4191b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f3e90363dd946504d2bba77ce6b28b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="windows_8hpp.html#a18f3e90363dd946504d2bba77ce6b28b">DLLAPI</a>&#160;&#160;&#160;__declspec(dllexport)</td></tr>
+<tr class="separator:a18f3e90363dd946504d2bba77ce6b28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga1d8b8497f7476c661b60a9cd1054d0e3"><td class="memTemplParams" colspan="2">template&lt;class interfaceCls , class implCls &gt; </td></tr>
+<tr class="memitem:ga1d8b8497f7476c661b60a9cd1054d0e3"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; interfaceCls &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3">common::windows::getClsPtr</a> () noexcept</td></tr>
+<tr class="memdesc:ga1d8b8497f7476c661b60a9cd1054d0e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于dll导出接口类的实现类指针,自动管理内存,以防范Cross-Dll问题  <a href="group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3">更多...</a><br /></td></tr>
+<tr class="separator:ga1d8b8497f7476c661b60a9cd1054d0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac412e651914b28f54eecddc04d2dbea9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gac412e651914b28f54eecddc04d2dbea9"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#gac412e651914b28f54eecddc04d2dbea9">common::windows::getWorkDir</a> () noexcept</td></tr>
+<tr class="memdesc:gac412e651914b28f54eecddc04d2dbea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回工作目录  <a href="group__windows.html#gac412e651914b28f54eecddc04d2dbea9">更多...</a><br /></td></tr>
+<tr class="separator:gac412e651914b28f54eecddc04d2dbea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae680f30ba97e9cc1186a1ca654719f0d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gae680f30ba97e9cc1186a1ca654719f0d"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d">common::windows::getSubDllFileName</a> (const HMODULE &amp;g_dll_module, const T *sub_dll_name) noexcept</td></tr>
+<tr class="memdesc:gae680f30ba97e9cc1186a1ca654719f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">dll下根据运行时环境获取子dll的绝对加载路径  <a href="group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d">更多...</a><br /></td></tr>
+<tr class="separator:gae680f30ba97e9cc1186a1ca654719f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae8418ec6d8a91edfc32a57772fefe7a4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gae8418ec6d8a91edfc32a57772fefe7a4"><td class="memTemplItemLeft" align="right" valign="top">static HMODULE&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#gae8418ec6d8a91edfc32a57772fefe7a4">common::windows::loadSubDll</a> (const HMODULE &amp;g_dll_module, const T *sub_dll_name) noexcept</td></tr>
+<tr class="memdesc:gae8418ec6d8a91edfc32a57772fefe7a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">运行时目录下搜索DLL及其依赖项  <a href="group__windows.html#gae8418ec6d8a91edfc32a57772fefe7a4">更多...</a><br /></td></tr>
+<tr class="separator:gae8418ec6d8a91edfc32a57772fefe7a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8e6d2eb037479324dcb5445cea10289"><td class="memItemLeft" align="right" valign="top">static HMODULE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#gaa8e6d2eb037479324dcb5445cea10289">common::windows::loadSubDll</a> (const std::wstring &amp;sub_dll_dir, const std::wstring &amp;sub_dll_name) noexcept</td></tr>
+<tr class="memdesc:gaa8e6d2eb037479324dcb5445cea10289"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定目录搜索DLL及其依赖项  <a href="group__windows.html#gaa8e6d2eb037479324dcb5445cea10289">更多...</a><br /></td></tr>
+<tr class="separator:gaa8e6d2eb037479324dcb5445cea10289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4848ceb6cbe9b8ff859833928ab97732"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga4848ceb6cbe9b8ff859833928ab97732"><td class="memTemplItemLeft" align="right" valign="top">static HMODULE&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga4848ceb6cbe9b8ff859833928ab97732">common::windows::loadSubDll</a> (const T *sub_dll_name) noexcept</td></tr>
+<tr class="memdesc:ga4848ceb6cbe9b8ff859833928ab97732"><td class="mdescLeft">&#160;</td><td class="mdescRight">在应用程序的安装目录中搜索DLL及其依赖项  <a href="group__windows.html#ga4848ceb6cbe9b8ff859833928ab97732">更多...</a><br /></td></tr>
+<tr class="separator:ga4848ceb6cbe9b8ff859833928ab97732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1ccba4d8269119f685694931df00758"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#gae1ccba4d8269119f685694931df00758">common::windows::createD3D11Device</a> (ID3D11Device **ppDevice, IDXGIAdapter *pAdapter=nullptr, ID3D11DeviceContext **ppImmediateContext=nullptr)</td></tr>
+<tr class="separator:gae1ccba4d8269119f685694931df00758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47806b9488d985a6946b59d6cc241c87"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga47806b9488d985a6946b59d6cc241c87"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga47806b9488d985a6946b59d6cc241c87">common::windows::saveTextureToFile</a> (ID3D11Device *pDevice, ID3D11Resource *pSrcTexture, const T *path, D3DX11_IMAGE_FILE_FORMAT format=D3DX11_IFF_PNG)</td></tr>
+<tr class="separator:ga47806b9488d985a6946b59d6cc241c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga487f261deaede7edad19b321fa24fbf3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga487f261deaede7edad19b321fa24fbf3"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga487f261deaede7edad19b321fa24fbf3">common::windows::saveTextureToFile</a> (IDirect3DTexture9 *pSrcTexture, const T *path)</td></tr>
+<tr class="separator:ga487f261deaede7edad19b321fa24fbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga5125e7fb97efb88bcef9c84f04023ef7">common::windows::loadTextureFromFile</a> (ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T *path, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_UNORDERED_ACCESS|D3D11_BIND_SHADER_RESOURCE)</td></tr>
+<tr class="separator:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586">common::windows::createTextureDesc</a> (D3D11_TEXTURE2D_DESC &amp;desc, UINT width, UINT height, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_SHADER_RESOURCE, UINT miscFlags=0)</td></tr>
+<tr class="separator:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8">common::windows::texture2d_to_texture2d</a> (ID3D11Texture2D *pSrcTexture2D, ID3D11Texture2D **ppDstTexture2D, ID3D11Device *pDstDevice, HANDLE *dst_handle=(HANDLE *) malloc(0))</td></tr>
+<tr class="separator:ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3b414c57bc2cf462d71751d73b85e2a0"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0">common::windows::reportLiveDeviceObjects</a> (ID3D11Device *pDevice)</td></tr>
+<tr class="separator:ga3b414c57bc2cf462d71751d73b85e2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a95fd62a6309b04f5abd5f643d4191b5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95fd62a6309b04f5abd5f643d4191b5e">&#9670;&nbsp;</a></span>_COMMON_WINDOWS_HPP_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _COMMON_WINDOWS_HPP_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18f3e90363dd946504d2bba77ce6b28b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f3e90363dd946504d2bba77ce6b28b">&#9670;&nbsp;</a></span>DLLAPI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DLLAPI&#160;&#160;&#160;__declspec(dllexport)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者 &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="windows_8hpp.html">windows.hpp</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

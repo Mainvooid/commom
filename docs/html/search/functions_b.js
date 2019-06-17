@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['savedebugimage',['saveDebugImage',['../namespacecommon_1_1opencv.html#a34c5b0ac460c2a924e6a98a3ef66724c',1,'common::opencv']]]
+  ['printplatforminfo',['printPlatformInfo',['../group__opencl.html#ga7c307c1c449e7808d1d86f18b0ce821e',1,'common::opencl']]]
 ];

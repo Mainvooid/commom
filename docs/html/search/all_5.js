@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['getcudafnduration',['getCudaFnDuration',['../namespacecommon_1_1cuda.html#ab3d6552e1622dcc932614ef612e74515',1,'common::cuda']]],
-  ['getfnduration',['getFnDuration',['../namespacecommon.html#abedbb4ac121d9fc5d8c9b042a23b5a72',1,'common']]],
-  ['getfunction',['getFunction',['../namespacecommon.html#ada99d5b660332656cca9fde49ebb72ff',1,'common::getFunction(std::function&lt; R(FArgs...)&gt; Fn)'],['../namespacecommon.html#aa3da88d9740f493c2f2d85ea984e55e2',1,'common::getFunction(R(*Fn)(FArgs...))'],['../namespacecommon.html#ac71ae17c99986a3f7b07e578b324880e',1,'common::getFunction(R(__stdcall *Fn)(FArgs...))']]]
+  ['fatal',['Fatal',['../classcommon_1_1debuglog_1_1logger.html#a819f9fd9d16aa19a5efcefbb067b1753',1,'common::debuglog::logger::Fatal(T msg) const'],['../classcommon_1_1debuglog_1_1logger.html#a77f0d9bf34ec3b77427331c198fbba20',1,'common::debuglog::logger::Fatal(T msg, const char *_func, const char *_file, const int _line) const'],['../namespacecommon.html#af7659de5ece427c413cf7194eafe087da621eabfdbc10816e990a4c0052a1611b',1,'common::Fatal()']]],
+  ['filldir',['fillDir',['../group__common.html#ga1206320bdec9633462ac1cc9a3733d93',1,'common']]],
+  ['free_5fs',['free_s',['../group__common.html#ga5837dba715596e3fa99bf4905e327469',1,'common::free_s(T &amp;p)'],['../group__common.html#ga7d8c6faa1713f2be3d4e53d8ccb22e7f',1,'common::free_s(T &amp;p, Args &amp;... args)']]],
+  ['func_5ftype_5fname',['func_type_name',['../classcommon_1_1windows_1_1_proc_address.html#a965926a7b66a2ec3246076a227362aaa',1,'common::windows::ProcAddress']]]
 ];

@@ -1,8 +1,0 @@
-digraph "D:/code/common/common/tests" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  dir_59425e443f801f1f2fd8bbe4959a3ccf [shape=box, label="tests", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_59425e443f801f1f2fd8bbe4959a3ccf.html"];
-  dir_bdd9a5d540de89e9fe90efdfc6973a4f [shape=box label="common" fillcolor="white" style="filled" color="red" URL="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html"];
-  dir_59425e443f801f1f2fd8bbe4959a3ccf->dir_bdd9a5d540de89e9fe90efdfc6973a4f [headlabel="3", labeldistance=1.5 headhref="dir_000003_000000.html"];
-}

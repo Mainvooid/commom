@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespacecommon.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +84,11 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">命名空间</a> &#124;
 <a href="#nested-classes">类</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
 <a href="#func-members">函数</a> &#124;
 <a href="#var-members">变量</a>  </div>
   <div class="headertitle">
@@ -79,9 +104,13 @@ $(function() {
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecommon_1_1cuda"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1cuda.html">cuda</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacecommon_1_1debuglog"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1debuglog.html">debuglog</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecommon_1_1opencl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1opencl.html">opencl</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecommon_1_1opencv"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1opencv.html">opencv</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacecommon_1_1windows"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1windows.html">windows</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -97,1016 +126,187 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon_1_1ttype__t_3_01wchar__t_00_01_t_a_00_01_t_w_01_4.html">ttype_t&lt; wchar_t, TA, TW &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:af7659de5ece427c413cf7194eafe087d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087d">level_e</a> { <br />
+&#160;&#160;<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087daa30aac70d54371896a4eb7ad8fc7f791">Trace</a> = 0, 
+<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087da290da19e8dcfeb5b77677a84bb9b3191">Debug</a> = 1, 
+<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087dac431cf9eef2451c1ff0d96b5b39a5016">Info</a> = 2, 
+<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087da1f2276f4dbd4116510b264490c694ac2">Warn</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087da29ce7695cc6775f3e6356cee3d13625f">Error</a> = 4, 
+<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087da621eabfdbc10816e990a4c0052a1611b">Fatal</a> = 5, 
+<a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087da473000b70bf190476856d3abc59a0c2c">Off</a> = 6
+<br />
+ }</td></tr>
+<tr class="separator:af7659de5ece427c413cf7194eafe087d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:a3ecd3e10fa910659d012af40ab3327f1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a3ecd3e10fa910659d012af40ab3327f1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a3ecd3e10fa910659d012af40ab3327f1">zeroset</a> (T &amp;p, size_t length)</td></tr>
-<tr class="memdesc:a3ecd3e10fa910659d012af40ab3327f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">memset 0  <a href="#a3ecd3e10fa910659d012af40ab3327f1">更多...</a><br /></td></tr>
-<tr class="separator:a3ecd3e10fa910659d012af40ab3327f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a5751ea38b43635ac0e928238c2790b"><td class="memTemplParams" colspan="2">template&lt;unsigned N, typename T &gt; </td></tr>
-<tr class="memitem:a5a5751ea38b43635ac0e928238c2790b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a5a5751ea38b43635ac0e928238c2790b">zeroset</a> (T(&amp;p)[N])</td></tr>
-<tr class="separator:a5a5751ea38b43635ac0e928238c2790b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9e098764154b450eb76ec793a59d4b8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aa9e098764154b450eb76ec793a59d4b8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aa9e098764154b450eb76ec793a59d4b8">wzeroset</a> (T &amp;p, size_t length)</td></tr>
-<tr class="memdesc:aa9e098764154b450eb76ec793a59d4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">wmemset 0  <a href="#aa9e098764154b450eb76ec793a59d4b8">更多...</a><br /></td></tr>
-<tr class="separator:aa9e098764154b450eb76ec793a59d4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac12cc0e23b76c44ce40ca8b93ae1cae4"><td class="memTemplParams" colspan="2">template&lt;unsigned N, typename T &gt; </td></tr>
-<tr class="memitem:ac12cc0e23b76c44ce40ca8b93ae1cae4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ac12cc0e23b76c44ce40ca8b93ae1cae4">wzeroset</a> (T(&amp;p)[N])</td></tr>
-<tr class="separator:ac12cc0e23b76c44ce40ca8b93ae1cae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5837dba715596e3fa99bf4905e327469"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a5837dba715596e3fa99bf4905e327469"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a5837dba715596e3fa99bf4905e327469">free_s</a> (T &amp;p)</td></tr>
-<tr class="memdesc:a5837dba715596e3fa99bf4905e327469"><td class="mdescLeft">&#160;</td><td class="mdescRight">free_s 可接受不定长参数  <a href="#a5837dba715596e3fa99bf4905e327469">更多...</a><br /></td></tr>
-<tr class="separator:a5837dba715596e3fa99bf4905e327469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a7d8c6faa1713f2be3d4e53d8ccb22e7f">free_s</a> (T &amp;p, Args &amp;... args)</td></tr>
-<tr class="memdesc:a7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">free_s 接受不定长参数  <a href="#a7d8c6faa1713f2be3d4e53d8ccb22e7f">更多...</a><br /></td></tr>
-<tr class="separator:a7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b67f41476e727f550a6908972fabc68"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a5b67f41476e727f550a6908972fabc68"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a5b67f41476e727f550a6908972fabc68">delete_s</a> (T &amp;p)</td></tr>
-<tr class="memdesc:a5b67f41476e727f550a6908972fabc68"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete_s 可接受不定长参数  <a href="#a5b67f41476e727f550a6908972fabc68">更多...</a><br /></td></tr>
-<tr class="separator:a5b67f41476e727f550a6908972fabc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17109b3191e0cd1afb7088f62f2cde4e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a17109b3191e0cd1afb7088f62f2cde4e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a17109b3191e0cd1afb7088f62f2cde4e">delete_s</a> (T &amp;p, Args &amp;... args)</td></tr>
-<tr class="memdesc:a17109b3191e0cd1afb7088f62f2cde4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete_s 接受不定长参数  <a href="#a17109b3191e0cd1afb7088f62f2cde4e">更多...</a><br /></td></tr>
-<tr class="separator:a17109b3191e0cd1afb7088f62f2cde4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8012fda3b5935aba0925770f6699dd0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac8012fda3b5935aba0925770f6699dd0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ac8012fda3b5935aba0925770f6699dd0">deleteA_s</a> (T &amp;p)</td></tr>
-<tr class="memdesc:ac8012fda3b5935aba0925770f6699dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete[]_s 可接受不定长参数  <a href="#ac8012fda3b5935aba0925770f6699dd0">更多...</a><br /></td></tr>
-<tr class="separator:ac8012fda3b5935aba0925770f6699dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe3cb2e8b725c7a57799cdc7d7272521"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:abe3cb2e8b725c7a57799cdc7d7272521"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#abe3cb2e8b725c7a57799cdc7d7272521">deleteA_s</a> (T &amp;p, Args &amp;... args)</td></tr>
-<tr class="memdesc:abe3cb2e8b725c7a57799cdc7d7272521"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete[]_s 接受不定长参数  <a href="#abe3cb2e8b725c7a57799cdc7d7272521">更多...</a><br /></td></tr>
-<tr class="separator:abe3cb2e8b725c7a57799cdc7d7272521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a685b6fc1fae932b41f3aa07e368381f7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a685b6fc1fae932b41f3aa07e368381f7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a685b6fc1fae932b41f3aa07e368381f7">Release_s</a> (T &amp;p)</td></tr>
-<tr class="memdesc:a685b6fc1fae932b41f3aa07e368381f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release_s 可接受不定长参数  <a href="#a685b6fc1fae932b41f3aa07e368381f7">更多...</a><br /></td></tr>
-<tr class="separator:a685b6fc1fae932b41f3aa07e368381f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fa66be751c730ef3af95c3753a13f3b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a7fa66be751c730ef3af95c3753a13f3b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a7fa66be751c730ef3af95c3753a13f3b">Release_s</a> (T &amp;p, Args &amp;... args)</td></tr>
-<tr class="memdesc:a7fa66be751c730ef3af95c3753a13f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release_s 接受不定长参数  <a href="#a7fa66be751c730ef3af95c3753a13f3b">更多...</a><br /></td></tr>
-<tr class="separator:a7fa66be751c730ef3af95c3753a13f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace3531600b1e8a35a6127a185df62e07"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ace3531600b1e8a35a6127a185df62e07"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ace3531600b1e8a35a6127a185df62e07">release_s</a> (T &amp;p)</td></tr>
-<tr class="memdesc:ace3531600b1e8a35a6127a185df62e07"><td class="mdescLeft">&#160;</td><td class="mdescRight">release_s 可接受不定长参数  <a href="#ace3531600b1e8a35a6127a185df62e07">更多...</a><br /></td></tr>
-<tr class="separator:ace3531600b1e8a35a6127a185df62e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac107919603d014eed97ec2df144f971e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:ac107919603d014eed97ec2df144f971e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ac107919603d014eed97ec2df144f971e">release_s</a> (T &amp;p, Args &amp;... args)</td></tr>
-<tr class="memdesc:ac107919603d014eed97ec2df144f971e"><td class="mdescLeft">&#160;</td><td class="mdescRight">release_s 接受不定长参数  <a href="#ac107919603d014eed97ec2df144f971e">更多...</a><br /></td></tr>
-<tr class="separator:ac107919603d014eed97ec2df144f971e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38c54994e92e942dac88fc14499baa7c"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
-<tr class="memitem:a38c54994e92e942dac88fc14499baa7c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; char, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a38c54994e92e942dac88fc14499baa7c">tvalue</a> (char *, TA a, TW)</td></tr>
-<tr class="separator:a38c54994e92e942dac88fc14499baa7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c7dfceac3f13338273e88af9d9f846f"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
-<tr class="memitem:a2c7dfceac3f13338273e88af9d9f846f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; wchar_t, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a2c7dfceac3f13338273e88af9d9f846f">tvalue</a> (wchar_t *, TA, TW w)</td></tr>
-<tr class="separator:a2c7dfceac3f13338273e88af9d9f846f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f2c640271a8f3f9e00871b374f0a4e3"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
-<tr class="memitem:a6f2c640271a8f3f9e00871b374f0a4e3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; std::string, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a6f2c640271a8f3f9e00871b374f0a4e3">tvalue</a> (std::string *, TA a, TW)</td></tr>
-<tr class="separator:a6f2c640271a8f3f9e00871b374f0a4e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb535610a998c6e8cdb4fbc7d4566cad"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
-<tr class="memitem:adb535610a998c6e8cdb4fbc7d4566cad"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; std::wstring, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#adb535610a998c6e8cdb4fbc7d4566cad">tvalue</a> (std::wstring *, TA, TW w)</td></tr>
-<tr class="separator:adb535610a998c6e8cdb4fbc7d4566cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d44589880cba75097dba4fe17f9f96"><td class="memTemplParams" colspan="2">template&lt;typename CS , typename TA , typename TW &gt; </td></tr>
-<tr class="memitem:a76d44589880cba75097dba4fe17f9f96"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; CS, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a76d44589880cba75097dba4fe17f9f96">tvalue</a> (TA a, TW w)</td></tr>
-<tr class="separator:a76d44589880cba75097dba4fe17f9f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a493a31fc80db78b4792c6c00ccde452e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a493a31fc80db78b4792c6c00ccde452e"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a493a31fc80db78b4792c6c00ccde452e">cslen</a> (const T *str)</td></tr>
-<tr class="separator:a493a31fc80db78b4792c6c00ccde452e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada99d5b660332656cca9fde49ebb72ff"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
-<tr class="memitem:ada99d5b660332656cca9fde49ebb72ff"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ada99d5b660332656cca9fde49ebb72ff">getFunction</a> (std::function&lt; R(FArgs...)&gt; Fn)</td></tr>
-<tr class="memdesc:ada99d5b660332656cca9fde49ebb72ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取std::function对象  <a href="#ada99d5b660332656cca9fde49ebb72ff">更多...</a><br /></td></tr>
-<tr class="separator:ada99d5b660332656cca9fde49ebb72ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
-<tr class="memitem:aa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aa3da88d9740f493c2f2d85ea984e55e2">getFunction</a> (R(*Fn)(FArgs...))</td></tr>
-<tr class="separator:aa3da88d9740f493c2f2d85ea984e55e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac71ae17c99986a3f7b07e578b324880e"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
-<tr class="memitem:ac71ae17c99986a3f7b07e578b324880e"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ac71ae17c99986a3f7b07e578b324880e">getFunction</a> (R(__stdcall *Fn)(FArgs...))</td></tr>
-<tr class="separator:ac71ae17c99986a3f7b07e578b324880e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58689444787325d87c9c0b1af3b842b6"><td class="memTemplParams" colspan="2">template&lt;typename char_t , typename TI &gt; </td></tr>
-<tr class="memitem:a58689444787325d87c9c0b1af3b842b6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a58689444787325d87c9c0b1af3b842b6">convert_to_string</a> (const TI &amp;arg)</td></tr>
-<tr class="separator:a58689444787325d87c9c0b1af3b842b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab178b5840a8ea5d298332bb942951c0f"><td class="memTemplParams" colspan="2">template&lt;typename TO , typename TI &gt; </td></tr>
-<tr class="memitem:ab178b5840a8ea5d298332bb942951c0f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ab178b5840a8ea5d298332bb942951c0f">convert_from_string</a> (const TI &amp;arg) noexcept(false)</td></tr>
-<tr class="separator:ab178b5840a8ea5d298332bb942951c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1206320bdec9633462ac1cc9a3733d93"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a1206320bdec9633462ac1cc9a3733d93"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a1206320bdec9633462ac1cc9a3733d93">fillDir</a> (const T *dir, const T *separator=<a class="el" href="namespacecommon.html#a38c54994e92e942dac88fc14499baa7c">tvalue</a>&lt; T &gt;(&quot;\\&quot;, L&quot;\\&quot;))</td></tr>
-<tr class="memdesc:a1206320bdec9633462ac1cc9a3733d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">目录路径检查,统一分隔符且补全末尾分隔符  <a href="#a1206320bdec9633462ac1cc9a3733d93">更多...</a><br /></td></tr>
-<tr class="separator:a1206320bdec9633462ac1cc9a3733d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memTemplParams" colspan="2">template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... FArgs, typename ... Args&gt; </td></tr>
-<tr class="memitem:abedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#abedbb4ac121d9fc5d8c9b042a23b5a72">getFnDuration</a> (std::function&lt; R(FArgs...)&gt; Fn, Args &amp;... args)</td></tr>
-<tr class="memdesc:abedbb4ac121d9fc5d8c9b042a23b5a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数计时(默认std::chrono::milliseconds)  <a href="#abedbb4ac121d9fc5d8c9b042a23b5a72">更多...</a><br /></td></tr>
-<tr class="separator:abedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf48b2783ccbbfb23ebaddaf1205730"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classcommon_1_1debuglog_1_1logger.html">debuglog::logger</a>&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aedf48b2783ccbbfb23ebaddaf1205730">g_logger</a> (new <a class="el" href="classcommon_1_1debuglog_1_1logger.html">debuglog::logger</a>&lt;&gt;(_T(&quot;G&quot;), level_e::Trace))</td></tr>
+<tr class="separator:aedf48b2783ccbbfb23ebaddaf1205730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4cc51b0e6d08c559cd26de638d8eab7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac4cc51b0e6d08c559cd26de638d8eab7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ac4cc51b0e6d08c559cd26de638d8eab7">LOGT</a> (T msg)</td></tr>
+<tr class="separator:ac4cc51b0e6d08c559cd26de638d8eab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc07454090c54d9982384ce3f601cf3b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afc07454090c54d9982384ce3f601cf3b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#afc07454090c54d9982384ce3f601cf3b">LOGD</a> (T msg)</td></tr>
+<tr class="separator:afc07454090c54d9982384ce3f601cf3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec44c00c58db8bcf4272710c0f9cfb1b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aec44c00c58db8bcf4272710c0f9cfb1b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aec44c00c58db8bcf4272710c0f9cfb1b">LOGI</a> (T msg)</td></tr>
+<tr class="separator:aec44c00c58db8bcf4272710c0f9cfb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8ff200b7562ec77142e670a3931164"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aaa8ff200b7562ec77142e670a3931164"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aaa8ff200b7562ec77142e670a3931164">LOGW</a> (T msg)</td></tr>
+<tr class="separator:aaa8ff200b7562ec77142e670a3931164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a15aacc3ad3bf0d96a44e79a58411c9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a9a15aacc3ad3bf0d96a44e79a58411c9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a9a15aacc3ad3bf0d96a44e79a58411c9">LOGE</a> (T msg)</td></tr>
+<tr class="separator:a9a15aacc3ad3bf0d96a44e79a58411c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba793831ed514e963834f06ee5e6425"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:acba793831ed514e963834f06ee5e6425"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#acba793831ed514e963834f06ee5e6425">LOGF</a> (T msg)</td></tr>
+<tr class="separator:acba793831ed514e963834f06ee5e6425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd6944bba50f34dcaaa1c39ee2bdb6cb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abd6944bba50f34dcaaa1c39ee2bdb6cb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#abd6944bba50f34dcaaa1c39ee2bdb6cb">LOGT</a> (T msg, const char *_func, const char *_file, const int _line)</td></tr>
+<tr class="separator:abd6944bba50f34dcaaa1c39ee2bdb6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18d7c4b81b8d576ab4f316d421fb862f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a18d7c4b81b8d576ab4f316d421fb862f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a18d7c4b81b8d576ab4f316d421fb862f">LOGD</a> (T msg, const char *_func, const char *_file, const int _line)</td></tr>
+<tr class="separator:a18d7c4b81b8d576ab4f316d421fb862f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef57a7e5e41368c58a6861d6d1e08b08"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aef57a7e5e41368c58a6861d6d1e08b08"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aef57a7e5e41368c58a6861d6d1e08b08">LOGI</a> (T msg, const char *_func, const char *_file, const int _line)</td></tr>
+<tr class="separator:aef57a7e5e41368c58a6861d6d1e08b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab042cecf620f30c25019a4ea52a4eb51"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab042cecf620f30c25019a4ea52a4eb51"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ab042cecf620f30c25019a4ea52a4eb51">LOGW</a> (T msg, const char *_func, const char *_file, const int _line)</td></tr>
+<tr class="separator:ab042cecf620f30c25019a4ea52a4eb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0f85256014da074cced73ce46a981d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abc0f85256014da074cced73ce46a981d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#abc0f85256014da074cced73ce46a981d">LOGE</a> (T msg, const char *_func, const char *_file, const int _line)</td></tr>
+<tr class="separator:abc0f85256014da074cced73ce46a981d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15097d1431c2db906433da2109745468"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a15097d1431c2db906433da2109745468"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a15097d1431c2db906433da2109745468">LOGF</a> (T msg, const char *_func, const char *_file, const int _line)</td></tr>
+<tr class="separator:a15097d1431c2db906433da2109745468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ecd3e10fa910659d012af40ab3327f1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga3ecd3e10fa910659d012af40ab3327f1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga3ecd3e10fa910659d012af40ab3327f1">zeroset</a> (T &amp;p, size_t length)</td></tr>
+<tr class="memdesc:ga3ecd3e10fa910659d012af40ab3327f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">memset 0  <a href="group__common.html#ga3ecd3e10fa910659d012af40ab3327f1">更多...</a><br /></td></tr>
+<tr class="separator:ga3ecd3e10fa910659d012af40ab3327f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a5751ea38b43635ac0e928238c2790b"><td class="memTemplParams" colspan="2">template&lt;unsigned N, typename T &gt; </td></tr>
+<tr class="memitem:ga5a5751ea38b43635ac0e928238c2790b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga5a5751ea38b43635ac0e928238c2790b">zeroset</a> (T(&amp;p)[N])</td></tr>
+<tr class="separator:ga5a5751ea38b43635ac0e928238c2790b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9e098764154b450eb76ec793a59d4b8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gaa9e098764154b450eb76ec793a59d4b8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gaa9e098764154b450eb76ec793a59d4b8">wzeroset</a> (T &amp;p, size_t length)</td></tr>
+<tr class="memdesc:gaa9e098764154b450eb76ec793a59d4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">wmemset 0  <a href="group__common.html#gaa9e098764154b450eb76ec793a59d4b8">更多...</a><br /></td></tr>
+<tr class="separator:gaa9e098764154b450eb76ec793a59d4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac12cc0e23b76c44ce40ca8b93ae1cae4"><td class="memTemplParams" colspan="2">template&lt;unsigned N, typename T &gt; </td></tr>
+<tr class="memitem:gac12cc0e23b76c44ce40ca8b93ae1cae4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gac12cc0e23b76c44ce40ca8b93ae1cae4">wzeroset</a> (T(&amp;p)[N])</td></tr>
+<tr class="separator:gac12cc0e23b76c44ce40ca8b93ae1cae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5837dba715596e3fa99bf4905e327469"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga5837dba715596e3fa99bf4905e327469"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga5837dba715596e3fa99bf4905e327469">free_s</a> (T &amp;p)</td></tr>
+<tr class="memdesc:ga5837dba715596e3fa99bf4905e327469"><td class="mdescLeft">&#160;</td><td class="mdescRight">free_s 可接受不定长参数  <a href="group__common.html#ga5837dba715596e3fa99bf4905e327469">更多...</a><br /></td></tr>
+<tr class="separator:ga5837dba715596e3fa99bf4905e327469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:ga7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga7d8c6faa1713f2be3d4e53d8ccb22e7f">free_s</a> (T &amp;p, Args &amp;... args)</td></tr>
+<tr class="memdesc:ga7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">free_s 接受不定长参数  <a href="group__common.html#ga7d8c6faa1713f2be3d4e53d8ccb22e7f">更多...</a><br /></td></tr>
+<tr class="separator:ga7d8c6faa1713f2be3d4e53d8ccb22e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b67f41476e727f550a6908972fabc68"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga5b67f41476e727f550a6908972fabc68"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga5b67f41476e727f550a6908972fabc68">delete_s</a> (T &amp;p)</td></tr>
+<tr class="memdesc:ga5b67f41476e727f550a6908972fabc68"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete_s 可接受不定长参数  <a href="group__common.html#ga5b67f41476e727f550a6908972fabc68">更多...</a><br /></td></tr>
+<tr class="separator:ga5b67f41476e727f550a6908972fabc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17109b3191e0cd1afb7088f62f2cde4e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:ga17109b3191e0cd1afb7088f62f2cde4e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga17109b3191e0cd1afb7088f62f2cde4e">delete_s</a> (T &amp;p, Args &amp;... args)</td></tr>
+<tr class="memdesc:ga17109b3191e0cd1afb7088f62f2cde4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete_s 接受不定长参数  <a href="group__common.html#ga17109b3191e0cd1afb7088f62f2cde4e">更多...</a><br /></td></tr>
+<tr class="separator:ga17109b3191e0cd1afb7088f62f2cde4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac8012fda3b5935aba0925770f6699dd0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gac8012fda3b5935aba0925770f6699dd0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gac8012fda3b5935aba0925770f6699dd0">deleteA_s</a> (T &amp;p)</td></tr>
+<tr class="memdesc:gac8012fda3b5935aba0925770f6699dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete[]_s 可接受不定长参数  <a href="group__common.html#gac8012fda3b5935aba0925770f6699dd0">更多...</a><br /></td></tr>
+<tr class="separator:gac8012fda3b5935aba0925770f6699dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe3cb2e8b725c7a57799cdc7d7272521"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:gabe3cb2e8b725c7a57799cdc7d7272521"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gabe3cb2e8b725c7a57799cdc7d7272521">deleteA_s</a> (T &amp;p, Args &amp;... args)</td></tr>
+<tr class="memdesc:gabe3cb2e8b725c7a57799cdc7d7272521"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete[]_s 接受不定长参数  <a href="group__common.html#gabe3cb2e8b725c7a57799cdc7d7272521">更多...</a><br /></td></tr>
+<tr class="separator:gabe3cb2e8b725c7a57799cdc7d7272521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga685b6fc1fae932b41f3aa07e368381f7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga685b6fc1fae932b41f3aa07e368381f7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga685b6fc1fae932b41f3aa07e368381f7">Release_s</a> (T &amp;p)</td></tr>
+<tr class="memdesc:ga685b6fc1fae932b41f3aa07e368381f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release_s 可接受不定长参数  <a href="group__common.html#ga685b6fc1fae932b41f3aa07e368381f7">更多...</a><br /></td></tr>
+<tr class="separator:ga685b6fc1fae932b41f3aa07e368381f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7fa66be751c730ef3af95c3753a13f3b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:ga7fa66be751c730ef3af95c3753a13f3b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga7fa66be751c730ef3af95c3753a13f3b">Release_s</a> (T &amp;p, Args &amp;... args)</td></tr>
+<tr class="memdesc:ga7fa66be751c730ef3af95c3753a13f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release_s 接受不定长参数  <a href="group__common.html#ga7fa66be751c730ef3af95c3753a13f3b">更多...</a><br /></td></tr>
+<tr class="separator:ga7fa66be751c730ef3af95c3753a13f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gace3531600b1e8a35a6127a185df62e07"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gace3531600b1e8a35a6127a185df62e07"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gace3531600b1e8a35a6127a185df62e07">release_s</a> (T &amp;p)</td></tr>
+<tr class="memdesc:gace3531600b1e8a35a6127a185df62e07"><td class="mdescLeft">&#160;</td><td class="mdescRight">release_s 可接受不定长参数  <a href="group__common.html#gace3531600b1e8a35a6127a185df62e07">更多...</a><br /></td></tr>
+<tr class="separator:gace3531600b1e8a35a6127a185df62e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac107919603d014eed97ec2df144f971e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:gac107919603d014eed97ec2df144f971e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gac107919603d014eed97ec2df144f971e">release_s</a> (T &amp;p, Args &amp;... args)</td></tr>
+<tr class="memdesc:gac107919603d014eed97ec2df144f971e"><td class="mdescLeft">&#160;</td><td class="mdescRight">release_s 接受不定长参数  <a href="group__common.html#gac107919603d014eed97ec2df144f971e">更多...</a><br /></td></tr>
+<tr class="separator:gac107919603d014eed97ec2df144f971e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga38c54994e92e942dac88fc14499baa7c"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
+<tr class="memitem:ga38c54994e92e942dac88fc14499baa7c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; char, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga38c54994e92e942dac88fc14499baa7c">tvalue</a> (char *, TA a, TW)</td></tr>
+<tr class="separator:ga38c54994e92e942dac88fc14499baa7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c7dfceac3f13338273e88af9d9f846f"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
+<tr class="memitem:ga2c7dfceac3f13338273e88af9d9f846f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; wchar_t, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga2c7dfceac3f13338273e88af9d9f846f">tvalue</a> (wchar_t *, TA, TW w)</td></tr>
+<tr class="separator:ga2c7dfceac3f13338273e88af9d9f846f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f2c640271a8f3f9e00871b374f0a4e3"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
+<tr class="memitem:ga6f2c640271a8f3f9e00871b374f0a4e3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; std::string, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga6f2c640271a8f3f9e00871b374f0a4e3">tvalue</a> (std::string *, TA a, TW)</td></tr>
+<tr class="separator:ga6f2c640271a8f3f9e00871b374f0a4e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb535610a998c6e8cdb4fbc7d4566cad"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TW &gt; </td></tr>
+<tr class="memitem:gadb535610a998c6e8cdb4fbc7d4566cad"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; std::wstring, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gadb535610a998c6e8cdb4fbc7d4566cad">tvalue</a> (std::wstring *, TA, TW w)</td></tr>
+<tr class="separator:gadb535610a998c6e8cdb4fbc7d4566cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76d44589880cba75097dba4fe17f9f96"><td class="memTemplParams" colspan="2">template&lt;typename CS , typename TA , typename TW &gt; </td></tr>
+<tr class="memitem:ga76d44589880cba75097dba4fe17f9f96"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt; CS, TA, TW &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga76d44589880cba75097dba4fe17f9f96">tvalue</a> (TA a, TW w)</td></tr>
+<tr class="separator:ga76d44589880cba75097dba4fe17f9f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga493a31fc80db78b4792c6c00ccde452e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga493a31fc80db78b4792c6c00ccde452e"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga493a31fc80db78b4792c6c00ccde452e">cslen</a> (const T *str)</td></tr>
+<tr class="separator:ga493a31fc80db78b4792c6c00ccde452e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada99d5b660332656cca9fde49ebb72ff"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
+<tr class="memitem:gada99d5b660332656cca9fde49ebb72ff"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gada99d5b660332656cca9fde49ebb72ff">getFunction</a> (std::function&lt; R(FArgs...)&gt; Fn)</td></tr>
+<tr class="memdesc:gada99d5b660332656cca9fde49ebb72ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取std::function对象  <a href="group__common.html#gada99d5b660332656cca9fde49ebb72ff">更多...</a><br /></td></tr>
+<tr class="separator:gada99d5b660332656cca9fde49ebb72ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
+<tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2">getFunction</a> (R(*Fn)(FArgs...))</td></tr>
+<tr class="separator:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplParams" colspan="2">template&lt;typename char_t , typename TI &gt; </td></tr>
+<tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">convert_to_string</a> (const TI &amp;arg)</td></tr>
+<tr class="separator:ga58689444787325d87c9c0b1af3b842b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplParams" colspan="2">template&lt;typename TO , typename TI &gt; </td></tr>
+<tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">convert_from_string</a> (const TI &amp;arg) noexcept(false)</td></tr>
+<tr class="separator:gab178b5840a8ea5d298332bb942951c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga1206320bdec9633462ac1cc9a3733d93">fillDir</a> (const T *dir, const T *separator=<a class="el" href="group__common.html#ga38c54994e92e942dac88fc14499baa7c">tvalue</a>&lt; T &gt;(&quot;\\&quot;, L&quot;\\&quot;))</td></tr>
+<tr class="memdesc:ga1206320bdec9633462ac1cc9a3733d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">目录路径检查,统一分隔符且补全末尾分隔符  <a href="group__common.html#ga1206320bdec9633462ac1cc9a3733d93">更多...</a><br /></td></tr>
+<tr class="separator:ga1206320bdec9633462ac1cc9a3733d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memTemplParams" colspan="2">template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... FArgs, typename ... Args&gt; </td></tr>
+<tr class="memitem:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">getFnDuration</a> (std::function&lt; R(FArgs...)&gt; Fn, Args &amp;... args)</td></tr>
+<tr class="memdesc:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数计时(默认std::chrono::milliseconds)  <a href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">更多...</a><br /></td></tr>
+<tr class="separator:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>
-<tr class="memitem:a50ee1920b6820e4b940799334dc0c327"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a50ee1920b6820e4b940799334dc0c327">_TAG</a> = &quot;common&quot;</td></tr>
-<tr class="separator:a50ee1920b6820e4b940799334dc0c327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50ee1920b6820e4b940799334dc0c327"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__common.html#ga50ee1920b6820e4b940799334dc0c327">_TAG</a> = &quot;common&quot;</td></tr>
+<tr class="separator:ga50ee1920b6820e4b940799334dc0c327"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="af7659de5ece427c413cf7194eafe087d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7659de5ece427c413cf7194eafe087d">&#9670;&nbsp;</a></span>level_e</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacecommon.html#af7659de5ece427c413cf7194eafe087d">common::level_e</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087daa30aac70d54371896a4eb7ad8fc7f791"></a>Trace&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087da290da19e8dcfeb5b77677a84bb9b3191"></a>Debug&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087dac431cf9eef2451c1ff0d96b5b39a5016"></a>Info&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087da1f2276f4dbd4116510b264490c694ac2"></a>Warn&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087da29ce7695cc6775f3e6356cee3d13625f"></a>Error&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087da621eabfdbc10816e990a4c0052a1611b"></a>Fatal&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7659de5ece427c413cf7194eafe087da473000b70bf190476856d3abc59a0c2c"></a>Off&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">函数说明</h2>
-<a id="ab178b5840a8ea5d298332bb942951c0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab178b5840a8ea5d298332bb942951c0f">&#9670;&nbsp;</a></span>convert_from_string()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TO , typename TI &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto common::convert_from_string </td>
-          <td>(</td>
-          <td class="paramtype">const TI &amp;&#160;</td>
-          <td class="paramname"><em>arg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a58689444787325d87c9c0b1af3b842b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58689444787325d87c9c0b1af3b842b6">&#9670;&nbsp;</a></span>convert_to_string()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename char_t , typename TI &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">auto common::convert_to_string </td>
-          <td>(</td>
-          <td class="paramtype">const TI &amp;&#160;</td>
-          <td class="paramname"><em>arg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a493a31fc80db78b4792c6c00ccde452e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a493a31fc80db78b4792c6c00ccde452e">&#9670;&nbsp;</a></span>cslen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t common::cslen </td>
-          <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5b67f41476e727f550a6908972fabc68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b67f41476e727f550a6908972fabc68">&#9670;&nbsp;</a></span>delete_s() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::delete_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>delete_s 可接受不定长参数 </p>
-
-</div>
-</div>
-<a id="a17109b3191e0cd1afb7088f62f2cde4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17109b3191e0cd1afb7088f62f2cde4e">&#9670;&nbsp;</a></span>delete_s() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::delete_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>delete_s 接受不定长参数 </p>
-
-</div>
-</div>
-<a id="ac8012fda3b5935aba0925770f6699dd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8012fda3b5935aba0925770f6699dd0">&#9670;&nbsp;</a></span>deleteA_s() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::deleteA_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>delete[]_s 可接受不定长参数 </p>
-
-</div>
-</div>
-<a id="abe3cb2e8b725c7a57799cdc7d7272521"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe3cb2e8b725c7a57799cdc7d7272521">&#9670;&nbsp;</a></span>deleteA_s() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::deleteA_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>delete[]_s 接受不定长参数 </p>
-
-</div>
-</div>
-<a id="a1206320bdec9633462ac1cc9a3733d93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1206320bdec9633462ac1cc9a3733d93">&#9670;&nbsp;</a></span>fillDir()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">auto common::fillDir </td>
-          <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const T *&#160;</td>
-          <td class="paramname"><em>separator</em> = <code><a class="el" href="namespacecommon.html#a38c54994e92e942dac88fc14499baa7c">tvalue</a>&lt;T&gt;(&quot;\\&quot;,&#160;L&quot;\\&quot;)</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>目录路径检查,统一分隔符且补全末尾分隔符 </p>
-
-</div>
-</div>
-<a id="a5837dba715596e3fa99bf4905e327469"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5837dba715596e3fa99bf4905e327469">&#9670;&nbsp;</a></span>free_s() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::free_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>free_s 可接受不定长参数 </p>
-
-</div>
-</div>
-<a id="a7d8c6faa1713f2be3d4e53d8ccb22e7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d8c6faa1713f2be3d4e53d8ccb22e7f">&#9670;&nbsp;</a></span>free_s() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::free_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>free_s 接受不定长参数 </p>
-
-</div>
-</div>
-<a id="abedbb4ac121d9fc5d8c9b042a23b5a72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abedbb4ac121d9fc5d8c9b042a23b5a72">&#9670;&nbsp;</a></span>getFnDuration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... FArgs, typename ... Args&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">auto common::getFnDuration </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; R(FArgs...)&gt;&#160;</td>
-          <td class="paramname"><em>Fn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>函数计时(默认std::chrono::milliseconds) </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Fn</td><td>函数对象,可用匿名函数包装代码片段来计时 </td></tr>
-    <tr><td class="paramname">args</td><td>函数参数 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>返回</dt><dd>相应单位的时间计数 </dd></dl>
-
-</div>
-</div>
-<a id="ada99d5b660332656cca9fde49ebb72ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada99d5b660332656cca9fde49ebb72ff">&#9670;&nbsp;</a></span>getFunction() <span class="overload">[1/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R , typename ... FArgs&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::function&lt;R(FArgs...)&gt; common::getFunction </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; R(FArgs...)&gt;&#160;</td>
-          <td class="paramname"><em>Fn</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>获取std::function对象 </p>
-
-</div>
-</div>
-<a id="aa3da88d9740f493c2f2d85ea984e55e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3da88d9740f493c2f2d85ea984e55e2">&#9670;&nbsp;</a></span>getFunction() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R , typename ... FArgs&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::function&lt;R(FArgs...)&gt; common::getFunction </td>
-          <td>(</td>
-          <td class="paramtype">R(*)(FArgs...)&#160;</td>
-          <td class="paramname"><em>Fn</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac71ae17c99986a3f7b07e578b324880e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac71ae17c99986a3f7b07e578b324880e">&#9670;&nbsp;</a></span>getFunction() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R , typename ... FArgs&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::function&lt;R(FArgs...)&gt; common::getFunction </td>
-          <td>(</td>
-          <td class="paramtype">R(__stdcall *Fn)(FArgs...)&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a685b6fc1fae932b41f3aa07e368381f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a685b6fc1fae932b41f3aa07e368381f7">&#9670;&nbsp;</a></span>Release_s() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::Release_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Release_s 可接受不定长参数 </p>
-
-</div>
-</div>
-<a id="a7fa66be751c730ef3af95c3753a13f3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fa66be751c730ef3af95c3753a13f3b">&#9670;&nbsp;</a></span>Release_s() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::Release_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Release_s 接受不定长参数 </p>
-
-</div>
-</div>
-<a id="ace3531600b1e8a35a6127a185df62e07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace3531600b1e8a35a6127a185df62e07">&#9670;&nbsp;</a></span>release_s() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::release_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>release_s 可接受不定长参数 </p>
-
-</div>
-</div>
-<a id="ac107919603d014eed97ec2df144f971e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac107919603d014eed97ec2df144f971e">&#9670;&nbsp;</a></span>release_s() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::release_s </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>release_s 接受不定长参数 </p>
-
-</div>
-</div>
-<a id="a38c54994e92e942dac88fc14499baa7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38c54994e92e942dac88fc14499baa7c">&#9670;&nbsp;</a></span>tvalue() <span class="overload">[1/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TA , typename TW &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt;char, TA, TW&gt;::type common::tvalue </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TA&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TW&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2c7dfceac3f13338273e88af9d9f846f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c7dfceac3f13338273e88af9d9f846f">&#9670;&nbsp;</a></span>tvalue() <span class="overload">[2/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TA , typename TW &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt;wchar_t, TA, TW&gt;::type common::tvalue </td>
-          <td>(</td>
-          <td class="paramtype">wchar_t *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TA&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TW&#160;</td>
-          <td class="paramname"><em>w</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6f2c640271a8f3f9e00871b374f0a4e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f2c640271a8f3f9e00871b374f0a4e3">&#9670;&nbsp;</a></span>tvalue() <span class="overload">[3/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TA , typename TW &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt;std::string, TA, TW&gt;::type common::tvalue </td>
-          <td>(</td>
-          <td class="paramtype">std::string *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TA&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TW&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adb535610a998c6e8cdb4fbc7d4566cad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb535610a998c6e8cdb4fbc7d4566cad">&#9670;&nbsp;</a></span>tvalue() <span class="overload">[4/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename TA , typename TW &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt;std::wstring, TA, TW&gt;::type common::tvalue </td>
-          <td>(</td>
-          <td class="paramtype">std::wstring *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TA&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TW&#160;</td>
-          <td class="paramname"><em>w</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a76d44589880cba75097dba4fe17f9f96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76d44589880cba75097dba4fe17f9f96">&#9670;&nbsp;</a></span>tvalue() <span class="overload">[5/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CS , typename TA , typename TW &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structcommon_1_1ttype__t.html">ttype_t</a>&lt;CS, TA, TW&gt;::type common::tvalue </td>
-          <td>(</td>
-          <td class="paramtype">TA&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TW&#160;</td>
-          <td class="paramname"><em>w</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa9e098764154b450eb76ec793a59d4b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9e098764154b450eb76ec793a59d4b8">&#9670;&nbsp;</a></span>wzeroset() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::wzeroset </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>wmemset 0 </p>
-
-</div>
-</div>
-<a id="ac12cc0e23b76c44ce40ca8b93ae1cae4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac12cc0e23b76c44ce40ca8b93ae1cae4">&#9670;&nbsp;</a></span>wzeroset() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;unsigned N, typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::wzeroset </td>
-          <td>(</td>
-          <td class="paramtype">T(&amp;)&#160;</td>
-          <td class="paramname"><em>p</em>[N]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3ecd3e10fa910659d012af40ab3327f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ecd3e10fa910659d012af40ab3327f1">&#9670;&nbsp;</a></span>zeroset() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::zeroset </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>memset 0 </p>
-
-</div>
-</div>
-<a id="a5a5751ea38b43635ac0e928238c2790b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a5751ea38b43635ac0e928238c2790b">&#9670;&nbsp;</a></span>zeroset() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;unsigned N, typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::zeroset </td>
-          <td>(</td>
-          <td class="paramtype">T(&amp;)&#160;</td>
-          <td class="paramname"><em>p</em>[N]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">变量说明</h2>
-<a id="a50ee1920b6820e4b940799334dc0c327"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50ee1920b6820e4b940799334dc0c327">&#9670;&nbsp;</a></span>_TAG</h2>
+<a id="aedf48b2783ccbbfb23ebaddaf1205730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedf48b2783ccbbfb23ebaddaf1205730">&#9670;&nbsp;</a></span>g_logger()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1115,7 +315,11 @@ template&lt;unsigned N, typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string common::_TAG = &quot;common&quot;</td>
+          <td class="memname">static std::unique_ptr&lt;<a class="el" href="classcommon_1_1debuglog_1_1logger.html">debuglog::logger</a>&lt;&gt; &gt; common::g_logger </td>
+          <td>(</td>
+          <td class="paramtype">new <a class="el" href="classcommon_1_1debuglog_1_1logger.html">debuglog::logger</a>&lt;&gt;&#160;</td>
+          <td class="paramname">_T(&quot;G&quot;), level_e::Trace</td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -1127,12 +331,388 @@ template&lt;unsigned N, typename T &gt; </div>
 
 </div>
 </div>
+<a id="afc07454090c54d9982384ce3f601cf3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc07454090c54d9982384ce3f601cf3b">&#9670;&nbsp;</a></span>LOGD() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGD </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18d7c4b81b8d576ab4f316d421fb862f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18d7c4b81b8d576ab4f316d421fb862f">&#9670;&nbsp;</a></span>LOGD() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGD </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a15aacc3ad3bf0d96a44e79a58411c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a15aacc3ad3bf0d96a44e79a58411c9">&#9670;&nbsp;</a></span>LOGE() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGE </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc0f85256014da074cced73ce46a981d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc0f85256014da074cced73ce46a981d">&#9670;&nbsp;</a></span>LOGE() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGE </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acba793831ed514e963834f06ee5e6425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba793831ed514e963834f06ee5e6425">&#9670;&nbsp;</a></span>LOGF() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGF </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15097d1431c2db906433da2109745468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15097d1431c2db906433da2109745468">&#9670;&nbsp;</a></span>LOGF() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGF </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec44c00c58db8bcf4272710c0f9cfb1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec44c00c58db8bcf4272710c0f9cfb1b">&#9670;&nbsp;</a></span>LOGI() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGI </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef57a7e5e41368c58a6861d6d1e08b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef57a7e5e41368c58a6861d6d1e08b08">&#9670;&nbsp;</a></span>LOGI() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGI </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4cc51b0e6d08c559cd26de638d8eab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4cc51b0e6d08c559cd26de638d8eab7">&#9670;&nbsp;</a></span>LOGT() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGT </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd6944bba50f34dcaaa1c39ee2bdb6cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd6944bba50f34dcaaa1c39ee2bdb6cb">&#9670;&nbsp;</a></span>LOGT() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGT </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa8ff200b7562ec77142e670a3931164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8ff200b7562ec77142e670a3931164">&#9670;&nbsp;</a></span>LOGW() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGW </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab042cecf620f30c25019a4ea52a4eb51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab042cecf620f30c25019a4ea52a4eb51">&#9670;&nbsp;</a></span>LOGW() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::LOGW </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者 &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacecommon.html">common</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

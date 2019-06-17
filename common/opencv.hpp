@@ -24,8 +24,16 @@
 #pragma comment(lib,"opencv_img_hash410.lib")
 #endif
 
+/**
+  @addtogroup common
+  @{
+    @defgroup opencv opencv - opencv utilities
+  @}
+*/
 namespace common {
     namespace opencv {
+        /// @addtogroup opencv
+        /// @{
         static const std::string _TAG = "opencv";
 
         /**
@@ -95,7 +103,7 @@ namespace common {
             right.getMat().copyTo(dst_rightMat);
             return img_merge;
         }
-
+        /// @}
     } // namespace opencv
 
 } // namespace common

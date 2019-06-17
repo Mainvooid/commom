@@ -250,6 +250,7 @@
     <None Include="PropertySheet.props">
       <SubType>Designer</SubType>
     </None>
+    <None Include="README.md" />
     <None Include="RuleSet.ruleset" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

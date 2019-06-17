@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['readable_5ftypename',['readable_typename',['../namespacecommon_1_1cmdline_1_1detail.html#a88f97710e094c8565e2f77719779013f',1,'common::cmdline::detail']]],
-  ['readable_5ftypename_3c_20std_3a_3astring_20_3e',['readable_typename&lt; std::string &gt;',['../namespacecommon_1_1cmdline_1_1detail.html#acb53b8052790fe7edb0ea89c61ed2690',1,'common::cmdline::detail']]],
-  ['readable_5ftypename_3c_20std_3a_3awstring_20_3e',['readable_typename&lt; std::wstring &gt;',['../namespacecommon_1_1cmdline_1_1detail.html#a442f219e07563af24baa9cd7be87cfd0',1,'common::cmdline::detail']]],
-  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['release_5fs',['Release_s',['../namespacecommon.html#a685b6fc1fae932b41f3aa07e368381f7',1,'common::Release_s(T &amp;p)'],['../namespacecommon.html#a7fa66be751c730ef3af95c3753a13f3b',1,'common::Release_s(T &amp;p, Args &amp;... args)'],['../namespacecommon.html#ace3531600b1e8a35a6127a185df62e07',1,'common::release_s(T &amp;p)'],['../namespacecommon.html#ac107919603d014eed97ec2df144f971e',1,'common::release_s(T &amp;p, Args &amp;... args)']]]
+  ['p_5fd3d11_5ftexture_5f1d',['p_d3d11_texture_1d',['../structcommon_1_1cuda_1_1shared__texture__1d__t.html#a38616215b5b9b3debc924e624d42d8bc',1,'common::cuda::shared_texture_1d_t']]],
+  ['p_5fd3d11_5ftexture_5f2d',['p_d3d11_texture_2d',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html#a9f36571dd492a358d31d7a8b1437abdf',1,'common::cuda::shared_texture_2d_t']]],
+  ['p_5fd3d11_5ftexture_5f3d',['p_d3d11_texture_3d',['../structcommon_1_1cuda_1_1shared__texture__3d__t.html#a62b13fb3b2248624c3af30970b8d64e1',1,'common::cuda::shared_texture_3d_t']]],
+  ['pitch',['pitch',['../structcommon_1_1cuda_1_1shared__texture__t.html#a624f6b7a3eabdc04db7578e5a5dd626d',1,'common::cuda::shared_texture_t']]],
+  ['precomm_2ehpp',['precomm.hpp',['../precomm_8hpp.html',1,'']]],
+  ['printplatforminfo',['printPlatformInfo',['../group__opencl.html#ga7c307c1c449e7808d1d86f18b0ce821e',1,'common::opencl']]],
+  ['procaddress',['ProcAddress',['../classcommon_1_1windows_1_1_proc_address.html',1,'common::windows']]]
 ];

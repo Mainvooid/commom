@@ -32,6 +32,7 @@ It has only been tested on Windows.
 ---
 
 ## Macro
+
 默认关闭库/宏支持
 - `HAVE_OPENCL`      //基于OpenCL 1.2
 - `HAVE_OPENCV `     //基于OpenCV 4.0 with contrib
@@ -91,6 +92,7 @@ It has only been tested on Windows.
 模块应使用命名空间`namespace{}`包含.
 
 #### HPP文件要注意的问题
+
 所有HPP文件使用宏避免重复包含.
 ```cpp
 #ifndef _COMMON_PRECOMM_HPP_
@@ -100,9 +102,6 @@ It has only been tested on Windows.
 
 HPP文件中可以使用using引用依赖,不应该使用using namespace污染命名空间.
 
-不可包含全局对象或函数(容易导致符号重定义)
-不可使用静态成员变量(可以通过获取局域静态变量)
-
 函数的重定义问题:
 - 将全局函数封装为类的静态方法
 - 通过冗余的模板参数变成模板函数
@@ -111,31 +110,76 @@ template<bool flag=false>
 ```
 - static修饰
 
-
-
 ### Doxygen文档
-- `Doxygen`风格注释
-```cpp
-/*
-*@file      文件说明
-*@brief     摘要
-*@author    作者信息
-*@param     参数说明
-*@return    返回值情况
-*@retval    返回值类型 [eg:@retval NULL 空字符串][@retval !NULL 非空字符串]
-*@note      注解
-*@attention 注意
-*@warning   警告
-*@exception 可能产生的异常描述
-*@enum      引用了某个枚举,Doxygen会在引用处生成链接
-*@var       引用了某个变量
-*@class     引用某个类 [eg: @class CTest "inc/class.h"]
-*@see       本函数参考其它的相关的函数,生成链接
-*@todo      todo注解
 
-文档注释 /// 或 /** */
-*/
+#### 注释
+
 ```
+/**
+ *  多行注释
+ */
+ 
+/**单行注释*/ 或 ///
+
+/**<同行注释 */ 或 ///< (Doxygen认为注释是修饰接下来的程序代码的)
+```
+
+#### 文件信息
+
+```
+@file      文件名
+@author    作者名
+@version   版本号
+@todo      待办事项
+@date      日期时间
+@section   章节标题 e.g. [@section LICENSE 版权许可] [@section DESCRIPTION 描述]
+```
+#### 模块信息
+
+```
+@defgroup   定义模块                         模块名(英文) 显示名    @{ 类/函数/变量/宏/... @}
+@ingroup    作为指定名的模块的子模块          模块名(英文) [显示名]
+@addtogroup 作为指定名的模块的成员            模块名(英文) [显示名]
+@name       按用途分,以便理解全局变量/宏的用途 显示名(中文)           @{ 变量/宏 @}
+```
+
+#### 函数信息
+
+```
+@brief     摘要
+@param     参数说明
+@param[in]      输入参数
+@param[out]     输出参数
+@param[in,out]  输入输出参数
+@return    返回值说明
+@retval    特定返回值说明 [eg:@retval NULL 空字符串][@retval !NULL 非空字符串]
+@exception 可能产生的异常描述
+@enum      引用了某个枚举,Doxygen会在引用处生成链接
+@var       引用了某个变量
+@class     引用某个类 [eg: @class CTest "inc/class.h"]
+@see       参考链接,函数重载的情况下,要带上参数列表以及返回值
+@todo      todo注解
+@pre       前置条件说明
+@par       [段落标题] 开创新段落,一般与示例代码联用 
+@code      示例代码开始 e.g. [code{.cpp}]
+@ endcode  示例代码结束
+```
+
+#### 提醒信息
+
+```
+@note      注解
+@attention 注意
+@warning   警告
+@bug       问题
+@def       宏定义说明
+```
+ 
+
+#### 生成
+
+文档目录下执行
+doxygen Doxyfile
 
 ### 函数
 

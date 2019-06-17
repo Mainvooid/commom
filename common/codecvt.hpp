@@ -28,11 +28,16 @@
 //TODO 使用函数模板统一接口进行直接的互转
 //std::string(utf8) std::string(ansi) std::u16string(utf16) std::u32string(utf32) std::wstring(unicode)
 
-
+/**
+  @addtogroup common
+  @{
+    @defgroup codecvt codecvt - character encoding conversion
+  @}
+*/
 namespace common {
-
     namespace codecvt {
-
+        /// @addtogroup codecvt
+        /// @{
         /**
         *@brief 本地编码转换器
         */
@@ -214,7 +219,7 @@ namespace common {
         {
             std::string result = "";
             std::wstring_convert<local_codecvt> cvt;
-            try{
+            try {
                 result = cvt.to_bytes(wstring);
             }
             catch (const std::range_error&) {
@@ -231,7 +236,7 @@ namespace common {
         {
             std::wstring result = L"";
             std::wstring_convert<local_codecvt> cvt;
-            try{
+            try {
                 result = cvt.from_bytes(ansi_string);
             }
             catch (const std::range_error&) {
@@ -263,7 +268,7 @@ namespace common {
         //std::wstring ansi_to_utf8(const std::string& ansi_string) noexcept {}
         //std::wstring utf8_to_unicode(const std::wstring& utf8_wstring) noexcept {}
         //std::wstring unicode_to_utf8(const std::wstring& unicode_wstring) noexcept {}
-
+    /// @}
     }// namespace codecvt
 
 }// namespace common

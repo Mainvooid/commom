@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['texture_5freference_2ecuh',['texture_reference.cuh',['../texture__reference_8cuh.html',1,'']]],
-  ['ttype_5ft',['ttype_t',['../structcommon_1_1ttype__t.html',1,'common']]],
-  ['ttype_5ft_3c_20char_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; char, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01char_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
-  ['ttype_5ft_3c_20std_3a_3astring_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; std::string, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01std_1_1string_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
-  ['ttype_5ft_3c_20std_3a_3awstring_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; std::wstring, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01std_1_1wstring_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
-  ['ttype_5ft_3c_20wchar_5ft_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; wchar_t, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01wchar__t_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
-  ['tvalue',['tvalue',['../namespacecommon.html#a38c54994e92e942dac88fc14499baa7c',1,'common::tvalue(char *, TA a, TW)'],['../namespacecommon.html#a2c7dfceac3f13338273e88af9d9f846f',1,'common::tvalue(wchar_t *, TA, TW w)'],['../namespacecommon.html#a6f2c640271a8f3f9e00871b374f0a4e3',1,'common::tvalue(std::string *, TA a, TW)'],['../namespacecommon.html#adb535610a998c6e8cdb4fbc7d4566cad',1,'common::tvalue(std::wstring *, TA, TW w)'],['../namespacecommon.html#a76d44589880cba75097dba4fe17f9f96',1,'common::tvalue(TA a, TW w)']]],
-  ['type',['type',['../structcommon_1_1ttype__t_3_01char_00_01_t_a_00_01_t_w_01_4.html#a73098dbfdc852045f7a96c8f07784655',1,'common::ttype_t&lt; char, TA, TW &gt;::type()'],['../structcommon_1_1ttype__t_3_01wchar__t_00_01_t_a_00_01_t_w_01_4.html#a534714af06c9342a829ded560e8c1ba0',1,'common::ttype_t&lt; wchar_t, TA, TW &gt;::type()'],['../structcommon_1_1ttype__t_3_01std_1_1string_00_01_t_a_00_01_t_w_01_4.html#a2bf5e7efe1b17c6b8063662eaca6f7f8',1,'common::ttype_t&lt; std::string, TA, TW &gt;::type()'],['../structcommon_1_1ttype__t_3_01std_1_1wstring_00_01_t_a_00_01_t_w_01_4.html#afe35b54fb1a202ba48df8377f0becf17',1,'common::ttype_t&lt; std::wstring, TA, TW &gt;::type()']]]
+  ['savedebugimage',['saveDebugImage',['../group__opencv.html#ga34c5b0ac460c2a924e6a98a3ef66724c',1,'common::opencv']]],
+  ['savetexturetofile',['saveTextureToFile',['../group__windows.html#ga47806b9488d985a6946b59d6cc241c87',1,'common::windows::saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource *pSrcTexture, const T *path, D3DX11_IMAGE_FILE_FORMAT format=D3DX11_IFF_PNG)'],['../group__windows.html#ga487f261deaede7edad19b321fa24fbf3',1,'common::windows::saveTextureToFile(IDirect3DTexture9 *pSrcTexture, const T *path)']]],
+  ['setlevel',['setLevel',['../classcommon_1_1debuglog_1_1logger.html#ae5205819269f71000ba93d3f47fd8b05',1,'common::debuglog::logger']]],
+  ['setname',['setName',['../classcommon_1_1debuglog_1_1logger.html#a24d665783141fa6497b109666f96a616',1,'common::debuglog::logger']]],
+  ['shared_5ftexture_5f1d_5ft',['shared_texture_1d_t',['../structcommon_1_1cuda_1_1shared__texture__1d__t.html',1,'common::cuda']]],
+  ['shared_5ftexture_5f2d_5ft',['shared_texture_2d_t',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html',1,'common::cuda']]],
+  ['shared_5ftexture_5f2d_5ft_3c_20uchar4_20_3e',['shared_texture_2d_t&lt; uchar4 &gt;',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html',1,'common::cuda']]],
+  ['shared_5ftexture_5f3d_5ft',['shared_texture_3d_t',['../structcommon_1_1cuda_1_1shared__texture__3d__t.html',1,'common::cuda']]],
+  ['shared_5ftexture_5ft',['shared_texture_t',['../structcommon_1_1cuda_1_1shared__texture__t.html',1,'common::cuda::shared_texture_t&lt; T &gt;'],['../structcommon_1_1cuda_1_1shared__texture__t.html#a9db918dc116823ebcc5efab1d5a5cc02',1,'common::cuda::shared_texture_t::shared_texture_t()']]],
+  ['shared_5ftexture_5ft_3c_20uchar4_20_3e',['shared_texture_t&lt; uchar4 &gt;',['../structcommon_1_1cuda_1_1shared__texture__t.html',1,'common::cuda']]]
 ];

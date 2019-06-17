@@ -25,14 +25,10 @@
 #ifdef HAVE_DIRECTX
 #include <cuda_d3d11_interop.h>
 #include <wrl/client.h>
-#include <d3d11.h>
-#include <d3dx11.h>
 #include <dxgi.h>
 #include <D3DX11async.h>
 #include <D3DCompiler.h>
 
-#pragma comment(lib,"d3d11.lib")
-#pragma comment(lib,"d3dx11.lib")
 #pragma comment(lib,"dxgi.lib")
 #pragma comment(lib,"d3dcompiler.lib")
 #pragma comment(lib,"dxerr.lib")
@@ -46,8 +42,16 @@ using namespace common::opencv;
 
 #endif // HAVE_DIRECTX
 
+/**
+  @addtogroup common
+  @{
+    @defgroup cuda cuda - cuda utilities
+  @}
+*/
 namespace common {
     namespace cuda {
+        /// @addtogroup cuda
+        /// @{
         /**
         *@brief cudaError_t检查,若失败会中断程序
         */
@@ -66,6 +70,10 @@ namespace common {
                 exit(EXIT_FAILURE);
             }
         }
+        /**
+        @def checkCudaRet
+        @brief cuda函数返回值检查,若失败会中断程序
+        */
 #define checkCudaRet(val) checkCudaRet((val), #val, __FILE__, __LINE__)
 
         /**
@@ -88,7 +96,7 @@ namespace common {
         *@return 单位ms
         */
         template<typename R, typename ...FArgs, typename ...Args>
-        static float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
+        float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
             float duration;
             cudaEvent_t start, stop;
             checkCudaRet(cudaEventCreate(&start));
@@ -269,6 +277,7 @@ namespace common {
 
 #endif // HAVE_OPENCV
 #endif // HAVE_DIRECTX
+        /// @}
     } // namespace cuda
 } // namespace common
 

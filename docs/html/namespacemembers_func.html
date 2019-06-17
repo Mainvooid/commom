@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +54,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespacemembers_func.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,185 +89,256 @@ $(function() {
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>ansi_to_unicode()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a6577d6465b6549ec09e4bfdc21cb1da9">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga6577d6465b6549ec09e4bfdc21cb1da9">common::codecvt</a>
 </li>
 <li>ansi_to_utf8()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a578524b4a57c655af8894a8aeef10962">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga578524b4a57c655af8894a8aeef10962">common::codecvt</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>checkCUDADevice()
-: <a class="el" href="namespacecommon_1_1cuda.html#a6a097db82b5293c474022ad455364bc4">common::cuda</a>
+: <a class="el" href="group__cuda.html#ga6a097db82b5293c474022ad455364bc4">common::cuda</a>
 </li>
 <li>checkCudaRet()
-: <a class="el" href="namespacecommon_1_1cuda.html#a2f6b109ff25ba3d32830dd2a8bd8ae2b">common::cuda</a>
+: <a class="el" href="group__cuda.html#ga2f6b109ff25ba3d32830dd2a8bd8ae2b">common::cuda</a>
 </li>
 <li>convert_from_string()
-: <a class="el" href="namespacecommon.html#ab178b5840a8ea5d298332bb942951c0f">common</a>
+: <a class="el" href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">common</a>
 </li>
 <li>convert_to_string()
-: <a class="el" href="namespacecommon.html#a58689444787325d87c9c0b1af3b842b6">common</a>
+: <a class="el" href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">common</a>
+</li>
+<li>createD3D11Device()
+: <a class="el" href="group__windows.html#gae1ccba4d8269119f685694931df00758">common::windows</a>
+</li>
+<li>createTextureDesc()
+: <a class="el" href="group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586">common::windows</a>
 </li>
 <li>cslen()
-: <a class="el" href="namespacecommon.html#a493a31fc80db78b4792c6c00ccde452e">common</a>
+: <a class="el" href="group__common.html#ga493a31fc80db78b4792c6c00ccde452e">common</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>default_value()
-: <a class="el" href="namespacecommon_1_1cmdline_1_1detail.html#a376be268234402a54986c0124ea1f5fb">common::cmdline::detail</a>
+: <a class="el" href="group__detail.html#ga376be268234402a54986c0124ea1f5fb">common::cmdline::detail</a>
 </li>
 <li>delete_s()
-: <a class="el" href="namespacecommon.html#a5b67f41476e727f550a6908972fabc68">common</a>
+: <a class="el" href="group__common.html#ga5b67f41476e727f550a6908972fabc68">common</a>
 </li>
 <li>deleteA_s()
-: <a class="el" href="namespacecommon.html#ac8012fda3b5935aba0925770f6699dd0">common</a>
+: <a class="el" href="group__common.html#gac8012fda3b5935aba0925770f6699dd0">common</a>
 </li>
 <li>demangle()
-: <a class="el" href="namespacecommon_1_1cmdline_1_1detail.html#a499a7cf1209195aaa11c89ae22819aa0">common::cmdline::detail</a>
+: <a class="el" href="group__detail.html#ga499a7cf1209195aaa11c89ae22819aa0">common::cmdline::detail</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>fillDir()
-: <a class="el" href="namespacecommon.html#a1206320bdec9633462ac1cc9a3733d93">common</a>
+: <a class="el" href="group__common.html#ga1206320bdec9633462ac1cc9a3733d93">common</a>
 </li>
 <li>free_s()
-: <a class="el" href="namespacecommon.html#a7d8c6faa1713f2be3d4e53d8ccb22e7f">common</a>
+: <a class="el" href="group__common.html#ga7d8c6faa1713f2be3d4e53d8ccb22e7f">common</a>
 </li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>g_logger()
+: <a class="el" href="namespacecommon.html#aedf48b2783ccbbfb23ebaddaf1205730">common</a>
+</li>
+<li>getClsPtr()
+: <a class="el" href="group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3">common::windows</a>
+</li>
 <li>getCudaFnDuration()
-: <a class="el" href="namespacecommon_1_1cuda.html#ab3d6552e1622dcc932614ef612e74515">common::cuda</a>
+: <a class="el" href="group__cuda.html#ga23a4928e79244b498723dbde881781ae">common::cuda</a>
+</li>
+<li>getD3D11Adapter()
+: <a class="el" href="group__cuda.html#gaa6ab334a0eb2e9d458f1d7d2232f9624">common::cuda</a>
 </li>
 <li>getFnDuration()
-: <a class="el" href="namespacecommon.html#abedbb4ac121d9fc5d8c9b042a23b5a72">common</a>
+: <a class="el" href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">common</a>
 </li>
 <li>getFunction()
-: <a class="el" href="namespacecommon.html#aa3da88d9740f493c2f2d85ea984e55e2">common</a>
+: <a class="el" href="group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2">common</a>
+</li>
+<li>getSubDllFileName()
+: <a class="el" href="group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d">common::windows</a>
+</li>
+<li>getWorkDir()
+: <a class="el" href="group__windows.html#gac412e651914b28f54eecddc04d2dbea9">common::windows</a>
 </li>
 </ul>
 
 
 <h3><a id="index_h"></a>- h -</h3><ul>
 <li>HashCompare()
-: <a class="el" href="namespacecommon_1_1opencv.html#a316908c87e465d17a82fa4c2f585ab3f">common::opencv</a>
+: <a class="el" href="group__opencv.html#ga316908c87e465d17a82fa4c2f585ab3f">common::opencv</a>
 </li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>imshowR()
-: <a class="el" href="namespacecommon_1_1opencv.html#a0cebbd9840ef3013a64fd32f64ab7ccd">common::opencv</a>
+: <a class="el" href="group__opencv.html#ga0cebbd9840ef3013a64fd32f64ab7ccd">common::opencv</a>
+</li>
+</ul>
+
+
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>loadSubDll()
+: <a class="el" href="group__windows.html#gae8418ec6d8a91edfc32a57772fefe7a4">common::windows</a>
+</li>
+<li>loadTextureFromFile()
+: <a class="el" href="group__windows.html#ga5125e7fb97efb88bcef9c84f04023ef7">common::windows</a>
+</li>
+<li>LOGD()
+: <a class="el" href="namespacecommon.html#afc07454090c54d9982384ce3f601cf3b">common</a>
+</li>
+<li>LOGE()
+: <a class="el" href="namespacecommon.html#abc0f85256014da074cced73ce46a981d">common</a>
+</li>
+<li>LOGF()
+: <a class="el" href="namespacecommon.html#acba793831ed514e963834f06ee5e6425">common</a>
+</li>
+<li>LOGI()
+: <a class="el" href="namespacecommon.html#aec44c00c58db8bcf4272710c0f9cfb1b">common</a>
+</li>
+<li>LOGT()
+: <a class="el" href="namespacecommon.html#ac4cc51b0e6d08c559cd26de638d8eab7">common</a>
+</li>
+<li>LOGW()
+: <a class="el" href="namespacecommon.html#ab042cecf620f30c25019a4ea52a4eb51">common</a>
 </li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>mergeImage()
-: <a class="el" href="namespacecommon_1_1opencv.html#a5a8cfa223c21cc7f941ce295381f19de">common::opencv</a>
+: <a class="el" href="group__opencv.html#ga5a8cfa223c21cc7f941ce295381f19de">common::opencv</a>
+</li>
+</ul>
+
+
+<h3><a id="index_o"></a>- o -</h3><ul>
+<li>OutputDebugStringEx()
+: <a class="el" href="namespacecommon_1_1debuglog.html#af58f0189856086fcc04d3c0c63a938fc">common::debuglog</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>printPlatformInfo()
-: <a class="el" href="namespacecommon_1_1opencl.html#a7c307c1c449e7808d1d86f18b0ce821e">common::opencl</a>
+: <a class="el" href="group__opencl.html#ga7c307c1c449e7808d1d86f18b0ce821e">common::opencl</a>
 </li>
 </ul>
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>readable_typename()
-: <a class="el" href="namespacecommon_1_1cmdline_1_1detail.html#a88f97710e094c8565e2f77719779013f">common::cmdline::detail</a>
+: <a class="el" href="group__detail.html#ga88f97710e094c8565e2f77719779013f">common::cmdline::detail</a>
 </li>
 <li>readable_typename&lt; std::string &gt;()
-: <a class="el" href="namespacecommon_1_1cmdline_1_1detail.html#acb53b8052790fe7edb0ea89c61ed2690">common::cmdline::detail</a>
+: <a class="el" href="group__detail.html#gacb53b8052790fe7edb0ea89c61ed2690">common::cmdline::detail</a>
 </li>
 <li>readable_typename&lt; std::wstring &gt;()
-: <a class="el" href="namespacecommon_1_1cmdline_1_1detail.html#a442f219e07563af24baa9cd7be87cfd0">common::cmdline::detail</a>
-</li>
-<li>Release_s()
-: <a class="el" href="namespacecommon.html#a7fa66be751c730ef3af95c3753a13f3b">common</a>
+: <a class="el" href="group__detail.html#ga442f219e07563af24baa9cd7be87cfd0">common::cmdline::detail</a>
 </li>
 <li>release_s()
-: <a class="el" href="namespacecommon.html#ace3531600b1e8a35a6127a185df62e07">common</a>
+: <a class="el" href="group__common.html#gace3531600b1e8a35a6127a185df62e07">common</a>
+</li>
+<li>Release_s()
+: <a class="el" href="group__common.html#ga7fa66be751c730ef3af95c3753a13f3b">common</a>
+</li>
+<li>release_s()
+: <a class="el" href="group__common.html#gac107919603d014eed97ec2df144f971e">common</a>
+</li>
+<li>reportLiveDeviceObjects()
+: <a class="el" href="group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0">common::windows</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>saveDebugImage()
-: <a class="el" href="namespacecommon_1_1opencv.html#a34c5b0ac460c2a924e6a98a3ef66724c">common::opencv</a>
+: <a class="el" href="group__opencv.html#ga34c5b0ac460c2a924e6a98a3ef66724c">common::opencv</a>
+</li>
+<li>saveTextureToFile()
+: <a class="el" href="group__windows.html#ga487f261deaede7edad19b321fa24fbf3">common::windows</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
+<li>texture2d_to_texture2d()
+: <a class="el" href="group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8">common::windows</a>
+</li>
 <li>tvalue()
-: <a class="el" href="namespacecommon.html#a38c54994e92e942dac88fc14499baa7c">common</a>
+: <a class="el" href="group__common.html#ga76d44589880cba75097dba4fe17f9f96">common</a>
 </li>
 </ul>
 
 
 <h3><a id="index_u"></a>- u -</h3><ul>
 <li>unicode_to_ansi()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a3ad837ac2a490851f3193ec58709f070">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga3ad837ac2a490851f3193ec58709f070">common::codecvt</a>
 </li>
 <li>unicode_to_utf8()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a8ab56f2ea5605599af59ad88c48e8938">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga8ab56f2ea5605599af59ad88c48e8938">common::codecvt</a>
 </li>
 <li>utf16_to_utf32()
-: <a class="el" href="namespacecommon_1_1codecvt.html#af9c1a5c6902227f48f841d2d9f7c2bf2">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#gaf9c1a5c6902227f48f841d2d9f7c2bf2">common::codecvt</a>
 </li>
 <li>utf16_to_utf8()
-: <a class="el" href="namespacecommon_1_1codecvt.html#ad2cf5ae4482e03c3106d4549d319d83e">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#gad2cf5ae4482e03c3106d4549d319d83e">common::codecvt</a>
 </li>
 <li>utf32_to_utf16()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a55bcf3547fe92dbcf799242f60579ea0">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga55bcf3547fe92dbcf799242f60579ea0">common::codecvt</a>
 </li>
 <li>utf32_to_utf8()
-: <a class="el" href="namespacecommon_1_1codecvt.html#ad6cf19d8117a006ff2974fa03d63950a">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#gad6cf19d8117a006ff2974fa03d63950a">common::codecvt</a>
 </li>
 <li>utf8_to_ansi()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a2864220ce9f167c3caf596c2e034ea0b">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga2864220ce9f167c3caf596c2e034ea0b">common::codecvt</a>
 </li>
 <li>utf8_to_unicode()
-: <a class="el" href="namespacecommon_1_1codecvt.html#abc1a169e6ef241b3afb238c9177e5b53">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#gabc1a169e6ef241b3afb238c9177e5b53">common::codecvt</a>
 </li>
 <li>utf8_to_utf16()
-: <a class="el" href="namespacecommon_1_1codecvt.html#af75c20ea1a68ca0ea0eff7a39886f39f">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#gaf75c20ea1a68ca0ea0eff7a39886f39f">common::codecvt</a>
 </li>
 <li>utf8_to_utf32()
-: <a class="el" href="namespacecommon_1_1codecvt.html#a12adb9c91e4d656a6e98f2a48e415b85">common::codecvt</a>
+: <a class="el" href="group__codecvt.html#ga12adb9c91e4d656a6e98f2a48e415b85">common::codecvt</a>
 </li>
 </ul>
 
 
 <h3><a id="index_w"></a>- w -</h3><ul>
 <li>wzeroset()
-: <a class="el" href="namespacecommon.html#aa9e098764154b450eb76ec793a59d4b8">common</a>
+: <a class="el" href="group__common.html#gaa9e098764154b450eb76ec793a59d4b8">common</a>
 </li>
 </ul>
 
 
 <h3><a id="index_z"></a>- z -</h3><ul>
 <li>zeroset()
-: <a class="el" href="namespacecommon.html#a3ecd3e10fa910659d012af40ab3327f1">common</a>
+: <a class="el" href="group__common.html#ga3ecd3e10fa910659d012af40ab3327f1">common</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者 &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

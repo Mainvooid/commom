@@ -1,5 +1,6 @@
-<map id="D:/code/common/common/common/debuglog.hpp" name="D:/code/common/common/common/debuglog.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="104,5,279,47"/>
-<area shape="rect" id="node2" href="$cuda_8hpp.html" title=" " alt="" coords="5,95,180,136"/>
-<area shape="rect" id="node3" href="$opencl_8hpp.html" title=" " alt="" coords="204,95,379,136"/>
+<map id="common/debuglog.hpp" name="common/debuglog.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="96,5,249,32"/>
+<area shape="rect" id="node2" href="$cuda_8hpp.html" title=" " alt="" coords="5,80,135,107"/>
+<area shape="rect" id="node3" href="$common_8hpp.html" title=" " alt="" coords="124,155,221,181"/>
+<area shape="rect" id="node4" href="$opencl_8hpp.html" title=" " alt="" coords="210,80,349,107"/>
 </map>

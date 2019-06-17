@@ -1,4 +1,4 @@
-﻿/*
+/*
 @brief pre common header.
 @author guobao.v@gmail.com
 */
@@ -12,7 +12,8 @@
 #include <functional>
 
 namespace common {
-
+    /// @addtogroup common
+    /// @{
     //----------资源初始化----------
 
     /**
@@ -242,7 +243,7 @@ namespace common {
         if (n == static_cast<size_t>(-1) || n != _dir.size() - 1) { _dir += separator; }//无结尾分隔符
         return _dir;
     }
-
+    /// @}
 } // namespace common
 
 #endif // _COMMON_PRECOMM_HPP_
