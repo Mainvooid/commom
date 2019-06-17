@@ -1,0 +1,9 @@
+digraph "D:/code/common/common/common/cuda.hpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node6 [label="D:/code/common/common\l/common/cuda.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="D:/code/common/common\l/samples/cuda.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cuda_8cpp.html",tooltip=" "];
+}

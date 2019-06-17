@@ -69,16 +69,16 @@
       <Filter>samples</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="debuglog_test.cpp">
+    <ClCompile Include="tests\tests_main.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="tests_main.cpp">
+    <ClCompile Include="tests\codecvt_test.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="codecvt_test.cpp">
+    <ClCompile Include="tests\common_test.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="common_test.cpp">
+    <ClCompile Include="tests\debuglog_test.cpp">
       <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>

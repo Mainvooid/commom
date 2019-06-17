@@ -6,6 +6,7 @@ It has only been tested on Windows.
 ---
 
 ## Tree
+
 ```cpp
 │  code.snippet     //文件代码模板(vs->工具->代码片段管理中导入)
 │  common.hpp       //主头文件(使用时include本文件)
@@ -49,7 +50,7 @@ It has only been tested on Windows.
 缩进应使用4空格而非制表符,语句后不应尾随空格.
 
 简化匈牙利命名法:
-|||
+|前缀|类型|
 |---|---|
 |g_ |全局变量|
 |m_ |类成员变量|
@@ -58,7 +59,7 @@ It has only been tested on Windows.
 |p_ |指针变量|
 
 所有前缀或后缀应该写在一起用一个下划线隔开:
-|||
+|前后缀|类型|
 |---|---|
 |mp_  |成员指针变量|
 |mcp_ |成员常量指针|
@@ -75,13 +76,6 @@ It has only been tested on Windows.
 
 ### 文件
 
-所有hpp文件使用宏避免重复包含.
-```cpp
-#ifndef _COMMON_PRECOMM_HPP_
-#define _COMMON_PRECOMM_HPP_
-#endif
-```
-
 源文件内的头文件包含顺序应从最特殊到一般，如：
 ```cpp
 #include "通用头文件"
@@ -94,14 +88,33 @@ It has only been tested on Windows.
 #include "C库头文件"
 ```
 
-HPP文件中可以使用using引用依赖,不应该使用using namespace污染命名空间.
-
 模块应使用命名空间`namespace{}`包含.
 
-### 注释
-- 普通注释 `//`
-- 高亮注释 `///`(vs2017)
-- 函数注释`Doxygen`风格
+#### HPP文件要注意的问题
+所有HPP文件使用宏避免重复包含.
+```cpp
+#ifndef _COMMON_PRECOMM_HPP_
+#define _COMMON_PRECOMM_HPP_
+#endif
+```
+
+HPP文件中可以使用using引用依赖,不应该使用using namespace污染命名空间.
+
+不可包含全局对象或函数(容易导致符号重定义)
+不可使用静态成员变量(可以通过获取局域静态变量)
+
+函数的重定义问题:
+- 将全局函数封装为类的静态方法
+- 通过冗余的模板参数变成模板函数
+```cpp
+template<bool flag=false>
+```
+- static修饰
+
+
+
+### Doxygen文档
+- `Doxygen`风格注释
 ```cpp
 /*
 *@file      文件说明
@@ -118,21 +131,15 @@ HPP文件中可以使用using引用依赖,不应该使用using namespace污染�
 *@var       引用了某个变量
 *@class     引用某个类 [eg: @class CTest "inc/class.h"]
 *@see       本函数参考其它的相关的函数,生成链接
+*@todo      todo注解
 
-文档注释 ///< 或
+文档注释 /// 或 /** */
 */
-
 ```
-/**/
-
 
 ### 函数
 
-应尽可能多的使用模板函数,
-一般函数的重定义问题可以通过static修饰或者通过冗余的模板参数变成模板函数来解决.
-```cpp
-template<bool flag=false>
-```
+应尽可能多的使用模板函数
 
 构造函数只进行没有实际意义的初始化,通过Init(),Setup()等函数进行具体构造.
 

@@ -194,9 +194,6 @@
     <ClInclude Include="common_all.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="codecvt_test.cpp" />
-    <ClCompile Include="common_test.cpp" />
-    <ClCompile Include="debuglog_test.cpp" />
     <ClCompile Include="samples\cmdline.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -238,12 +235,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="tests_main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="tests\codecvt_test.cpp" />
+    <ClCompile Include="tests\common_test.cpp" />
+    <ClCompile Include="tests\debuglog_test.cpp" />
+    <ClCompile Include="tests\tests_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\cuda.hpp">

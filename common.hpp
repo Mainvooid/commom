@@ -30,7 +30,6 @@
 #endif
 
 #include <chrono>
-#include <functional>
 
 namespace common {
 

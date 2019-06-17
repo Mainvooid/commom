@@ -24,10 +24,10 @@
 
 #include <common/precomm.hpp>
 #include <codecvt>
-#include <tchar.h>
 
 //TODO 使用函数模板统一接口进行直接的互转
-///std::string(utf8) std::string(ansi) std::u16string(utf16) std::u32string(utf32) std::wstring(unicode)
+//std::string(utf8) std::string(ansi) std::u16string(utf16) std::u32string(utf32) std::wstring(unicode)
+
 
 namespace common {
 
@@ -39,13 +39,13 @@ namespace common {
         class local_codecvt : public std::codecvt_byname<wchar_t, char, std::mbstate_t> {
         public:
 #ifdef _MSC_VER
-            local_codecvt() : codecvt_byname("zh-CN") {} ///设置本地语言环境
+            local_codecvt() : codecvt_byname("zh-CN") {} //设置本地语言环境
 #else
             local_codecvt() : codecvt_byname("zh_CN.GB18030") {}
 #endif
         };
 
-        ///std::string(utf8) std::u16string(utf16) std::u32string(utf32)
+        //std::string(utf8) std::u16string(utf16) std::u32string(utf32)
         /**
         *@brief std::u16string -> std::string(utf8)
         *@return 若失败返回空字符串
@@ -169,7 +169,7 @@ namespace common {
             return utf8_to_utf32(utf16_to_utf8(utf16_string));
         }
 
-        ///std::string(utf8) std::string(ansi) std::wstring(unicode)
+        //std::string(utf8) std::string(ansi) std::wstring(unicode)
 
         /**
         *@brief std::wstring(unicode) -> std::string(utf8)

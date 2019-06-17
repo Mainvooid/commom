@@ -7,11 +7,7 @@
 
 #include <common/precomm.hpp>
 #include <algorithm>
-#include <iostream>
-#include <sstream>
-#include <vector>
 #include <map>
-#include <tchar.h>
 
 #ifdef __GNUC__
 #include <cxxabi.h>

@@ -104,7 +104,7 @@ namespace common {
         }
 
 #ifdef HAVE_DIRECTX
-        /// cuda_d3d11_interop
+        // cuda_d3d11_interop
 
         /**
         *@brief DX11和CUDA共享的纹理数据结构

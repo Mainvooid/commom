@@ -33,7 +33,7 @@
 namespace common {
     namespace windows {
 
-        ///DLL导出
+        //DLL导出
 
         /**
         *@brief 用于dll导出接口类的实现类指针,自动管理内存,以防范Cross-Dll问题
@@ -44,7 +44,7 @@ namespace common {
             return std::make_shared<implCls>();
         }
 
-        ///DLL导入
+        //DLL导入
 
        /**
         *@brief 返回工作目录
@@ -158,7 +158,7 @@ namespace common {
 
 #ifdef HAVE_DIRECTX
 
-        ///一般性directX函数
+        //一般性directX函数
 
         /*
         *@brief 创建D3D11设备

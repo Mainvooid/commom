@@ -13,7 +13,7 @@
 
 namespace common {
 
-    ///----------资源初始化----------
+    //----------资源初始化----------
 
     /**
     *@brief memset 0
@@ -43,7 +43,7 @@ namespace common {
         std::wmemset(p, 0, N);
     }
 
-    ///----------资源安全释放----------
+    //----------资源安全释放----------
 
     /**
     *@brief free_s 可接受不定长参数
@@ -140,7 +140,8 @@ namespace common {
         release_s(args...);
     }
 
-    ///----------模板类型辅助----------
+    //----------模板类型辅助----------
+
 
     template<typename CS, typename TA, typename TW>
     struct ttype_t;
@@ -157,7 +158,7 @@ namespace common {
     template<typename TA, typename TW>
     struct ttype_t<std::wstring, TA, TW> { typedef TW type; };
 
-    ///----------模板条件参数推断及条件函数调用----------
+    //----------模板条件参数推断及条件函数调用----------
 
     template<typename TA, typename TW>
     inline typename ttype_t<char, TA, TW>::type tvalue(char*, TA a, TW) { return a; };
@@ -183,7 +184,9 @@ namespace common {
         return tvalue<T>(strlen, wcslen)(str);
     }
 
-    ///----------获取std::function对象----------
+    /**
+    *@brief 获取std::function对象
+    */
     template<typename R, typename ...FArgs>
     std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) { return Fn; }
 
@@ -195,7 +198,8 @@ namespace common {
     std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) { return Fn; }
 #endif 
 
-    ///----------基于流的string/wstring与基本类型的互转----------
+    //----------基于流的string/wstring与基本类型的互转----------
+
 
     template<typename char_t, typename TI>
     auto convert_to_string(const TI& arg)
@@ -214,7 +218,7 @@ namespace common {
         return ret;
     }
 
-    ///----------其他----------
+    //----------其他----------
 
     /**
     *@brief 目录路径检查,统一分隔符且补全末尾分隔符

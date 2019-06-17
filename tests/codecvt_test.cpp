@@ -13,7 +13,7 @@ const std::wstring w_s = L"Test测试123.\n";
 const std::u16string u16_s = u"Test测试123.\n";
 const std::u32string u32_s = U"Test测试123.\n";
 
-///std::string(utf8) std::u16string(utf16) std::u32string(utf32)
+//std::string(utf8) std::u16string(utf16) std::u32string(utf32)
 TEST(utf16_to_utf8, TEST_result) {
     EXPECT_EQ(utf16_to_utf8(u16_s), u8_s);
 }
@@ -33,7 +33,7 @@ TEST(utf16_to_utf32, TEST_result) {
     EXPECT_EQ(utf16_to_utf32(u16_s), u32_s);
 }
 
-///std::string(utf8) std::string(ansi) std::wstring(unicode)
+//std::string(utf8) std::string(ansi) std::wstring(unicode)
 TEST(utf8_to_ansi, TEST_result) {
     EXPECT_EQ(utf8_to_ansi(u8_s), a_s);
 }
