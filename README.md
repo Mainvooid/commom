@@ -1,2 +1,145 @@
 # commom
 common library only include header files.
+
+It has only been tested on Windows.
+
+---
+
+## Tree
+```cpp
+│  code.snippet     //文件代码模板(vs->工具->代码片段管理中导入)
+│  common.hpp       //主头文件(使用时include本文件)
+│  common_all.hpp   //统一的主头文件(暂未生成)
+├─common            //分头文件目录
+│  │  cmdline.hpp      //命令行解析
+│  │  codecvt.hpp      //字符编码转换
+│  │  cuda.hpp         //cuda辅助(包含与opencv和directx的互操作)
+│  │  debuglog.hpp     //windows调试日志
+│  │  opencl.hpp       //opencl辅助
+│  │  opencv.hpp       //opencv辅助
+│  │  precomm.hpp      //公共辅助
+│  │  windows.hpp      //windows辅助(包含directx辅助)
+│  └─cuda           //cuda设备函数目录
+│     │  texture_reference.cu    
+│     └─ texture_reference.cuh
+├─docs             //文档目录
+├─samples          //使用样例目录
+│  └─data             //测试数据 
+└─tests            //单元测试目录
+```
+
+---
+
+## Macro
+默认关闭库/宏支持
+- `HAVE_OPENCL`      //基于OpenCL 1.2
+- `HAVE_OPENCV `     //基于OpenCV 4.0 with contrib
+- `HAVE_DIRECTX`     //基于Microsoft DirectX SDK (June 2010)
+- `HAVE_CUDA`        //基于CUDA 10.0
+- `HAVE_CUDA_DEVICE` // 本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见[common/cuda/README.md](common/cuda/README.md)
+
+---
+
+## Code style and code specification
+
+**同一文件内应统一风格.**
+
+### 命名
+
+缩进应使用4空格而非制表符,语句后不应尾随空格.
+
+简化匈牙利命名法:
+|||
+|---|---|
+|g_ |全局变量|
+|m_ |类成员变量|
+|s_ |静态变量|
+|c_ |常量|
+|p_ |指针变量|
+
+所有前缀或后缀应该写在一起用一个下划线隔开:
+|||
+|---|---|
+|mp_  |成员指针变量|
+|mcp_ |成员常量指针|
+|mpc_ |成员指针常量|
+|_t   |结构体类型|
+|_fn  |函数指针类型|
+|_e   |枚举类型|
+
+函数内临时的同名变量可以加个前缀`_`代表临时.
+变量/文件命名全小写+下划线
+
+若驼峰式命名法
+类名用大驼峰,变量第一个词是动词则小驼峰addOption().
+
+### 文件
+
+所有hpp文件使用宏避免重复包含.
+```cpp
+#ifndef _COMMON_PRECOMM_HPP_
+#define _COMMON_PRECOMM_HPP_
+#endif
+```
+
+源文件内的头文件包含顺序应从最特殊到一般，如：
+```cpp
+#include "通用头文件"
+#include "源文件同名头文件"
+#include "本模块其他头文件"
+#include "自定义工具头文件"
+#include "第三方头文件"
+#include "平台相关头文件"
+#include "C++库头文件"
+#include "C库头文件"
+```
+
+HPP文件中可以使用using引用依赖,不应该使用using namespace污染命名空间.
+
+模块应使用命名空间`namespace{}`包含.
+
+### 注释
+- 普通注释 `//`
+- 高亮注释 `///`(vs2017)
+- 函数注释`Doxygen`风格
+```cpp
+/*
+*@file      文件说明
+*@brief     摘要
+*@author    作者信息
+*@param     参数说明
+*@return    返回值情况
+*@retval    返回值类型 [eg:@retval NULL 空字符串][@retval !NULL 非空字符串]
+*@note      注解
+*@attention 注意
+*@warning   警告
+*@exception 可能产生的异常描述
+*@enum      引用了某个枚举,Doxygen会在引用处生成链接
+*@var       引用了某个变量
+*@class     引用某个类 [eg: @class CTest "inc/class.h"]
+*@see       本函数参考其它的相关的函数,生成链接
+
+文档注释 ///< 或
+*/
+
+```
+/**/
+
+
+### 函数
+
+应尽可能多的使用模板函数,
+一般函数的重定义问题可以通过static修饰或者通过冗余的模板参数变成模板函数来解决.
+```cpp
+template<bool flag=false>
+```
+
+构造函数只进行没有实际意义的初始化,通过Init(),Setup()等函数进行具体构造.
+
+
+
+
+
+
+
+

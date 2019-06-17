@@ -8,13 +8,14 @@
     <CUDA_HELP>C:\ProgramData\NVIDIA Corporation\CUDA Samples\v10.0\common</CUDA_HELP>
     <D3DX>../Microsoft DirectX SDK (June 2010)</D3DX>
     <OPENCL>$(CUDA)/include</OPENCL>
+    <GTEST>../googletest</GTEST>
     
     <!-- 指定include目录 -->
-    <IncludePath>$(WindowsSDK_IncludePath);$(D3DX)/Include;./;../;$(OPENCL);$(common)/common;$(CUDA)/include;$(CUDA_HELP)/inc;$(OpenCV)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(WindowsSDK_IncludePath);$(GTEST)/include;$(D3DX)/Include;./;../;$(OPENCL);$(common)/common;$(CUDA)/include;$(CUDA_HELP)/inc;$(OpenCV)\include;$(IncludePath)</IncludePath>
 
     <!-- 指定lib目录 -->
-    <LibraryPath Condition="'$(Platform)'=='X64'">$(CUDA)/lib/x64;$(D3DX)/Lib/x64;$(OpenCV)\x64\vc15\lib;$(LibraryPath)</LibraryPath>
-    <LibraryPath Condition="'$(Platform)'=='Win32'">$(D3DX)/Lib/x86;$(OpenCV)\x86\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Platform)'=='X64'">$(GTEST)/lib/x64;$(CUDA)/lib/x64;$(D3DX)/Lib/x64;$(OpenCV)\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Platform)'=='Win32'">$(GTEST)/lib/x86;$(D3DX)/Lib/x86;$(OpenCV)\x86\vc15\lib;$(LibraryPath)</LibraryPath>
     
     <!-- 让系统PATH临时包含指定的dll目录 -->
     <LocalDebuggerEnvironment Condition="'$(Platform)'=='X64'">PATH=$(CUDA)/bin;$(D3DX)/dll/x64;$(OpenCV)\x64\vc15\bin;%PATH%;</LocalDebuggerEnvironment>

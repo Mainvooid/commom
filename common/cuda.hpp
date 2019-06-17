@@ -10,7 +10,7 @@
 
 #include <cuda_runtime_api.h>
 #include <cuda_runtime.h>
-#include <cuda_d3d11_interop.h>
+#include <driver_types.h>
 
 #ifdef HAVE_CUDA_DEVICE
 #include <common/cuda/texture_reference.cuh>
@@ -23,6 +23,7 @@
 #endif
 
 #ifdef HAVE_DIRECTX
+#include <cuda_d3d11_interop.h>
 #include <wrl/client.h>
 #include <d3d11.h>
 #include <d3dx11.h>
@@ -70,7 +71,7 @@ namespace common {
         /**
         *@brief CUDA设备检查
         */
-        cudaError_t checkCUDADevice()
+        static cudaError_t checkCUDADevice()
         {
             int deviceCount = 0;
             checkCudaRet(cudaGetDeviceCount(&deviceCount));
@@ -87,7 +88,7 @@ namespace common {
         *@return 单位ms
         */
         template<typename R, typename ...FArgs, typename ...Args>
-        float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
+        static float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
             float duration;
             cudaEvent_t start, stop;
             checkCudaRet(cudaEventCreate(&start));
@@ -150,7 +151,7 @@ namespace common {
         /**
        *@brief CUDA获取D3D11设备适配器
        */
-        void getD3D11Adapter(IDXGIAdapter** pAdapter) noexcept(false)
+        static void getD3D11Adapter(IDXGIAdapter** pAdapter) noexcept(false)
         {
             Microsoft::WRL::ComPtr<IDXGIFactory> pFactory;
             HRESULT hr = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)(pFactory.GetAddressOf()));
@@ -227,9 +228,6 @@ namespace common {
                 checkCudaRet(cudaMemcpy2DFromArray(dst_gpumat.data, dst_gpumat.step,
                     mt_texture_2d.cuda_array, 0, 0, dst_gpumat.cols * sizeof(uchar4), dst_gpumat.rows, cudaMemcpyDeviceToDevice));
 
-                //保证输入输出为默认格式,D3D11默认RGBA格式,OPENCV默认BGRA格式
-                cv::cuda::cvtColor(dst_gpumat, dst_gpumat, cv::COLOR_RGBA2BGRA);
-
                 cudaUnbindTexture(mt_texture_2d.texture_ref);
 
                 checkCudaRet(cudaGraphicsUnmapResources(1, &mt_texture_2d.cuda_resource));
@@ -239,13 +237,6 @@ namespace common {
 
             cudaError_t gpumat_to_texture2d(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device)
             {
-                if (src_gpumat.channels() == 4) {// 默认通道类型转换
-                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_BGRA2RGBA);
-                }
-                if (src_gpumat.channels() == 3) {
-                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_BGR2RGBA);
-                }
-
                 D3D11_TEXTURE2D_DESC desc;
                 windows::createTextureDesc(desc, src_gpumat.cols, src_gpumat.rows,
                     DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_RESOURCE_MISC_SHARED);

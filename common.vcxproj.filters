@@ -1,87 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\common">
+    <Filter Include="tests">
+      <UniqueIdentifier>{bddb3197-53dd-4eee-b183-b4924ec43323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
       <UniqueIdentifier>{469cc66f-4a4c-4e43-be59-fb858842cd9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\samples">
-      <UniqueIdentifier>{30f70d75-5a77-46c5-959e-144ddd28cdcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\common\cuda">
+    <Filter Include="common\cuda">
       <UniqueIdentifier>{0645b57e-76f4-43e6-9d5c-7f05f703b235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="samples">
+      <UniqueIdentifier>{30f70d75-5a77-46c5-959e-144ddd28cdcb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\cmdline.hpp">
-      <Filter>头文件\common</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\codecvt.hpp">
-      <Filter>头文件\common</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\debuglog.hpp">
-      <Filter>头文件\common</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\opencv.hpp">
-      <Filter>头文件\common</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\precomm.hpp">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common_all.hpp">
-      <Filter>头文件</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\windows.hpp">
-      <Filter>头文件\common</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\cuda.hpp">
-      <Filter>头文件\common</Filter>
-    </ClInclude>
-    <ClInclude Include="common.hpp">
-      <Filter>头文件</Filter>
+      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common\cuda\texture_reference.cuh">
-      <Filter>头文件\common\cuda</Filter>
+      <Filter>common\cuda</Filter>
     </ClInclude>
     <ClInclude Include="common\opencl.hpp">
-      <Filter>头文件\common</Filter>
+      <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="common.hpp" />
+    <ClInclude Include="common_all.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
-      <Filter>源文件\samples</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>源文件</Filter>
+      <Filter>samples</Filter>
     </ClCompile>
     <ClCompile Include="samples\debuglog.cpp">
-      <Filter>源文件\samples</Filter>
-    </ClCompile>
-    <ClCompile Include="samples\codecvt.cpp">
-      <Filter>源文件\samples</Filter>
+      <Filter>samples</Filter>
     </ClCompile>
     <ClCompile Include="samples\opencv.cpp">
-      <Filter>源文件\samples</Filter>
+      <Filter>samples</Filter>
     </ClCompile>
     <ClCompile Include="samples\common.cpp">
-      <Filter>源文件\samples</Filter>
+      <Filter>samples</Filter>
     </ClCompile>
     <ClCompile Include="samples\cuda.cpp">
-      <Filter>源文件\samples</Filter>
+      <Filter>samples</Filter>
     </ClCompile>
     <ClCompile Include="samples\opencl.cpp">
-      <Filter>源文件\samples</Filter>
+      <Filter>samples</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="debuglog_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests_main.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="codecvt_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="common_test.cpp">
+      <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,12 +88,12 @@
     </None>
     <None Include="RuleSet.ruleset" />
     <None Include="common\cuda\README.md">
-      <Filter>头文件\common\cuda</Filter>
+      <Filter>common\cuda</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="common\cuda\texture_reference.cu">
-      <Filter>头文件\common\cuda</Filter>
+      <Filter>common\cuda</Filter>
     </CudaCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,54 @@
+﻿/*
+@brief unit test for codecvt.hpp
+@author guobao.v@gmail.com
+*/
+#include "gtest/gtest.h"
+#include <common/codecvt.hpp>
+using namespace common::codecvt;
+
+//\u0054\u0065\u0073\u0074\u6d4b\u8bd5\u0031\u0032\u0033\u002e\u005c\u006e
+const std::string a_s = "Test测试123.\n";
+const std::string u8_s = u8"Test测试123.\n";
+const std::wstring w_s = L"Test测试123.\n";
+const std::u16string u16_s = u"Test测试123.\n";
+const std::u32string u32_s = U"Test测试123.\n";
+
+///std::string(utf8) std::u16string(utf16) std::u32string(utf32)
+TEST(utf16_to_utf8, TEST_result) {
+    EXPECT_EQ(utf16_to_utf8(u16_s), u8_s);
+}
+TEST(utf8_to_utf16, TEST_result) {
+    EXPECT_EQ(utf8_to_utf16(u8_s), u16_s);
+}
+TEST(utf32_to_utf8, TEST_result) {
+    EXPECT_EQ(utf32_to_utf8(u32_s), u8_s);
+}
+TEST(utf8_to_utf32, TEST_result) {
+    EXPECT_EQ(utf8_to_utf32(u8_s), u32_s);
+}
+TEST(utf32_to_utf16, TEST_result) {
+    EXPECT_EQ(utf32_to_utf16(u32_s), u16_s);
+}
+TEST(utf16_to_utf32, TEST_result) {
+    EXPECT_EQ(utf16_to_utf32(u16_s), u32_s);
+}
+
+///std::string(utf8) std::string(ansi) std::wstring(unicode)
+TEST(utf8_to_ansi, TEST_result) {
+    EXPECT_EQ(utf8_to_ansi(u8_s), a_s);
+}
+TEST(ansi_to_utf8, TEST_result) {
+    EXPECT_EQ(ansi_to_utf8(a_s), u8_s);
+}
+TEST(unicode_to_utf8, TEST_result) {
+    EXPECT_EQ(unicode_to_utf8(w_s), u8_s);
+}
+TEST(utf8_to_unicode, TEST_result) {
+    EXPECT_EQ(utf8_to_unicode(u8_s), w_s);
+}
+TEST(unicode_to_ansi, TEST_result) {
+    EXPECT_EQ(unicode_to_ansi(w_s), a_s);
+}
+TEST(ansi_to_unicode, TEST_result) {
+    EXPECT_EQ(ansi_to_unicode(a_s), w_s);
+}

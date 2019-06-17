@@ -35,10 +35,9 @@
 *.out
 *.app
 
-/opencv
+
 /Release
 /Debug
 /x64
-/Microsoft DirectX SDK (June 2010)
 
 test.*
