@@ -23,11 +23,11 @@
 @see common\cuda\README.md
 */
 //默认关闭库支持
-#define HAVE_OPENCL
-#define HAVE_OPENCV
-#define HAVE_DIRECTX
-#define HAVE_CUDA
-#define HAVE_CUDA_DEVICE
+//#define HAVE_OPENCL
+//#define HAVE_OPENCV
+//#define HAVE_DIRECTX
+//#define HAVE_CUDA
+//#define HAVE_CUDA_DEVICE
 
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>
@@ -73,7 +73,7 @@ namespace common {
     template< typename T = std::chrono::milliseconds, typename R, typename ...Args>
     auto getFnDuration(R(*func)(Args...)) {
         std::function<R(Args...)> Fn = func;
-        return[=](Args...args)->auto {
+        return [=](Args...args)->auto {
             return getFnDuration(Fn, args...);
         };
     }

@@ -224,7 +224,7 @@ template<bool flag=false>
 
 - 使用自动字符数组`autobuffer` 
    ```cpp
-   std::vector <char>buffer(10);
+   std::vector<char> buffer(10);
    std::unique_ptr<char[]> buffer(new char[10]);
    ```
 
@@ -250,8 +250,7 @@ template<bool flag=false>
 - `inline` 内联修饰
    - 相当于宏,比宏多了类型检查,运行时可调试(宏定义不能).
    - 一般代码行数不多的函数(5行以内)可以建议编译器内联.
-   - 类内自动隐式内联.
-   - 类外可以显式内联.
+   - 类内自动隐式内联.类外可以显式内联.
    - 如果关闭优化,编译器可能会无视内联修饰符.
 
 - `explicit` 显式调用
@@ -378,7 +377,7 @@ template<bool flag=false>
    - `std::move`没有`move`任何东西,`std::forward`没有转发任何东西.在运行期,它们没有做任何事情.它们没有产生1byte需要执行的代码.
    - `std::forward<T>()`不仅可以保持左值或者右值不变,同时还可以保持`const`、`Lreference`、`Rreference`、`validate`等属性不变.
 
-- `deprecated`  弃用(C++14)
+- `deprecated`  弃用
    - 声明时未被弃用的名字可被重声明为`deprecated`,而声明为`deprecated`的名字不能通过重声明变为未弃用.
    - 下列名字或实体的声明中允许使用这个属性:
       ```cpp
@@ -523,17 +522,26 @@ template<bool flag=false>
    }
    ```
 
-- 关于`directx`
-   - `CopyResource`之后需要刷新否则容易导致黑屏(未成功获取数据)
+- 浮点数精度比较
    ```cpp
-   ctx->CopyResource();
-   ctx->Flush();
+   #include<float.h>
+   
+   < DBL_EPSILON
+   > FLT_EPSILON
    ```
 
+- 关于`directx`
+   - `CopyResource`之后需要刷新否则容易导致黑屏(未成功获取数据)
+      ```cpp
+      ctx->CopyResource();
+      ctx->Flush();
+      ```
+   - 不同`device`之间的`texture`通过`SharedHandle`进行共享/拷贝.
+
 - 关于`opencv`
-   - cv::UMat 需要手动release.
+   - `cv::UMat` 有些时候需要手动`release`.
 
 - 关于`cuda`
-   - `__syncthreads`等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC__`.(.cu源文件编译时会定义这个宏)
+   - `__syncthreads`等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC__`(.cu源文件编译时会定义这个宏).
 
 
