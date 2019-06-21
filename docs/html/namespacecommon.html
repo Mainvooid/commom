@@ -106,6 +106,8 @@ $(document).ready(function(){initNavTree('namespacecommon.html','');});
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecommon_1_1debuglog"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1debuglog.html">debuglog</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacecommon_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1detail.html">detail</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecommon_1_1opencl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1opencl.html">opencl</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecommon_1_1opencv"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1opencv.html">opencv</a></td></tr>
@@ -260,11 +262,17 @@ $(document).ready(function(){initNavTree('namespacecommon.html','');});
 <tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
 <tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2">getFunction</a> (R(*Fn)(FArgs...))</td></tr>
 <tr class="separator:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memTemplParams" colspan="2">template&lt;typename R , typename... Args&gt; </td></tr>
+<tr class="memitem:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(Args...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea">cache_fn</a> (R(*func)(Args...), bool flush=false)</td></tr>
+<tr class="memdesc:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数对象缓存，若存在相同类型函数指针，则调用相应缓存函数获取缓存结果,可以大幅提高递归类函数的性能  <a href="group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea">更多...</a><br /></td></tr>
+<tr class="separator:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplParams" colspan="2">template&lt;typename char_t , typename TI &gt; </td></tr>
 <tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">convert_to_string</a> (const TI &amp;arg)</td></tr>
+<tr class="memdesc:ga58689444787325d87c9c0b1af3b842b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">基本数据类型转字符串  <a href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">更多...</a><br /></td></tr>
 <tr class="separator:ga58689444787325d87c9c0b1af3b842b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplParams" colspan="2">template&lt;typename TO , typename TI &gt; </td></tr>
 <tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">convert_from_string</a> (const TI &amp;arg) noexcept(false)</td></tr>
+<tr class="memdesc:gab178b5840a8ea5d298332bb942951c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">从字符串解析基本数据类型  <a href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">更多...</a><br /></td></tr>
 <tr class="separator:gab178b5840a8ea5d298332bb942951c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga1206320bdec9633462ac1cc9a3733d93">fillDir</a> (const T *dir, const T *separator=<a class="el" href="group__common.html#ga38c54994e92e942dac88fc14499baa7c">tvalue</a>&lt; T &gt;(&quot;\\&quot;, L&quot;\\&quot;))</td></tr>
@@ -274,6 +282,9 @@ $(document).ready(function(){initNavTree('namespacecommon.html','');});
 <tr class="memitem:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">getFnDuration</a> (std::function&lt; R(FArgs...)&gt; Fn, Args &amp;... args)</td></tr>
 <tr class="memdesc:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数计时(默认std::chrono::milliseconds)  <a href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">更多...</a><br /></td></tr>
 <tr class="separator:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2269e33944c2eeb8170c1acb67b232c7"><td class="memTemplParams" colspan="2">template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... Args&gt; </td></tr>
+<tr class="memitem:ga2269e33944c2eeb8170c1acb67b232c7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga2269e33944c2eeb8170c1acb67b232c7">getFnDuration</a> (R(*func)(Args...))</td></tr>
+<tr class="separator:ga2269e33944c2eeb8170c1acb67b232c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>

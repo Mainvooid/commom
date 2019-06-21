@@ -1,4 +1,4 @@
-/*
+﻿/*
 @brief pre common header.
 @author guobao.v@gmail.com
 */
@@ -10,7 +10,16 @@
 #include <iostream>
 #include <vector>
 #include <functional>
+#include <unordered_map>
+#include <memory>
+#include <map>
 
+/**
+  @addtogroup common
+  @{
+    @defgroup detail detail
+  @}
+*/
 namespace common {
     /// @addtogroup common
     /// @{
@@ -199,9 +208,49 @@ namespace common {
     std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) { return Fn; }
 #endif 
 
+    namespace detail {
+        /// @addtogroup detail
+        /// @{
+        /**
+        @brief 函数入参及结果缓存，缓存入参和函数的执行结果，若入参存在则从缓存返回结果
+        */
+        template <typename R, typename... Args>
+        std::function<R(Args...)> cache_fn(R(*func)(Args...))
+        {
+            auto result_map = std::make_shared<std::map<std::tuple<Args...>, R>>();
+            return ([=](Args... args) {//延迟执行
+                std::tuple<Args...> _args(args...);
+                if (result_map->find(_args) == result_map->end()) {
+                    (*result_map)[_args] = func(args...);//未找到相同入参，执行函数刷新缓存
+                }
+                return (*result_map)[_args];//返回缓存
+            });
+        }
+        ///@}
+    }// namespace detail
+
+    /**
+    @brief 函数对象缓存，若存在相同类型函数指针，则调用相应缓存函数获取缓存结果,可以大幅提高递归类函数的性能
+    */
+    template <typename R, typename...  Args>
+    std::function<R(Args...)> cache_fn(R(*func)(Args...), bool flush = false)
+    {
+        using function_type = std::function<R(Args...)>;
+        static std::unordered_map<decltype(func), function_type> functor_map;
+        if (flush) {//明确要求刷新缓存
+            return functor_map[func] = detail::cache_fn(func);
+        }
+        if (functor_map.find(func) == functor_map.end()) {
+            functor_map[func] = detail::cache_fn(func);//未找到相同函数，执行函数刷新缓存
+        }
+        return functor_map[func];//返回缓存
+    }
+
     //----------基于流的string/wstring与基本类型的互转----------
 
-
+    /**
+    @brief 基本数据类型转字符串
+    */
     template<typename char_t, typename TI>
     auto convert_to_string(const TI& arg)
     {
@@ -210,6 +259,9 @@ namespace common {
         return str.str();
     }
 
+    /**
+    @brief 从字符串解析基本数据类型
+    */
     template<typename TO, typename TI>
     auto convert_from_string(const TI& arg) noexcept(false)
     {

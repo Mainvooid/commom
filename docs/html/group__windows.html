@@ -142,9 +142,9 @@ windows - windows utilities 的协作图:</div>
 <tr class="memitem:ga487f261deaede7edad19b321fa24fbf3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga487f261deaede7edad19b321fa24fbf3"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga487f261deaede7edad19b321fa24fbf3">common::windows::saveTextureToFile</a> (IDirect3DTexture9 *pSrcTexture, const T *path)</td></tr>
 <tr class="separator:ga487f261deaede7edad19b321fa24fbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga5125e7fb97efb88bcef9c84f04023ef7">common::windows::loadTextureFromFile</a> (ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T *path, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_UNORDERED_ACCESS|D3D11_BIND_SHADER_RESOURCE)</td></tr>
-<tr class="separator:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1c36117a351448f72ef34252a990246"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gad1c36117a351448f72ef34252a990246"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#gad1c36117a351448f72ef34252a990246">common::windows::loadTextureFromFile</a> (ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T *path, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_UNORDERED_ACCESS|D3D11_BIND_SHADER_RESOURCE, UINT miscFlags=D3D11_RESOURCE_MISC_SHARED)</td></tr>
+<tr class="separator:gad1c36117a351448f72ef34252a990246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586">common::windows::createTextureDesc</a> (D3D11_TEXTURE2D_DESC &amp;desc, UINT width, UINT height, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_SHADER_RESOURCE, UINT miscFlags=0)</td></tr>
 <tr class="separator:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8">common::windows::texture2d_to_texture2d</a> (ID3D11Texture2D *pSrcTexture2D, ID3D11Texture2D **ppDstTexture2D, ID3D11Device *pDstDevice, HANDLE *dst_handle=(HANDLE *) malloc(0))</td></tr>
@@ -470,8 +470,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ga5125e7fb97efb88bcef9c84f04023ef7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5125e7fb97efb88bcef9c84f04023ef7">&#9670;&nbsp;</a></span>loadTextureFromFile()</h2>
+<a id="gad1c36117a351448f72ef34252a990246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad1c36117a351448f72ef34252a990246">&#9670;&nbsp;</a></span>loadTextureFromFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -509,7 +509,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">UINT&#160;</td>
-          <td class="paramname"><em>bindFlags</em> = <code>D3D11_BIND_UNORDERED_ACCESS&#160;|&#160;D3D11_BIND_SHADER_RESOURCE</code>&#160;</td>
+          <td class="paramname"><em>bindFlags</em> = <code>D3D11_BIND_UNORDERED_ACCESS&#160;|&#160;D3D11_BIND_SHADER_RESOURCE</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>miscFlags</em> = <code>D3D11_RESOURCE_MISC_SHARED</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

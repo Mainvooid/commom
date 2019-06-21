@@ -13,7 +13,7 @@ var group__windows =
     [ "loadSubDll", "group__windows.html#gae8418ec6d8a91edfc32a57772fefe7a4", null ],
     [ "loadSubDll", "group__windows.html#gaa8e6d2eb037479324dcb5445cea10289", null ],
     [ "loadSubDll", "group__windows.html#ga4848ceb6cbe9b8ff859833928ab97732", null ],
-    [ "loadTextureFromFile", "group__windows.html#ga5125e7fb97efb88bcef9c84f04023ef7", null ],
+    [ "loadTextureFromFile", "group__windows.html#gad1c36117a351448f72ef34252a990246", null ],
     [ "reportLiveDeviceObjects", "group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0", null ],
     [ "saveTextureToFile", "group__windows.html#ga47806b9488d985a6946b59d6cc241c87", null ],
     [ "saveTextureToFile", "group__windows.html#ga487f261deaede7edad19b321fa24fbf3", null ],

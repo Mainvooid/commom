@@ -1,6 +1,5 @@
 var debuglog_8hpp =
 [
-    [ "logger", "classcommon_1_1debuglog_1_1logger.html", "classcommon_1_1debuglog_1_1logger" ],
     [ "_COMMON_DEBUGLOG_HPP_", "debuglog_8hpp.html#a4cf0f195d9f39b6233dacb4bafbe1db5", null ],
     [ "LOGD_", "debuglog_8hpp.html#aeb344737ca3d98422e8a626ae354613c", null ],
     [ "LOGE_", "debuglog_8hpp.html#aadc3eb27d309d71b04d687fb325a26c1", null ],
@@ -30,5 +29,5 @@ var debuglog_8hpp =
     [ "LOGT", "debuglog_8hpp.html#abd6944bba50f34dcaaa1c39ee2bdb6cb", null ],
     [ "LOGW", "debuglog_8hpp.html#aaa8ff200b7562ec77142e670a3931164", null ],
     [ "LOGW", "debuglog_8hpp.html#ab042cecf620f30c25019a4ea52a4eb51", null ],
-    [ "OutputDebugStringEx", "debuglog_8hpp.html#af58f0189856086fcc04d3c0c63a938fc", null ]
+    [ "OutputDebugStringEx", "debuglog_8hpp.html#gaf58f0189856086fcc04d3c0c63a938fc", null ]
 ];

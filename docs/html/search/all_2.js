@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['cache_5ffn',['cache_fn',['../group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04',1,'common::detail::cache_fn()'],['../group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea',1,'common::cache_fn()']]],
   ['checkcudadevice',['checkCUDADevice',['../group__cuda.html#ga6a097db82b5293c474022ad455364bc4',1,'common::cuda']]],
   ['checkcudaret',['checkCudaRet',['../group__cuda.html#ga0cb317a3c6744bd5dbefe00e1a8a03d0',1,'checkCudaRet():&#160;cuda.hpp'],['../group__cuda.html#ga2f6b109ff25ba3d32830dd2a8bd8ae2b',1,'common::cuda::checkCudaRet()']]],
   ['cmdline',['cmdline',['../namespacecommon_1_1cmdline.html',1,'common::cmdline'],['../group__cmdline.html',1,'(全局命名空间)']]],
@@ -20,7 +21,7 @@ var searchData=
   ['cuda_5farray_5fdesc',['cuda_array_desc',['../structcommon_1_1cuda_1_1shared__texture__t.html#a627ebdf51c846a811213006024dd9b22',1,'common::cuda::shared_texture_t']]],
   ['cuda_5fresource',['cuda_resource',['../structcommon_1_1cuda_1_1shared__texture__t.html#a2cfad770dfee8b8d7709cb2e9efb8f5e',1,'common::cuda::shared_texture_t']]],
   ['debuglog',['debuglog',['../namespacecommon_1_1debuglog.html',1,'common']]],
-  ['detail',['detail',['../namespacecommon_1_1cmdline_1_1detail.html',1,'common::cmdline']]],
+  ['detail',['detail',['../namespacecommon_1_1cmdline_1_1detail.html',1,'common::cmdline::detail'],['../namespacecommon_1_1detail.html',1,'common::detail']]],
   ['commom',['commom',['../md__r_e_a_d_m_e.html',1,'']]],
   ['opencl',['opencl',['../namespacecommon_1_1opencl.html',1,'common']]],
   ['opencv',['opencv',['../namespacecommon_1_1opencv.html',1,'common']]],

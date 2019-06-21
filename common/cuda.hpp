@@ -70,10 +70,10 @@ namespace common {
                 exit(EXIT_FAILURE);
             }
         }
-        /**
-        @def checkCudaRet
-        @brief cuda函数返回值检查,若失败会中断程序
-        */
+/**
+@def checkCudaRet
+@brief cuda函数返回值检查,若失败会中断程序
+*/
 #define checkCudaRet(val) checkCudaRet((val), #val, __FILE__, __LINE__)
 
         /**
@@ -218,6 +218,7 @@ namespace common {
                 if (FAILED(hr)) { return cudaError::cudaErrorUnknown; }
                 D3D11_TEXTURE2D_DESC desc;
                 p_src_texture->GetDesc(&desc);
+                dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(uchar4)));
 
                 //注册Direct3D 11资源pD3DResource以供CUDA访问
                 checkCudaRet(cudaGraphicsD3D11RegisterResource(&mt_texture_2d.cuda_resource, mt_texture_2d.p_d3d11_texture_2d.Get(), cudaGraphicsRegisterFlagsNone));
@@ -229,13 +230,9 @@ namespace common {
                 checkCudaRet(cudaGraphicsSubResourceGetMappedArray(&mt_texture_2d.cuda_array, mt_texture_2d.cuda_resource, 0, 0));
 
                 checkCudaRet(cudaBindTextureToArray(mt_texture_2d.texture_ref, mt_texture_2d.cuda_array, &mt_texture_2d.cuda_array_desc));
-
-                dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(uchar4)));
-
                 //src和dst的step可能不同
                 checkCudaRet(cudaMemcpy2DFromArray(dst_gpumat.data, dst_gpumat.step,
                     mt_texture_2d.cuda_array, 0, 0, dst_gpumat.cols * sizeof(uchar4), dst_gpumat.rows, cudaMemcpyDeviceToDevice));
-
                 cudaUnbindTexture(mt_texture_2d.texture_ref);
 
                 checkCudaRet(cudaGraphicsUnmapResources(1, &mt_texture_2d.cuda_resource));
@@ -261,11 +258,16 @@ namespace common {
 
                 checkCudaRet(cudaBindTextureToArray(mt_texture_2d.texture_ref, mt_texture_2d.cuda_array, &mt_texture_2d.cuda_array_desc));
 
-                checkCudaRet(cudaMemcpy2DToArray(mt_texture_2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step, src_gpumat.cols * sizeof(uchar4), src_gpumat.rows, cudaMemcpyDeviceToDevice));
-
+                checkCudaRet(cudaMemcpy2DToArray(mt_texture_2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step,
+                    src_gpumat.cols * sizeof(uchar4), src_gpumat.rows, cudaMemcpyDeviceToDevice));
                 checkCudaRet(cudaUnbindTexture(mt_texture_2d.texture_ref));
 
+                checkCudaRet(cudaGraphicsUnmapResources(1, &mt_texture_2d.cuda_resource));
+
                 HRESULT hr = common::windows::texture2d_to_texture2d(mt_texture_2d.p_d3d11_texture_2d.Get(), pp_dst_texture, p_dst_device);
+
+                checkCudaRet(cudaGraphicsUnregisterResource(mt_texture_2d.cuda_resource));
+
                 if (FAILED(hr)) { return cudaError::cudaErrorUnknown; }
                 return cudaError::cudaSuccess;
             };

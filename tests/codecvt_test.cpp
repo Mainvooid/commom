@@ -3,15 +3,16 @@
 @author guobao.v@gmail.com
 */
 #include "gtest/gtest.h"
+#include <common.hpp>
 #include <common/codecvt.hpp>
 using namespace common::codecvt;
 
 //\u0054\u0065\u0073\u0074\u6d4b\u8bd5\u0031\u0032\u0033\u002e\u005c\u006e
-const std::string a_s = "Test测试123.\n";
-const std::string u8_s = u8"Test测试123.\n";
-const std::wstring w_s = L"Test测试123.\n";
-const std::u16string u16_s = u"Test测试123.\n";
-const std::u32string u32_s = U"Test测试123.\n";
+std::string a_s = "Test测试123.\n";
+std::string u8_s = u8"Test测试123.\n";
+std::wstring w_s = L"Test测试123.\n";
+std::u16string u16_s = u"Test测试123.\n";
+std::u32string u32_s = U"Test测试123.\n";
 
 //std::string(utf8) std::u16string(utf16) std::u32string(utf32)
 TEST(utf16_to_utf8, TEST_result) {

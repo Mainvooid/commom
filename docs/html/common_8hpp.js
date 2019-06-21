@@ -6,5 +6,6 @@ var common_8hpp =
     [ "HAVE_OPENCL", "common_8hpp.html#aa4c7aabdfaf0c68e1d01c595ca31d4cd", null ],
     [ "HAVE_OPENCV", "common_8hpp.html#a83e82e3571429e1b054b1651b647a630", null ],
     [ "getFnDuration", "common_8hpp.html#gabedbb4ac121d9fc5d8c9b042a23b5a72", null ],
+    [ "getFnDuration", "common_8hpp.html#ga2269e33944c2eeb8170c1acb67b232c7", null ],
     [ "_TAG", "common_8hpp.html#ga50ee1920b6820e4b940799334dc0c327", null ]
 ];

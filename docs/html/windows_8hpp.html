@@ -95,7 +95,6 @@ $(document).ready(function(){initNavTree('windows_8hpp.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="precomm_8hpp_source.html">common/precomm.hpp</a>&gt;</code><br />
-<code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;windows.h&gt;</code><br />
 <code>#include &lt;d3d9.h&gt;</code><br />
 <code>#include &lt;d3dx9.h&gt;</code><br />
@@ -107,21 +106,23 @@ windows.hpp 的引用(Include)关系图:</div>
 <div class="dyncontent">
 <div class="center"><img src="windows_8hpp__incl.png" border="0" usemap="#common_2windows_8hpp" alt=""/></div>
 <map name="common_2windows_8hpp" id="common_2windows_8hpp">
-<area shape="rect"  title=" " alt="" coords="559,5,709,32"/>
-<area shape="rect"  href="precomm_8hpp.html" title=" " alt="" coords="181,80,335,107"/>
-<area shape="rect"  title=" " alt="" coords="359,80,429,107"/>
-<area shape="rect"  title=" " alt="" coords="453,80,535,107"/>
-<area shape="rect"  title=" " alt="" coords="559,80,621,107"/>
-<area shape="rect"  title=" " alt="" coords="645,80,713,107"/>
-<area shape="rect"  title=" " alt="" coords="737,80,805,107"/>
-<area shape="rect"  title=" " alt="" coords="830,80,905,107"/>
-<area shape="rect"  title=" " alt="" coords="929,80,1013,107"/>
+<area shape="rect"  title=" " alt="" coords="647,5,797,32"/>
+<area shape="rect"  href="precomm_8hpp.html" title=" " alt="" coords="317,80,471,107"/>
+<area shape="rect"  title=" " alt="" coords="495,80,578,107"/>
+<area shape="rect"  title=" " alt="" coords="602,80,663,107"/>
+<area shape="rect"  title=" " alt="" coords="688,80,756,107"/>
+<area shape="rect"  title=" " alt="" coords="780,80,848,107"/>
+<area shape="rect"  title=" " alt="" coords="873,80,947,107"/>
+<area shape="rect"  title=" " alt="" coords="972,80,1056,107"/>
 <area shape="rect"  title=" " alt="" coords="5,155,65,181"/>
 <area shape="rect"  title=" " alt="" coords="89,155,152,181"/>
 <area shape="rect"  title=" " alt="" coords="177,155,246,181"/>
 <area shape="rect"  title=" " alt="" coords="270,155,342,181"/>
 <area shape="rect"  title=" " alt="" coords="366,155,422,181"/>
 <area shape="rect"  title=" " alt="" coords="446,155,523,181"/>
+<area shape="rect"  title=" " alt="" coords="548,155,659,181"/>
+<area shape="rect"  title=" " alt="" coords="683,155,753,181"/>
+<area shape="rect"  title=" " alt="" coords="777,155,824,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -190,9 +191,9 @@ windows.hpp 的引用(Include)关系图:</div>
 <tr class="memitem:ga487f261deaede7edad19b321fa24fbf3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga487f261deaede7edad19b321fa24fbf3"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga487f261deaede7edad19b321fa24fbf3">common::windows::saveTextureToFile</a> (IDirect3DTexture9 *pSrcTexture, const T *path)</td></tr>
 <tr class="separator:ga487f261deaede7edad19b321fa24fbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga5125e7fb97efb88bcef9c84f04023ef7">common::windows::loadTextureFromFile</a> (ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T *path, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_UNORDERED_ACCESS|D3D11_BIND_SHADER_RESOURCE)</td></tr>
-<tr class="separator:ga5125e7fb97efb88bcef9c84f04023ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1c36117a351448f72ef34252a990246"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gad1c36117a351448f72ef34252a990246"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#gad1c36117a351448f72ef34252a990246">common::windows::loadTextureFromFile</a> (ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T *path, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_UNORDERED_ACCESS|D3D11_BIND_SHADER_RESOURCE, UINT miscFlags=D3D11_RESOURCE_MISC_SHARED)</td></tr>
+<tr class="separator:gad1c36117a351448f72ef34252a990246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586">common::windows::createTextureDesc</a> (D3D11_TEXTURE2D_DESC &amp;desc, UINT width, UINT height, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_SHADER_RESOURCE, UINT miscFlags=0)</td></tr>
 <tr class="separator:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8">common::windows::texture2d_to_texture2d</a> (ID3D11Texture2D *pSrcTexture2D, ID3D11Texture2D **ppDstTexture2D, ID3D11Device *pDstDevice, HANDLE *dst_handle=(HANDLE *) malloc(0))</td></tr>

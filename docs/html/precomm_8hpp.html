@@ -99,18 +99,24 @@ $(document).ready(function(){initNavTree('precomm_8hpp.html','');});
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 precomm.hpp 的引用(Include)关系图:</div>
 <div class="dyncontent">
 <div class="center"><img src="precomm_8hpp__incl.png" border="0" usemap="#common_2precomm_8hpp" alt=""/></div>
 <map name="common_2precomm_8hpp" id="common_2precomm_8hpp">
-<area shape="rect"  title=" " alt="" coords="181,5,335,32"/>
+<area shape="rect"  title=" " alt="" coords="317,5,471,32"/>
 <area shape="rect"  title=" " alt="" coords="5,80,65,107"/>
 <area shape="rect"  title=" " alt="" coords="89,80,152,107"/>
 <area shape="rect"  title=" " alt="" coords="177,80,246,107"/>
 <area shape="rect"  title=" " alt="" coords="270,80,342,107"/>
 <area shape="rect"  title=" " alt="" coords="366,80,422,107"/>
 <area shape="rect"  title=" " alt="" coords="446,80,523,107"/>
+<area shape="rect"  title=" " alt="" coords="548,80,659,107"/>
+<area shape="rect"  title=" " alt="" coords="683,80,753,107"/>
+<area shape="rect"  title=" " alt="" coords="777,80,824,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -148,6 +154,8 @@ precomm.hpp 的引用(Include)关系图:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 命名空间</h2></td></tr>
 <tr class="memitem:namespacecommon"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html">common</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacecommon_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1detail.html">common::detail</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -231,11 +239,21 @@ precomm.hpp 的引用(Include)关系图:</div>
 <tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
 <tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2">common::getFunction</a> (R(*Fn)(FArgs...))</td></tr>
 <tr class="separator:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2b8cbff7c0944ad7a63f4c94982cd04"><td class="memTemplParams" colspan="2">template&lt;typename R , typename... Args&gt; </td></tr>
+<tr class="memitem:gab2b8cbff7c0944ad7a63f4c94982cd04"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(Args...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">common::detail::cache_fn</a> (R(*func)(Args...))</td></tr>
+<tr class="memdesc:gab2b8cbff7c0944ad7a63f4c94982cd04"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数入参及结果缓存，缓存入参和函数的执行结果，若入参存在则从缓存返回结果  <a href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">更多...</a><br /></td></tr>
+<tr class="separator:gab2b8cbff7c0944ad7a63f4c94982cd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memTemplParams" colspan="2">template&lt;typename R , typename... Args&gt; </td></tr>
+<tr class="memitem:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(Args...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea">common::cache_fn</a> (R(*func)(Args...), bool flush=false)</td></tr>
+<tr class="memdesc:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数对象缓存，若存在相同类型函数指针，则调用相应缓存函数获取缓存结果,可以大幅提高递归类函数的性能  <a href="group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea">更多...</a><br /></td></tr>
+<tr class="separator:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplParams" colspan="2">template&lt;typename char_t , typename TI &gt; </td></tr>
 <tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">common::convert_to_string</a> (const TI &amp;arg)</td></tr>
+<tr class="memdesc:ga58689444787325d87c9c0b1af3b842b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">基本数据类型转字符串  <a href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">更多...</a><br /></td></tr>
 <tr class="separator:ga58689444787325d87c9c0b1af3b842b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplParams" colspan="2">template&lt;typename TO , typename TI &gt; </td></tr>
 <tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">common::convert_from_string</a> (const TI &amp;arg) noexcept(false)</td></tr>
+<tr class="memdesc:gab178b5840a8ea5d298332bb942951c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">从字符串解析基本数据类型  <a href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">更多...</a><br /></td></tr>
 <tr class="separator:gab178b5840a8ea5d298332bb942951c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga1206320bdec9633462ac1cc9a3733d93">common::fillDir</a> (const T *dir, const T *separator=tvalue&lt; T &gt;(&quot;\\&quot;, L&quot;\\&quot;))</td></tr>

@@ -7,7 +7,6 @@
 
 #include <common/precomm.hpp>
 #include <algorithm>
-#include <map>
 
 #ifdef __GNUC__
 #include <cxxabi.h>

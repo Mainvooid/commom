@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('group__common.html','');});
 <div class="header">
   <div class="summary">
 <a href="#groups">模块</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
 <a href="#nested-classes">类</a> &#124;
 <a href="#func-members">函数</a> &#124;
 <a href="#var-members">变量</a>  </div>
@@ -126,6 +127,11 @@ common 的协作图:</div>
 <tr class="memitem:group__opencv"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html">opencv - opencv utilities</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__windows"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html">windows - windows utilities</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacecommon_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1detail.html">common::detail</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -222,11 +228,17 @@ common 的协作图:</div>
 <tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
 <tr class="memitem:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2">common::getFunction</a> (R(*Fn)(FArgs...))</td></tr>
 <tr class="separator:gaa3da88d9740f493c2f2d85ea984e55e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memTemplParams" colspan="2">template&lt;typename R , typename... Args&gt; </td></tr>
+<tr class="memitem:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(Args...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea">common::cache_fn</a> (R(*func)(Args...), bool flush=false)</td></tr>
+<tr class="memdesc:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数对象缓存，若存在相同类型函数指针，则调用相应缓存函数获取缓存结果,可以大幅提高递归类函数的性能  <a href="group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea">更多...</a><br /></td></tr>
+<tr class="separator:ga62be1a9ad25bd4e3eb29bea030393aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplParams" colspan="2">template&lt;typename char_t , typename TI &gt; </td></tr>
 <tr class="memitem:ga58689444787325d87c9c0b1af3b842b6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">common::convert_to_string</a> (const TI &amp;arg)</td></tr>
+<tr class="memdesc:ga58689444787325d87c9c0b1af3b842b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">基本数据类型转字符串  <a href="group__common.html#ga58689444787325d87c9c0b1af3b842b6">更多...</a><br /></td></tr>
 <tr class="separator:ga58689444787325d87c9c0b1af3b842b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplParams" colspan="2">template&lt;typename TO , typename TI &gt; </td></tr>
 <tr class="memitem:gab178b5840a8ea5d298332bb942951c0f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">common::convert_from_string</a> (const TI &amp;arg) noexcept(false)</td></tr>
+<tr class="memdesc:gab178b5840a8ea5d298332bb942951c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">从字符串解析基本数据类型  <a href="group__common.html#gab178b5840a8ea5d298332bb942951c0f">更多...</a><br /></td></tr>
 <tr class="separator:gab178b5840a8ea5d298332bb942951c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga1206320bdec9633462ac1cc9a3733d93"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga1206320bdec9633462ac1cc9a3733d93">common::fillDir</a> (const T *dir, const T *separator=<a class="el" href="group__common.html#ga38c54994e92e942dac88fc14499baa7c">tvalue</a>&lt; T &gt;(&quot;\\&quot;, L&quot;\\&quot;))</td></tr>
@@ -236,6 +248,9 @@ common 的协作图:</div>
 <tr class="memitem:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">common::getFnDuration</a> (std::function&lt; R(FArgs...)&gt; Fn, Args &amp;... args)</td></tr>
 <tr class="memdesc:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">函数计时(默认std::chrono::milliseconds)  <a href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">更多...</a><br /></td></tr>
 <tr class="separator:gabedbb4ac121d9fc5d8c9b042a23b5a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2269e33944c2eeb8170c1acb67b232c7"><td class="memTemplParams" colspan="2">template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... Args&gt; </td></tr>
+<tr class="memitem:ga2269e33944c2eeb8170c1acb67b232c7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga2269e33944c2eeb8170c1acb67b232c7">common::getFnDuration</a> (R(*func)(Args...))</td></tr>
+<tr class="separator:ga2269e33944c2eeb8170c1acb67b232c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>
@@ -244,6 +259,38 @@ common 的协作图:</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <h2 class="groupheader">函数说明</h2>
+<a id="ga62be1a9ad25bd4e3eb29bea030393aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga62be1a9ad25bd4e3eb29bea030393aea">&#9670;&nbsp;</a></span>cache_fn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;R(Args...)&gt; common::cache_fn </td>
+          <td>(</td>
+          <td class="paramtype">R(*)(Args...)&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flush</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>函数对象缓存，若存在相同类型函数指针，则调用相应缓存函数获取缓存结果,可以大幅提高递归类函数的性能 </p>
+
+</div>
+</div>
 <a id="gab178b5840a8ea5d298332bb942951c0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab178b5840a8ea5d298332bb942951c0f">&#9670;&nbsp;</a></span>convert_from_string()</h2>
 
@@ -270,6 +317,8 @@ template&lt;typename TO , typename TI &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>从字符串解析基本数据类型 </p>
+
 </div>
 </div>
 <a id="ga58689444787325d87c9c0b1af3b842b6"></a>
@@ -289,6 +338,8 @@ template&lt;typename char_t , typename TI &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>基本数据类型转字符串 </p>
 
 </div>
 </div>
@@ -555,7 +606,7 @@ template&lt;typename T , typename... Args&gt; </div>
 </div>
 </div>
 <a id="gabedbb4ac121d9fc5d8c9b042a23b5a72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabedbb4ac121d9fc5d8c9b042a23b5a72">&#9670;&nbsp;</a></span>getFnDuration()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#gabedbb4ac121d9fc5d8c9b042a23b5a72">&#9670;&nbsp;</a></span>getFnDuration() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -591,6 +642,26 @@ template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... F
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>相应单位的时间计数 </dd></dl>
+
+</div>
+</div>
+<a id="ga2269e33944c2eeb8170c1acb67b232c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2269e33944c2eeb8170c1acb67b232c7">&#9670;&nbsp;</a></span>getFnDuration() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = std::chrono::milliseconds, typename R , typename ... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto common::getFnDuration </td>
+          <td>(</td>
+          <td class="paramtype">R(*)(Args...)&#160;</td>
+          <td class="paramname"><em>func</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

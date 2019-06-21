@@ -10,7 +10,7 @@ var windows_8hpp =
     [ "loadSubDll", "windows_8hpp.html#gae8418ec6d8a91edfc32a57772fefe7a4", null ],
     [ "loadSubDll", "windows_8hpp.html#gaa8e6d2eb037479324dcb5445cea10289", null ],
     [ "loadSubDll", "windows_8hpp.html#ga4848ceb6cbe9b8ff859833928ab97732", null ],
-    [ "loadTextureFromFile", "windows_8hpp.html#ga5125e7fb97efb88bcef9c84f04023ef7", null ],
+    [ "loadTextureFromFile", "windows_8hpp.html#gad1c36117a351448f72ef34252a990246", null ],
     [ "reportLiveDeviceObjects", "windows_8hpp.html#ga3b414c57bc2cf462d71751d73b85e2a0", null ],
     [ "saveTextureToFile", "windows_8hpp.html#ga47806b9488d985a6946b59d6cc241c87", null ],
     [ "saveTextureToFile", "windows_8hpp.html#ga487f261deaede7edad19b321fa24fbf3", null ],

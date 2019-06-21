@@ -1,4 +1,4 @@
-/*
+﻿/*
 @brief a simple debug logger
 @author guobao.v@gmail.com
 */
@@ -41,6 +41,9 @@ namespace common {
     };
 
     namespace debuglog {
+        /// @addtogroup debuglog
+        /// @{
+
         /**
         *@brief OutputDebugString扩展版
         *@param format 格式 e.g. "Error [%s] : %s\n"
@@ -220,6 +223,7 @@ namespace common {
             T m_name;
             level_e m_level;
         };
+        /// @}
     } // namespace debuglog
 
     // common 全局logger

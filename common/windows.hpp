@@ -6,7 +6,6 @@
 #define _COMMON_WINDOWS_HPP_
 
 #include <common/precomm.hpp>
-#include <memory>
 #include <windows.h>
 
 #ifdef HAVE_DIRECTX
@@ -242,15 +241,16 @@ namespace common {
         template<typename T>
         static HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T* path,
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
-            UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE)
+            UINT bindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_SHADER_RESOURCE,
+            UINT miscFlags = D3D11_RESOURCE_MISC_SHARED)
         {
             D3DX11_IMAGE_LOAD_INFO loadInfo;
             ZeroMemory(&loadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
             loadInfo.BindFlags = bindFlags;
             loadInfo.Format = format;
-            loadInfo.MipLevels = D3DX11_DEFAULT; //产生最大的mipmaps层
+            loadInfo.MipLevels = D3DX11_DEFAULT; //产生最大的mipmaps层 
             loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
-
+            loadInfo.MiscFlags = miscFlags;
             Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
             Release_s(*pTexture2D);
             return tvalue<T>(getFunction(D3DX11CreateTextureFromFileA), getFunction(D3DX11CreateTextureFromFileW))
@@ -313,15 +313,15 @@ namespace common {
             }
 
             Microsoft::WRL::ComPtr<IDXGIResource> pSharedResource;
-            hr = p_new_src_texture->QueryInterface(__uuidof(IDXGIResource), reinterpret_cast<void**>(pSharedResource.ReleaseAndGetAddressOf()));
+            hr = p_new_src_texture->QueryInterface(__uuidof(IDXGIResource), reinterpret_cast<void**>(pSharedResource.GetAddressOf()));
             if (FAILED(hr)) { return hr; }
-
             hr = pSharedResource->GetSharedHandle(dst_handle);
             if (FAILED(hr)) { return hr; }
             hr = pDstDevice->OpenSharedResource(*dst_handle, __uuidof(IDXGIResource), (void**)(pSharedResource.ReleaseAndGetAddressOf()));
             if (FAILED(hr)) { return hr; }
             hr = pSharedResource->QueryInterface(__uuidof(ID3D11Texture2D), (void**)(ppDstTexture2D));
             if (FAILED(hr)) { return hr; }
+            (*ppDstTexture2D)->AddRef();
             return S_OK;
         }
 
