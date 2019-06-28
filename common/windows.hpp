@@ -14,12 +14,15 @@
 #include <d3d11.h>
 #include <d3dx11.h>
 #include <wrl\client.h>
-
+using Microsoft::WRL::ComPtr;
+#if !defined(_DEBUG) || defined(DEBUG)
+#include <d3dcommon.h>
+#pragma comment(lib, "dxguid.lib") 
+#endif
 #pragma comment ( lib, "d3d9.lib")
 #pragma comment ( lib, "d3dx9.lib")
 #pragma comment ( lib, "d3d11.lib")
 #pragma comment ( lib, "d3dx11.lib")
-
 #endif
 
 #ifndef DLLAPI
@@ -167,20 +170,32 @@ namespace common {
         //一般性directX函数
 
         /*
+        *@brief 检查D3D对象是否释放(一般放在device->Release()之前)
+        *@param pDevice 设备对象 需要设备开启标志:D3D11_CREATE_DEVICE_DEBUG
+        */
+        static HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice)
+        {
+            ComPtr<ID3D11Debug> d3dDebug;
+            HRESULT hr = pDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(d3dDebug.GetAddressOf()));
+            if (SUCCEEDED(hr)) {
+                hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
+            }
+            return hr;
+        }
+
+        /*
         *@brief 创建D3D11设备
         *@param ppDevice 设备
         *@param pAdapter 适配器
         *@param ppImmediateContext 上下文
+        *@note Release模式下也可以通过定义D3D11_DEVICE_DEBUG开启设备调试模式
         */
         static HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr,
-            ID3D11DeviceContext** ppImmediateContext = nullptr)
+            ID3D11DeviceContext** ppImmediateContext = nullptr, UINT createDeviceFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT)
         {
-            UINT createDeviceFlags = 0;
-#if defined(_DEBUG) or defined(DEBUG)
+#if !defined(_DEBUG) || defined(DEBUG) || defined(D3D11_DEVICE_DEBUG)
             createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
-            createDeviceFlags |= D3D11_CREATE_DEVICE_BGRA_SUPPORT;
-
             D3D_FEATURE_LEVEL featureLevel;
             D3D_DRIVER_TYPE deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN;
             if (pAdapter == nullptr) {
@@ -198,7 +213,6 @@ namespace common {
                 ppDevice,                  //输出D3D设备
                 &featureLevel,             //输出当前应用D3D特性等级
                 ppImmediateContext);       //输出D3D设备上下文
-
             if (FAILED(hr) || featureLevel != D3D_FEATURE_LEVEL_11_0) {
                 return S_FALSE;
             }
@@ -215,7 +229,7 @@ namespace common {
         static HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, const T* path,
             D3DX11_IMAGE_FILE_FORMAT format = D3DX11_IFF_PNG)
         {
-            Microsoft::WRL::ComPtr<ID3D11DeviceContext> ctx;
+            ComPtr<ID3D11DeviceContext> ctx;
             pDevice->GetImmediateContext(ctx.GetAddressOf());
             return tvalue<T>(getFunction(D3DX11SaveTextureToFileA), getFunction(D3DX11SaveTextureToFileW))(ctx.Get(), pSrcTexture, format, path);
         }
@@ -251,7 +265,7 @@ namespace common {
             loadInfo.MipLevels = D3DX11_DEFAULT; //产生最大的mipmaps层 
             loadInfo.MipFilter = D3DX11_FILTER_LINEAR;
             loadInfo.MiscFlags = miscFlags;
-            Microsoft::WRL::ComPtr<ID3DX11ThreadPump> pump;
+            ComPtr<ID3DX11ThreadPump> pump;
             Release_s(*pTexture2D);
             return tvalue<T>(getFunction(D3DX11CreateTextureFromFileA), getFunction(D3DX11CreateTextureFromFileW))
                 (pDevice, path, &loadInfo, pump.Get(), (ID3D11Resource**)pTexture2D, nullptr);
@@ -290,17 +304,17 @@ namespace common {
         *@param pDstDevice       目标设备
         *@param dst_handle       目标共享句柄
         */
-        static HRESULT texture2d_to_texture2d(ID3D11Texture2D* pSrcTexture2D, ID3D11Texture2D** ppDstTexture2D, ID3D11Device* pDstDevice, HANDLE* dst_handle = (HANDLE*)malloc(0))
+        static HRESULT texture2d_to_texture2d(ID3D11Texture2D* pSrcTexture2D, ID3D11Texture2D** ppDstTexture2D, ID3D11Device* pDstDevice, HANDLE* dst_pHandle = nullptr)
         {
             D3D11_TEXTURE2D_DESC desc;
             pSrcTexture2D->GetDesc(&desc);
 
-            Microsoft::WRL::ComPtr<ID3D11Device> p_src_device;
+            ComPtr<ID3D11Device> p_src_device;
             pSrcTexture2D->GetDevice(p_src_device.GetAddressOf());
             HRESULT hr = S_OK;
-            Microsoft::WRL::ComPtr <ID3D11Texture2D> p_new_src_texture;
+            ComPtr <ID3D11Texture2D> p_new_src_texture;
             if ((desc.MiscFlags & D3D11_RESOURCE_MISC_SHARED) != D3D11_RESOURCE_MISC_SHARED) {
-                Microsoft::WRL::ComPtr <ID3D11DeviceContext> p_ctx;
+                ComPtr <ID3D11DeviceContext> p_ctx;
                 p_src_device->GetImmediateContext(&p_ctx);
                 desc.MiscFlags |= D3D11_RESOURCE_MISC_SHARED;
                 hr = p_src_device->CreateTexture2D(&desc, nullptr, p_new_src_texture.GetAddressOf());
@@ -312,33 +326,26 @@ namespace common {
                 p_new_src_texture = pSrcTexture2D;
             }
 
-            Microsoft::WRL::ComPtr<IDXGIResource> pSharedResource;
-            hr = p_new_src_texture->QueryInterface(__uuidof(IDXGIResource), reinterpret_cast<void**>(pSharedResource.GetAddressOf()));
+            ComPtr<IDXGIResource> pSharedResource;
+            hr = p_new_src_texture.As(&pSharedResource);//QueryInterface
+
             if (FAILED(hr)) { return hr; }
-            hr = pSharedResource->GetSharedHandle(dst_handle);
+            HANDLE handle;
+            hr = pSharedResource->GetSharedHandle(&handle);
             if (FAILED(hr)) { return hr; }
-            hr = pDstDevice->OpenSharedResource(*dst_handle, __uuidof(IDXGIResource), (void**)(pSharedResource.ReleaseAndGetAddressOf()));
+
+            hr = pDstDevice->OpenSharedResource(handle, __uuidof(IDXGIResource), (void**)(pSharedResource.ReleaseAndGetAddressOf()));
             if (FAILED(hr)) { return hr; }
-            hr = pSharedResource->QueryInterface(__uuidof(ID3D11Texture2D), (void**)(ppDstTexture2D));
+            Release_s(*ppDstTexture2D);
+            hr = pSharedResource->QueryInterface(__uuidof(ID3D11Texture2D), reinterpret_cast<void**>(ppDstTexture2D));
             if (FAILED(hr)) { return hr; }
-            (*ppDstTexture2D)->AddRef();
+
+            if (dst_pHandle != nullptr) {
+                *dst_pHandle = handle;
+            }
+
             return S_OK;
         }
-
-        /*
-        *@brief 检查D3D对象是否释放(一般放在device->Release()之前)
-        *@param pDevice 设备对象
-        */
-        static HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice)
-        {
-            Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
-            HRESULT hr = pDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(d3dDebug.GetAddressOf()));
-            if (SUCCEEDED(hr)) {
-                hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
-            }
-            return hr;
-        }
-
 
 #endif // HAVE_DIRECTX
         /// @}

@@ -59,7 +59,7 @@ namespace common {
     *@brief free_s 可接受不定长参数
     */
     template<typename T>
-    inline void free_s(T& p)
+    inline void free_s(T p)
     {
         if (p != nullptr) { std::free(static_cast<void*>(p)); p = nullptr; }
     }
@@ -68,7 +68,7 @@ namespace common {
     *@brief free_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void free_s(T& p, Args& ... args)
+    inline void free_s(T p, Args ... args)
     {
         if (p != nullptr) { std::free(static_cast<void*>(p)); p = nullptr; }
         free_s(args...);
@@ -78,7 +78,7 @@ namespace common {
     *@brief delete_s 可接受不定长参数
     */
     template<typename T>
-    inline void delete_s(T& p)
+    inline void delete_s(T p)
     {
         if (p != nullptr) { delete(p); p = nullptr; }
     }
@@ -87,7 +87,7 @@ namespace common {
     *@brief delete_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void delete_s(T& p, Args& ... args)
+    inline void delete_s(T p, Args ... args)
     {
         if (p != nullptr) { delete(p); p = nullptr; }
         delete_s(args...);
@@ -97,7 +97,7 @@ namespace common {
     *@brief delete[]_s 可接受不定长参数
     */
     template<typename T>
-    inline void deleteA_s(T& p)
+    inline void deleteA_s(T p)
     {
         if (p != nullptr) { delete[](p); p = nullptr; }
     }
@@ -106,17 +106,14 @@ namespace common {
     *@brief delete[]_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void deleteA_s(T& p, Args& ... args)
+    inline void deleteA_s(T p, Args ... args)
     {
         if (p != nullptr) { delete[](p); p = nullptr; }
         deleteA_s(args...);
     }
 
-    /**
-    *@brief Release_s 可接受不定长参数
-    */
     template<typename T>
-    inline void Release_s(T& p)
+    inline void Release_s(T p)
     {
         if (p != nullptr) { p->Release(); p = nullptr; }
     }
@@ -125,7 +122,7 @@ namespace common {
     *@brief Release_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void Release_s(T& p, Args& ... args)
+    inline void Release_s(T p, Args ... args)
     {
         if (p != nullptr) { p->Release(); p = nullptr; }
         Release_s(args...);
@@ -135,7 +132,7 @@ namespace common {
     *@brief release_s 可接受不定长参数
     */
     template<typename T>
-    inline void release_s(T& p)
+    inline void release_s(T p)
     {
         if (p != nullptr) { p->release(); p = nullptr; }
     }
@@ -144,7 +141,7 @@ namespace common {
     *@brief release_s 接受不定长参数
     */
     template<typename T, typename...Args>
-    inline void release_s(T& p, Args& ... args)
+    inline void release_s(T p, Args ... args)
     {
         if (p != nullptr) { p->release(); p = nullptr; }
         release_s(args...);

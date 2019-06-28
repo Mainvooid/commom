@@ -70,6 +70,7 @@ namespace common {
         auto duration = std::chrono::duration_cast<T>(end - start);
         return static_cast<double>(duration.count());
     }
+
     template< typename T = std::chrono::milliseconds, typename R, typename ...Args>
     auto getFnDuration(R(*func)(Args...)) {
         std::function<R(Args...)> Fn = func;

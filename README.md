@@ -101,24 +101,27 @@ It has only been tested on Windows.
 - 如果需要设置编译警告,应将范围限制在本文件内
 ```cpp
 #ifdef _MSC_VER
-#pragma warning( push )
-#pragma warning( disable: 4127 )
+#pragma warning( push ) //保存当前的编译状态
+#pragma warning( disable: 4127 ) 
 #endif
 
 #ifdef _MSC_VER
-#pragma warning( pop )
+#pragma warning( pop ) //恢复原先的状态
 #endif
 ```
 
-- 编译报错提示
-```cpp
-#if defined(_DEBUG) || defined(DEBUG)
-#error error 错误 123
-#endif
-```
+- 编译提示
+   - 错误提示
+      ```cpp
+      #error error 错误 123
+      ```
+   - 链接库文件时可以编译提示
+      ```cpp
+      #pragma message("link opencv libs in opencv.hpp.")
+      #pragma comment(lib,"opencv_core410.lib")
+      ```
 
 #### HPP文件要注意的问题
-
 所有HPP文件使用宏避免重复包含.
 ```cpp
 #ifndef _COMMON_PRECOMM_HPP_
@@ -274,7 +277,7 @@ template<bool flag=false>
       }
    
       template <typename T>
-      auto fun2(T beg)->typename std::remove_reference<decltype(*beg)>::type//移除引用,为了使用模板 参  数成员必须使用typename
+      auto fun2(T beg)->typename std::remove_reference<decltype(*beg)>::type//移除引用,为了使用模板,参数成员必须使用typename
       {
        return *beg;//返回拷贝
       }
@@ -525,7 +528,6 @@ template<bool flag=false>
 - 浮点数精度比较
    ```cpp
    #include<float.h>
-   
    < DBL_EPSILON
    > FLT_EPSILON
    ```
@@ -537,11 +539,33 @@ template<bool flag=false>
       ctx->Flush();
       ```
    - 不同`device`之间的`texture`通过`SharedHandle`进行共享/拷贝.
+   - `DX11`调试,检查D3D对象是否释放,以及内存是否泄漏.
+      - 把d3d的device定义为debug模式: `D3D11_CREATE_DEVICE_DEBUG`
+      - 为初始化了的D3D对象设置别名.
+         ```cpp
+         #include <d3dcommon.h>
+         #pragma comment(lib, "dxguid.lib") 
+         D3D_SET_OBJECT_NAME_A(device.Get(), "in_device");
+         ```
+      - 调用 `ReportLiveDeviceObjects()`.
+         ```cpp
+         Microsoft::WRL::ComPtr<ID3D11Debug> d3dDebug;
+         HRESULT hr = pDevice->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(d3dDebug.GetAddressOf()));
+         if (SUCCEEDED(hr)) {
+             hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
+         }
+         ```
+       - IntRef是d3d内部的对象引用,Refcount是用户引用数量,只需要注意Refcount不为0的对象就可以了(除了ID3D11Device).
+          ```
+          D3D11 WARNING: 	Live ID3D11Texture2D at 0x000001F8C837ABB0, Name: in_left, Refcount: 1, IntRef: 0 [ STATE_CREATION WARNING #425: LIVE_TEXTURE2D]
+          ```
 
 - 关于`opencv`
-   - `cv::UMat` 有些时候需要手动`release`.
+   - 建议不要分配静态或全局`GpuMat`变量,即依赖于它的析构函数.此类变量和CUDA上下文的销毁顺序未定义.如果之前已销毁CUDA上下文.则GPU内存释放函数将返回错误.
+   - `cv::UMat` , `cv::cuda::GpuMat` 有些时候需要手动`release`.
 
 - 关于`cuda`
    - `__syncthreads`等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC__`(.cu源文件编译时会定义这个宏).
+   - `<<<>>>`内核函数启动参数显示应输入表达式,只是因为VS2017无法正确识别cuda内核启动符号,代码实际是由NVCC编译器编译的,所以也是不影响编译.
 
 
