@@ -1,6 +1,8 @@
 ﻿/*
 @brief common library
 @author guobao.v@gmail.com
+@section License MIT
+@see https://github.com/Mainvooid/common
 */
 #ifndef _COMMON_HPP_
 #define _COMMON_HPP_
