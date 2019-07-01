@@ -15,41 +15,41 @@ std::u16string u16_s = u"Test测试123.\n";
 std::u32string u32_s = U"Test测试123.\n";
 
 //std::string(utf8) std::u16string(utf16) std::u32string(utf32)
-TEST(utf16_to_utf8, TEST_result) {
+TEST(codecvt, utf16_to_utf8) {
     EXPECT_EQ(utf16_to_utf8(u16_s), u8_s);
 }
-TEST(utf8_to_utf16, TEST_result) {
+TEST(codecvt, utf8_to_utf16) {
     EXPECT_EQ(utf8_to_utf16(u8_s), u16_s);
 }
-TEST(utf32_to_utf8, TEST_result) {
+TEST(codecvt, utf32_to_utf8) {
     EXPECT_EQ(utf32_to_utf8(u32_s), u8_s);
 }
-TEST(utf8_to_utf32, TEST_result) {
+TEST(codecvt, utf8_to_utf32) {
     EXPECT_EQ(utf8_to_utf32(u8_s), u32_s);
 }
-TEST(utf32_to_utf16, TEST_result) {
+TEST(codecvt, utf32_to_utf16) {
     EXPECT_EQ(utf32_to_utf16(u32_s), u16_s);
 }
-TEST(utf16_to_utf32, TEST_result) {
+TEST(codecvt, utf16_to_utf32) {
     EXPECT_EQ(utf16_to_utf32(u16_s), u32_s);
 }
 
 //std::string(utf8) std::string(ansi) std::wstring(unicode)
-TEST(utf8_to_ansi, TEST_result) {
+TEST(codecvt, utf8_to_ansi) {
     EXPECT_EQ(utf8_to_ansi(u8_s), a_s);
 }
-TEST(ansi_to_utf8, TEST_result) {
+TEST(codecvt, ansi_to_utf8) {
     EXPECT_EQ(ansi_to_utf8(a_s), u8_s);
 }
-TEST(unicode_to_utf8, TEST_result) {
+TEST(codecvt, unicode_to_utf8) {
     EXPECT_EQ(unicode_to_utf8(w_s), u8_s);
 }
-TEST(utf8_to_unicode, TEST_result) {
+TEST(codecvt, utf8_to_unicode) {
     EXPECT_EQ(utf8_to_unicode(u8_s), w_s);
 }
-TEST(unicode_to_ansi, TEST_result) {
+TEST(codecvt, unicode_to_ansi) {
     EXPECT_EQ(unicode_to_ansi(w_s), a_s);
 }
-TEST(ansi_to_unicode, TEST_result) {
+TEST(codecvt, ansi_to_unicode) {
     EXPECT_EQ(ansi_to_unicode(a_s), w_s);
 }

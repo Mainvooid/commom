@@ -186,7 +186,7 @@ namespace common {
     }
 
     template<typename T>
-    size_t cslen(const T* str)
+    inline size_t cslen(const T* str)
     {
         return tvalue<T>(strlen, wcslen)(str);
     }
@@ -195,14 +195,17 @@ namespace common {
     *@brief 获取std::function对象
     */
     template<typename R, typename ...FArgs>
-    std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) { return Fn; }
+    inline std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) { return Fn; }
 
     template<typename R, typename ...FArgs>
-    std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) { return Fn; }//*@note _WIN64下__stdcall的调用约定会被隐式转为__cdecl(缺省)
+    inline std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) { return Fn; }//*@note _WIN64下__stdcall的调用约定会被隐式转为__cdecl(缺省)
+
+    template<typename R, typename ...FArgs>
+    inline std::function<R(FArgs...,va_list)> getFunction(R(*Fn)(FArgs...,...)) { return Fn; }
 
 #ifndef _WIN64
     template<typename R, typename ...FArgs>
-    std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) { return Fn; }
+    inline std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) { return Fn; }
 #endif 
 
     namespace detail {
@@ -249,7 +252,7 @@ namespace common {
     @brief 基本数据类型转字符串
     */
     template<typename char_t, typename TI>
-    auto convert_to_string(const TI& arg)
+    inline auto convert_to_string(const TI& arg)
     {
         std::basic_stringstream<char_t, std::char_traits<char_t>, std::allocator<char_t>> str;
         str << arg;
@@ -260,7 +263,7 @@ namespace common {
     @brief 从字符串解析基本数据类型
     */
     template<typename TO, typename TI>
-    auto convert_from_string(const TI& arg) noexcept(false)
+    inline auto convert_from_string(const TI& arg) noexcept(false)
     {
         TO ret;
         typename ttype_t<TI, std::istringstream, std::wistringstream>::type iss(arg);

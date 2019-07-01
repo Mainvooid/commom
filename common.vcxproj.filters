@@ -53,9 +53,6 @@
     <ClCompile Include="samples\cmdline.cpp">
       <Filter>samples</Filter>
     </ClCompile>
-    <ClCompile Include="samples\debuglog.cpp">
-      <Filter>samples</Filter>
-    </ClCompile>
     <ClCompile Include="samples\opencv.cpp">
       <Filter>samples</Filter>
     </ClCompile>

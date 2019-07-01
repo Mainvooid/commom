@@ -266,10 +266,10 @@ template<bool flag=false>
       ```cpp
       double h(int x, float y); 
       // ==
-      auto h(int x, float y) -> double;
+      auto h(int x, float y) -> double;//C++14 开始可以推导返回类型
       ```
 
-   - `decltype`关键字用于检查实体的声明类型或表达式的类型及值分类.
+   - `decltype`返回操作数的类型
       ```cpp
       template <typename T>
       auto fun(T beg)->decltype(*beg){

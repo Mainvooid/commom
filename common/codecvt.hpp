@@ -56,7 +56,7 @@ namespace common {
         *@return 若失败返回空字符串
         *@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
         */
-        static std::string utf16_to_utf8(const std::u16string& utf16_string) noexcept
+        inline static std::string utf16_to_utf8(const std::u16string& utf16_string) noexcept
         {
             std::string result = u8"";
 #if _MSC_VER >= 1900
@@ -81,7 +81,7 @@ namespace common {
         *@brief std::string(utf8) -> std::u16string
         *@return 若失败返回空字符串
         */
-        static std::u16string utf8_to_utf16(const std::string & utf8_string) noexcept
+        inline static std::u16string utf8_to_utf16(const std::string & utf8_string) noexcept
         {
             std::u16string result = u"";
 #if _MSC_VER >= 1900
@@ -109,7 +109,7 @@ namespace common {
         *@return 若失败返回空字符串
         *@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
         */
-        static std::string utf32_to_utf8(const std::u32string & utf32_string) noexcept
+        inline static std::string utf32_to_utf8(const std::u32string & utf32_string) noexcept
         {
             std::string result = u8"";
 #if _MSC_VER >= 1900
@@ -134,7 +134,7 @@ namespace common {
         *@brief std::string(utf8) -> std::u32string
         *@return 若失败返回空字符串
         */
-        static std::u32string utf8_to_utf32(const std::string & utf8_string) noexcept
+        inline static std::u32string utf8_to_utf32(const std::string & utf8_string) noexcept
         {
             std::u32string result = U"";
 #if _MSC_VER >= 1900
@@ -160,7 +160,7 @@ namespace common {
         *@brief std::u32string -> std::u16string
         *@return 若失败返回空字符串
         */
-        static std::u16string utf32_to_utf16(const std::u32string & utf32_string) noexcept
+        inline static std::u16string utf32_to_utf16(const std::u32string & utf32_string) noexcept
         {
             return utf8_to_utf16(utf32_to_utf8(utf32_string));
         }
@@ -169,7 +169,7 @@ namespace common {
         *@brief std::u16string -> std::u32string
         *@return 若失败返回空字符串
         */
-        static std::u32string utf16_to_utf32(const std::u16string & utf16_string) noexcept
+        inline static std::u32string utf16_to_utf32(const std::u16string & utf16_string) noexcept
         {
             return utf8_to_utf32(utf16_to_utf8(utf16_string));
         }
@@ -181,7 +181,7 @@ namespace common {
         *@return 若失败返回空字符串,
         *@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
         */
-        static std::string unicode_to_utf8(const std::wstring & wstring) noexcept
+        inline static std::string unicode_to_utf8(const std::wstring & wstring) noexcept
         {
             std::string result = u8"";
             try {
@@ -198,7 +198,7 @@ namespace common {
         *@brief std::string(utf8) -> std::wstring(unicode)
         *@return 若失败返回空字符串
         */
-        static std::wstring utf8_to_unicode(const std::string & utf8_string) noexcept
+        inline static std::wstring utf8_to_unicode(const std::string & utf8_string) noexcept
         {
             std::wstring result = L"";
             try {
@@ -215,7 +215,7 @@ namespace common {
         *@brief std::wstring(unicode) -> std::string(ansi)
         *@return 若失败返回空字符串
         */
-        static std::string unicode_to_ansi(const std::wstring & wstring) noexcept
+        inline static std::string unicode_to_ansi(const std::wstring & wstring) noexcept
         {
             std::string result = "";
             std::wstring_convert<local_codecvt> cvt;
@@ -232,7 +232,7 @@ namespace common {
         *@brief std::string(ansi) -> std::wstring(unicode)
         *@return 若失败返回空字符串
         */
-        static std::wstring ansi_to_unicode(const std::string & ansi_string) noexcept
+        inline static std::wstring ansi_to_unicode(const std::string & ansi_string) noexcept
         {
             std::wstring result = L"";
             std::wstring_convert<local_codecvt> cvt;
@@ -249,7 +249,7 @@ namespace common {
         *@brief std::string(utf8) -> std::string(ansi)
         *@return 若失败返回空字符串
         */
-        static std::string utf8_to_ansi(const std::string & utf8_string) noexcept
+        inline static std::string utf8_to_ansi(const std::string & utf8_string) noexcept
         {
             return unicode_to_ansi(utf8_to_unicode(utf8_string));
         }
@@ -259,7 +259,7 @@ namespace common {
         *@return 若失败返回空字符串
         *@note 若包含中文需要将UTF-8转回多字符ANSI或宽字符Unicode才可正常显示中文.
         */
-        static std::string ansi_to_utf8(const std::string & ansi_string) noexcept
+        inline static std::string ansi_to_utf8(const std::string & ansi_string) noexcept
         {
             return unicode_to_utf8(ansi_to_unicode(ansi_string));
         }
