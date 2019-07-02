@@ -147,43 +147,14 @@ namespace common {
         release_s(args...);
     }
 
-    //----------模板类型辅助----------
-
-
-    template<typename CS, typename TA, typename TW>
-    struct ttype_t;
-
-    template<typename TA, typename TW>
-    struct ttype_t<char, TA, TW> { typedef TA type; };
-
-    template<typename TA, typename TW>
-    struct ttype_t<wchar_t, TA, TW> { typedef TW type; };
-
-    template<typename TA, typename TW>
-    struct ttype_t<std::string, TA, TW> { typedef TA type; };
-
-    template<typename TA, typename TW>
-    struct ttype_t<std::wstring, TA, TW> { typedef TW type; };
-
     //----------模板条件参数推断及条件函数调用----------
 
-    template<typename TA, typename TW>
-    inline typename ttype_t<char, TA, TW>::type tvalue(char*, TA a, TW) { return a; };
 
-    template<typename TA, typename TW>
-    inline typename ttype_t<wchar_t, TA, TW>::type tvalue(wchar_t*, TA, TW w) { return w; }
+    template<typename T, typename TA, typename TW>
+    typename std::enable_if<std::is_same_v<T, char> || std::is_same_v<T, std::string>, TA>::type tvalue(TA a, TW) { return a; };
 
-    template<typename TA, typename TW>
-    inline typename ttype_t<std::string, TA, TW>::type tvalue(std::string*, TA a, TW) { return a; };
-
-    template<typename TA, typename TW>
-    inline typename ttype_t<std::wstring, TA, TW>::type tvalue(std::wstring*, TA, TW w) { return w; }
-
-    template<typename CS, typename TA, typename TW>
-    inline typename ttype_t<CS, TA, TW>::type tvalue(TA a, TW w)
-    {
-        return tvalue<TA, TW>(static_cast<CS*>(0), a, w);
-    }
+    template<typename T, typename TA, typename TW>
+    typename std::enable_if<std::is_same_v<T, wchar_t> || std::is_same_v<T, std::wstring>, TW>::type tvalue(TA, TW w) { return w; };
 
     template<typename T>
     inline size_t cslen(const T* str)
@@ -266,7 +237,9 @@ namespace common {
     inline auto convert_from_string(const TI& arg) noexcept(false)
     {
         TO ret;
-        typename ttype_t<TI, std::istringstream, std::wistringstream>::type iss(arg);
+        typename std::conditional_t<
+            std::is_same_v<TI, std::string> || std::is_same_v<TI, char>,
+            std::istringstream, std::wistringstream> iss(arg);
         if (!(iss >> ret && iss.eof())) { throw std::bad_cast(); }
         return ret;
     }

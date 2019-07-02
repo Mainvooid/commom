@@ -18,10 +18,10 @@ size_t fibonacci_2(size_t n) {
 }
 
 TEST(common, cache_fn__no_cache) {
-    fibonacci_1(35);
+    EXPECT_EQ(fibonacci_1(35), 9227465);
 }
 TEST(common, cache_fn__cache) {
-    fibonacci_2(35);
+    EXPECT_EQ(fibonacci_2(35), 9227465);
 }
 TEST(common, cache_fn__speed) {
     auto t1 = getFnDuration(fibonacci_1)(35);//47ms (为45时,为5000ms)

@@ -142,6 +142,7 @@ HPP文件中可以使用using引用依赖,不应该使用`using namespace`污染
 template<bool flag=false>
 ```
 - static修饰.
+- 仿函数
 
 ### Doxygen文档
 
@@ -535,7 +536,23 @@ template<bool flag=false>
    < DBL_EPSILON
    > FLT_EPSILON
    ```
+- type_traits
+   - `SFINAE` (Substitution failure is not an error). 当调用模板函数时编译器会根据传入参数推导最合适的模板函数.
+   ```cpp
+   //条件对象类型,若TI为std::string或char,则选择第一个类型.
+   typename std::conditional_t<
+            std::is_same_v<TI, std::string> || std::is_same_v<TI, char>, 
+            std::istringstream, std::wistringstream> iss(arg);
 
+   //校验模板参数类型,若T为char或std::string则返回TA类型的值(特化)
+   template<typename T, typename TA, typename TW>
+   typename std::enable_if<std::is_same_v<T, char> || std::is_same_v<T, std::string>, TA>::type tvalue(TA a, TW) { return a; };
+
+   //除了模板参数列表,也可以将条件控制放在形参列表
+   template<typename T, typename TA, typename TW>
+   TA tvalue(typename std::enable_if<std::is_same_v<T, std::string>, T>::type t, TA a, TW) { return a; };
+   ```
+        
 - 关于`directx`
    - `CopyResource`之后需要刷新否则容易导致黑屏(未成功获取数据)
       ```cpp
