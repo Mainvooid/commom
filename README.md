@@ -12,21 +12,25 @@ It has only been tested on Windows.
 │  common.hpp       //主头文件(使用时include本文件)
 │  common_all.hpp   //统一的主头文件(暂未生成)
 ├─common            //分头文件目录
-│  │  cmdline.hpp      //命令行解析
-│  │  codecvt.hpp      //字符编码转换
-│  │  cuda.hpp         //cuda辅助(包含与opencv和directx的互操作)
-│  │  debuglog.hpp     //windows调试日志
-│  │  opencl.hpp       //opencl辅助
-│  │  opencv.hpp       //opencv辅助
-│  │  precomm.hpp      //公共辅助
-│  │  windows.hpp      //windows辅助(包含directx辅助)
+│  │  cmdline.hpp       //命令行解析
+│  │  codecvt.hpp       //字符编码转换
+│  │  cuda.hpp          //cuda辅助(包含与opencv和directx的互操作)
+│  │  debuglog.hpp      //windows调试日志
+│  │  opencl.hpp        //opencl辅助
+│  │  opencv.hpp        //opencv辅助
+│  │  precomm.hpp       //公共辅助
+│  │  windows.hpp       //windows辅助(包含directx辅助)
 │  └─cuda           //cuda设备函数目录
-│     │  texture_reference.cu    
+│     │  texture_reference.cu
 │     └─ texture_reference.cuh
-├─docs             //文档目录
-├─samples          //使用样例目录
-│  └─data             //测试数据 
-└─tests            //单元测试目录
+├─docs              //文档目录
+│  │  Doxyfile          //doxygen生成配置文件
+│  └─html               //文档网页根目录
+│     └─ index.html        //文档入口
+├─samples           //使用样例目录
+│  └─data               //测试数据
+└─tests             //单元测试目录
+   └─ tests_main.cpp    //单元测试入口
 ```
 
 ---
@@ -102,7 +106,7 @@ It has only been tested on Windows.
 ```cpp
 #ifdef _MSC_VER
 #pragma warning( push ) //保存当前的编译状态
-#pragma warning( disable: 4127 ) 
+#pragma warning( disable: 4127 )
 #endif
 
 #ifdef _MSC_VER
@@ -147,7 +151,7 @@ template<bool flag=false>
 /**
  *  多行注释
  */
- 
+
 /**单行注释*/ 或 ///
 
 /**<同行注释 */ 或 ///< (Doxygen认为注释是修饰接下来的程序代码的)
@@ -189,7 +193,7 @@ template<bool flag=false>
 @see       参考链接,函数重载的情况下,要带上参数列表以及返回值
 @todo      todo注解
 @pre       前置条件说明
-@par       [段落标题] 开创新段落,一般与示例代码联用 
+@par       [段落标题] 开创新段落,一般与示例代码联用
 @code      示例代码开始 e.g. [code{.cpp}]
 @ endcode  示例代码结束
 ```
@@ -203,7 +207,7 @@ template<bool flag=false>
 @bug       问题
 @def       宏定义说明
 ```
- 
+
 
 #### 生成
 
@@ -225,7 +229,7 @@ template<bool flag=false>
 
 - 函数缺省参数,声明处缺省,定义处应该在形参列表使用注释标明缺省值`/**/`
 
-- 使用自动字符数组`autobuffer` 
+- 使用自动字符数组`autobuffer`
    ```cpp
    std::vector<char> buffer(10);
    std::unique_ptr<char[]> buffer(new char[10]);
@@ -235,7 +239,7 @@ template<bool flag=false>
 
 - 编译期可以确定的常量应该使用`constexpr`修饰.
 - `assert` 断言
-   
+
    - 调试阶段函数开始前进行参数检查.发布版可关闭断言.
       ```cpp
       #define NDEBUG /  /关闭断言
@@ -243,7 +247,7 @@ template<bool flag=false>
       assert(p!=0) //若错误则终止程序执行
       ```
 
-- `volatile` 易变修饰 
+- `volatile` 易变修饰
    - 声明变量可能被系统,硬件或其他线程更改,而编译器不应该优化.**(不可优化的)**
    - 每次取值必须从内存中取 (防止编译器优化从寄存器中取值).**(易变的)**
    - `C/C++ Volatile`变量间的操作,编译器不会进行乱序优化.**(顺序的)**
@@ -264,7 +268,7 @@ template<bool flag=false>
    - 将返回类型移到参数声明后面. `->double`被称为后置返回类型.
    `auto`相当于占位符.后置返回类型有利于进行模板返回类型推导.
       ```cpp
-      double h(int x, float y); 
+      double h(int x, float y);
       // ==
       auto h(int x, float y) -> double;//C++14 开始可以推导返回类型
       ```
@@ -275,7 +279,7 @@ template<bool flag=false>
       auto fun(T beg)->decltype(*beg){
           return *beg;//返回引用
       }
-   
+
       template <typename T>
       auto fun2(T beg)->typename std::remove_reference<decltype(*beg)>::type//移除引用,为了使用模板,参数成员必须使用typename
       {
@@ -327,7 +331,7 @@ template<bool flag=false>
       #ifdef __cplusplus
       extern"C"{
       #endif
-   
+
       #ifdef __cplusplus
       }
       #endif
@@ -407,7 +411,7 @@ template<bool flag=false>
    - 编译器编译期间不会检查`noexcept`.
    - 声明了`noexcept`却抛出异常时会直接调用`terminal`终止程序(外部将无法捕获异常).
    - 就算没修饰`noexcept`,编译器也会自动推断有些函数不会抛出异常,除非编译器不能确定的情况,
-	 例如重载移动赋值构造函数时(需要声明不会抛出异常).
+     例如重载移动赋值构造函数时(需要声明不会抛出异常).
    - 编译器会对`noexcept`修饰的函数做优化.
    - 若函数内部处理了异常,可以声明`noexcept`.
    - 会抛出异常的函数应该声明为`noexcept(false)`.
@@ -429,15 +433,15 @@ template<bool flag=false>
        Saturday = 64
    };
 
-   Days flag = Days::Monday;   
+   Days flag = Days::Monday;
    //添加条件: |
-   flag = Days(flag | Days::Wednesday);   
+   flag = Days(flag | Days::Wednesday);
    //删除条件: &~
-   flag = Days(flag & ~ Wednesday);   
+   flag = Days(flag & ~ Wednesday);
    // "flag" 为 "Monday"
-   if ((flag & Monday) == Monday) {cout << "Monday" << endl;}   
+   if ((flag & Monday) == Monday) {cout << "Monday" << endl;}
    // "flag"  为"Monday 与 Wednesday"
-   if ((flag & (Monday | Wednesday)) == (Monday | Wednesday)){cout << "Monday & Wednesday" << endl;}   
+   if ((flag & (Monday | Wednesday)) == (Monday | Wednesday)){cout << "Monday & Wednesday" << endl;}
    // "flag" 为 "Monday 或者 Wednesday"
    if ((flag & (Monday | Wednesday)) != 0) {cout << "Monday | Wednesday" << endl;}
    ```
@@ -450,7 +454,7 @@ template<bool flag=false>
    {
        if (p != nullptr) { delete(p); p = nullptr; }
    }
-   
+
    //用于递归不定长参数的同名模板函数
    template<typename T, typename...Args>
    inline void delete_s(T& p, Args&... args)
@@ -544,7 +548,7 @@ template<bool flag=false>
       - 为初始化了的D3D对象设置别名.
          ```cpp
          #include <d3dcommon.h>
-         #pragma comment(lib, "dxguid.lib") 
+         #pragma comment(lib, "dxguid.lib")
          D3D_SET_OBJECT_NAME_A(device.Get(), "in_device");
          ```
       - 调用 `ReportLiveDeviceObjects()`.
