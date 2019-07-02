@@ -16,7 +16,7 @@ var debuglog_8hpp =
       [ "Fatal", "debuglog_8hpp.html#af7659de5ece427c413cf7194eafe087da621eabfdbc10816e990a4c0052a1611b", null ],
       [ "Off", "debuglog_8hpp.html#af7659de5ece427c413cf7194eafe087da473000b70bf190476856d3abc59a0c2c", null ]
     ] ],
-    [ "g_logger", "debuglog_8hpp.html#aedf48b2783ccbbfb23ebaddaf1205730", null ],
+    [ "g_logger", "debuglog_8hpp.html#a4df005827c4fbc2ced19a3e1f38bfa8f", null ],
     [ "LOGD", "debuglog_8hpp.html#afc07454090c54d9982384ce3f601cf3b", null ],
     [ "LOGD", "debuglog_8hpp.html#a18d7c4b81b8d576ab4f316d421fb862f", null ],
     [ "LOGE", "debuglog_8hpp.html#a9a15aacc3ad3bf0d96a44e79a58411c9", null ],
@@ -28,6 +28,5 @@ var debuglog_8hpp =
     [ "LOGT", "debuglog_8hpp.html#ac4cc51b0e6d08c559cd26de638d8eab7", null ],
     [ "LOGT", "debuglog_8hpp.html#abd6944bba50f34dcaaa1c39ee2bdb6cb", null ],
     [ "LOGW", "debuglog_8hpp.html#aaa8ff200b7562ec77142e670a3931164", null ],
-    [ "LOGW", "debuglog_8hpp.html#ab042cecf620f30c25019a4ea52a4eb51", null ],
-    [ "OutputDebugStringEx", "debuglog_8hpp.html#gaf58f0189856086fcc04d3c0c63a938fc", null ]
+    [ "LOGW", "debuglog_8hpp.html#ab042cecf620f30c25019a4ea52a4eb51", null ]
 ];

@@ -1,11 +1,11 @@
 var searchData=
 [
   ['texture2d_5fcvt_5fgpumat',['texture2d_cvt_gpumat',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html',1,'common::cuda::texture2d_cvt_gpumat'],['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a330e51dfd2c892c2ed9de7494c78efeb',1,'common::cuda::texture2d_cvt_gpumat::texture2d_cvt_gpumat()']]],
-  ['texture2d_5fto_5fgpumat',['texture2d_to_gpumat',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a8dabf8cb7aba08e363dc9793f0f6a9e1',1,'common::cuda::texture2d_cvt_gpumat']]],
-  ['texture2d_5fto_5ftexture2d',['texture2d_to_texture2d',['../group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8',1,'common::windows']]],
+  ['texture2d_5fto_5fgpumat',['texture2d_to_gpumat',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a2db42c301e494241135276c3180eede7',1,'common::cuda::texture2d_cvt_gpumat']]],
+  ['texture2d_5fto_5ftexture2d',['texture2d_to_texture2d',['../group__windows.html#ga09533a9672f03711ef59ca54c0056da5',1,'common::windows']]],
   ['texture_5fref',['texture_ref',['../structcommon_1_1cuda_1_1shared__texture__t.html#ae63bcb05bb28dab1da9d834a9c9ec264',1,'common::cuda::shared_texture_t']]],
   ['texture_5freference_2ecuh',['texture_reference.cuh',['../texture__reference_8cuh.html',1,'']]],
-  ['trace',['Trace',['../classcommon_1_1debuglog_1_1logger.html#a8aafcd0d703cab4f35f921eebd09dfa1',1,'common::debuglog::logger::Trace(T msg) const'],['../classcommon_1_1debuglog_1_1logger.html#a37c2d35bbf2b8d92093d9027b03d6c30',1,'common::debuglog::logger::Trace(T msg, const char *_func, const char *_file, const int _line) const'],['../namespacecommon.html#af7659de5ece427c413cf7194eafe087daa30aac70d54371896a4eb7ad8fc7f791',1,'common::Trace()']]],
+  ['trace',['Trace',['../classcommon_1_1debuglog_1_1logger.html#aac5555e594596cd14f25045ed5d05501',1,'common::debuglog::logger::Trace(T msg) const'],['../classcommon_1_1debuglog_1_1logger.html#a00e9d57240df2966722b82e967bf425c',1,'common::debuglog::logger::Trace(T msg, const char *_func, const char *_file, const int _line) const'],['../namespacecommon.html#af7659de5ece427c413cf7194eafe087daa30aac70d54371896a4eb7ad8fc7f791',1,'common::Trace()']]],
   ['ttype_5ft',['ttype_t',['../structcommon_1_1ttype__t.html',1,'common']]],
   ['ttype_5ft_3c_20char_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; char, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01char_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],
   ['ttype_5ft_3c_20std_3a_3astring_2c_20ta_2c_20tw_20_3e',['ttype_t&lt; std::string, TA, TW &gt;',['../structcommon_1_1ttype__t_3_01std_1_1string_00_01_t_a_00_01_t_w_01_4.html',1,'common']]],

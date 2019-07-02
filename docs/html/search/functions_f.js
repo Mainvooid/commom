@@ -2,6 +2,7 @@ var searchData=
 [
   ['unicode_5fto_5fansi',['unicode_to_ansi',['../group__codecvt.html#ga3ad837ac2a490851f3193ec58709f070',1,'common::codecvt']]],
   ['unicode_5fto_5futf8',['unicode_to_utf8',['../group__codecvt.html#ga8ab56f2ea5605599af59ad88c48e8938',1,'common::codecvt']]],
+  ['unregister_5fresource_5ffor_5fgpumat_5fto_5ftexture2d',['unregister_resource_for_gpumat_to_texture2d',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a005b0a2415ed38401525839db4707880',1,'common::cuda::texture2d_cvt_gpumat']]],
   ['utf16_5fto_5futf32',['utf16_to_utf32',['../group__codecvt.html#gaf9c1a5c6902227f48f841d2d9f7c2bf2',1,'common::codecvt']]],
   ['utf16_5fto_5futf8',['utf16_to_utf8',['../group__codecvt.html#gad2cf5ae4482e03c3106d4549d319d83e',1,'common::codecvt']]],
   ['utf32_5fto_5futf16',['utf32_to_utf16',['../group__codecvt.html#ga55bcf3547fe92dbcf799242f60579ea0',1,'common::codecvt']]],

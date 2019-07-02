@@ -134,8 +134,10 @@ windows - windows utilities 的协作图:</div>
 <tr class="memitem:ga4848ceb6cbe9b8ff859833928ab97732"><td class="memTemplItemLeft" align="right" valign="top">static HMODULE&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga4848ceb6cbe9b8ff859833928ab97732">common::windows::loadSubDll</a> (const T *sub_dll_name) noexcept</td></tr>
 <tr class="memdesc:ga4848ceb6cbe9b8ff859833928ab97732"><td class="mdescLeft">&#160;</td><td class="mdescRight">在应用程序的安装目录中搜索DLL及其依赖项  <a href="group__windows.html#ga4848ceb6cbe9b8ff859833928ab97732">更多...</a><br /></td></tr>
 <tr class="separator:ga4848ceb6cbe9b8ff859833928ab97732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae1ccba4d8269119f685694931df00758"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#gae1ccba4d8269119f685694931df00758">common::windows::createD3D11Device</a> (ID3D11Device **ppDevice, IDXGIAdapter *pAdapter=nullptr, ID3D11DeviceContext **ppImmediateContext=nullptr)</td></tr>
-<tr class="separator:gae1ccba4d8269119f685694931df00758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3b414c57bc2cf462d71751d73b85e2a0"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0">common::windows::reportLiveDeviceObjects</a> (ID3D11Device *pDevice)</td></tr>
+<tr class="separator:ga3b414c57bc2cf462d71751d73b85e2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8657a88ea0d7ed1ef8ddf2127d8f82c8"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga8657a88ea0d7ed1ef8ddf2127d8f82c8">common::windows::createD3D11Device</a> (ID3D11Device **ppDevice, IDXGIAdapter *pAdapter=nullptr, ID3D11DeviceContext **ppImmediateContext=nullptr, UINT createDeviceFlags=D3D11_CREATE_DEVICE_BGRA_SUPPORT)</td></tr>
+<tr class="separator:ga8657a88ea0d7ed1ef8ddf2127d8f82c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga47806b9488d985a6946b59d6cc241c87"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga47806b9488d985a6946b59d6cc241c87"><td class="memTemplItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__windows.html#ga47806b9488d985a6946b59d6cc241c87">common::windows::saveTextureToFile</a> (ID3D11Device *pDevice, ID3D11Resource *pSrcTexture, const T *path, D3DX11_IMAGE_FILE_FORMAT format=D3DX11_IFF_PNG)</td></tr>
 <tr class="separator:ga47806b9488d985a6946b59d6cc241c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,15 +149,13 @@ windows - windows utilities 的协作图:</div>
 <tr class="separator:gad1c36117a351448f72ef34252a990246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586">common::windows::createTextureDesc</a> (D3D11_TEXTURE2D_DESC &amp;desc, UINT width, UINT height, DXGI_FORMAT format=DXGI_FORMAT_R8G8B8A8_UNORM, UINT bindFlags=D3D11_BIND_SHADER_RESOURCE, UINT miscFlags=0)</td></tr>
 <tr class="separator:ga23ad78f45c3bbc83e6be7a67e780c586"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8">common::windows::texture2d_to_texture2d</a> (ID3D11Texture2D *pSrcTexture2D, ID3D11Texture2D **ppDstTexture2D, ID3D11Device *pDstDevice, HANDLE *dst_handle=(HANDLE *) malloc(0))</td></tr>
-<tr class="separator:ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3b414c57bc2cf462d71751d73b85e2a0"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0">common::windows::reportLiveDeviceObjects</a> (ID3D11Device *pDevice)</td></tr>
-<tr class="separator:ga3b414c57bc2cf462d71751d73b85e2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09533a9672f03711ef59ca54c0056da5"><td class="memItemLeft" align="right" valign="top">static HRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ga09533a9672f03711ef59ca54c0056da5">common::windows::texture2d_to_texture2d</a> (ID3D11Texture2D *pSrcTexture2D, ID3D11Texture2D **ppDstTexture2D, ID3D11Device *pDstDevice, HANDLE *dst_pHandle=nullptr)</td></tr>
+<tr class="separator:ga09533a9672f03711ef59ca54c0056da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <h2 class="groupheader">函数说明</h2>
-<a id="gae1ccba4d8269119f685694931df00758"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae1ccba4d8269119f685694931df00758">&#9670;&nbsp;</a></span>createD3D11Device()</h2>
+<a id="ga8657a88ea0d7ed1ef8ddf2127d8f82c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8657a88ea0d7ed1ef8ddf2127d8f82c8">&#9670;&nbsp;</a></span>createD3D11Device()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +179,13 @@ windows - windows utilities 的协作图:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">ID3D11DeviceContext **&#160;</td>
-          <td class="paramname"><em>ppImmediateContext</em> = <code>nullptr</code>&#160;</td>
+          <td class="paramname"><em>ppImmediateContext</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>createDeviceFlags</em> = <code>D3D11_CREATE_DEVICE_BGRA_SUPPORT</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -646,8 +652,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ga187bf7e8eb2e2081aa7bd76c6a3e4fa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8">&#9670;&nbsp;</a></span>texture2d_to_texture2d()</h2>
+<a id="ga09533a9672f03711ef59ca54c0056da5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga09533a9672f03711ef59ca54c0056da5">&#9670;&nbsp;</a></span>texture2d_to_texture2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -677,7 +683,7 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">HANDLE *&#160;</td>
-          <td class="paramname"><em>dst_handle</em> = <code>(HANDLE*)malloc(0)</code>&#160;</td>
+          <td class="paramname"><em>dst_pHandle</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

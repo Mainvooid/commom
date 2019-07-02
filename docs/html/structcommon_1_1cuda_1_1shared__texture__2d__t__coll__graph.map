@@ -1,4 +1,5 @@
 <map id="common::cuda::shared_texture_2d_t&lt; T &gt;" name="common::cuda::shared_texture_2d_t&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,160,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="104,109,259,151"/>
 <area shape="rect" id="node2" href="$structcommon_1_1cuda_1_1shared__texture__t.html" title="DX11和CUDA共享的纹理数据结构" alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" title=" " alt="" coords="185,13,375,39"/>
 </map>

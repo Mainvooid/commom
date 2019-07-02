@@ -126,10 +126,9 @@ cuda - cuda utilities 的协作图:</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:ga2f6b109ff25ba3d32830dd2a8bd8ae2b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga2f6b109ff25ba3d32830dd2a8bd8ae2b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga2f6b109ff25ba3d32830dd2a8bd8ae2b">common::cuda::checkCudaRet</a> (T result, char const *const func, const char *const file, int const line)</td></tr>
-<tr class="memdesc:ga2f6b109ff25ba3d32830dd2a8bd8ae2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">cudaError_t检查,若失败会中断程序  <a href="group__cuda.html#ga2f6b109ff25ba3d32830dd2a8bd8ae2b">更多...</a><br /></td></tr>
-<tr class="separator:ga2f6b109ff25ba3d32830dd2a8bd8ae2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4473d5189817e79888383aef69e9f915"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">common::cuda::checkCudaRet</a> (cudaError_t result, char const *const func, const char *const file, int const line)</td></tr>
+<tr class="memdesc:ga4473d5189817e79888383aef69e9f915"><td class="mdescLeft">&#160;</td><td class="mdescRight">cudaError_t检查,若失败会中断程序  <a href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">更多...</a><br /></td></tr>
+<tr class="separator:ga4473d5189817e79888383aef69e9f915"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6a097db82b5293c474022ad455364bc4"><td class="memItemLeft" align="right" valign="top">static cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6a097db82b5293c474022ad455364bc4">common::cuda::checkCUDADevice</a> ()</td></tr>
 <tr class="memdesc:ga6a097db82b5293c474022ad455364bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">CUDA设备检查  <a href="group__cuda.html#ga6a097db82b5293c474022ad455364bc4">更多...</a><br /></td></tr>
 <tr class="separator:ga6a097db82b5293c474022ad455364bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,18 +190,19 @@ cuda - cuda utilities 的协作图:</div>
 
 </div>
 </div>
-<a id="ga2f6b109ff25ba3d32830dd2a8bd8ae2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2f6b109ff25ba3d32830dd2a8bd8ae2b">&#9670;&nbsp;</a></span>checkCudaRet()</h2>
+<a id="ga4473d5189817e79888383aef69e9f915"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4473d5189817e79888383aef69e9f915">&#9670;&nbsp;</a></span>checkCudaRet()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void common::cuda::checkCudaRet </td>
+          <td class="memname">static void common::cuda::checkCudaRet </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype">cudaError_t&#160;</td>
           <td class="paramname"><em>result</em>, </td>
         </tr>
         <tr>
@@ -229,6 +229,11 @@ template&lt;typename T &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>cudaError_t检查,若失败会中断程序 </p>

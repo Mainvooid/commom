@@ -1,19 +1,19 @@
 <map id="common/cuda.hpp" name="common/cuda.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1204,5,1333,32"/>
-<area shape="rect" id="node2" href="$debuglog_8hpp.html" title=" " alt="" coords="172,87,325,114"/>
-<area shape="rect" id="node17" href="$windows_8hpp.html" title=" " alt="" coords="431,87,581,114"/>
-<area shape="rect" id="node23" title=" " alt="" coords="605,87,740,114"/>
-<area shape="rect" id="node24" title=" " alt="" coords="764,87,875,114"/>
-<area shape="rect" id="node25" title=" " alt="" coords="909,169,1012,196"/>
-<area shape="rect" id="node26" href="$texture__reference_8cuh.html" title=" " alt="" coords="951,80,1099,121"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1123,87,1273,114"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1297,87,1381,114"/>
-<area shape="rect" id="node30" title=" " alt="" coords="1405,87,1463,114"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1487,87,1602,114"/>
-<area shape="rect" id="node32" title=" " alt="" coords="1626,87,1735,114"/>
-<area shape="rect" id="node33" href="$opencv_8hpp.html" title=" " alt="" coords="1759,87,1901,114"/>
-<area shape="rect" id="node37" title=" " alt="" coords="1925,87,2097,114"/>
-<area shape="rect" id="node38" title=" " alt="" coords="2121,80,2299,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1269,5,1399,32"/>
+<area shape="rect" id="node2" href="$debuglog_8hpp.html" title=" " alt="" coords="187,87,340,114"/>
+<area shape="rect" id="node17" href="$windows_8hpp.html" title=" " alt="" coords="496,87,647,114"/>
+<area shape="rect" id="node24" title=" " alt="" coords="671,87,805,114"/>
+<area shape="rect" id="node25" title=" " alt="" coords="829,87,940,114"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1039,169,1141,196"/>
+<area shape="rect" id="node27" href="$texture__reference_8cuh.html" title=" " alt="" coords="1016,80,1164,121"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1189,87,1338,114"/>
+<area shape="rect" id="node30" title=" " alt="" coords="1363,87,1447,114"/>
+<area shape="rect" id="node31" title=" " alt="" coords="1471,87,1528,114"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1553,87,1667,114"/>
+<area shape="rect" id="node33" title=" " alt="" coords="1691,87,1801,114"/>
+<area shape="rect" id="node34" href="$opencv_8hpp.html" title=" " alt="" coords="1825,87,1966,114"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1991,87,2163,114"/>
+<area shape="rect" id="node39" title=" " alt="" coords="2187,80,2364,121"/>
 <area shape="rect" id="node3" href="$codecvt_8hpp.html" title=" " alt="" coords="5,169,151,196"/>
 <area shape="rect" id="node15" title=" " alt="" coords="175,169,250,196"/>
 <area shape="rect" id="node16" title=" " alt="" coords="274,169,357,196"/>
@@ -33,8 +33,9 @@
 <area shape="rect" id="node20" title=" " alt="" coords="609,169,677,196"/>
 <area shape="rect" id="node21" title=" " alt="" coords="702,169,777,196"/>
 <area shape="rect" id="node22" title=" " alt="" coords="801,169,885,196"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1037,169,1149,196"/>
-<area shape="rect" id="node34" title=" " alt="" coords="1590,169,1729,196"/>
-<area shape="rect" id="node35" title=" " alt="" coords="1753,169,1907,196"/>
-<area shape="rect" id="node36" title=" " alt="" coords="1932,169,1997,196"/>
+<area shape="rect" id="node23" title=" " alt="" coords="910,169,1014,196"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1166,169,1278,196"/>
+<area shape="rect" id="node35" title=" " alt="" coords="1655,169,1794,196"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1818,169,1973,196"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1997,169,2063,196"/>
 </map>

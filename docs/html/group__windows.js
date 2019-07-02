@@ -5,7 +5,7 @@ var group__windows =
       [ "getAddress", "classcommon_1_1windows_1_1_proc_address.html#a9118ffcd581e5b4af0141a46aff21d57", null ],
       [ "getPtr", "classcommon_1_1windows_1_1_proc_address.html#ae20d40e2a0d934a83d7c953b3533b935", null ]
     ] ],
-    [ "createD3D11Device", "group__windows.html#gae1ccba4d8269119f685694931df00758", null ],
+    [ "createD3D11Device", "group__windows.html#ga8657a88ea0d7ed1ef8ddf2127d8f82c8", null ],
     [ "createTextureDesc", "group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586", null ],
     [ "getClsPtr", "group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3", null ],
     [ "getSubDllFileName", "group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d", null ],
@@ -17,5 +17,5 @@ var group__windows =
     [ "reportLiveDeviceObjects", "group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0", null ],
     [ "saveTextureToFile", "group__windows.html#ga47806b9488d985a6946b59d6cc241c87", null ],
     [ "saveTextureToFile", "group__windows.html#ga487f261deaede7edad19b321fa24fbf3", null ],
-    [ "texture2d_to_texture2d", "group__windows.html#ga187bf7e8eb2e2081aa7bd76c6a3e4fa8", null ]
+    [ "texture2d_to_texture2d", "group__windows.html#ga09533a9672f03711ef59ca54c0056da5", null ]
 ];

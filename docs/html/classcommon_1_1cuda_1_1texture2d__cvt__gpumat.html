@@ -103,10 +103,14 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a18bca47153b72b34ac1664f1e576cb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bb7d9a1d1d19b9be4a8bb3c830f82a8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a7bb7d9a1d1d19b9be4a8bb3c830f82a8">init</a> ()</td></tr>
 <tr class="separator:a7bb7d9a1d1d19b9be4a8bb3c830f82a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dabf8cb7aba08e363dc9793f0f6a9e1"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a8dabf8cb7aba08e363dc9793f0f6a9e1">texture2d_to_gpumat</a> (ID3D11Texture2D *p_src_texture, cv::cuda::GpuMat &amp;dst_gpumat)</td></tr>
-<tr class="separator:a8dabf8cb7aba08e363dc9793f0f6a9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a147014002a6d2ea0fe5d1e9f4bb76303"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a147014002a6d2ea0fe5d1e9f4bb76303">gpumat_to_texture2d</a> (cv::cuda::GpuMat src_gpumat, ID3D11Texture2D **pp_dst_texture, ID3D11Device *p_dst_device)</td></tr>
-<tr class="separator:a147014002a6d2ea0fe5d1e9f4bb76303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addc82a96c1c08c515934580aa9791cdc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#addc82a96c1c08c515934580aa9791cdc">register_resource_for_gpumat_to_texture2d</a> (int width, int height)</td></tr>
+<tr class="separator:addc82a96c1c08c515934580aa9791cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a005b0a2415ed38401525839db4707880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a005b0a2415ed38401525839db4707880">unregister_resource_for_gpumat_to_texture2d</a> ()</td></tr>
+<tr class="separator:a005b0a2415ed38401525839db4707880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db42c301e494241135276c3180eede7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a2db42c301e494241135276c3180eede7">texture2d_to_gpumat</a> (ID3D11Texture2D *p_src_texture, cv::cuda::GpuMat &amp;dst_gpumat)</td></tr>
+<tr class="separator:a2db42c301e494241135276c3180eede7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6141446ce77a6238da82235721dde9c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a6141446ce77a6238da82235721dde9c9">gpumat_to_texture2d</a> (cv::cuda::GpuMat src_gpumat, ID3D11Texture2D **pp_dst_texture, ID3D11Device *p_dst_device)</td></tr>
+<tr class="separator:a6141446ce77a6238da82235721dde9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a330e51dfd2c892c2ed9de7494c78efeb"></a>
@@ -160,8 +164,8 @@ Public 成员函数</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a147014002a6d2ea0fe5d1e9f4bb76303"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a147014002a6d2ea0fe5d1e9f4bb76303">&#9670;&nbsp;</a></span>gpumat_to_texture2d()</h2>
+<a id="a6141446ce77a6238da82235721dde9c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6141446ce77a6238da82235721dde9c9">&#9670;&nbsp;</a></span>gpumat_to_texture2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +174,7 @@ Public 成员函数</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">cudaError_t common::cuda::texture2d_cvt_gpumat::gpumat_to_texture2d </td>
+          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::gpumat_to_texture2d </td>
           <td>(</td>
           <td class="paramtype">cv::cuda::GpuMat&#160;</td>
           <td class="paramname"><em>src_gpumat</em>, </td>
@@ -227,8 +231,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a8dabf8cb7aba08e363dc9793f0f6a9e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dabf8cb7aba08e363dc9793f0f6a9e1">&#9670;&nbsp;</a></span>texture2d_to_gpumat()</h2>
+<a id="addc82a96c1c08c515934580aa9791cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addc82a96c1c08c515934580aa9791cdc">&#9670;&nbsp;</a></span>register_resource_for_gpumat_to_texture2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,7 +241,43 @@ Public 成员函数</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">cudaError_t common::cuda::texture2d_cvt_gpumat::texture2d_to_gpumat </td>
+          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::register_resource_for_gpumat_to_texture2d </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2db42c301e494241135276c3180eede7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2db42c301e494241135276c3180eede7">&#9670;&nbsp;</a></span>texture2d_to_gpumat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::texture2d_to_gpumat </td>
           <td>(</td>
           <td class="paramtype">ID3D11Texture2D *&#160;</td>
           <td class="paramname"><em>p_src_texture</em>, </td>
@@ -252,6 +292,31 @@ Public 成员函数</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a005b0a2415ed38401525839db4707880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a005b0a2415ed38401525839db4707880">&#9670;&nbsp;</a></span>unregister_resource_for_gpumat_to_texture2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::cuda::texture2d_cvt_gpumat::unregister_resource_for_gpumat_to_texture2d </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>

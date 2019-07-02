@@ -156,8 +156,12 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <li>头文件中只用了指针/引用则使用前向声明而非引入头文件.</li>
 <li>模块应使用命名空间<code>namespace{}</code>包含.</li>
 <li>上下少空行,每屏代码越多越好.</li>
-<li>如果需要设置编译警告,应将范围限制在本文件内 <div class="fragment"><div class="line"><span class="preprocessor">#ifdef _MSC_VER</span></div><div class="line"><span class="preprocessor">#pragma warning( push )</span></div><div class="line"><span class="preprocessor">#pragma warning( disable: 4127 )</span></div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"></div><div class="line"><span class="preprocessor">#ifdef _MSC_VER</span></div><div class="line"><span class="preprocessor">#pragma warning( pop )</span></div><div class="line"><span class="preprocessor">#endif</span></div></div><!-- fragment --></li>
-<li>编译报错提示 <div class="fragment"><div class="line"><span class="preprocessor">#if defined(_DEBUG) || defined(DEBUG)</span></div><div class="line"><span class="preprocessor">#error error 错误 123</span></div><div class="line"><span class="preprocessor">#endif</span></div></div><!-- fragment --></li>
+<li>如果需要设置编译警告,应将范围限制在本文件内 <div class="fragment"><div class="line"><span class="preprocessor">#ifdef _MSC_VER</span></div><div class="line"><span class="preprocessor">#pragma warning( push ) //保存当前的编译状态</span></div><div class="line"><span class="preprocessor">#pragma warning( disable: 4127 ) </span></div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"></div><div class="line"><span class="preprocessor">#ifdef _MSC_VER</span></div><div class="line"><span class="preprocessor">#pragma warning( pop ) //恢复原先的状态</span></div><div class="line"><span class="preprocessor">#endif</span></div></div><!-- fragment --></li>
+<li>编译提示<ul>
+<li>错误提示 ```cpp #error error 错误 123 ```</li>
+<li>链接库文件时可以编译提示 ```cpp #pragma message("link opencv libs in opencv.hpp.") #pragma comment(lib,"opencv_core410.lib") ```</li>
+</ul>
+</li>
 </ul>
 <h4>HPP文件要注意的问题</h4>
 <p>所有HPP文件使用宏避免重复包含. </p><div class="fragment"><div class="line"><span class="preprocessor">#ifndef _COMMON_PRECOMM_HPP_</span></div><div class="line"><span class="preprocessor">#define _COMMON_PRECOMM_HPP_</span></div><div class="line"><span class="preprocessor">#endif</span></div></div><!-- fragment --><p>HPP文件中可以使用using引用依赖,不应该使用<code>using namespace</code>污染命名空间.</p>
@@ -183,7 +187,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <li><code>explicit</code>修饰单参数构造函数,防止隐式类型转换误用</li>
 <li>尽可能使用<code>const</code></li>
 <li>函数缺省参数,声明处缺省,定义处应该在形参列表使用注释标明缺省值<code>/**/</code></li>
-<li>使用自动字符数组<code>autobuffer</code> <div class="fragment"><div class="line">std::vector &lt;char&gt;buffer(10);</div><div class="line">std::unique_ptr&lt;char[]&gt; buffer(<span class="keyword">new</span> <span class="keywordtype">char</span>[10]);</div></div><!-- fragment --></li>
+<li>使用自动字符数组<code>autobuffer</code> <div class="fragment"><div class="line">std::vector&lt;char&gt; buffer(10);</div><div class="line">std::unique_ptr&lt;char[]&gt; buffer(<span class="keyword">new</span> <span class="keywordtype">char</span>[10]);</div></div><!-- fragment --></li>
 </ul>
 <h2>Summary of experience</h2>
 <ul>
@@ -203,8 +207,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <li><code>inline</code> 内联修饰<ul>
 <li>相当于宏,比宏多了类型检查,运行时可调试(宏定义不能).</li>
 <li>一般代码行数不多的函数(5行以内)可以建议编译器内联.</li>
-<li>类内自动隐式内联.</li>
-<li>类外可以显式内联.</li>
+<li>类内自动隐式内联.类外可以显式内联.</li>
 <li>如果关闭优化,编译器可能会无视内联修饰符.</li>
 </ul>
 </li>
@@ -214,9 +217,9 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 </ul>
 </li>
 <li>后置返回类型(<code>trailing return type</code>)<ul>
-<li>将返回类型移到参数声明后面. <code>-&gt;double</code>被称为后置返回类型. <code>auto</code>相当于占位符.后置返回类型有利于进行模板返回类型推导. ```cpp double h(int x, float y); // == auto h(int x, float y) -&gt; double; ```</li>
-<li><p class="startli"><code>decltype</code>关键字用于检查实体的声明类型或表达式的类型及值分类. ```cpp template &lt;typename t&gt;=""&gt; auto fun(T beg)-&gt;decltype(*beg){ return *beg;//返回引用 }</p>
-<p class="startli">template &lt;typename t&gt;=""&gt; auto fun2(T beg)-&gt;typename std::remove_reference&lt;decltype(*beg)&gt;::type//移除引用,为了使用模板 参 数成员必须使用typename { return *beg;//返回拷贝 } ```</p>
+<li>将返回类型移到参数声明后面. <code>-&gt;double</code>被称为后置返回类型. <code>auto</code>相当于占位符.后置返回类型有利于进行模板返回类型推导. ```cpp double h(int x, float y); // == auto h(int x, float y) -&gt; double;//C++14 开始可以推导返回类型 ```</li>
+<li><p class="startli"><code>decltype</code>返回操作数的类型 ```cpp template &lt;typename t&gt;=""&gt; auto fun(T beg)-&gt;decltype(*beg){ return *beg;//返回引用 }</p>
+<p class="startli">template &lt;typename t&gt;=""&gt; auto fun2(T beg)-&gt;typename std::remove_reference&lt;decltype(*beg)&gt;::type//移除引用,为了使用模板,参数成员必须使用typename { return *beg;//返回拷贝 } ```</p>
 </li>
 </ul>
 </li>
@@ -271,7 +274,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 <li><code>std::forward&lt;T&gt;()</code>不仅可以保持左值或者右值不变,同时还可以保持<code>const</code>、<code>Lreference</code>、<code>Rreference</code>、<code>validate</code>等属性不变.</li>
 </ul>
 </b></li>
-<li><b><code>deprecated</code>  弃用(C++14)<ul>
+<li><b><code>deprecated</code>  弃用<ul>
 <li>声明时未被弃用的名字可被重声明为<code>deprecated</code>,而声明为<code>deprecated</code>的名字不能通过重声明变为未弃用.</li>
 <li><p class="startli">下列名字或实体的声明中允许使用这个属性: ```cpp class/struct/union：struct [[deprecated("Replaced by bar, which has an improved interface")]] S;</p>
 <p class="startli">typedef名,也包括别名声明：[[deprecated]] typedef S* PS;using PS [[deprecated]] = S*;</p>
@@ -298,24 +301,35 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html','');});
 </ul>
 </b></li>
 <li><b>2次幂枚举量 <div class="fragment"><div class="line"><span class="keyword">enum</span> Days</div><div class="line">{</div><div class="line">    None = 0,</div><div class="line">    Sunday = 1,</div><div class="line">    Monday = 2,</div><div class="line">    Tuesday = 4,</div><div class="line">    Wednesday = 8,</div><div class="line">    Thursday = 16,</div><div class="line">    Friday = 32,</div><div class="line">    Saturday = 64</div><div class="line">};</div><div class="line"></div><div class="line">Days flag = Days::Monday;   </div><div class="line"><span class="comment">//添加条件: |</span></div><div class="line">flag = Days(flag | Days::Wednesday);   </div><div class="line"><span class="comment">//删除条件: &amp;~</span></div><div class="line">flag = Days(flag &amp; ~ Wednesday);   </div><div class="line"><span class="comment">// &quot;flag&quot; 为 &quot;Monday&quot;</span></div><div class="line"><span class="keywordflow">if</span> ((flag &amp; Monday) == Monday) {cout &lt;&lt; <span class="stringliteral">&quot;Monday&quot;</span> &lt;&lt; endl;}   </div><div class="line"><span class="comment">// &quot;flag&quot;  为&quot;Monday 与 Wednesday&quot;</span></div><div class="line"><span class="keywordflow">if</span> ((flag &amp; (Monday | Wednesday)) == (Monday | Wednesday)){cout &lt;&lt; <span class="stringliteral">&quot;Monday &amp; Wednesday&quot;</span> &lt;&lt; endl;}   </div><div class="line"><span class="comment">// &quot;flag&quot; 为 &quot;Monday 或者 Wednesday&quot;</span></div><div class="line"><span class="keywordflow">if</span> ((flag &amp; (Monday | Wednesday)) != 0) {cout &lt;&lt; <span class="stringliteral">&quot;Monday | Wednesday&quot;</span> &lt;&lt; endl;}</div></div><!-- fragment --></b></li>
-<li><b>不定长参数模板 <div class="fragment"><div class="line"><span class="comment">//用于结束递归的同名模板函数</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__common.html#ga5b67f41476e727f550a6908972fabc68">delete_s</a>(T&amp; p)</div><div class="line">{</div><div class="line">    <span class="keywordflow">if</span> (p != <span class="keyword">nullptr</span>) { <span class="keyword">delete</span>(p); p = <span class="keyword">nullptr</span>; }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//用于递归不定长参数的同名模板函数</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>...Args&gt;</div><div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__common.html#ga5b67f41476e727f550a6908972fabc68">delete_s</a>(T&amp; p, Args&amp;... args)</div><div class="line">{</div><div class="line">    <span class="keywordflow">if</span> (p != <span class="keyword">nullptr</span>) { <span class="keyword">delete</span>(p); p = <span class="keyword">nullptr</span>; }</div><div class="line">    <a class="code" href="group__common.html#ga5b67f41476e727f550a6908972fabc68">delete_s</a>(args...);</div><div class="line">}</div></div><!-- fragment --></b></li>
+<li><b>不定长参数模板 <div class="fragment"><div class="line"><span class="comment">//用于结束递归的同名模板函数</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__common.html#ga56f35412e131481dd776367ce2d786f7">delete_s</a>(T&amp; p)</div><div class="line">{</div><div class="line">    <span class="keywordflow">if</span> (p != <span class="keyword">nullptr</span>) { <span class="keyword">delete</span>(p); p = <span class="keyword">nullptr</span>; }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//用于递归不定长参数的同名模板函数</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>...Args&gt;</div><div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__common.html#ga56f35412e131481dd776367ce2d786f7">delete_s</a>(T&amp; p, Args&amp;... args)</div><div class="line">{</div><div class="line">    <span class="keywordflow">if</span> (p != <span class="keyword">nullptr</span>) { <span class="keyword">delete</span>(p); p = <span class="keyword">nullptr</span>; }</div><div class="line">    <a class="code" href="group__common.html#ga56f35412e131481dd776367ce2d786f7">delete_s</a>(args...);</div><div class="line">}</div></div><!-- fragment --></b></li>
 <li><p class="startli"><b>函数缓存</b></p>
 <p class="startli"><b> 为了优化程序性能我们经常使用缓存,比如某个函数非常耗时,频繁调用的时候性能会很低,这时我们可以通过缓存来提高性能. </p><div class="fragment"><div class="line"><span class="keyword">namespace </span>detail {</div><div class="line">    <span class="comment">//函数入参及结果缓存,缓存入参和函数的执行结果,若入参存在则从缓存返回结果</span></div><div class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span>... Args&gt;</div><div class="line">    std::function&lt;R(Args...)&gt; <a class="code" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">cache_fn</a>(R(*func)(Args...))</div><div class="line">    {</div><div class="line">        <span class="keyword">auto</span> result_map = std::make_shared&lt;std::map&lt;std::tuple&lt;Args...&gt;, R&gt;&gt;();</div><div class="line">        <span class="keywordflow">return</span> ([=](Args... args) {<span class="comment">//延迟执行</span></div><div class="line">            std::tuple&lt;Args...&gt; _args(args...);</div><div class="line">            <span class="keywordflow">if</span> (result_map-&gt;find(_args) == result_map-&gt;end()) {</div><div class="line">                (*result_map)[_args] = func(args...);<span class="comment">//未找到相同入参,执行函数刷新缓存</span></div><div class="line">            }</div><div class="line">            <span class="keywordflow">return</span> (*result_map)[_args];<span class="comment">//返回缓存</span></div><div class="line">        });</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//函数对象缓存,若存在相同类型函数指针,则调用相应缓存函数获取缓存结果</span></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span>...  Args&gt;</div><div class="line">std::function&lt;R(Args...)&gt; <a class="code" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">cache_fn</a>(R(*func)(Args...), <span class="keywordtype">bool</span> flush = <span class="keyword">false</span>)</div><div class="line">{</div><div class="line">    <span class="keyword">using</span> function_type = std::function&lt;R(Args...)&gt;;</div><div class="line">    <span class="keyword">static</span> std::unordered_map&lt;decltype(func), function_type&gt; functor_map;</div><div class="line">    <span class="keywordflow">if</span> (flush) {<span class="comment">//明确要求刷新缓存</span></div><div class="line">        <span class="keywordflow">return</span> functor_map[func] = <a class="code" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">detail::cache_fn</a>(func);</div><div class="line">    }</div><div class="line">    <span class="keywordflow">if</span> (functor_map.find(func) == functor_map.end()) {</div><div class="line">        functor_map[func] = <a class="code" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">detail::cache_fn</a>(func);<span class="comment">//未找到相同函数,执行函数刷新缓存</span></div><div class="line">    }</div><div class="line">    <span class="keywordflow">return</span> functor_map[func];<span class="comment">//返回缓存</span></div><div class="line">}</div></div><!-- fragment --><p> 函数缓存可以大幅提高递归类函数的性能 </p><div class="fragment"><div class="line"><span class="keywordtype">size_t</span> fibonacci_1(<span class="keywordtype">size_t</span> n) {</div><div class="line">    <span class="keywordflow">return</span> (n &lt; 2) ? n : fibonacci_1(n - 1) + fibonacci_1(n - 2);</div><div class="line">}</div><div class="line"><span class="keywordtype">size_t</span> fibonacci_2(<span class="keywordtype">size_t</span> n) {</div><div class="line">    <span class="keywordflow">return</span> (n &lt; 2) ? n : <a class="code" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">cache_fn</a>(fibonacci_2)(n - 1) + <a class="code" href="group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04">cache_fn</a>(fibonacci_2)(n - 2);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">auto</span> t1 = <a class="code" href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">getFnDuration</a>(fibonacci_1)(35);<span class="comment">//47ms (为45时,为5000ms)</span></div><div class="line"><span class="keyword">auto</span> t2 = <a class="code" href="group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72">getFnDuration</a>(fibonacci_2)(35);<span class="comment">//0ms  (为1000时,为2ms)</span></div></div><!-- fragment --><p></b></p>
 </li>
 <li><b>自动推断数组大小 <div class="fragment"><div class="line"><span class="comment">//(unsigned需要放在前面)</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keywordtype">unsigned</span> n,<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keywordtype">void</span> arr(<span class="keyword">const</span> T (&amp;m)[n]) {</div><div class="line">    std::cout &lt;&lt; m;</div><div class="line">}</div></div><!-- fragment --></b></li>
 <li><b>最简洁也是效率最高的单例模式的C++11实现 <div class="fragment"><div class="line">widget&amp; widget::get_instance() {</div><div class="line">    <span class="keyword">static</span> widget instance;</div><div class="line">    <span class="keywordflow">return</span> instance;</div><div class="line">}</div></div><!-- fragment --></b></li>
+<li><b>浮点数精度比较 <div class="fragment"><div class="line"><span class="preprocessor">#include&lt;float.h&gt;</span></div><div class="line">&lt; DBL_EPSILON</div><div class="line">&gt; FLT_EPSILON</div></div><!-- fragment --></b></li>
 <li><b>关于<code>directx</code><ul>
-<li><code>CopyResource</code>之后需要刷新否则容易导致黑屏(未成功获取数据) <div class="fragment"><div class="line">ctx-&gt;CopyResource();</div><div class="line">ctx-&gt;Flush();</div></div><!-- fragment --></li>
+<li><code>CopyResource</code>之后需要刷新否则容易导致黑屏(未成功获取数据) ```cpp ctx-&gt;CopyResource(); ctx-&gt;Flush(); ``<code></code></li>
+<li><code>不同</code>device<code>之间的</code>texture<code>通过</code>SharedHandle<code>进行共享/拷贝. -</code>DX11<code>调试,检查D3D对象是否释放,以及内存是否泄漏.<ul>
+<li>把d3d的device定义为debug模式:D3D11_CREATE_DEVICE_DEBUG`</li>
+<li>为初始化了的D3D对象设置别名. ```cpp #include &lt;d3dcommon.h&gt; #pragma comment(lib, "dxguid.lib") D3D_SET_OBJECT_NAME_A(device.Get(), "in_device"); ``<code></code></li>
+<li><code>调用</code>ReportLiveDeviceObjects()<code>. </code>``cpp Microsoft::WRL::ComPtr&lt;ID3D11Debug&gt; d3dDebug; HRESULT hr = pDevice-&gt;QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast&lt;void**&gt;(d3dDebug.GetAddressOf())); if (SUCCEEDED(hr)) { hr = d3dDebug-&gt;ReportLiveDeviceObjects(D3D11_RLDO_DETAIL); } ```<ul>
+<li>IntRef是d3d内部的对象引用,Refcount是用户引用数量,只需要注意Refcount不为0的对象就可以了(除了ID3D11Device). ``` D3D11 WARNING: Live ID3D11Texture2D at 0x000001F8C837ABB0, Name: in_left, Refcount: 1, IntRef: 0 [ STATE_CREATION WARNING #425: LIVE_TEXTURE2D] ```</li>
+</ul>
+</li>
+</ul>
+</code></li>
 </ul>
 </b></li>
-<li><b>关于<code>opencv</code><ul>
-<li>cv::UMat 需要手动release.</li>
+<li><b><code>关于<code>opencv</code><ul>
+<li>建议不要分配静态或全局<code>GpuMat</code>变量,即依赖于它的析构函数.此类变量和CUDA上下文的销毁顺序未定义.如果之前已销毁CUDA上下文.则GPU内存释放函数将返回错误.</li>
+<li><code>cv::UMat</code> , <code>cv::cuda::GpuMat</code> 有些时候需要手动<code>release</code>.</li>
 </ul>
-</b></li>
-<li><b>关于<code>cuda</code><ul>
-<li><code>__syncthreads</code>等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC`.(.cu源文件编译时会定义这个宏) </li>
+</code></b></li>
+<li><b><code>关于<code>cuda</code><ul>
+<li><code>__syncthreads</code>等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC<code>(.cu源文件编译时会定义这个宏). -</code>&lt;&lt;&lt;&gt;&gt;&gt;`内核函数启动参数显示应输入表达式,只是因为VS2017无法正确识别cuda内核启动符号,代码实际是由NVCC编译器编译的,所以也是不影响编译. </li>
 </ul>
-</b></li>
+</code></b></li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

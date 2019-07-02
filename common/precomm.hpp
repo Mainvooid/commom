@@ -201,7 +201,7 @@ namespace common {
     inline std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) { return Fn; }//*@note _WIN64下__stdcall的调用约定会被隐式转为__cdecl(缺省)
 
     template<typename R, typename ...FArgs>
-    inline std::function<R(FArgs...,va_list)> getFunction(R(*Fn)(FArgs...,...)) { return Fn; }
+    inline std::function<R(FArgs..., va_list)> getFunction(R(*Fn)(FArgs..., ...)) { return Fn; }
 
 #ifndef _WIN64
     template<typename R, typename ...FArgs>
