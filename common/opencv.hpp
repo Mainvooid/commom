@@ -6,22 +6,34 @@
 #define _COMMON_OPENCV_HPP_
 
 #include <common/precomm.hpp>
+#include <common/debuglog.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/img_hash.hpp>
 #include <random>
 
+
 #if defined(_DEBUG) || defined(DEBUG)
+#ifdef LIB_OPENCV_WORLD
+#pragma comment(lib,"opencv_world410d.lib")
+#else
 #pragma comment(lib,"opencv_core410d.lib")
 #pragma comment(lib,"opencv_imgproc410d.lib")
 #pragma comment(lib,"opencv_imgcodecs410d.lib")
 #pragma comment(lib,"opencv_highgui410d.lib")
 #pragma comment(lib,"opencv_img_hash410d.lib")
+#pragma comment(lib,"opencv_calib3d410d.lib")
+#endif
+#else
+#ifdef LIB_OPENCV_WORLD
+#pragma comment(lib,"opencv_world410.lib")
 #else
 #pragma comment(lib,"opencv_core410.lib")
 #pragma comment(lib,"opencv_imgproc410.lib")
 #pragma comment(lib,"opencv_imgcodecs410.lib")
 #pragma comment(lib,"opencv_highgui410.lib")
 #pragma comment(lib,"opencv_img_hash410.lib")
+#pragma comment(lib,"opencv_calib3d410.lib")
+#endif
 #endif
 
 /**
@@ -52,9 +64,9 @@ namespace common {
 
         /**
         *@brief debug保存图像,路径由时间＋描述+随机数产生
-        *@return 是否保存成功
+        *@return 保存路径
         */
-        static void saveDebugImage(const cv::Mat& save_image, const std::string& save_dir, const std::string& desc)
+        static std::string saveDebugImage(const cv::Mat& save_image, const std::string& save_dir, const std::string& desc)
             noexcept(noexcept(!save_image.empty() && save_dir != ""))
         {
             if (save_dir == "" || save_image.empty()) {
@@ -71,6 +83,7 @@ namespace common {
             char fname[260];
             sprintf_s(fname, "%s%s_%s_%u.png", fillDir(save_dir.data()).data(), time_stamp, desc.data(), engine());
             cv::imwrite(fname, save_image);
+            return std::string(fname);
         }
 
         /**
@@ -86,9 +99,9 @@ namespace common {
         }
 
         /**
-        *@brief 合并俩个图像
+        *@brief 合并俩个图像,若通道不同将合并为4通道BGRA
         */
-        static cv::Mat mergeImage(const cv::InputArray& left, const cv::InputArray& right)
+        static cv::Mat mergeImage(cv::InputArray left, cv::InputArray right)
             noexcept(noexcept(!left.empty() && !right.empty()))
         {
             if (left.empty() || right.empty()) {
@@ -96,13 +109,170 @@ namespace common {
                 msg << _TAG << "..InputArray is empty";
                 throw std::runtime_error(msg.str());
             }
-            cv::Mat img_merge(cv::Size(left.cols() + right.cols(), left.rows()), CV_MAKETYPE(left.depth(), 3), cv::Scalar::all(0));
+            cv::Mat _left = left.getMat(), _right = right.getMat();
+            if (left.channels() != right.channels()) {
+                if (left.channels() == 1) {
+                    cv::cvtColor(left, _left, cv::COLOR_GRAY2BGRA);
+                }
+                if (left.channels() == 3) {
+                    cv::cvtColor(left, _left, cv::COLOR_BGR2BGRA);
+                }
+                if (right.channels() == 1) {
+                    cv::cvtColor(right, _right, cv::COLOR_GRAY2BGRA);
+                }
+                if (right.channels() == 3) {
+                    cv::cvtColor(right, _right, cv::COLOR_BGR2BGRA);
+                }
+            }
+            cv::Mat img_merge(cv::Size(left.cols() + right.cols(), left.rows()), CV_MAKETYPE(_left.depth(), _left.channels()), cv::Scalar::all(0));
             cv::Mat dst_leftMat = img_merge(cv::Rect(0, 0, left.cols(), left.rows()));
             cv::Mat dst_rightMat = img_merge(cv::Rect(left.cols(), 0, right.cols(), right.rows()));
-            left.getMat().copyTo(dst_leftMat);
-            right.getMat().copyTo(dst_rightMat);
+            _left.copyTo(dst_leftMat);
+            _right.copyTo(dst_rightMat);
             return img_merge;
         }
+
+        /**
+        @brief 简单的基于棋盘定标的鱼眼相机去畸变类
+        */
+        class FisheyeRemap {
+        public:
+            FisheyeRemap() {}
+            ~FisheyeRemap() {}
+            /**
+            @brief 输入标定参数以初始化鱼眼相机
+            @param[in] chessboards 棋盘格标定板图像集合,分辨率应与相机相同
+            @param[in] board_size  定标板上每行、列的内角点数(格子数-1)
+            @param[in] square_size 定标板方格的宽度(mm)
+            */
+            void init(cv::InputArrayOfArrays chessboards, cv::Size board_size, size_t square_size) noexcept(false)
+            {
+                chessboards.getMatVector(m_chessboards);
+                m_board_size = board_size;
+                m_square_size = square_size;
+
+                std::vector<cv::Point3f> temp_obj_point;
+                for (int i = 0; i < m_board_size.height; i++) {
+                    for (int j = 0; j < m_board_size.width; j++) {
+                        //假设定标板放在世界坐标系中z=0的平面上
+                        temp_obj_point.push_back(cv::Point3f(j * m_square_size, i * m_square_size, 0));
+                    }
+                }
+                for (size_t i = 0; i < m_chessboards.size(); i++) {
+                    cv::Mat chessboard_gray;
+                    std::vector<cv::Point2f> corners;//提取的角点坐标
+                    //提取角点
+                    cv::findChessboardCorners(m_chessboards[i], board_size, corners,
+                        cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE + cv::CALIB_CB_FAST_CHECK);
+                    cv::cvtColor(m_chessboards[i], chessboard_gray, cv::COLOR_BGR2GRAY);
+                    //亚像素精确化
+                    cv::cornerSubPix(chessboard_gray, corners, board_size,
+                        cv::Size(-1, -1), cv::TermCriteria(3, 100, std::numeric_limits<float>::epsilon()));
+                    m_corners_set.push_back(corners);
+                    m_object_points_set.push_back(temp_obj_point);
+                }
+                //摄像机定标
+                int flags = 0;
+                flags |= cv::fisheye::CALIB_RECOMPUTE_EXTRINSIC;//外部优化将在每次迭代后重新计算
+                flags |= cv::fisheye::CALIB_CHECK_COND;         //检查条件数的有效性
+                flags |= cv::fisheye::CALIB_FIX_SKEW;           //偏斜系数alpha设置为零并保持为零,代表求解时假设内参中fx=fy
+
+                cv::fisheye::calibrate(m_object_points_set, m_corners_set, m_chessboards[0].size(),
+                    m_intrinsic_param_mat, m_distortion_coeffs, m_rotation_vectors, m_translation_vectors, flags,
+                    cv::TermCriteria(3, 100, std::numeric_limits<float>::epsilon()));
+
+                if ((m_distortion_coeffs[0] <= std::numeric_limits<float>::epsilon()
+                    && m_distortion_coeffs[1] <= std::numeric_limits<float>::epsilon()
+                    && m_distortion_coeffs[2] <= std::numeric_limits<float>::epsilon()
+                    && m_distortion_coeffs[3] <= std::numeric_limits<float>::epsilon()
+                    ) || (m_intrinsic_param_mat.rows == 0 || m_intrinsic_param_mat.cols == 0)) {
+                    throw std::invalid_argument("Invalid output parameters");//可能存在某些标定图无法成功计算出参数,应排除之
+                }
+            }
+            /**
+            @brief 应用重映射进行去畸变操作
+            @param[in] src 源图像
+            @param[out] dst 目标图像
+            @param[in] fx 调节视场大小,乘的系数越小视场越大
+            @param[in] fy 调节视场大小,乘的系数越小视场越大
+            @param[in] cx 调节校正图中心,可设置为src的中心坐标x
+            @param[in] cy 调节校正图中心,可设置为src的中心坐标y
+            */
+            void remap(cv::InputArray src, cv::OutputArray dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0) {
+                //调节视场大小, 乘的系数越小视场越大
+                m_new_intrinsic_param_mat = m_intrinsic_param_mat.clone();
+                m_new_intrinsic_param_mat.at<double>(0, 0) *= fx;
+                m_new_intrinsic_param_mat.at<double>(1, 1) *= fy;
+                //调节校正图中心，建议置于校正图中心
+                if (cx != 0 && cy != 0) {
+                    m_new_intrinsic_param_mat.at<double>(0, 2) = cx;
+                    m_new_intrinsic_param_mat.at<double>(1, 2) = cy;
+                }
+                cv::fisheye::undistortImage(src, dst, m_intrinsic_param_mat, m_distortion_coeffs, m_new_intrinsic_param_mat);
+            }
+
+            /**
+            @brief 在所有标定图上画出标定的内角点并显示
+            @note 需要另外调用cv::Waitkey()来阻塞才能显示.
+            */
+            void show_chessboard_corners() {
+                for (size_t i = 0; i < m_chessboards.size(); i++) {
+                    cv::Mat _chessboards = m_chessboards[i].clone();
+                    drawChessboardCorners(_chessboards, m_board_size, m_corners_set[i], true);
+                    imshowR("chessboard_corners_" + convert_to_string<char>(i), _chessboards);
+                }
+            }
+            /**
+            @brief 打印相机的内参数矩阵及畸变参数
+            */
+            void print_camera_intrinsic_info() {
+                std::stringstream ss;
+                ss << "------------------------------\n"
+                    << "Intrinsic parameters:\n" << m_intrinsic_param_mat << "\n"
+                    << "Distortion coeffs:\n" << m_distortion_coeffs << "\n"
+                    << "------------------------------\n";
+                std::cout << ss.str();
+                LOGI(ss.str());
+            }
+            /**
+            @brief 计算并打印定标误差
+            @return 总平均误差
+            */
+            double print_calibrate_errors() {
+                double total_err = 0.0;
+                std::vector<cv::Point2f>  new_corners;
+                std::stringstream ss;
+                ss << "------------------------------\n" << "Average error of each calibration image(pix):\n";
+                for (int i = 0; i < m_chessboards.size(); i++)
+                {
+                    //通过得到的摄像机内外参数,对空间的三维点进行重投影,得到新的投影点
+                    cv::fisheye::projectPoints(m_object_points_set[i], new_corners, m_rotation_vectors[i], m_translation_vectors[i], m_new_intrinsic_param_mat, m_distortion_coeffs);
+                    //计算新的投影点和旧的投影点之间的误差
+                    double err = cv::norm(new_corners, m_corners_set[i], cv::NormTypes::NORM_L2);
+                    total_err += err /= m_board_size.width*m_board_size.height;
+                    ss << i << " : " << err << "\n";
+                }
+                double average_total_err = total_err / m_chessboards.size();
+                ss << "Total average error(pix): " << average_total_err << "\n"
+                    << "------------------------------\n";
+                std::cout << ss.str();
+                LOGI(ss.str());
+                return average_total_err;
+            }
+        public:
+            cv::Mat m_intrinsic_param_mat; //摄像机内参数矩阵
+            cv::Mat m_new_intrinsic_param_mat; //手动调整后的摄像机内参数矩阵
+            cv::Vec4d m_distortion_coeffs; //摄像机的4个畸变系数: k1,k2,k3,k4
+            std::vector<cv::Vec3d> m_rotation_vectors;//每幅图像的旋转向量
+            std::vector<cv::Vec3d> m_translation_vectors;//每幅图像的平移向量
+        private:
+            std::vector<cv::Mat> m_chessboards;//棋盘格
+            cv::Size m_board_size;//定标板上每行、列的内角点数,等于格子数-1
+            size_t m_square_size;//定标板上格子的宽度mm
+            std::vector<std::vector<cv::Point3f>>  m_object_points_set;//保存定标板上角点的三维坐标,一个vector对应一张定标板
+            std::vector<std::vector<cv::Point2f>>  m_corners_set;//标定图的角点坐标
+
+        };
         /// @}
     } // namespace opencv
 

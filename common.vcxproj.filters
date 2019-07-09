@@ -53,9 +53,6 @@
     <ClCompile Include="samples\cmdline.cpp">
       <Filter>samples</Filter>
     </ClCompile>
-    <ClCompile Include="samples\opencv.cpp">
-      <Filter>samples</Filter>
-    </ClCompile>
     <ClCompile Include="samples\common.cpp">
       <Filter>samples</Filter>
     </ClCompile>
@@ -77,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="tests\debuglog_test.cpp">
       <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\opencv_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="samples\fisheye_remap.cpp">
+      <Filter>samples</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

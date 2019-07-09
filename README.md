@@ -530,11 +530,15 @@ template<bool flag=false>
    }
    ```
 
-- 浮点数精度比较
-   ```cpp
-   #include<float.h>
-   < DBL_EPSILON
-   > FLT_EPSILON
+- `std::numeric_limits` 查询算术类型的各种特性
+   ```cpp  
+   #include<limits>
+   std::numeric_limits<double>::infinity();//返回正无穷大
+   std::numeric_limits<double>::epsilon(); //返回DBL_EPSILON 可用于浮点数精度比较1.0+DBL_EPSILON!=1.0
+   std::numeric_limits<double>::max();     //返回类型最大值
+   std::numeric_limits<double>::min();     //返回最小归一化正值
+   std::numeric_limits<double>::lowest();  //返回类型最小值(-max)
+   std::numeric_limits<double>::round_error(); //返回类型最大舍入误差
    ```
 - type_traits
    - `SFINAE` (Substitution failure is not an error). 当调用模板函数时编译器会根据传入参数推导最合适的模板函数.

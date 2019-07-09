@@ -38,13 +38,6 @@ int main() {
     cout << getFnDuration<std::chrono::microseconds>(fn2) << endl; //101,020us
     cout << getFnDuration<std::chrono::nanoseconds>(fn2) << endl;  //100,203,300ns
 
-    //条件类型判断
-    ttype_t<char, char, wchar_t>::type;    //char
-    ttype_t<wchar_t, char, wchar_t>::type; //wchar_t
-    ttype_t<std::string, std::string, std::wstring>::type;  //std::string
-    ttype_t<std::wstring, std::string, std::wstring>::type; //std::wstring
-    ttype_t<std::string, std::function<size_t(size_t, size_t)>, std::function<int(int, int)>>::type; //std::function<size_t(size_t, size_t)>
-
     //根据模板参数进行值推断
     const char* str = tvalue<char>("ansi", L"wide");  //ansi
     wstr = tvalue<wchar_t>("ansi", L"wide");          //wide

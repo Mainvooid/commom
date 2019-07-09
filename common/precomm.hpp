@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <memory>
 #include <map>
-
+#include <limits>
 /**
   @addtogroup common
   @{
@@ -149,12 +149,11 @@ namespace common {
 
     //----------模板条件参数推断及条件函数调用----------
 
+    template<typename T, typename TA, typename TW>
+    typename std::enable_if_t<std::is_same_v<T, char> || std::is_same_v<T, std::string>, TA> tvalue(TA a, TW) { return a; };
 
     template<typename T, typename TA, typename TW>
-    typename std::enable_if<std::is_same_v<T, char> || std::is_same_v<T, std::string>, TA>::type tvalue(TA a, TW) { return a; };
-
-    template<typename T, typename TA, typename TW>
-    typename std::enable_if<std::is_same_v<T, wchar_t> || std::is_same_v<T, std::wstring>, TW>::type tvalue(TA, TW w) { return w; };
+    typename std::enable_if_t<std::is_same_v<T, wchar_t> || std::is_same_v<T, std::wstring>, TW> tvalue(TA, TW w) { return w; };
 
     template<typename T>
     inline size_t cslen(const T* str)
