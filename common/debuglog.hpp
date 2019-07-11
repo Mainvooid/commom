@@ -1,5 +1,5 @@
 ﻿/*
-@brief a simple debug logger
+@file a simple debug logger
 @author guobao.v@gmail.com
 */
 #ifdef _MSC_VER
@@ -21,6 +21,8 @@
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     /*调试日志级别
     Trace    = 0, // 更细粒度的消息记录
     Debug    = 1, // 细粒度调试信息事件
@@ -74,9 +76,9 @@ namespace common {
             };
         };
 
-        /*
-       *@brief 调试日志类
-       */
+        /**
+        *@brief 调试日志类
+        */
         class logger
         {
         public:
@@ -265,6 +267,7 @@ namespace common {
 #define LOGW_(msg) common::LOGW(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGE_(msg) common::LOGE(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGF_(msg) common::LOGF(msg, __FUNCTION__, __FILE__, __LINE__)
+    /// @}
 } // namespace common
 
 #endif // _COMMON_DEBUGLOG_HPP_

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>common: D:/code/common/common/common/cuda/fisheye_remap.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">common
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('fisheye__remap_8hpp_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">fisheye_remap.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fisheye__remap_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _COMMON_CUDA_FISHEYE_REMAP_CUH_</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _COMMON_CUDA_FISHEYE_REMAP_CUH_</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cuda_runtime.h&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;driver_types.h&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;opencv2/core/cuda.hpp&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecommon.html">common</a> {</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespacecommon_1_1cuda.html">   10</a></span>&#160;    <span class="keyword">namespace </span>cuda {</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespacecommon_1_1cuda_1_1kernel.html">   13</a></span>&#160;        <span class="keyword">namespace </span>kernel {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            __global__ <span class="keywordtype">void</span> <a class="code" href="group__kernel.html#ga4908ea21950befacb9018927bbf1ab35">cuda_init_undistort_rectify_map_kernel</a>(cv::cuda::PtrStepSz&lt;double&gt; K, cv::cuda::PtrStepSz&lt;double&gt; D,</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                cv::cuda::PtrStepSz&lt;double&gt; iR,cv::Size size, cv::cuda::PtrStepSz&lt;float&gt; map1, cv::cuda::PtrStepSz&lt;float&gt; map2);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        } <span class="comment">// namespace kernel</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        cudaError_t <a class="code" href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">cuda_init_undistort_rectify_map</a>(cv::cuda::GpuMat&amp; K, cv::cuda::GpuMat&amp; D, <span class="keyword">const</span> cv::Mat&amp; Knew,</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">const</span> cv::Size&amp; size, cv::cuda::GpuMat&amp; map1, cv::cuda::GpuMat&amp; map2);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    } <span class="comment">// namespace cuda</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span>} <span class="comment">// namespace common</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif // _COMMON_CUDA_FISHEYE_REMAP_CUH_</span></div><div class="ttc" id="group__kernel_html_ga4908ea21950befacb9018927bbf1ab35"><div class="ttname"><a href="group__kernel.html#ga4908ea21950befacb9018927bbf1ab35">common::cuda::kernel::cuda_init_undistort_rectify_map_kernel</a></div><div class="ttdeci">__global__ void cuda_init_undistort_rectify_map_kernel(cv::cuda::PtrStepSz&lt; double &gt; K, cv::cuda::PtrStepSz&lt; double &gt; D, cv::cuda::PtrStepSz&lt; double &gt; iR, cv::Size size, cv::cuda::PtrStepSz&lt; float &gt; map1, cv::cuda::PtrStepSz&lt; float &gt; map2)</div></div>
+<div class="ttc" id="namespacecommon_html"><div class="ttname"><a href="namespacecommon.html">common</a></div><div class="ttdef"><b>Definition:</b> cmdline.hpp:24</div></div>
+<div class="ttc" id="group__cuda_html_ga2ac83f3aa2d021cb8348e779a1879547"><div class="ttname"><a href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">common::cuda::cuda_init_undistort_rectify_map</a></div><div class="ttdeci">cudaError_t cuda_init_undistort_rectify_map(cv::cuda::GpuMat &amp;K, cv::cuda::GpuMat &amp;D, const cv::Mat &amp;Knew, const cv::Size &amp;size, cv::cuda::GpuMat &amp;map1, cv::cuda::GpuMat &amp;map2)</div><div class="ttdoc">cv::fisheye::initUndistortRectifyMap cuda版本 通过cv::cuda::remap()计算图像变换的不失真和校正图.如果D为空,...</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_1780e58e5276ea133c5939af47a1d322.html">cuda</a></li><li class="navelem"><a class="el" href="fisheye__remap_8hpp.html">fisheye_remap.hpp</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

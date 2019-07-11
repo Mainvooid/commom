@@ -38,6 +38,8 @@ using Microsoft::WRL::ComPtr;
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     namespace windows {
         /// @addtogroup windows
         /// @{
@@ -350,7 +352,7 @@ namespace common {
 #endif // HAVE_DIRECTX
         /// @}
     } // namespace windows
-
+    /// @}
 } // namespace common
 
 #endif // _COMMON_WINDOWS_HPP_

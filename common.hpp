@@ -20,7 +20,7 @@
 @def HAVE_CUDA
 @brief 基于CUDA 10.0
 
-@def HAVE_CUDA_DEVICE
+@def HAVE_CUDA_KERNEL
 @brief 本项目cuda目录下的.cu文件添加到工程后可以开启本宏
 @see common\cuda\README.md
 */
@@ -29,7 +29,8 @@
 //#define HAVE_OPENCV
 //#define HAVE_DIRECTX
 //#define HAVE_CUDA
-//#define HAVE_CUDA_DEVICE
+//#define HAVE_CUDA_KERNEL
+//#define LINK_LIB_OPENCV_WORLD
 
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>
@@ -48,8 +49,6 @@
 #include <common/opencl.hpp>
 #endif
 
-#include <chrono>
-
 /**
   @defgroup common common
 */
@@ -57,30 +56,6 @@ namespace common {
     /// @addtogroup common
     /// @{
     static const std::string _TAG = "common";
-
-    /**
-    *@brief 函数计时(默认std::chrono::milliseconds)
-    *@param Fn 函数对象,可用匿名函数包装代码片段来计时
-    *@param args 函数参数
-    *@return 相应单位的时间计数
-    */
-    template< typename T = std::chrono::milliseconds, typename R, typename ...FArgs, typename ...Args>
-    auto getFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
-        auto start = std::chrono::system_clock::now();
-        Fn(args...);
-        auto end = std::chrono::system_clock::now();
-        auto duration = std::chrono::duration_cast<T>(end - start);
-        return static_cast<double>(duration.count());
-    }
-
-    template< typename T = std::chrono::milliseconds, typename R, typename ...Args>
-    auto getFnDuration(R(*func)(Args...)) {
-        std::function<R(Args...)> Fn = func;
-        return [=](Args...args)->auto {
-            return getFnDuration(Fn, args...);
-        };
-    }
-
     /// @}
 } // namespace common
 

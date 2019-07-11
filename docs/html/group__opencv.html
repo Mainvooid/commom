@@ -86,6 +86,7 @@ $(document).ready(function(){initNavTree('group__opencv.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">类</a> &#124;
 <a href="#func-members">函数</a> &#124;
 <a href="#var-members">变量</a>  </div>
   <div class="headertitle">
@@ -103,21 +104,27 @@ opencv - opencv utilities 的协作图:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1opencv_1_1_fisheye_remap.html">common::opencv::FisheyeRemap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">简单的基于棋盘定标的鱼眼相机去畸变类  <a href="classcommon_1_1opencv_1_1_fisheye_remap.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:ga316908c87e465d17a82fa4c2f585ab3f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga316908c87e465d17a82fa4c2f585ab3f"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__opencv.html#ga316908c87e465d17a82fa4c2f585ab3f">common::opencv::HashCompare</a> (const cv::InputArray &amp;aMat, const cv::InputArray &amp;bMat)</td></tr>
 <tr class="memdesc:ga316908c87e465d17a82fa4c2f585ab3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">由图像哈希计算图像距离  <a href="group__opencv.html#ga316908c87e465d17a82fa4c2f585ab3f">更多...</a><br /></td></tr>
 <tr class="separator:ga316908c87e465d17a82fa4c2f585ab3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34c5b0ac460c2a924e6a98a3ef66724c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#ga34c5b0ac460c2a924e6a98a3ef66724c">common::opencv::saveDebugImage</a> (const cv::Mat &amp;save_image, const std::string &amp;save_dir, const std::string &amp;desc) noexcept(noexcept(!save_image.empty() &amp;&amp;save_dir !=&quot;&quot;))</td></tr>
-<tr class="memdesc:ga34c5b0ac460c2a924e6a98a3ef66724c"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug保存图像,路径由时间＋描述+随机数产生  <a href="group__opencv.html#ga34c5b0ac460c2a924e6a98a3ef66724c">更多...</a><br /></td></tr>
-<tr class="separator:ga34c5b0ac460c2a924e6a98a3ef66724c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6">common::opencv::saveDebugImage</a> (const cv::Mat &amp;save_image, const std::string &amp;save_dir, const std::string &amp;desc) noexcept(noexcept(!save_image.empty() &amp;&amp;save_dir !=&quot;&quot;))</td></tr>
+<tr class="memdesc:ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug保存图像,路径由时间＋描述+随机数产生  <a href="group__opencv.html#ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6">更多...</a><br /></td></tr>
+<tr class="separator:ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0cebbd9840ef3013a64fd32f64ab7ccd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#ga0cebbd9840ef3013a64fd32f64ab7ccd">common::opencv::imshowR</a> (const std::string &amp;img_name, const cv::InputArray &amp;image, cv::Size img_size=cv::Size(960, 540))</td></tr>
 <tr class="memdesc:ga0cebbd9840ef3013a64fd32f64ab7ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示指定大小的图像  <a href="group__opencv.html#ga0cebbd9840ef3013a64fd32f64ab7ccd">更多...</a><br /></td></tr>
 <tr class="separator:ga0cebbd9840ef3013a64fd32f64ab7ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5a8cfa223c21cc7f941ce295381f19de"><td class="memItemLeft" align="right" valign="top">static cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#ga5a8cfa223c21cc7f941ce295381f19de">common::opencv::mergeImage</a> (const cv::InputArray &amp;left, const cv::InputArray &amp;right) noexcept(noexcept(!left.empty() &amp;&amp;!right.empty()))</td></tr>
-<tr class="memdesc:ga5a8cfa223c21cc7f941ce295381f19de"><td class="mdescLeft">&#160;</td><td class="mdescRight">合并俩个图像  <a href="group__opencv.html#ga5a8cfa223c21cc7f941ce295381f19de">更多...</a><br /></td></tr>
-<tr class="separator:ga5a8cfa223c21cc7f941ce295381f19de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3abc590cdf00aaf59f123fa0865cc55"><td class="memItemLeft" align="right" valign="top">static cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#gac3abc590cdf00aaf59f123fa0865cc55">common::opencv::mergeImage</a> (cv::InputArray left, cv::InputArray right) noexcept(noexcept(!left.empty() &amp;&amp;!right.empty()))</td></tr>
+<tr class="memdesc:gac3abc590cdf00aaf59f123fa0865cc55"><td class="mdescLeft">&#160;</td><td class="mdescRight">合并俩个图像,若通道不同将合并为4通道BGRA  <a href="group__opencv.html#gac3abc590cdf00aaf59f123fa0865cc55">更多...</a><br /></td></tr>
+<tr class="separator:gac3abc590cdf00aaf59f123fa0865cc55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>
@@ -203,8 +210,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ga5a8cfa223c21cc7f941ce295381f19de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5a8cfa223c21cc7f941ce295381f19de">&#9670;&nbsp;</a></span>mergeImage()</h2>
+<a id="gac3abc590cdf00aaf59f123fa0865cc55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac3abc590cdf00aaf59f123fa0865cc55">&#9670;&nbsp;</a></span>mergeImage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,13 +222,13 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">static cv::Mat common::opencv::mergeImage </td>
           <td>(</td>
-          <td class="paramtype">const cv::InputArray &amp;&#160;</td>
+          <td class="paramtype">cv::InputArray&#160;</td>
           <td class="paramname"><em>left</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const cv::InputArray &amp;&#160;</td>
+          <td class="paramtype">cv::InputArray&#160;</td>
           <td class="paramname"><em>right</em>&#160;</td>
         </tr>
         <tr>
@@ -237,12 +244,12 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>合并俩个图像 </p>
+<p>合并俩个图像,若通道不同将合并为4通道BGRA </p>
 
 </div>
 </div>
-<a id="ga34c5b0ac460c2a924e6a98a3ef66724c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga34c5b0ac460c2a924e6a98a3ef66724c">&#9670;&nbsp;</a></span>saveDebugImage()</h2>
+<a id="ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0f9e96a4aa3b7ee85fd9a61d4b18e1b6">&#9670;&nbsp;</a></span>saveDebugImage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,7 +258,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void common::opencv::saveDebugImage </td>
+          <td class="memname">static std::string common::opencv::saveDebugImage </td>
           <td>(</td>
           <td class="paramtype">const cv::Mat &amp;&#160;</td>
           <td class="paramname"><em>save_image</em>, </td>
@@ -282,7 +289,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>debug保存图像,路径由时间＋描述+随机数产生 </p>
-<dl class="section return"><dt>返回</dt><dd>是否保存成功 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>保存路径 </dd></dl>
 
 </div>
 </div>

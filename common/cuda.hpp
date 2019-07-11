@@ -11,8 +11,8 @@
 #include <cuda_runtime.h>
 #include <driver_types.h>
 
-#ifdef HAVE_CUDA_DEVICE
-#include <common/cuda/texture_reference.cuh>
+#ifdef HAVE_CUDA_KERNEL
+#include <common/cuda/texture_reference.hpp>
 #endif
 
 #if defined(_WIN32) && !defined(_WIN64)
@@ -36,7 +36,6 @@
 #include <common/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
 #include <opencv2/core/cuda_stream_accessor.hpp>
-using namespace common::opencv;
 #endif // HAVE_OPENCV
 
 #endif // HAVE_DIRECTX
@@ -48,20 +47,24 @@ using namespace common::opencv;
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     namespace cuda {
         /// @addtogroup cuda
         /// @{
+
+        /**
+        @defgroup kernel kernel - cuda host and device functions
+        */
+        namespace kernel {}
+
         /**
         *@brief cudaError_t检查,若失败会中断程序
         */
         static void checkCudaRet(cudaError_t result, char const *const func, const char *const file, int const line)
         {
             if (result) {
-#if defined(_UNICODE) or defined(UNICODE)
-                std::wostringstream oss;
-#else
                 std::ostringstream oss;
-#endif
                 oss << cudaGetErrorName(result);
                 common::LOGE(oss.str(), func, file, line);
 
@@ -120,7 +123,7 @@ namespace common {
         template<class T>
         struct shared_texture_t
         {
-#ifdef HAVE_CUDA_DEVICE
+#ifdef HAVE_CUDA_KERNEL
             //TODO 暂只支持uchar4
             shared_texture_t() {
                 checkCudaRet(cuda_get_texture_reference<uchar4>(&texture_ref));
@@ -292,6 +295,7 @@ namespace common {
 #endif // HAVE_DIRECTX
         /// @}
     } // namespace cuda
+    /// @}
 } // namespace common
 
 #endif // _COMMON_CUDA_HPP_

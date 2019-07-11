@@ -86,13 +86,19 @@ $(document).ready(function(){initNavTree('namespacecommon_1_1cuda.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
 <a href="#nested-classes">类</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle">
-<div class="title">common::cuda 命名空间参考</div>  </div>
+<div class="title">common::cuda 命名空间参考<div class="ingroups"><a class="el" href="group__common.html">common</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacecommon_1_1cuda_1_1kernel"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1cuda_1_1kernel.html">kernel</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 类</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon_1_1cuda_1_1shared__texture__1d__t.html">shared_texture_1d_t</a></td></tr>
@@ -109,6 +115,16 @@ $(document).ready(function(){initNavTree('namespacecommon_1_1cuda.html','');});
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
+<tr class="memitem:ga2ac83f3aa2d021cb8348e779a1879547"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">cuda_init_undistort_rectify_map</a> (cv::cuda::GpuMat &amp;K, cv::cuda::GpuMat &amp;D, const cv::Mat &amp;Knew, const cv::Size &amp;size, cv::cuda::GpuMat &amp;map1, cv::cuda::GpuMat &amp;map2)</td></tr>
+<tr class="memdesc:ga2ac83f3aa2d021cb8348e779a1879547"><td class="mdescLeft">&#160;</td><td class="mdescRight">cv::fisheye::initUndistortRectifyMap cuda版本 通过cv::cuda::remap()计算图像变换的不失真和校正图.如果D为空,则使用零失真,如果R或P为空,则使用单位矩阵.  <a href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">更多...</a><br /></td></tr>
+<tr class="separator:ga2ac83f3aa2d021cb8348e779a1879547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memTemplParams" colspan="2">template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </td></tr>
+<tr class="memitem:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memTemplItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">cuda_get_texture_reference</a> (const textureReference **texref)</td></tr>
+<tr class="memdesc:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取CUDA纹理参考系对象  <a href="group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">更多...</a><br /></td></tr>
+<tr class="separator:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6be8aa6287d6151dab96cb9e84a98227"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227">cuda_get_texture_reference_2d_uchar4</a> (const textureReference **texref)</td></tr>
+<tr class="memdesc:ga6be8aa6287d6151dab96cb9e84a98227"><td class="mdescLeft">&#160;</td><td class="mdescRight">[特化]获取CUDA 2D uchar4 类型的纹理参考系对象  <a href="group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227">更多...</a><br /></td></tr>
+<tr class="separator:ga6be8aa6287d6151dab96cb9e84a98227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4473d5189817e79888383aef69e9f915"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">checkCudaRet</a> (cudaError_t result, char const *const func, const char *const file, int const line)</td></tr>
 <tr class="memdesc:ga4473d5189817e79888383aef69e9f915"><td class="mdescLeft">&#160;</td><td class="mdescRight">cudaError_t检查,若失败会中断程序  <a href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">更多...</a><br /></td></tr>
 <tr class="separator:ga4473d5189817e79888383aef69e9f915"><td class="memSeparator" colspan="2">&#160;</td></tr>

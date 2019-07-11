@@ -22,6 +22,8 @@
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     namespace cmdline {
         /// @addtogroup cmdline
         /// @{
@@ -796,7 +798,7 @@ namespace common {
         };
         /// @}
     } // cmdline
-
+    /// @}
 } // common
 
 #endif // _COMMON_CMDLINE_HPP_

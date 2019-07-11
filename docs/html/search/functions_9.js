@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mergeimage',['mergeImage',['../group__opencv.html#ga5a8cfa223c21cc7f941ce295381f19de',1,'common::opencv']]]
+  ['mergeimage',['mergeImage',['../group__opencv.html#gac3abc590cdf00aaf59f123fa0865cc55',1,'common::opencv']]]
 ];

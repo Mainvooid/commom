@@ -35,6 +35,8 @@
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     namespace codecvt {
         /// @addtogroup codecvt
         /// @{
@@ -268,9 +270,9 @@ namespace common {
         //std::wstring ansi_to_utf8(const std::string& ansi_string) noexcept {}
         //std::wstring utf8_to_unicode(const std::wstring& utf8_wstring) noexcept {}
         //std::wstring unicode_to_utf8(const std::wstring& unicode_wstring) noexcept {}
-    /// @}
+        /// @}
     }// namespace codecvt
-
+    /// @}
 }// namespace common
 
 #endif // _COMMON_CODECVT_HPP_

@@ -40,14 +40,17 @@
     <ClInclude Include="common\cuda.hpp">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="common\cuda\texture_reference.cuh">
-      <Filter>common\cuda</Filter>
-    </ClInclude>
     <ClInclude Include="common\opencl.hpp">
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="common.hpp" />
     <ClInclude Include="common_all.hpp" />
+    <ClInclude Include="common\cuda\fisheye_remap.hpp">
+      <Filter>common\cuda</Filter>
+    </ClInclude>
+    <ClInclude Include="common\cuda\texture_reference.hpp">
+      <Filter>common\cuda</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">
@@ -94,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="common\cuda\texture_reference.cu">
+      <Filter>common\cuda</Filter>
+    </CudaCompile>
+    <CudaCompile Include="common\cuda\fisheye_remap.cu">
       <Filter>common\cuda</Filter>
     </CudaCompile>
   </ItemGroup>

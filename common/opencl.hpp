@@ -16,6 +16,8 @@
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     namespace opencl {
         /// @addtogroup opencl
         /// @{
@@ -89,5 +91,6 @@ namespace common {
         }
         /// @}
     } // namespace opencl
+    /// @}
 } // namespace common
 #endif // _COMMON_OPENCL_HPP_

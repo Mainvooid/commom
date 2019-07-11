@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['logd_5f',['LOGD_',['../debuglog_8hpp.html#aeb344737ca3d98422e8a626ae354613c',1,'debuglog.hpp']]],
-  ['loge_5f',['LOGE_',['../debuglog_8hpp.html#aadc3eb27d309d71b04d687fb325a26c1',1,'debuglog.hpp']]],
-  ['logf_5f',['LOGF_',['../debuglog_8hpp.html#ac44eb34f7bd2b3bcdf2e060eebec128b',1,'debuglog.hpp']]],
-  ['logi_5f',['LOGI_',['../debuglog_8hpp.html#a5f62431f585e523b8edf3355a7661a1f',1,'debuglog.hpp']]],
-  ['logt_5f',['LOGT_',['../debuglog_8hpp.html#a8a4a54c9b1f9fa7cbac6507195b40259',1,'debuglog.hpp']]],
-  ['logw_5f',['LOGW_',['../debuglog_8hpp.html#a585ebb0be208cb3e4b64eaf6d0702aa8',1,'debuglog.hpp']]]
+  ['have_5fcuda',['HAVE_CUDA',['../common_8hpp.html#a20aa63587c8c72b588f28e402a27bf38',1,'common.hpp']]],
+  ['have_5fcuda_5fkernel',['HAVE_CUDA_KERNEL',['../common_8hpp.html#a431939cc5c54d9b040f83c8c53e504cf',1,'common.hpp']]],
+  ['have_5fdirectx',['HAVE_DIRECTX',['../common_8hpp.html#a348be3a6a5f63ffd505cb4a70a64277e',1,'common.hpp']]],
+  ['have_5fopencl',['HAVE_OPENCL',['../common_8hpp.html#aa4c7aabdfaf0c68e1d01c595ca31d4cd',1,'common.hpp']]],
+  ['have_5fopencv',['HAVE_OPENCV',['../common_8hpp.html#a83e82e3571429e1b054b1651b647a630',1,'common.hpp']]]
 ];

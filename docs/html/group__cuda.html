@@ -86,6 +86,8 @@ $(document).ready(function(){initNavTree('group__cuda.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#groups">模块</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
 <a href="#nested-classes">类</a> &#124;
 <a href="#define-members">宏定义</a> &#124;
 <a href="#func-members">函数</a>  </div>
@@ -98,12 +100,23 @@ cuda - cuda utilities 的协作图:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__cuda.png" border="0" alt="" usemap="#group____cuda"/>
 <map name="group____cuda" id="group____cuda">
-<area shape="rect"  title=" " alt="" coords="125,5,260,31"/>
-<area shape="rect"  href="group__common.html" title=" " alt="" coords="5,5,77,31"/>
+<area shape="rect"  title=" " alt="" coords="125,13,260,38"/>
+<area shape="rect"  href="group__kernel.html" title=" " alt="" coords="308,5,451,45"/>
+<area shape="rect"  href="group__common.html" title=" " alt="" coords="5,13,77,38"/>
 </map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+模块</h2></td></tr>
+<tr class="memitem:group__kernel"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__kernel.html">kernel - cuda host and device functions</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacecommon_1_1cuda_1_1kernel"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon_1_1cuda_1_1kernel.html">common::cuda::kernel</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 类</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon_1_1cuda_1_1shared__texture__t.html">common::cuda::shared_texture_t&lt; T &gt;</a></td></tr>
@@ -126,6 +139,16 @@ cuda - cuda utilities 的协作图:</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
+<tr class="memitem:ga2ac83f3aa2d021cb8348e779a1879547"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">common::cuda::cuda_init_undistort_rectify_map</a> (cv::cuda::GpuMat &amp;K, cv::cuda::GpuMat &amp;D, const cv::Mat &amp;Knew, const cv::Size &amp;size, cv::cuda::GpuMat &amp;map1, cv::cuda::GpuMat &amp;map2)</td></tr>
+<tr class="memdesc:ga2ac83f3aa2d021cb8348e779a1879547"><td class="mdescLeft">&#160;</td><td class="mdescRight">cv::fisheye::initUndistortRectifyMap cuda版本 通过cv::cuda::remap()计算图像变换的不失真和校正图.如果D为空,则使用零失真,如果R或P为空,则使用单位矩阵.  <a href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">更多...</a><br /></td></tr>
+<tr class="separator:ga2ac83f3aa2d021cb8348e779a1879547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memTemplParams" colspan="2">template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </td></tr>
+<tr class="memitem:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memTemplItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">common::cuda::cuda_get_texture_reference</a> (const textureReference **texref)</td></tr>
+<tr class="memdesc:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取CUDA纹理参考系对象  <a href="group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">更多...</a><br /></td></tr>
+<tr class="separator:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6be8aa6287d6151dab96cb9e84a98227"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227">common::cuda::cuda_get_texture_reference_2d_uchar4</a> (const textureReference **texref)</td></tr>
+<tr class="memdesc:ga6be8aa6287d6151dab96cb9e84a98227"><td class="mdescLeft">&#160;</td><td class="mdescRight">[特化]获取CUDA 2D uchar4 类型的纹理参考系对象  <a href="group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227">更多...</a><br /></td></tr>
+<tr class="separator:ga6be8aa6287d6151dab96cb9e84a98227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4473d5189817e79888383aef69e9f915"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">common::cuda::checkCudaRet</a> (cudaError_t result, char const *const func, const char *const file, int const line)</td></tr>
 <tr class="memdesc:ga4473d5189817e79888383aef69e9f915"><td class="mdescLeft">&#160;</td><td class="mdescRight">cudaError_t检查,若失败会中断程序  <a href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">更多...</a><br /></td></tr>
 <tr class="separator:ga4473d5189817e79888383aef69e9f915"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,6 +260,120 @@ cuda - cuda utilities 的协作图:</div>
 </div><div class="memdoc">
 
 <p>cudaError_t检查,若失败会中断程序 </p>
+
+</div>
+</div>
+<a id="ga6ad9a0a48e2e7e359e7d5cbd022ea44c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">&#9670;&nbsp;</a></span>cuda_get_texture_reference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaError_t common::cuda::cuda_get_texture_reference </td>
+          <td>(</td>
+          <td class="paramtype">const textureReference **&#160;</td>
+          <td class="paramname"><em>texref</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取CUDA纹理参考系对象 </p>
+<dl class="section note"><dt>注解</dt><dd>暂只支持2d uchar4 纹理 </dd></dl>
+
+</div>
+</div>
+<a id="ga6be8aa6287d6151dab96cb9e84a98227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6be8aa6287d6151dab96cb9e84a98227">&#9670;&nbsp;</a></span>cuda_get_texture_reference_2d_uchar4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaError_t common::cuda::cuda_get_texture_reference_2d_uchar4 </td>
+          <td>(</td>
+          <td class="paramtype">const textureReference **&#160;</td>
+          <td class="paramname"><em>texref</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>[特化]获取CUDA 2D uchar4 类型的纹理参考系对象 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">texref</td><td>纹理参考系对象 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga2ac83f3aa2d021cb8348e779a1879547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2ac83f3aa2d021cb8348e779a1879547">&#9670;&nbsp;</a></span>cuda_init_undistort_rectify_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaError_t common::cuda::cuda_init_undistort_rectify_map </td>
+          <td>(</td>
+          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
+          <td class="paramname"><em>D</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>Knew</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const cv::Size &amp;&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
+          <td class="paramname"><em>map1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
+          <td class="paramname"><em>map2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cv::fisheye::initUndistortRectifyMap cuda版本 通过cv::cuda::remap()计算图像变换的不失真和校正图.如果D为空,则使用零失真,如果R或P为空,则使用单位矩阵. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">K</td><td>相机矩阵 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">D</td><td>畸变系数 (k1,k2,k3,k4). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Knew</td><td>新的相机矩阵(3x3)或新的投影矩阵(3x4) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>未扭曲的图像大小 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">map1</td><td>第一个输出图 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">map2</td><td>第二个输出图 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

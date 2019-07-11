@@ -14,6 +14,7 @@
 #include <memory>
 #include <map>
 #include <limits>
+#include <chrono>
 /**
   @addtogroup common
   @{
@@ -23,6 +24,30 @@
 namespace common {
     /// @addtogroup common
     /// @{
+
+    /**
+    *@brief 函数计时(默认std::chrono::milliseconds)
+    *@param Fn 函数对象,可用匿名函数包装代码片段来计时
+    *@param args 函数参数
+    *@return 相应单位的时间计数
+    */
+    template< typename T = std::chrono::milliseconds, typename R, typename ...FArgs, typename ...Args>
+    auto getFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
+        auto start = std::chrono::system_clock::now();
+        Fn(args...);
+        auto end = std::chrono::system_clock::now();
+        auto duration = std::chrono::duration_cast<T>(end - start);
+        return static_cast<double>(duration.count());
+    }
+
+    template< typename T = std::chrono::milliseconds, typename R, typename ...Args>
+    auto getFnDuration(R(*func)(Args...)) {
+        std::function<R(Args...)> Fn = func;
+        return[=](Args...args)->auto {
+            return getFnDuration(Fn, args...);
+        };
+    }
+
     //----------资源初始化----------
 
     /**

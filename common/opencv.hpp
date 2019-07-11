@@ -5,15 +5,20 @@
 #ifndef _COMMON_OPENCV_HPP_
 #define _COMMON_OPENCV_HPP_
 
-#include <common/precomm.hpp>
 #include <common/debuglog.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/img_hash.hpp>
 #include <random>
 
+#ifdef HAVE_CUDA
+#include <common/cuda.hpp>
+#ifdef HAVE_CUDA_KERNEL
+#include <common/cuda/fisheye_remap.hpp>
+#endif // HAVE_CUDA_KERNEL
+#endif // HAVE_CUDA
 
 #if defined(_DEBUG) || defined(DEBUG)
-#ifdef LIB_OPENCV_WORLD
+#ifdef LINK_LIB_OPENCV_WORLD
 #pragma comment(lib,"opencv_world410d.lib")
 #else
 #pragma comment(lib,"opencv_core410d.lib")
@@ -22,9 +27,12 @@
 #pragma comment(lib,"opencv_highgui410d.lib")
 #pragma comment(lib,"opencv_img_hash410d.lib")
 #pragma comment(lib,"opencv_calib3d410d.lib")
-#endif
+#ifdef HAVE_CUDA
+#pragma comment(lib,"opencv_cudawarping410d.lib")
+#endif // HAVE_CUDA
+#endif // LIB_OPENCV_WORLD
 #else
-#ifdef LIB_OPENCV_WORLD
+#ifdef LINK_LIB_OPENCV_WORLD
 #pragma comment(lib,"opencv_world410.lib")
 #else
 #pragma comment(lib,"opencv_core410.lib")
@@ -33,8 +41,11 @@
 #pragma comment(lib,"opencv_highgui410.lib")
 #pragma comment(lib,"opencv_img_hash410.lib")
 #pragma comment(lib,"opencv_calib3d410.lib")
-#endif
-#endif
+#ifdef HAVE_CUDA
+#pragma comment(lib,"opencv_cudawarping410.lib")
+#endif // HAVE_CUDA
+#endif // LIB_OPENCV_WORLD
+#endif // DEBUG
 
 /**
   @addtogroup common
@@ -43,6 +54,8 @@
   @}
 */
 namespace common {
+    /// @addtogroup common
+    /// @{
     namespace opencv {
         /// @addtogroup opencv
         /// @{
@@ -188,6 +201,10 @@ namespace common {
                     ) || (m_intrinsic_param_mat.rows == 0 || m_intrinsic_param_mat.cols == 0)) {
                     throw std::invalid_argument("Invalid output parameters");//可能存在某些标定图无法成功计算出参数,应排除之
                 }
+#if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
+                m_intrinsic_param_mat_g.upload(m_intrinsic_param_mat);
+                m_distortion_coeffs_g.upload(m_distortion_coeffs);
+#endif // HAVE_CUDA && HAVE_CUDA_KERNEL
             }
             /**
             @brief 应用重映射进行去畸变操作
@@ -198,7 +215,8 @@ namespace common {
             @param[in] cx 调节校正图中心,可设置为src的中心坐标x
             @param[in] cy 调节校正图中心,可设置为src的中心坐标y
             */
-            void remap(cv::InputArray src, cv::OutputArray dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0) {
+            void remap(cv::InputArray src, cv::OutputArray dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0) 
+            {
                 //调节视场大小, 乘的系数越小视场越大
                 m_new_intrinsic_param_mat = m_intrinsic_param_mat.clone();
                 m_new_intrinsic_param_mat.at<double>(0, 0) *= fx;
@@ -208,8 +226,29 @@ namespace common {
                     m_new_intrinsic_param_mat.at<double>(0, 2) = cx;
                     m_new_intrinsic_param_mat.at<double>(1, 2) = cy;
                 }
-                cv::fisheye::undistortImage(src, dst, m_intrinsic_param_mat, m_distortion_coeffs, m_new_intrinsic_param_mat);
+                cv::fisheye::undistortImage(src, dst, m_intrinsic_param_mat, m_distortion_coeffs, m_new_intrinsic_param_mat, cv::Size());
             }
+#if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
+            /**
+            @overload
+            */
+            void remap(cv::cuda::GpuMat src, cv::cuda::GpuMat& dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0) 
+            {
+                //调节视场大小, 乘的系数越小视场越大
+                m_new_intrinsic_param_mat = m_intrinsic_param_mat.clone();
+                m_new_intrinsic_param_mat.at<double>(0, 0) *= fx;
+                m_new_intrinsic_param_mat.at<double>(1, 1) *= fy;
+                //调节校正图中心，建议置于校正图中心
+                if (cx != 0 && cy != 0) {
+                    m_new_intrinsic_param_mat.at<double>(0, 2) = cx;
+                    m_new_intrinsic_param_mat.at<double>(1, 2) = cy;
+                }
+                cv::cuda::GpuMat map1, map2;
+                cuda::checkCudaRet(cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
+                    m_new_intrinsic_param_mat, src.size(), map1, map2));
+                cv::cuda::remap(src, dst, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+            }
+#endif // HAVE_CUDA && HAVE_CUDA_KERNEL
 
             /**
             @brief 在所有标定图上画出标定的内角点并显示
@@ -266,16 +305,19 @@ namespace common {
             std::vector<cv::Vec3d> m_rotation_vectors;//每幅图像的旋转向量
             std::vector<cv::Vec3d> m_translation_vectors;//每幅图像的平移向量
         private:
+#if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
+            cv::cuda::GpuMat m_intrinsic_param_mat_g;//摄像机内参数矩阵
+            cv::cuda::GpuMat m_distortion_coeffs_g;//摄像机的4个畸变系数: k1,k2,k3,k4
+#endif // HAVE_CUDA && HAVE_CUDA_KERNEL
             std::vector<cv::Mat> m_chessboards;//棋盘格
             cv::Size m_board_size;//定标板上每行、列的内角点数,等于格子数-1
             size_t m_square_size;//定标板上格子的宽度mm
-            std::vector<std::vector<cv::Point3f>>  m_object_points_set;//保存定标板上角点的三维坐标,一个vector对应一张定标板
-            std::vector<std::vector<cv::Point2f>>  m_corners_set;//标定图的角点坐标
-
+            std::vector<std::vector<cv::Point3f>> m_object_points_set;//保存定标板上角点的三维坐标,一个vector对应一张定标板
+            std::vector<std::vector<cv::Point2f>> m_corners_set;//标定图的角点坐标
         };
         /// @}
     } // namespace opencv
-
+    /// @}
 } // namespace common
 
 #endif // _COMMON_OPENCV_HPP_

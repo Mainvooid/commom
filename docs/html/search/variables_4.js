@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['p_5fd3d11_5ftexture_5f1d',['p_d3d11_texture_1d',['../structcommon_1_1cuda_1_1shared__texture__1d__t.html#a2d20ae4b573ae23cbeed67941afb10ae',1,'common::cuda::shared_texture_1d_t']]],
-  ['p_5fd3d11_5ftexture_5f2d',['p_d3d11_texture_2d',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html#afff479e857b7861430d97c07834ff1b4',1,'common::cuda::shared_texture_2d_t']]],
-  ['p_5fd3d11_5ftexture_5f3d',['p_d3d11_texture_3d',['../structcommon_1_1cuda_1_1shared__texture__3d__t.html#a69d7c70fc877e8001f0d7230e8ed5983',1,'common::cuda::shared_texture_3d_t']]],
-  ['pitch',['pitch',['../structcommon_1_1cuda_1_1shared__texture__t.html#a624f6b7a3eabdc04db7578e5a5dd626d',1,'common::cuda::shared_texture_t']]]
+  ['m_5fdistortion_5fcoeffs',['m_distortion_coeffs',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a7dbae19714c657330f0d512a1da27892',1,'common::opencv::FisheyeRemap']]],
+  ['m_5fintrinsic_5fparam_5fmat',['m_intrinsic_param_mat',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a535219071497bccfe340ebe06e165d3a',1,'common::opencv::FisheyeRemap']]],
+  ['m_5fnew_5fintrinsic_5fparam_5fmat',['m_new_intrinsic_param_mat',['../classcommon_1_1opencv_1_1_fisheye_remap.html#ada51810561564ff726a2111a7f15fc4e',1,'common::opencv::FisheyeRemap']]],
+  ['m_5frotation_5fvectors',['m_rotation_vectors',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a0ff24ea07493e51d6caddf792e8cbfc4',1,'common::opencv::FisheyeRemap']]],
+  ['m_5ftranslation_5fvectors',['m_translation_vectors',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a581ddfd6b8aece72a2cca842de65ad66',1,'common::opencv::FisheyeRemap']]]
 ];

@@ -1,5 +1,7 @@
 var group__cuda =
 [
+    [ "kernel - cuda host and device functions", "group__kernel.html", "group__kernel" ],
+    [ "kernel", "namespacecommon_1_1cuda_1_1kernel.html", null ],
     [ "shared_texture_t", "structcommon_1_1cuda_1_1shared__texture__t.html", [
       [ "shared_texture_t", "structcommon_1_1cuda_1_1shared__texture__t.html#a9db918dc116823ebcc5efab1d5a5cc02", null ],
       [ "~shared_texture_t", "structcommon_1_1cuda_1_1shared__texture__t.html#a73f4df0021672a0e7c835d1ea8550d1d", null ],
@@ -39,6 +41,9 @@ var group__cuda =
     [ "checkCudaRet", "group__cuda.html#ga0cb317a3c6744bd5dbefe00e1a8a03d0", null ],
     [ "checkCUDADevice", "group__cuda.html#ga6a097db82b5293c474022ad455364bc4", null ],
     [ "checkCudaRet", "group__cuda.html#ga4473d5189817e79888383aef69e9f915", null ],
+    [ "cuda_get_texture_reference", "group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c", null ],
+    [ "cuda_get_texture_reference_2d_uchar4", "group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227", null ],
+    [ "cuda_init_undistort_rectify_map", "group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547", null ],
     [ "getCudaFnDuration", "group__cuda.html#ga23a4928e79244b498723dbde881781ae", null ],
     [ "getD3D11Adapter", "group__cuda.html#gaa6ab334a0eb2e9d458f1d7d2232f9624", null ]
 ];

@@ -1,4 +1,4 @@
-# commom
+﻿# commom
 common library only include header files.
 
 It has only been tested on Windows.
@@ -17,7 +17,7 @@ It has only been tested on Windows.
 │  │  cuda.hpp          //cuda辅助(包含与opencv和directx的互操作)
 │  │  debuglog.hpp      //windows调试日志
 │  │  opencl.hpp        //opencl辅助
-│  │  opencv.hpp        //opencv辅助
+│  │  opencv.hpp        //opencv辅助(包含cuda重载版本)
 │  │  precomm.hpp       //公共辅助
 │  │  windows.hpp       //windows辅助(包含directx辅助)
 │  └─cuda           //cuda设备函数目录
@@ -42,7 +42,8 @@ It has only been tested on Windows.
 - `HAVE_OPENCV `     //基于OpenCV 4.0 with contrib
 - `HAVE_DIRECTX`     //基于Microsoft DirectX SDK (June 2010)
 - `HAVE_CUDA`        //基于CUDA 10.0
-- `HAVE_CUDA_DEVICE` // 本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见[common/cuda/README.md](common/cuda/README.md)
+- `HAVE_CUDA_KERNEL` // 本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见[common/cuda/README.md](common/cuda/README.md)
+- `LINK_LIB_OPENCV_WORLD` //opencv链接到opencv_world***.lib
 
 ---
 
@@ -181,6 +182,7 @@ template<bool flag=false>
 
 ```
 @brief     摘要
+@overload  重载标识
 @param     参数说明
 @param[in]      输入参数
 @param[out]     输出参数

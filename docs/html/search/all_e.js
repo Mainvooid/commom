@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['savedebugimage',['saveDebugImage',['../group__opencv.html#ga34c5b0ac460c2a924e6a98a3ef66724c',1,'common::opencv']]],
-  ['savetexturetofile',['saveTextureToFile',['../group__windows.html#ga47806b9488d985a6946b59d6cc241c87',1,'common::windows::saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource *pSrcTexture, const T *path, D3DX11_IMAGE_FILE_FORMAT format=D3DX11_IFF_PNG)'],['../group__windows.html#ga487f261deaede7edad19b321fa24fbf3',1,'common::windows::saveTextureToFile(IDirect3DTexture9 *pSrcTexture, const T *path)']]],
-  ['setlevel',['setLevel',['../classcommon_1_1debuglog_1_1logger.html#ae83bd8cfcc3b7ecdaf9bcf892535ec29',1,'common::debuglog::logger']]],
-  ['setname',['setName',['../classcommon_1_1debuglog_1_1logger.html#a32cea60176f7cb404655117acc6330fa',1,'common::debuglog::logger::setName(std::string logger_name)'],['../classcommon_1_1debuglog_1_1logger.html#a417095eca76632a5367d8760c54a59b2',1,'common::debuglog::logger::setName(std::wstring logger_name)']]],
-  ['shared_5ftexture_5f1d_5ft',['shared_texture_1d_t',['../structcommon_1_1cuda_1_1shared__texture__1d__t.html',1,'common::cuda']]],
-  ['shared_5ftexture_5f2d_5ft',['shared_texture_2d_t',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html',1,'common::cuda']]],
-  ['shared_5ftexture_5f2d_5ft_3c_20uchar4_20_3e',['shared_texture_2d_t&lt; uchar4 &gt;',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html',1,'common::cuda']]],
-  ['shared_5ftexture_5f3d_5ft',['shared_texture_3d_t',['../structcommon_1_1cuda_1_1shared__texture__3d__t.html',1,'common::cuda']]],
-  ['shared_5ftexture_5ft',['shared_texture_t',['../structcommon_1_1cuda_1_1shared__texture__t.html',1,'common::cuda::shared_texture_t&lt; T &gt;'],['../structcommon_1_1cuda_1_1shared__texture__t.html#a9db918dc116823ebcc5efab1d5a5cc02',1,'common::cuda::shared_texture_t::shared_texture_t()']]],
-  ['shared_5ftexture_5ft_3c_20uchar4_20_3e',['shared_texture_t&lt; uchar4 &gt;',['../structcommon_1_1cuda_1_1shared__texture__t.html',1,'common::cuda']]]
+  ['readable_5ftypename',['readable_typename',['../group__detail.html#ga88f97710e094c8565e2f77719779013f',1,'common::cmdline::detail']]],
+  ['readable_5ftypename_3c_20std_3a_3astring_20_3e',['readable_typename&lt; std::string &gt;',['../group__detail.html#gacb53b8052790fe7edb0ea89c61ed2690',1,'common::cmdline::detail']]],
+  ['readable_5ftypename_3c_20std_3a_3awstring_20_3e',['readable_typename&lt; std::wstring &gt;',['../group__detail.html#ga442f219e07563af24baa9cd7be87cfd0',1,'common::cmdline::detail']]],
+  ['readme_2emd',['README.md',['../common_2cuda_2_r_e_a_d_m_e_8md.html',1,'(全局命名空间)'],['../_r_e_a_d_m_e_8md.html',1,'(全局命名空间)']]],
+  ['register_5fresource_5ffor_5fgpumat_5fto_5ftexture2d',['register_resource_for_gpumat_to_texture2d',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#addc82a96c1c08c515934580aa9791cdc',1,'common::cuda::texture2d_cvt_gpumat']]],
+  ['release_5fs',['Release_s',['../group__common.html#gaf31b9d3dfceec8e494ce8d6108427d96',1,'common::Release_s(T p)'],['../group__common.html#gadb8c19862d576371c70ca98837c1a469',1,'common::Release_s(T p, Args ... args)'],['../group__common.html#ga30155d4127f2395038acb6846051ec15',1,'common::release_s(T p)'],['../group__common.html#gab527eb58cdfe746ac41f2b7d7bc2c24d',1,'common::release_s(T p, Args ... args)']]],
+  ['remap',['remap',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a92cef84f5406ec96654b1368720af865',1,'common::opencv::FisheyeRemap::remap(cv::InputArray src, cv::OutputArray dst, double fx=1.0, double fy=1.0, double cx=0, double cy=0)'],['../classcommon_1_1opencv_1_1_fisheye_remap.html#af6cd9a6772ffed4c5cc9c0203ac65060',1,'common::opencv::FisheyeRemap::remap(cv::cuda::GpuMat src, cv::cuda::GpuMat &amp;dst, double fx=1.0, double fy=1.0, double cx=0, double cy=0)']]],
+  ['reportlivedeviceobjects',['reportLiveDeviceObjects',['../group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0',1,'common::windows']]]
 ];

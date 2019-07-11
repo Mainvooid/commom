@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['readable_5ftypename',['readable_typename',['../group__detail.html#ga88f97710e094c8565e2f77719779013f',1,'common::cmdline::detail']]],
-  ['readable_5ftypename_3c_20std_3a_3astring_20_3e',['readable_typename&lt; std::string &gt;',['../group__detail.html#gacb53b8052790fe7edb0ea89c61ed2690',1,'common::cmdline::detail']]],
-  ['readable_5ftypename_3c_20std_3a_3awstring_20_3e',['readable_typename&lt; std::wstring &gt;',['../group__detail.html#ga442f219e07563af24baa9cd7be87cfd0',1,'common::cmdline::detail']]],
-  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['register_5fresource_5ffor_5fgpumat_5fto_5ftexture2d',['register_resource_for_gpumat_to_texture2d',['../classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#addc82a96c1c08c515934580aa9791cdc',1,'common::cuda::texture2d_cvt_gpumat']]],
-  ['release_5fs',['release_s',['../group__common.html#ga30155d4127f2395038acb6846051ec15',1,'common::release_s(T p)'],['../group__common.html#gab527eb58cdfe746ac41f2b7d7bc2c24d',1,'common::release_s(T p, Args ... args)'],['../group__common.html#gaf31b9d3dfceec8e494ce8d6108427d96',1,'common::Release_s(T p)'],['../group__common.html#gadb8c19862d576371c70ca98837c1a469',1,'common::Release_s(T p, Args ... args)']]],
-  ['reportlivedeviceobjects',['reportLiveDeviceObjects',['../group__windows.html#ga3b414c57bc2cf462d71751d73b85e2a0',1,'common::windows']]]
+  ['p_5fd3d11_5ftexture_5f1d',['p_d3d11_texture_1d',['../structcommon_1_1cuda_1_1shared__texture__1d__t.html#a2d20ae4b573ae23cbeed67941afb10ae',1,'common::cuda::shared_texture_1d_t']]],
+  ['p_5fd3d11_5ftexture_5f2d',['p_d3d11_texture_2d',['../structcommon_1_1cuda_1_1shared__texture__2d__t.html#afff479e857b7861430d97c07834ff1b4',1,'common::cuda::shared_texture_2d_t']]],
+  ['p_5fd3d11_5ftexture_5f3d',['p_d3d11_texture_3d',['../structcommon_1_1cuda_1_1shared__texture__3d__t.html#a69d7c70fc877e8001f0d7230e8ed5983',1,'common::cuda::shared_texture_3d_t']]],
+  ['pitch',['pitch',['../structcommon_1_1cuda_1_1shared__texture__t.html#a624f6b7a3eabdc04db7578e5a5dd626d',1,'common::cuda::shared_texture_t']]],
+  ['precomm_2ehpp',['precomm.hpp',['../precomm_8hpp.html',1,'']]],
+  ['print_5fcalibrate_5ferrors',['print_calibrate_errors',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a77479b5520f6ee5a23767caf3b3f4809',1,'common::opencv::FisheyeRemap']]],
+  ['print_5fcamera_5fintrinsic_5finfo',['print_camera_intrinsic_info',['../classcommon_1_1opencv_1_1_fisheye_remap.html#a57f5125d0dd9033eaea8a40435995775',1,'common::opencv::FisheyeRemap']]],
+  ['printplatforminfo',['printPlatformInfo',['../group__opencl.html#ga7c307c1c449e7808d1d86f18b0ce821e',1,'common::opencl']]],
+  ['procaddress',['ProcAddress',['../classcommon_1_1windows_1_1_proc_address.html',1,'common::windows']]]
 ];

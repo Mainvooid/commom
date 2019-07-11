@@ -7,7 +7,7 @@
 #define HAVE_OPENCV
 #define HAVE_DIRECTX
 #define HAVE_CUDA 
-#define HAVE_CUDA_DEVICE 
+#define HAVE_CUDA_KERNEL 
 
 #include <common/cuda.hpp>
 #include <common/opencv.hpp>
