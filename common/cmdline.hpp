@@ -752,8 +752,8 @@ namespace common {
                 bool m_need;
                 std::string desc;
                 bool m_has;
-                T m_def;//默认值
-                T m_actual;//实际值
+                T m_def;///< 默认值
+                T m_actual;///< 实际值
             };
 
             /**
@@ -789,12 +789,12 @@ namespace common {
             };
 
         private:
-            std::map<std::string, option_base*> options;//参数选项map(长名称,一个选项)
-            std::vector<option_base*> ordered;          //有序的参数选项(add时push)
-            std::string ftr;                            //usage尾部添加说明
-            std::string prog_name;                      //程序名
-            std::vector<std::string> others;            //其他为指定参数
-            std::vector<std::string> errors;            //错误消息
+            std::map<std::string, option_base*> options;///< 参数选项map(长名称,一个选项)
+            std::vector<option_base*> ordered;          ///< 有序的参数选项(add时push)
+            std::string ftr;                            ///< usage尾部添加说明
+            std::string prog_name;                      ///< 程序名
+            std::vector<std::string> others;            ///< 其他为指定参数
+            std::vector<std::string> errors;            ///< 错误消息
         };
         /// @}
     } // cmdline

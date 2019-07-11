@@ -1,0 +1,904 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>common: common::cmdline::parser::option_with_value_with_reader&lt; T, F &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">common
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">common::cmdline::parser::option_with_value_with_reader&lt; T, F &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>有值参数选项派生类  
+ <a href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html#details">更多...</a></p>
+<div class="dynheader">
+类 common::cmdline::parser::option_with_value_with_reader&lt; T, F &gt; 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader__inherit__graph.png" border="0" usemap="#common_1_1cmdline_1_1parser_1_1option__with__value__with__reader_3_01_t_00_01_f_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="common_1_1cmdline_1_1parser_1_1option__with__value__with__reader_3_01_t_00_01_f_01_4_inherit__map" id="common_1_1cmdline_1_1parser_1_1option__with__value__with__reader_3_01_t_00_01_f_01_4_inherit__map">
+<area shape="rect"  title="æå¼åæ°éé¡¹æ´¾çç±»" alt="" coords="5,184,175,240"/>
+<area shape="rect"  href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html" title="åæ°éé¡¹æ´¾çç±»(æå¼åæ°)" alt="" coords="5,95,175,136"/>
+<area shape="rect"  href="classcommon_1_1cmdline_1_1parser_1_1option__base.html" title="åæ°éé¡¹åºç¡æ¥å£ç±»" alt="" coords="5,5,175,47"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+common::cmdline::parser::option_with_value_with_reader&lt; T, F &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader__coll__graph.png" border="0" usemap="#common_1_1cmdline_1_1parser_1_1option__with__value__with__reader_3_01_t_00_01_f_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="common_1_1cmdline_1_1parser_1_1option__with__value__with__reader_3_01_t_00_01_f_01_4_coll__map" id="common_1_1cmdline_1_1parser_1_1option__with__value__with__reader_3_01_t_00_01_f_01_4_coll__map">
+<area shape="rect"  title="æå¼åæ°éé¡¹æ´¾çç±»" alt="" coords="155,305,324,361"/>
+<area shape="rect"  href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html" title="åæ°éé¡¹æ´¾çç±»(æå¼åæ°)" alt="" coords="155,215,324,256"/>
+<area shape="rect"  href="classcommon_1_1cmdline_1_1parser_1_1option__base.html" title="åæ°éé¡¹åºç¡æ¥å£ç±»" alt="" coords="5,96,175,137"/>
+<area shape="rect"  title="STL class" alt="" coords="199,103,279,130"/>
+<area shape="rect"  title="STL class" alt="" coords="176,5,303,47"/>
+<area shape="rect"  title=" " alt="" coords="304,103,343,130"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ad987111fe41ff55a1a18ccd5c8945364"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html#ad987111fe41ff55a1a18ccd5c8945364">option_with_value_with_reader</a> (const std::string &amp;<a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#aa59e9effac2141f9d29a7b5a7992604b">name</a>, char <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a9f034bfbb5e6a3d0f44b0a1890f21254">short_name</a>, bool need, const T def, const std::string &amp;<a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a1ccbdd6b8109c752f2cd96417f75e58e">desc</a>, F <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html#a195f4cce25b7214f00569171d829b74e">reader</a>)</td></tr>
+<tr class="memdesc:ad987111fe41ff55a1a18ccd5c8945364"><td class="mdescLeft">&#160;</td><td class="mdescRight">有值参数选项派生类  <a href="#ad987111fe41ff55a1a18ccd5c8945364">更多...</a><br /></td></tr>
+<tr class="separator:ad987111fe41ff55a1a18ccd5c8945364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5674355bf5a07d795b75f03fe43d968"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#aa5674355bf5a07d795b75f03fe43d968">get</a> () const</td></tr>
+<tr class="separator:aa5674355bf5a07d795b75f03fe43d968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d523d191394295c02749d15b61d61df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a7d523d191394295c02749d15b61d61df">has_value</a> () const</td></tr>
+<tr class="separator:a7d523d191394295c02749d15b61d61df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5facac627e867ce8c576239cccf7c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#afe5facac627e867ce8c576239cccf7c7">set</a> ()</td></tr>
+<tr class="separator:afe5facac627e867ce8c576239cccf7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab308e041e8f2f128e44d6a29f89551b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#ab308e041e8f2f128e44d6a29f89551b2">set</a> (const std::string &amp;value) noexcept</td></tr>
+<tr class="separator:ab308e041e8f2f128e44d6a29f89551b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ce8eac1c2ef3a716da8bffc173df95"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#ab9ce8eac1c2ef3a716da8bffc173df95">has_set</a> () const</td></tr>
+<tr class="separator:ab9ce8eac1c2ef3a716da8bffc173df95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89aa7d61e52fab3b9523f3a58bdd8343"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a89aa7d61e52fab3b9523f3a58bdd8343">valid</a> () const</td></tr>
+<tr class="separator:a89aa7d61e52fab3b9523f3a58bdd8343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e567274858a9108e87a19807f1355a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a6e567274858a9108e87a19807f1355a4">must</a> () const</td></tr>
+<tr class="separator:a6e567274858a9108e87a19807f1355a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa59e9effac2141f9d29a7b5a7992604b"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#aa59e9effac2141f9d29a7b5a7992604b">name</a> () const</td></tr>
+<tr class="separator:aa59e9effac2141f9d29a7b5a7992604b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f034bfbb5e6a3d0f44b0a1890f21254"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a9f034bfbb5e6a3d0f44b0a1890f21254">short_name</a> () const</td></tr>
+<tr class="separator:a9f034bfbb5e6a3d0f44b0a1890f21254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0814366aff83defc9440b60a8df650cf"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a0814366aff83defc9440b60a8df650cf">description</a> () const</td></tr>
+<tr class="separator:a0814366aff83defc9440b60a8df650cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115bbcf8acbe5ddb7cc3068df17df650"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a115bbcf8acbe5ddb7cc3068df17df650">short_description</a> () const noexcept</td></tr>
+<tr class="separator:a115bbcf8acbe5ddb7cc3068df17df650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a86a5cc31da96df8c1c23ad97cb955040"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a86a5cc31da96df8c1c23ad97cb955040">full_description</a> (const std::string &amp;<a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a1ccbdd6b8109c752f2cd96417f75e58e">desc</a>) noexcept</td></tr>
+<tr class="separator:a86a5cc31da96df8c1c23ad97cb955040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a9c7ab7302ed3281a6ade9ec7d87bb1e9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a9c7ab7302ed3281a6ade9ec7d87bb1e9">m_name</a></td></tr>
+<tr class="separator:a9c7ab7302ed3281a6ade9ec7d87bb1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5166fdb161e158fae3178cda8543ae8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#ab5166fdb161e158fae3178cda8543ae8">m_short_name</a></td></tr>
+<tr class="separator:ab5166fdb161e158fae3178cda8543ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f5bb860ad09a6082259e1dc7825c97f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a1f5bb860ad09a6082259e1dc7825c97f">m_need</a></td></tr>
+<tr class="separator:a1f5bb860ad09a6082259e1dc7825c97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccbdd6b8109c752f2cd96417f75e58e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a1ccbdd6b8109c752f2cd96417f75e58e">desc</a></td></tr>
+<tr class="separator:a1ccbdd6b8109c752f2cd96417f75e58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51f6d5354714b147f4b5562fa3c315b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#ab51f6d5354714b147f4b5562fa3c315b">m_has</a></td></tr>
+<tr class="separator:ab51f6d5354714b147f4b5562fa3c315b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d399b90cfc20ec11d8fd5c2a92ea7a"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#aa9d399b90cfc20ec11d8fd5c2a92ea7a">m_def</a></td></tr>
+<tr class="memdesc:aa9d399b90cfc20ec11d8fd5c2a92ea7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认值  <a href="#aa9d399b90cfc20ec11d8fd5c2a92ea7a">更多...</a><br /></td></tr>
+<tr class="separator:aa9d399b90cfc20ec11d8fd5c2a92ea7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ba852e74c03a052f2014d517ac6816"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a40ba852e74c03a052f2014d517ac6816">m_actual</a></td></tr>
+<tr class="memdesc:a40ba852e74c03a052f2014d517ac6816"><td class="mdescLeft">&#160;</td><td class="mdescRight">实际值  <a href="#a40ba852e74c03a052f2014d517ac6816">更多...</a><br /></td></tr>
+<tr class="separator:a40ba852e74c03a052f2014d517ac6816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:afb7d17767aa9b587670f74f30ad01a51"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html#afb7d17767aa9b587670f74f30ad01a51">read</a> (const std::string &amp;s) noexcept</td></tr>
+<tr class="separator:afb7d17767aa9b587670f74f30ad01a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a195f4cce25b7214f00569171d829b74e"><td class="memItemLeft" align="right" valign="top">F&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html#a195f4cce25b7214f00569171d829b74e">reader</a></td></tr>
+<tr class="separator:a195f4cce25b7214f00569171d829b74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;class T, class F&gt;<br />
+class common::cmdline::parser::option_with_value_with_reader&lt; T, F &gt;</h3>
+
+<p>有值参数选项派生类 </p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00763">763</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ad987111fe41ff55a1a18ccd5c8945364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad987111fe41ff55a1a18ccd5c8945364">&#9670;&nbsp;</a></span>option_with_value_with_reader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html">common::cmdline::parser::option_with_value_with_reader</a>&lt; T, F &gt;::<a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html">option_with_value_with_reader</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>short_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>need</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>def</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F&#160;</td>
+          <td class="paramname"><em>reader</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>有值参数选项派生类 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>长名称 </td></tr>
+    <tr><td class="paramname">short_name</td><td>短名称 </td></tr>
+    <tr><td class="paramname">need</td><td>是否必需 </td></tr>
+    <tr><td class="paramname">def</td><td>默认值 </td></tr>
+    <tr><td class="paramname">desc</td><td>描述 </td></tr>
+    <tr><td class="paramname">reader</td><td>可读包装类型string-&gt;T </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00775">775</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0814366aff83defc9440b60a8df650cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0814366aff83defc9440b60a8df650cf">&#9670;&nbsp;</a></span>description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::description </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#a4d71ee688cdbb7a1376edfec3a56f89e">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00731">731</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a86a5cc31da96df8c1c23ad97cb955040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a5cc31da96df8c1c23ad97cb955040">&#9670;&nbsp;</a></span>full_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::full_description </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>desc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00739">739</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa5674355bf5a07d795b75f03fe43d968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5674355bf5a07d795b75f03fe43d968">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T&amp; <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00710">710</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab9ce8eac1c2ef3a716da8bffc173df95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ce8eac1c2ef3a716da8bffc173df95">&#9670;&nbsp;</a></span>has_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::has_set </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#aab1255969a78dff99f9ee51d534cb40f">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00726">726</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7d523d191394295c02749d15b61d61df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d523d191394295c02749d15b61d61df">&#9670;&nbsp;</a></span>has_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::has_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#a73671c64e8aa5107352de910d56b8bc6">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00711">711</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6e567274858a9108e87a19807f1355a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e567274858a9108e87a19807f1355a4">&#9670;&nbsp;</a></span>must()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::must </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#a6fc7a933a2ea433a7c82da18fd92ef95">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00728">728</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa59e9effac2141f9d29a7b5a7992604b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa59e9effac2141f9d29a7b5a7992604b">&#9670;&nbsp;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#ab1711b2e4e5893a75631f290d4240adb">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00729">729</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afb7d17767aa9b587670f74f30ad01a51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb7d17767aa9b587670f74f30ad01a51">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html">common::cmdline::parser::option_with_value_with_reader</a>&lt; T, F &gt;::read </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#ad215e99106be97c428b69277ec5eb0d8">common::cmdline::parser::option_with_value&lt; T &gt;</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00785">785</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afe5facac627e867ce8c576239cccf7c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe5facac627e867ce8c576239cccf7c7">&#9670;&nbsp;</a></span>set() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::set </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#ab3238416dafc7f3fe3aab51b66f86896">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00712">712</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab308e041e8f2f128e44d6a29f89551b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab308e041e8f2f128e44d6a29f89551b2">&#9670;&nbsp;</a></span>set() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::set </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#aee6521e3aacd4245801dc435af450b54">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00714">714</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a115bbcf8acbe5ddb7cc3068df17df650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115bbcf8acbe5ddb7cc3068df17df650">&#9670;&nbsp;</a></span>short_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::short_description </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#ab2d67d2915d02a7f9461fce248a32ca9">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00733">733</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9f034bfbb5e6a3d0f44b0a1890f21254"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f034bfbb5e6a3d0f44b0a1890f21254">&#9670;&nbsp;</a></span>short_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::short_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#a8225428fdc818d9fe794a959aeb5cc5e">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00730">730</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a89aa7d61e52fab3b9523f3a58bdd8343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89aa7d61e52fab3b9523f3a58bdd8343">&#9670;&nbsp;</a></span>valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::valid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__base.html#a72fb7e9fb45281cc3fde6f172c8521fd">common::cmdline::parser::option_base</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00727">727</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a1ccbdd6b8109c752f2cd96417f75e58e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ccbdd6b8109c752f2cd96417f75e58e">&#9670;&nbsp;</a></span>desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::desc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00753">753</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a40ba852e74c03a052f2014d517ac6816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40ba852e74c03a052f2014d517ac6816">&#9670;&nbsp;</a></span>m_actual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::m_actual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实际值 </p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00756">756</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa9d399b90cfc20ec11d8fd5c2a92ea7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d399b90cfc20ec11d8fd5c2a92ea7a">&#9670;&nbsp;</a></span>m_def</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::m_def</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>默认值 </p>
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00755">755</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab51f6d5354714b147f4b5562fa3c315b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51f6d5354714b147f4b5562fa3c315b">&#9670;&nbsp;</a></span>m_has</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::m_has</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00754">754</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9c7ab7302ed3281a6ade9ec7d87bb1e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c7ab7302ed3281a6ade9ec7d87bb1e9">&#9670;&nbsp;</a></span>m_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::m_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00750">750</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1f5bb860ad09a6082259e1dc7825c97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f5bb860ad09a6082259e1dc7825c97f">&#9670;&nbsp;</a></span>m_need</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::m_need</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00752">752</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab5166fdb161e158fae3178cda8543ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5166fdb161e158fae3178cda8543ae8">&#9670;&nbsp;</a></span>m_short_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value.html">common::cmdline::parser::option_with_value</a>&lt; T &gt;::m_short_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00751">751</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a195f4cce25b7214f00569171d829b74e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195f4cce25b7214f00569171d829b74e">&#9670;&nbsp;</a></span>reader</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">F <a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html">common::cmdline::parser::option_with_value_with_reader</a>&lt; T, F &gt;::reader</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a> 第 <a class="el" href="cmdline_8hpp_source.html#l00788">788</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/code/common/common/common/<a class="el" href="cmdline_8hpp_source.html">cmdline.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacecommon.html">common</a></li><li class="navelem"><a class="el" href="namespacecommon_1_1cmdline.html">cmdline</a></li><li class="navelem"><a class="el" href="group__cmdline.html#classcommon_1_1cmdline_1_1parser">parser</a></li><li class="navelem"><a class="el" href="classcommon_1_1cmdline_1_1parser_1_1option__with__value__with__reader.html">option_with_value_with_reader</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -108,7 +108,14 @@ namespace common {
             if (image.total() > static_cast<size_t>(img_size.height) * static_cast<size_t>(img_size.width)) {
                 cv::resizeWindow(img_name, img_size);
             }
-            cv::imshow(img_name, image.getMat());
+            if (image.isGpuMat()) {
+                cv::Mat _;
+                image.getGpuMat().download(_);
+                cv::imshow(img_name, _);
+            }
+            else{
+                cv::imshow(img_name, image.getMat());
+            }
         }
 
         /**
@@ -215,7 +222,7 @@ namespace common {
             @param[in] cx 调节校正图中心,可设置为src的中心坐标x
             @param[in] cy 调节校正图中心,可设置为src的中心坐标y
             */
-            void remap(cv::InputArray src, cv::OutputArray dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0) 
+            void remap(cv::InputArray src, cv::OutputArray dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0)
             {
                 //调节视场大小, 乘的系数越小视场越大
                 m_new_intrinsic_param_mat = m_intrinsic_param_mat.clone();
@@ -229,10 +236,8 @@ namespace common {
                 cv::fisheye::undistortImage(src, dst, m_intrinsic_param_mat, m_distortion_coeffs, m_new_intrinsic_param_mat, cv::Size());
             }
 #if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
-            /**
-            @overload
-            */
-            void remap(cv::cuda::GpuMat src, cv::cuda::GpuMat& dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0) 
+            /**@overload*/
+            void remap(cv::cuda::GpuMat src, cv::cuda::GpuMat& dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0)
             {
                 //调节视场大小, 乘的系数越小视场越大
                 m_new_intrinsic_param_mat = m_intrinsic_param_mat.clone();
@@ -299,21 +304,21 @@ namespace common {
                 return average_total_err;
             }
         public:
-            cv::Mat m_intrinsic_param_mat; //摄像机内参数矩阵
-            cv::Mat m_new_intrinsic_param_mat; //手动调整后的摄像机内参数矩阵
-            cv::Vec4d m_distortion_coeffs; //摄像机的4个畸变系数: k1,k2,k3,k4
-            std::vector<cv::Vec3d> m_rotation_vectors;//每幅图像的旋转向量
-            std::vector<cv::Vec3d> m_translation_vectors;//每幅图像的平移向量
+            cv::Mat m_intrinsic_param_mat;     ///<摄像机内参数矩阵
+            cv::Mat m_new_intrinsic_param_mat; ///<手动调整后的摄像机内参数矩阵
+            cv::Vec4d m_distortion_coeffs;     ///<摄像机的4个畸变系数: k1,k2,k3,k4
+            std::vector<cv::Vec3d> m_rotation_vectors;   ///<每幅图像的旋转向量
+            std::vector<cv::Vec3d> m_translation_vectors;///<每幅图像的平移向量
         private:
 #if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
-            cv::cuda::GpuMat m_intrinsic_param_mat_g;//摄像机内参数矩阵
-            cv::cuda::GpuMat m_distortion_coeffs_g;//摄像机的4个畸变系数: k1,k2,k3,k4
+            cv::cuda::GpuMat m_intrinsic_param_mat_g;///<摄像机内参数矩阵
+            cv::cuda::GpuMat m_distortion_coeffs_g;  ///<摄像机的4个畸变系数: k1,k2,k3,k4
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL
-            std::vector<cv::Mat> m_chessboards;//棋盘格
-            cv::Size m_board_size;//定标板上每行、列的内角点数,等于格子数-1
-            size_t m_square_size;//定标板上格子的宽度mm
-            std::vector<std::vector<cv::Point3f>> m_object_points_set;//保存定标板上角点的三维坐标,一个vector对应一张定标板
-            std::vector<std::vector<cv::Point2f>> m_corners_set;//标定图的角点坐标
+            std::vector<cv::Mat> m_chessboards;///<棋盘格
+            cv::Size m_board_size;///<定标板上每行、列的内角点数,等于格子数-1
+            size_t m_square_size; ///<定标板上格子的宽度mm
+            std::vector<std::vector<cv::Point3f>> m_object_points_set;///<保存定标板上角点的三维坐标,一个vector对应一张定标板
+            std::vector<std::vector<cv::Point2f>> m_corners_set;      ///<标定图的角点坐标
         };
         /// @}
     } // namespace opencv

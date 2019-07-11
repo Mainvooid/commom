@@ -23,23 +23,17 @@
 namespace common {
     /// @addtogroup common
     /// @{
-    /*调试日志级别
-    Trace    = 0, // 更细粒度的消息记录
-    Debug    = 1, // 细粒度调试信息事件
-    Info     = 2, // 粗粒度记录应用程序的正常运行过程
-    Warn     = 3, // 可能导致潜在错误
-    Error    = 4, // 不影响系统继续运行的错误事件
-    Fatal    = 5, // 会导致应用程序退出的致命事件
-    Off      = 6  // 关闭日志记录
+    /**
+    @brief 调试日志级别
     */
     enum level_e {
-        Trace = 0,
-        Debug = 1,
-        Info = 2,
-        Warn = 3,
-        Error = 4,
-        Fatal = 5,
-        Off = 6
+        Trace = 0,///< 更细粒度的消息记录
+        Debug = 1,///< 细粒度调试信息事件
+        Info = 2, ///< 粗粒度记录应用程序的正常运行过程
+        Warn = 3, ///< 可能导致潜在错误
+        Error = 4,///< 不影响系统继续运行的错误事件
+        Fatal = 5,///< 会导致应用程序退出的致命事件
+        Off = 6   ///< 关闭日志记录
     };
 
     namespace debuglog {
@@ -232,8 +226,7 @@ namespace common {
         /// @}
     } // namespace debuglog
 
-    // common 全局logger
-    static std::unique_ptr<debuglog::logger> g_logger(new debuglog::logger(_T("G"), level_e::Trace));//TODO 应可接受_TAG标签
+    static std::unique_ptr<debuglog::logger> g_logger(new debuglog::logger(_T("G"), level_e::Trace));///< 全局logger对象
 
     template<typename T>
     inline void LOGT(T msg) { g_logger->Trace(std::move(msg)); };

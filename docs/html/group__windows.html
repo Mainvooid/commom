@@ -105,9 +105,9 @@ windows - windows utilities 的协作图:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 类</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1windows_1_1_proc_address.html">common::windows::ProcAddress&lt; interfaceCls &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">外部调用dll函数获取类实例指针或函数地址  <a href="classcommon_1_1windows_1_1_proc_address.html#details">更多...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:classcommon_1_1windows_1_1_proc_address"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#classcommon_1_1windows_1_1_proc_address">common::windows::ProcAddress&lt; interfaceCls &gt;</a></td></tr>
+<tr class="memdesc:classcommon_1_1windows_1_1_proc_address"><td class="mdescLeft">&#160;</td><td class="mdescRight">外部调用dll函数获取类实例指针或函数地址  <a href="group__windows.html#classcommon_1_1windows_1_1_proc_address">更多...</a><br /></td></tr>
+<tr class="separator:classcommon_1_1windows_1_1_proc_address"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
@@ -153,6 +153,144 @@ windows - windows utilities 的协作图:</div>
 <tr class="separator:ga09533a9672f03711ef59ca54c0056da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<hr/><h2 class="groupheader">类说明</h2>
+<a name="classcommon_1_1windows_1_1_proc_address" id="classcommon_1_1windows_1_1_proc_address"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#classcommon_1_1windows_1_1_proc_address">&#9670;&nbsp;</a></span>common::windows::ProcAddress</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">class common::windows::ProcAddress</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;class interfaceCls&gt;<br />
+class common::windows::ProcAddress&lt; interfaceCls &gt;</h3>
+
+<p>外部调用dll函数获取类实例指针或函数地址 </p>
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00136">136</a> 行定义.</p>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h3>Public 类型</h3></td></tr>
+<tr class="memitem:a965926a7b66a2ec3246076a227362aaa"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; interfaceCls &gt;(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#a965926a7b66a2ec3246076a227362aaa">func_type_name</a>) ()</td></tr>
+<tr class="separator:a965926a7b66a2ec3246076a227362aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a9118ffcd581e5b4af0141a46aff21d57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__windows.html#a965926a7b66a2ec3246076a227362aaa">func_type_name</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#a9118ffcd581e5b4af0141a46aff21d57">getAddress</a> (const HMODULE &amp;dll_module, const std::string &amp;func_name) noexcept</td></tr>
+<tr class="memdesc:a9118ffcd581e5b4af0141a46aff21d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">外部调用dll函数获取函数地址  <a href="#a9118ffcd581e5b4af0141a46aff21d57">更多...</a><br /></td></tr>
+<tr class="separator:a9118ffcd581e5b4af0141a46aff21d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae20d40e2a0d934a83d7c953b3533b935"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; interfaceCls &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__windows.html#ae20d40e2a0d934a83d7c953b3533b935">getPtr</a> (const HMODULE &amp;dll_module, const std::string &amp;func_name) noexcept</td></tr>
+<tr class="memdesc:ae20d40e2a0d934a83d7c953b3533b935"><td class="mdescLeft">&#160;</td><td class="mdescRight">外部调用dll函数获取类实例指针  <a href="#ae20d40e2a0d934a83d7c953b3533b935">更多...</a><br /></td></tr>
+<tr class="separator:ae20d40e2a0d934a83d7c953b3533b935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">成员类型定义说明</h4>
+<a id="a965926a7b66a2ec3246076a227362aaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965926a7b66a2ec3246076a227362aaa">&#9670;&nbsp;</a></span>func_type_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class interfaceCls &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::shared_ptr&lt;interfaceCls&gt;(* <a class="el" href="group__windows.html#classcommon_1_1windows_1_1_proc_address">common::windows::ProcAddress</a>&lt; interfaceCls &gt;::func_type_name) ()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00139">139</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">成员函数说明</h4>
+<a id="a9118ffcd581e5b4af0141a46aff21d57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9118ffcd581e5b4af0141a46aff21d57">&#9670;&nbsp;</a></span>getAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class interfaceCls &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__windows.html#a965926a7b66a2ec3246076a227362aaa">func_type_name</a> <a class="el" href="group__windows.html#classcommon_1_1windows_1_1_proc_address">common::windows::ProcAddress</a>&lt; interfaceCls &gt;::getAddress </td>
+          <td>(</td>
+          <td class="paramtype">const HMODULE &amp;&#160;</td>
+          <td class="paramname"><em>dll_module</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>func_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>外部调用dll函数获取函数地址 </p>
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00144">144</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae20d40e2a0d934a83d7c953b3533b935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae20d40e2a0d934a83d7c953b3533b935">&#9670;&nbsp;</a></span>getPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class interfaceCls &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;interfaceCls&gt; <a class="el" href="group__windows.html#classcommon_1_1windows_1_1_proc_address">common::windows::ProcAddress</a>&lt; interfaceCls &gt;::getPtr </td>
+          <td>(</td>
+          <td class="paramtype">const HMODULE &amp;&#160;</td>
+          <td class="paramname"><em>dll_module</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>func_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>外部调用dll函数获取类实例指针 </p>
+<dl class="section return"><dt>返回</dt><dd>若失败返回nullptr </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00153">153</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">函数说明</h2>
 <a id="ga8657a88ea0d7ed1ef8ddf2127d8f82c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8657a88ea0d7ed1ef8ddf2127d8f82c8">&#9670;&nbsp;</a></span>createD3D11Device()</h2>
@@ -199,6 +337,8 @@ windows - windows utilities 的协作图:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00195">195</a> 行定义.</p>
 
 </div>
 </div>
@@ -260,6 +400,8 @@ windows - windows utilities 的协作图:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00284">284</a> 行定义.</p>
+
 </div>
 </div>
 <a id="ga1d8b8497f7476c661b60a9cd1054d0e3"></a>
@@ -288,6 +430,8 @@ template&lt;class interfaceCls , class implCls &gt; </div>
 </div><div class="memdoc">
 
 <p>用于dll导出接口类的实现类指针,自动管理内存,以防范Cross-Dll问题 </p>
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00053">53</a> 行定义.</p>
 
 </div>
 </div>
@@ -337,6 +481,8 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>子dll的绝对加载路径 </dd></dl>
 
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00087">87</a> 行定义.</p>
+
 </div>
 </div>
 <a id="gac412e651914b28f54eecddc04d2dbea9"></a>
@@ -365,6 +511,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>返回工作目录 </p>
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00064">64</a> 行定义.</p>
 
 </div>
 </div>
@@ -406,6 +554,8 @@ template&lt;typename T &gt; </div>
 
 <p>运行时目录下搜索DLL及其依赖项 </p>
 
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00107">107</a> 行定义.</p>
+
 </div>
 </div>
 <a id="gaa8e6d2eb037479324dcb5445cea10289"></a>
@@ -444,6 +594,8 @@ template&lt;typename T &gt; </div>
 
 <p>指定目录搜索DLL及其依赖项 </p>
 
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00116">116</a> 行定义.</p>
+
 </div>
 </div>
 <a id="ga4848ceb6cbe9b8ff859833928ab97732"></a>
@@ -473,6 +625,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>在应用程序的安装目录中搜索DLL及其依赖项 </p>
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00126">126</a> 行定义.</p>
 
 </div>
 </div>
@@ -536,6 +690,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00258">258</a> 行定义.</p>
+
 </div>
 </div>
 <a id="ga3b414c57bc2cf462d71751d73b85e2a0"></a>
@@ -561,6 +717,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00178">178</a> 行定义.</p>
 
 </div>
 </div>
@@ -612,6 +770,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00231">231</a> 行定义.</p>
+
 </div>
 </div>
 <a id="ga487f261deaede7edad19b321fa24fbf3"></a>
@@ -649,6 +809,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00245">245</a> 行定义.</p>
 
 </div>
 </div>
@@ -697,6 +859,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="windows_8hpp_source.html">windows.hpp</a> 第 <a class="el" href="windows_8hpp_source.html#l00309">309</a> 行定义.</p>
 
 </div>
 </div>

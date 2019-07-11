@@ -127,11 +127,13 @@ $(document).ready(function(){initNavTree('namespacecommon.html','');});
 <a class="el" href="group__common.html#ggaf7659de5ece427c413cf7194eafe087da473000b70bf190476856d3abc59a0c2c">Off</a> = 6
 <br />
  }</td></tr>
+<tr class="memdesc:gaf7659de5ece427c413cf7194eafe087d"><td class="mdescLeft">&#160;</td><td class="mdescRight">调试日志级别  <a href="group__common.html#gaf7659de5ece427c413cf7194eafe087d">更多...</a><br /></td></tr>
 <tr class="separator:gaf7659de5ece427c413cf7194eafe087d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:ga4df005827c4fbc2ced19a3e1f38bfa8f"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classcommon_1_1debuglog_1_1logger.html">debuglog::logger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__common.html#ga4df005827c4fbc2ced19a3e1f38bfa8f">g_logger</a> (new <a class="el" href="classcommon_1_1debuglog_1_1logger.html">debuglog::logger</a>(_T(&quot;G&quot;), level_e::Trace))</td></tr>
+<tr class="memitem:ga4df005827c4fbc2ced19a3e1f38bfa8f"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="group__debuglog.html#classcommon_1_1debuglog_1_1logger">debuglog::logger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__common.html#ga4df005827c4fbc2ced19a3e1f38bfa8f">g_logger</a> (new <a class="el" href="group__debuglog.html#classcommon_1_1debuglog_1_1logger">debuglog::logger</a>(_T(&quot;G&quot;), level_e::Trace))</td></tr>
+<tr class="memdesc:ga4df005827c4fbc2ced19a3e1f38bfa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局logger对象  <a href="group__common.html#ga4df005827c4fbc2ced19a3e1f38bfa8f">更多...</a><br /></td></tr>
 <tr class="separator:ga4df005827c4fbc2ced19a3e1f38bfa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac4cc51b0e6d08c559cd26de638d8eab7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:gac4cc51b0e6d08c559cd26de638d8eab7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gac4cc51b0e6d08c559cd26de638d8eab7">LOGT</a> (T msg)</td></tr>
@@ -216,6 +218,7 @@ $(document).ready(function(){initNavTree('namespacecommon.html','');});
 <tr class="separator:gacee0872ee3f81bbd38c8f1c16da08de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf31b9d3dfceec8e494ce8d6108427d96"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:gaf31b9d3dfceec8e494ce8d6108427d96"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gaf31b9d3dfceec8e494ce8d6108427d96">Release_s</a> (T p)</td></tr>
+<tr class="memdesc:gaf31b9d3dfceec8e494ce8d6108427d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release_s 可接受不定长参数  <a href="group__common.html#gaf31b9d3dfceec8e494ce8d6108427d96">更多...</a><br /></td></tr>
 <tr class="separator:gaf31b9d3dfceec8e494ce8d6108427d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadb8c19862d576371c70ca98837c1a469"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
 <tr class="memitem:gadb8c19862d576371c70ca98837c1a469"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gadb8c19862d576371c70ca98837c1a469">Release_s</a> (T p, Args ... args)</td></tr>
@@ -231,12 +234,14 @@ $(document).ready(function(){initNavTree('namespacecommon.html','');});
 <tr class="separator:gab527eb58cdfe746ac41f2b7d7bc2c24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga82fbddf474a1f80cb484bb0f7890166c"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TA , typename TW &gt; </td></tr>
 <tr class="memitem:ga82fbddf474a1f80cb484bb0f7890166c"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, char &gt;||std::is_same_v&lt; T, std::string &gt;, TA &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga82fbddf474a1f80cb484bb0f7890166c">tvalue</a> (TA a, TW)</td></tr>
+<tr class="memdesc:ga82fbddf474a1f80cb484bb0f7890166c"><td class="mdescLeft">&#160;</td><td class="mdescRight">模板条件参数推断及条件函数调用,根据宽窄字符类型返回不同对象.  <a href="group__common.html#ga82fbddf474a1f80cb484bb0f7890166c">更多...</a><br /></td></tr>
 <tr class="separator:ga82fbddf474a1f80cb484bb0f7890166c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga82fbddf474a1f80cb484bb0f7890166c"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TA , typename TW &gt; </td></tr>
 <tr class="memitem:ga82fbddf474a1f80cb484bb0f7890166c"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, wchar_t &gt;||std::is_same_v&lt; T, std::wstring &gt;, TW &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ga82fbddf474a1f80cb484bb0f7890166c">tvalue</a> (TA, TW w)</td></tr>
 <tr class="separator:ga82fbddf474a1f80cb484bb0f7890166c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga493a31fc80db78b4792c6c00ccde452e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga493a31fc80db78b4792c6c00ccde452e"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#ga493a31fc80db78b4792c6c00ccde452e">cslen</a> (const T *str)</td></tr>
+<tr class="memdesc:ga493a31fc80db78b4792c6c00ccde452e"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回字符串长度  <a href="group__common.html#ga493a31fc80db78b4792c6c00ccde452e">更多...</a><br /></td></tr>
 <tr class="separator:ga493a31fc80db78b4792c6c00ccde452e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gada99d5b660332656cca9fde49ebb72ff"><td class="memTemplParams" colspan="2">template&lt;typename R , typename ... FArgs&gt; </td></tr>
 <tr class="memitem:gada99d5b660332656cca9fde49ebb72ff"><td class="memTemplItemLeft" align="right" valign="top">std::function&lt; R(FArgs...)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__common.html#gada99d5b660332656cca9fde49ebb72ff">getFunction</a> (std::function&lt; R(FArgs...)&gt; Fn)</td></tr>
@@ -301,6 +306,9 @@ template&lt;typename T , typename TA , typename TW &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>这是为便于使用而提供的一个重载成员函数.与上面的函数相比，它接受不同类型的参数. </p>
+
+<p class="definition">在文件 <a class="el" href="precomm_8hpp_source.html">precomm.hpp</a> 第 <a class="el" href="precomm_8hpp_source.html#l00187">187</a> 行定义.</p>
 
 </div>
 </div>

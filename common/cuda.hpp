@@ -67,7 +67,6 @@ namespace common {
                 std::ostringstream oss;
                 oss << cudaGetErrorName(result);
                 common::LOGE(oss.str(), func, file, line);
-
                 cudaDeviceReset();
                 // Make sure we call CUDA Device Reset before exiting
                 exit(EXIT_FAILURE);
@@ -221,7 +220,7 @@ namespace common {
             };
 
             /*
-            *@brief 注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用
+            @brief 注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用
             */
             bool register_resource_for_gpumat_to_texture2d(int width, int height) {
                 D3D11_TEXTURE2D_DESC desc;
@@ -266,8 +265,13 @@ namespace common {
                 checkCudaRet(cudaGraphicsUnregisterResource(mt_texture2d_to_gpumat.cuda_resource));
                 return true;
             };
-
-            bool gpumat_to_texture2d(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device)
+            /**
+            @brief gpumat到texture2d的转换
+            @attention 使用前需要注册一次资源,使用结束后需要取消注册,并且同一分辨率只能注册一次,若分辨率更改需要重新注册,
+                  CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory.
+            @see register_resource_for_gpumat_to_texture2d , unregister_resource_for_gpumat_to_texture2d
+            */
+            bool gpumat_to_texture2d(const cv::cuda::GpuMat& src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device)
             {
                 //映射图形资源以供CUDA访问
                 checkCudaRet(cudaGraphicsMapResources(1, &mt_gpumat_to_texture2d.cuda_resource));
@@ -285,10 +289,10 @@ namespace common {
                 return true;
             };
         private:
-            ComPtr<ID3D11Device> mp_d3d11_device;
-            ComPtr<IDXGIAdapter> mp_cuda_capable_adater;
-            shared_texture_2d_t<uchar4> mt_texture2d_to_gpumat;
-            shared_texture_2d_t<uchar4> mt_gpumat_to_texture2d;
+            ComPtr<ID3D11Device> mp_d3d11_device;              ///< D3D11设备
+            ComPtr<IDXGIAdapter> mp_cuda_capable_adater;       ///< CUDA需要的DX适配器
+            shared_texture_2d_t<uchar4> mt_texture2d_to_gpumat;///< 共享纹理对象
+            shared_texture_2d_t<uchar4> mt_gpumat_to_texture2d;///< 共享纹理对象
         };
 
 #endif // HAVE_OPENCV

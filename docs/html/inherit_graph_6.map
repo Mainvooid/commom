@@ -1,3 +1,6 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$classcommon_1_1opencv_1_1_fisheye_remap.html" title="简单的基于棋盘定标的鱼眼相机去畸变类" alt="" coords="5,5,220,32"/>
+<area shape="rect" id="node1" href="$group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11和CUDA共享的纹理数据结构" alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node2" href="$group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node3" href="$group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t" title=" " alt="" coords="208,71,363,112"/>
+<area shape="rect" id="node4" href="$group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t" title=" " alt="" coords="208,136,363,177"/>
 </map>

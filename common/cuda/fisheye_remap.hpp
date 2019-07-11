@@ -24,9 +24,9 @@ namespace common {
         /**
         @brief cv::fisheye::initUndistortRectifyMap cuda版本
         通过cv::cuda::remap()计算图像变换的不失真和校正图.如果D为空,则使用零失真,如果R或P为空,则使用单位矩阵.
-        @param[in] K 相机矩阵
+        @param[in] K 相机矩阵(3x3)
         @param[in] D 畸变系数 (k1,k2,k3,k4).
-        @param[in] Knew 新的相机矩阵(3x3)或新的投影矩阵(3x4)
+        @param[in] Knew 新的相机矩阵(3x3)
         @param[in] size 未扭曲的图像大小
         @param[out] map1 第一个输出图
         @param[out] map2 第二个输出图

@@ -1,7 +1,7 @@
 var group__codecvt =
 [
-    [ "local_codecvt", "classcommon_1_1codecvt_1_1local__codecvt.html", [
-      [ "local_codecvt", "classcommon_1_1codecvt_1_1local__codecvt.html#a229e26419afbc8b7f67c343c7c18511a", null ]
+    [ "local_codecvt", "group__codecvt.html#classcommon_1_1codecvt_1_1local__codecvt", [
+      [ "local_codecvt", "group__codecvt.html#a229e26419afbc8b7f67c343c7c18511a", null ]
     ] ],
     [ "ansi_to_unicode", "group__codecvt.html#ga6577d6465b6549ec09e4bfdc21cb1da9", null ],
     [ "ansi_to_utf8", "group__codecvt.html#ga578524b4a57c655af8894a8aeef10962", null ],

@@ -39,7 +39,7 @@ namespace common {
         auto duration = std::chrono::duration_cast<T>(end - start);
         return static_cast<double>(duration.count());
     }
-
+    /**@overload*/
     template< typename T = std::chrono::milliseconds, typename R, typename ...Args>
     auto getFnDuration(R(*func)(Args...)) {
         std::function<R(Args...)> Fn = func;
@@ -58,6 +58,7 @@ namespace common {
     {
         std::memset(p, 0, sizeof(*p) * length);
     }
+    /**@overload*/
     template<unsigned N, typename T>
     inline void zeroset(T(&p)[N])
     {
@@ -72,6 +73,7 @@ namespace common {
     {
         std::wmemset(p, 0, sizeof(*p) * length);
     }
+    /**@overload*/
     template<unsigned N, typename T>
     inline void wzeroset(T(&p)[N])
     {
@@ -137,6 +139,9 @@ namespace common {
         deleteA_s(args...);
     }
 
+    /**
+    *@brief Release_s 可接受不定长参数
+    */
     template<typename T>
     inline void Release_s(T p)
     {
@@ -172,14 +177,18 @@ namespace common {
         release_s(args...);
     }
 
-    //----------模板条件参数推断及条件函数调用----------
-
+    /**
+    @brief 模板条件参数推断及条件函数调用,根据宽窄字符类型返回不同对象.
+    */
     template<typename T, typename TA, typename TW>
     typename std::enable_if_t<std::is_same_v<T, char> || std::is_same_v<T, std::string>, TA> tvalue(TA a, TW) { return a; };
-
+    /**@overload*/
     template<typename T, typename TA, typename TW>
     typename std::enable_if_t<std::is_same_v<T, wchar_t> || std::is_same_v<T, std::wstring>, TW> tvalue(TA, TW w) { return w; };
 
+    /**
+    @brief 返回字符串长度
+    */
     template<typename T>
     inline size_t cslen(const T* str)
     {
@@ -191,14 +200,15 @@ namespace common {
     */
     template<typename R, typename ...FArgs>
     inline std::function<R(FArgs...)> getFunction(std::function<R(FArgs...)> Fn) { return Fn; }
-
+    /**@overload*/
     template<typename R, typename ...FArgs>
     inline std::function<R(FArgs...)> getFunction(R(*Fn)(FArgs...)) { return Fn; }//*@note _WIN64下__stdcall的调用约定会被隐式转为__cdecl(缺省)
-
+    /**@overload*/
     template<typename R, typename ...FArgs>
     inline std::function<R(FArgs..., va_list)> getFunction(R(*Fn)(FArgs..., ...)) { return Fn; }
 
 #ifndef _WIN64
+    /**@overload*/
     template<typename R, typename ...FArgs>
     inline std::function<R(FArgs...)> getFunction(R(__stdcall*Fn)(FArgs...)) { return Fn; }
 #endif 

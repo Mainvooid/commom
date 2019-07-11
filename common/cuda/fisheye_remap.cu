@@ -53,6 +53,10 @@ namespace common {
         cudaError_t cuda_init_undistort_rectify_map(cv::cuda::GpuMat& K, cv::cuda::GpuMat& D, const cv::Mat& Knew,
             const cv::Size& size, cv::cuda::GpuMat& map1, cv::cuda::GpuMat& map2)
         {
+            assert((K.depth() == CV_32F || K.depth() == CV_64F) && (D.depth() == CV_32F || D.depth() == CV_64F));
+            assert((Knew.empty() || Knew.depth() == CV_32F || Knew.depth() == CV_64F));
+            assert(K.size() == cv::Size(3, 3) && (D.size() == cv::Size(1, 4)));
+            assert(Knew.size() == cv::Size(3, 3));
             map1.create(size, CV_32FC1);
             map2.create(size, CV_32F);
             cv::Matx33d _Knew;

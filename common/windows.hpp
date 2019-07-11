@@ -345,7 +345,6 @@ namespace common {
             if (dst_pHandle != nullptr) {
                 *dst_pHandle = handle;
             }
-
             return S_OK;
         }
 

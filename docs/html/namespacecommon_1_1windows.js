@@ -1,4 +1,4 @@
 var namespacecommon_1_1windows =
 [
-    [ "ProcAddress", "classcommon_1_1windows_1_1_proc_address.html", "classcommon_1_1windows_1_1_proc_address" ]
+    [ "ProcAddress", "group__windows.html#classcommon_1_1windows_1_1_proc_address", "group__windows_classcommon_1_1windows_1_1_proc_address" ]
 ];

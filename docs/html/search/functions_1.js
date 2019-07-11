@@ -1,6 +1,7 @@
 var searchData=
 [
   ['cache_5ffn',['cache_fn',['../group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04',1,'common::detail::cache_fn()'],['../group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea',1,'common::cache_fn()']]],
+  ['check',['check',['../group__cmdline.html#ae7e13bc66dbc175faa1f0fda30f79820',1,'common::cmdline::parser']]],
   ['checkcudadevice',['checkCUDADevice',['../group__cuda.html#ga6a097db82b5293c474022ad455364bc4',1,'common::cuda']]],
   ['checkcudaret',['checkCudaRet',['../group__cuda.html#ga4473d5189817e79888383aef69e9f915',1,'common::cuda']]],
   ['convert_5ffrom_5fstring',['convert_from_string',['../group__common.html#gab178b5840a8ea5d298332bb942951c0f',1,'common']]],

@@ -109,8 +109,9 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a005b0a2415ed38401525839db4707880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db42c301e494241135276c3180eede7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a2db42c301e494241135276c3180eede7">texture2d_to_gpumat</a> (ID3D11Texture2D *p_src_texture, cv::cuda::GpuMat &amp;dst_gpumat)</td></tr>
 <tr class="separator:a2db42c301e494241135276c3180eede7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6141446ce77a6238da82235721dde9c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a6141446ce77a6238da82235721dde9c9">gpumat_to_texture2d</a> (cv::cuda::GpuMat src_gpumat, ID3D11Texture2D **pp_dst_texture, ID3D11Device *p_dst_device)</td></tr>
-<tr class="separator:a6141446ce77a6238da82235721dde9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a58fac3f00c1bd9286b394ee431c1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a11a58fac3f00c1bd9286b394ee431c1e">gpumat_to_texture2d</a> (const cv::cuda::GpuMat &amp;src_gpumat, ID3D11Texture2D **pp_dst_texture, ID3D11Device *p_dst_device)</td></tr>
+<tr class="memdesc:a11a58fac3f00c1bd9286b394ee431c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">gpumat到texture2d的转换  <a href="#a11a58fac3f00c1bd9286b394ee431c1e">更多...</a><br /></td></tr>
+<tr class="separator:a11a58fac3f00c1bd9286b394ee431c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a330e51dfd2c892c2ed9de7494c78efeb"></a>
@@ -164,8 +165,8 @@ Public 成员函数</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a6141446ce77a6238da82235721dde9c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6141446ce77a6238da82235721dde9c9">&#9670;&nbsp;</a></span>gpumat_to_texture2d()</h2>
+<a id="a11a58fac3f00c1bd9286b394ee431c1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a58fac3f00c1bd9286b394ee431c1e">&#9670;&nbsp;</a></span>gpumat_to_texture2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +177,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">bool common::cuda::texture2d_cvt_gpumat::gpumat_to_texture2d </td>
           <td>(</td>
-          <td class="paramtype">cv::cuda::GpuMat&#160;</td>
+          <td class="paramtype">const cv::cuda::GpuMat &amp;&#160;</td>
           <td class="paramname"><em>src_gpumat</em>, </td>
         </tr>
         <tr>
@@ -203,6 +204,10 @@ Public 成员函数</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>gpumat到texture2d的转换 </p>
+<dl class="section attention"><dt>注意</dt><dd>使用前需要注册一次资源,使用结束后需要取消注册,并且同一分辨率只能注册一次,若分辨率更改需要重新注册, CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory. </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#addc82a96c1c08c515934580aa9791cdc">register_resource_for_gpumat_to_texture2d</a> ; <a class="el" href="classcommon_1_1cuda_1_1texture2d__cvt__gpumat.html#a005b0a2415ed38401525839db4707880">unregister_resource_for_gpumat_to_texture2d</a> </dd></dl>
 
 </div>
 </div>

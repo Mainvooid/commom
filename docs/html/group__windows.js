@@ -1,9 +1,9 @@
 var group__windows =
 [
-    [ "ProcAddress", "classcommon_1_1windows_1_1_proc_address.html", [
-      [ "func_type_name", "classcommon_1_1windows_1_1_proc_address.html#a965926a7b66a2ec3246076a227362aaa", null ],
-      [ "getAddress", "classcommon_1_1windows_1_1_proc_address.html#a9118ffcd581e5b4af0141a46aff21d57", null ],
-      [ "getPtr", "classcommon_1_1windows_1_1_proc_address.html#ae20d40e2a0d934a83d7c953b3533b935", null ]
+    [ "ProcAddress", "group__windows.html#classcommon_1_1windows_1_1_proc_address", [
+      [ "func_type_name", "group__windows.html#a965926a7b66a2ec3246076a227362aaa", null ],
+      [ "getAddress", "group__windows.html#a9118ffcd581e5b4af0141a46aff21d57", null ],
+      [ "getPtr", "group__windows.html#ae20d40e2a0d934a83d7c953b3533b935", null ]
     ] ],
     [ "createD3D11Device", "group__windows.html#ga8657a88ea0d7ed1ef8ddf2127d8f82c8", null ],
     [ "createTextureDesc", "group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586", null ],
