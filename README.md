@@ -21,8 +21,10 @@ It has only been tested on Windows.
 │  │  precomm.hpp       //公共辅助
 │  │  windows.hpp       //windows辅助(包含directx辅助)
 │  └─cuda           //cuda设备函数目录
+│     │  texture_reference.hpp //纹理参考系相关
 │     │  texture_reference.cu
-│     └─ texture_reference.cuh
+│     │  fisheye_remap.hpp     //鱼眼校正相关
+│     └─ fisheye_remap.cu
 ├─docs              //文档目录
 │  │  Doxyfile          //doxygen生成配置文件
 │  └─html               //文档网页根目录
@@ -43,7 +45,7 @@ It has only been tested on Windows.
 - `HAVE_DIRECTX`     //基于Microsoft DirectX SDK (June 2010)
 - `HAVE_CUDA`        //基于CUDA 10.0
 - `HAVE_CUDA_KERNEL` // 本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见[common/cuda/README.md](common/cuda/README.md)
-- `LINK_LIB_OPENCV_WORLD` //opencv链接到opencv_world***.lib
+- `LINK_LIB_OPENCV_WORLD` //指定OpenCV链接到opencv_world***.lib
 
 ---
 
