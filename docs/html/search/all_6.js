@@ -1,18 +1,12 @@
 var searchData=
 [
-  ['g_5flogger',['g_logger',['../group__common.html#ga4df005827c4fbc2ced19a3e1f38bfa8f',1,'common']]],
-  ['get',['get',['../group__cmdline.html#aa1c3c7e51794f8522615280663a4d5bf',1,'common::cmdline::parser::get()'],['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#aa5674355bf5a07d795b75f03fe43d968',1,'common::cmdline::parser::option_with_value::get()']]],
-  ['getaddress',['getAddress',['../group__windows.html#a9118ffcd581e5b4af0141a46aff21d57',1,'common::windows::ProcAddress']]],
-  ['getclsptr',['getClsPtr',['../group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3',1,'common::windows']]],
-  ['getcudafnduration',['getCudaFnDuration',['../group__cuda.html#ga23a4928e79244b498723dbde881781ae',1,'common::cuda']]],
-  ['getd3d11adapter',['getD3D11Adapter',['../group__cuda.html#gaa6ab334a0eb2e9d458f1d7d2232f9624',1,'common::cuda']]],
-  ['getfnduration',['getFnDuration',['../group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72',1,'common::getFnDuration(std::function&lt; R(FArgs...)&gt; Fn, Args &amp;... args)'],['../group__common.html#ga2269e33944c2eeb8170c1acb67b232c7',1,'common::getFnDuration(R(*func)(Args...))']]],
-  ['getfunction',['getFunction',['../group__common.html#gada99d5b660332656cca9fde49ebb72ff',1,'common::getFunction(std::function&lt; R(FArgs...)&gt; Fn)'],['../group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2',1,'common::getFunction(R(*Fn)(FArgs...))'],['../group__common.html#gaff845523b8c377e055690f9919102534',1,'common::getFunction(R(*Fn)(FArgs...,...))'],['../group__common.html#gac71ae17c99986a3f7b07e578b324880e',1,'common::getFunction(R(__stdcall *Fn)(FArgs...))']]],
-  ['getlevel',['getLevel',['../group__debuglog.html#a646740d78f2a0df6cc274df26fa9a249',1,'common::debuglog::logger']]],
-  ['getname',['getName',['../group__debuglog.html#a124f7e907d9e68340c46791a2cfaa2c4',1,'common::debuglog::logger']]],
-  ['getptr',['getPtr',['../group__windows.html#ae20d40e2a0d934a83d7c953b3533b935',1,'common::windows::ProcAddress']]],
-  ['getsubdllfilename',['getSubDllFileName',['../group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d',1,'common::windows']]],
-  ['getwname',['getWName',['../group__debuglog.html#a7d6fe5982f2e1e6cee097e2d85792aa6',1,'common::debuglog::logger']]],
-  ['getworkdir',['getWorkDir',['../group__windows.html#gac412e651914b28f54eecddc04d2dbea9',1,'common::windows']]],
-  ['gpumat_5fto_5ftexture2d',['gpumat_to_texture2d',['../group__cuda.html#a11a58fac3f00c1bd9286b394ee431c1e',1,'common::cuda::texture2d_cvt_gpumat']]]
+  ['fatal',['Fatal',['../group__debuglog.html#a1b3a89e93f375ce24396d0fdf8686f2f',1,'common::debuglog::logger::Fatal(T msg) const'],['../group__debuglog.html#ab3a75e0f8b8b9084a50cc7670d88b6aa',1,'common::debuglog::logger::Fatal(T msg, const char *_func, const char *_file, const int _line) const'],['../group__common.html#ggaf7659de5ece427c413cf7194eafe087da621eabfdbc10816e990a4c0052a1611b',1,'common::Fatal()']]],
+  ['filldir',['fillDir',['../group__common.html#ga1206320bdec9633462ac1cc9a3733d93',1,'common']]],
+  ['fisheye_5fremap_2ehpp',['fisheye_remap.hpp',['../fisheye__remap_8hpp.html',1,'']]],
+  ['fisheyeremap',['FisheyeRemap',['../group__opencv.html#classcommon_1_1opencv_1_1_fisheye_remap',1,'common::opencv::FisheyeRemap'],['../group__opencv.html#a58e76db551e7f60aea0c513ca656154f',1,'common::opencv::FisheyeRemap::FisheyeRemap()']]],
+  ['footer',['footer',['../group__cmdline.html#a0ecbf64e4f261fc7bc92c67c3854d20f',1,'common::cmdline::parser']]],
+  ['free_5fs',['free_s',['../group__common.html#gace9a90982c4047ef85436058652ad8bd',1,'common::free_s(T p)'],['../group__common.html#ga73ca99b322c571edf3592d6e73713aef',1,'common::free_s(T p, Args ... args)']]],
+  ['ftr',['ftr',['../group__cmdline.html#a6bc017469fc38be851dee5d7be0be59c',1,'common::cmdline::parser']]],
+  ['full_5fdescription',['full_description',['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a86a5cc31da96df8c1c23ad97cb955040',1,'common::cmdline::parser::option_with_value']]],
+  ['func_5ftype_5fname',['func_type_name',['../group__windows.html#a965926a7b66a2ec3246076a227362aaa',1,'common::windows::ProcAddress']]]
 ];

@@ -25,11 +25,11 @@
 @see common\cuda\README.md
 */
 //默认关闭库支持
-//#define HAVE_OPENCL
-//#define HAVE_OPENCV
-//#define HAVE_DIRECTX
-//#define HAVE_CUDA
-//#define HAVE_CUDA_KERNEL
+#define HAVE_OPENCL
+#define HAVE_OPENCV
+#define HAVE_DIRECTX
+#define HAVE_CUDA
+#define HAVE_CUDA_KERNEL
 //#define LINK_LIB_OPENCV_WORLD
 
 #include <common/precomm.hpp>

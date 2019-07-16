@@ -5,7 +5,7 @@ var group__windows =
       [ "getAddress", "group__windows.html#a9118ffcd581e5b4af0141a46aff21d57", null ],
       [ "getPtr", "group__windows.html#ae20d40e2a0d934a83d7c953b3533b935", null ]
     ] ],
-    [ "createD3D11Device", "group__windows.html#ga8657a88ea0d7ed1ef8ddf2127d8f82c8", null ],
+    [ "createD3D11Device", "group__windows.html#ga19503626c2bfc35e45912dfd6a64db79", null ],
     [ "createTextureDesc", "group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586", null ],
     [ "getClsPtr", "group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3", null ],
     [ "getSubDllFileName", "group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d", null ],

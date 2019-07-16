@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['debug',['Debug',['../group__debuglog.html#a0dac26c4b0d6813c47a1495f9efb99fe',1,'common::debuglog::logger::Debug(T msg) const'],['../group__debuglog.html#abde05fd031857a5be3d4e9f4b4c88d6f',1,'common::debuglog::logger::Debug(T msg, const char *_func, const char *_file, const int _line) const']]],
-  ['default_5fvalue',['default_value',['../group__detail.html#ga376be268234402a54986c0124ea1f5fb',1,'common::cmdline::detail']]],
-  ['delete_5fs',['delete_s',['../group__common.html#ga56f35412e131481dd776367ce2d786f7',1,'common::delete_s(T p)'],['../group__common.html#ga7a3a8cb9ffa8d004598887fd68b2608e',1,'common::delete_s(T p, Args ... args)']]],
-  ['deletea_5fs',['deleteA_s',['../group__common.html#gaca596a4e8fa56e4b65463133ccb03129',1,'common::deleteA_s(T p)'],['../group__common.html#gacee0872ee3f81bbd38c8f1c16da08de2',1,'common::deleteA_s(T p, Args ... args)']]],
-  ['demangle',['demangle',['../group__detail.html#ga499a7cf1209195aaa11c89ae22819aa0',1,'common::cmdline::detail']]],
-  ['description',['description',['../classcommon_1_1cmdline_1_1parser_1_1option__base.html#a4d71ee688cdbb7a1376edfec3a56f89e',1,'common::cmdline::parser::option_base::description()'],['../classcommon_1_1cmdline_1_1parser_1_1option__without__value.html#aba8cf86749a3a355a4036be5da053645',1,'common::cmdline::parser::option_without_value::description()'],['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a0814366aff83defc9440b60a8df650cf',1,'common::cmdline::parser::option_with_value::description()']]]
+  ['cache_5ffn',['cache_fn',['../group__detail.html#gab2b8cbff7c0944ad7a63f4c94982cd04',1,'common::detail::cache_fn()'],['../group__common.html#ga62be1a9ad25bd4e3eb29bea030393aea',1,'common::cache_fn()']]],
+  ['check',['check',['../group__cmdline.html#ae7e13bc66dbc175faa1f0fda30f79820',1,'common::cmdline::parser']]],
+  ['checkcudadevice',['checkCUDADevice',['../group__cuda.html#ga6a097db82b5293c474022ad455364bc4',1,'common::cuda']]],
+  ['convert_5ffrom_5fstring',['convert_from_string',['../group__common.html#gab178b5840a8ea5d298332bb942951c0f',1,'common']]],
+  ['convert_5fto_5fstring',['convert_to_string',['../group__common.html#ga58689444787325d87c9c0b1af3b842b6',1,'common']]],
+  ['created3d11device',['createD3D11Device',['../group__windows.html#ga19503626c2bfc35e45912dfd6a64db79',1,'common::windows']]],
+  ['createtexturedesc',['createTextureDesc',['../group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586',1,'common::windows']]],
+  ['cslen',['cslen',['../group__common.html#ga493a31fc80db78b4792c6c00ccde452e',1,'common']]],
+  ['cuda_5fget_5ftexture_5freference_5f2d_5ffloat4',['cuda_get_texture_reference_2d_float4',['../group__cuda.html#ga10265811dfaaaaf0b3f7114e3db88dac',1,'common::cuda']]],
+  ['cuda_5fget_5ftexture_5freference_5f2d_5fuchar4',['cuda_get_texture_reference_2d_uchar4',['../group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227',1,'common::cuda']]],
+  ['cuda_5finit_5fundistort_5frectify_5fmap',['cuda_init_undistort_rectify_map',['../group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547',1,'common::cuda']]],
+  ['cuda_5finit_5fundistort_5frectify_5fmap_5fkernel',['cuda_init_undistort_rectify_map_kernel',['../group__kernel.html#ga4908ea21950befacb9018927bbf1ab35',1,'common::cuda::kernel']]]
 ];

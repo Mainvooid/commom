@@ -6,18 +6,16 @@
 #define _COMMON_OPENCV_HPP_
 
 #include <common/debuglog.hpp>
+#if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
+#include <common/cuda/fisheye_remap.hpp>
+#endif // HAVE_CUDA && HAVE_CUDA_KERNEL
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/img_hash.hpp>
 #include <random>
 
-#ifdef HAVE_CUDA
-#include <common/cuda.hpp>
-#ifdef HAVE_CUDA_KERNEL
-#include <common/cuda/fisheye_remap.hpp>
-#endif // HAVE_CUDA_KERNEL
-#endif // HAVE_CUDA
-
 #if defined(_DEBUG) || defined(DEBUG)
+#pragma comment(lib,"opencv_img_hash410d.lib")
 #ifdef LINK_LIB_OPENCV_WORLD
 #pragma comment(lib,"opencv_world410d.lib")
 #else
@@ -25,13 +23,14 @@
 #pragma comment(lib,"opencv_imgproc410d.lib")
 #pragma comment(lib,"opencv_imgcodecs410d.lib")
 #pragma comment(lib,"opencv_highgui410d.lib")
-#pragma comment(lib,"opencv_img_hash410d.lib")
 #pragma comment(lib,"opencv_calib3d410d.lib")
+#endif // LIB_OPENCV_WORLD
 #ifdef HAVE_CUDA
 #pragma comment(lib,"opencv_cudawarping410d.lib")
+#pragma comment(lib,"opencv_cudaimgproc410d.lib")
 #endif // HAVE_CUDA
-#endif // LIB_OPENCV_WORLD
 #else
+#pragma comment(lib,"opencv_img_hash410.lib")
 #ifdef LINK_LIB_OPENCV_WORLD
 #pragma comment(lib,"opencv_world410.lib")
 #else
@@ -39,12 +38,12 @@
 #pragma comment(lib,"opencv_imgproc410.lib")
 #pragma comment(lib,"opencv_imgcodecs410.lib")
 #pragma comment(lib,"opencv_highgui410.lib")
-#pragma comment(lib,"opencv_img_hash410.lib")
 #pragma comment(lib,"opencv_calib3d410.lib")
+#endif // LIB_OPENCV_WORLD
 #ifdef HAVE_CUDA
 #pragma comment(lib,"opencv_cudawarping410.lib")
+#pragma comment(lib,"opencv_cudaimgproc410.lib")
 #endif // HAVE_CUDA
-#endif // LIB_OPENCV_WORLD
 #endif // DEBUG
 
 /**
@@ -76,8 +75,9 @@ namespace common {
         }
 
         /**
-        *@brief debug保存图像,路径由时间＋描述+随机数产生
-        *@return 保存路径
+        @brief debug保存图像,路径由时间＋描述+随机数产生
+        @exception std::invalid_argument 图像或路径为空
+        @return 保存路径
         */
         static std::string saveDebugImage(const cv::Mat& save_image, const std::string& save_dir, const std::string& desc)
             noexcept(noexcept(!save_image.empty() && save_dir != ""))
@@ -160,7 +160,7 @@ namespace common {
             FisheyeRemap() {}
             ~FisheyeRemap() {}
             /**
-            @brief 输入标定参数以初始化鱼眼相机
+            @brief 计算标定参数以初始化鱼眼相机
             @param[in] chessboards 棋盘格标定板图像集合,分辨率应与相机相同
             @param[in] board_size  定标板上每行、列的内角点数(格子数-1)
             @param[in] square_size 定标板方格的宽度(mm)
@@ -213,6 +213,22 @@ namespace common {
                 m_distortion_coeffs_g.upload(m_distortion_coeffs);
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL
             }
+
+            /**
+            @brief 输入相机原始参数初始化
+            @param[in] intrinsic_param_mat 摄像机内参数矩阵 3x3
+            @param[in] distortion_coeffs 摄像机的4个畸变系数: k1,k2,k3,k4
+            */
+            void init(cv::Mat intrinsic_param_mat, cv::Vec4d distortion_coeffs)
+            {
+                m_intrinsic_param_mat = intrinsic_param_mat.clone();
+                m_distortion_coeffs = distortion_coeffs;
+#if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
+                m_intrinsic_param_mat_g.upload(m_intrinsic_param_mat);
+                m_distortion_coeffs_g.upload(m_distortion_coeffs);
+#endif // HAVE_CUDA && HAVE_CUDA_KERNEL
+            }
+
             /**
             @brief 应用重映射进行去畸变操作
             @param[in] src 源图像
@@ -235,6 +251,7 @@ namespace common {
                 }
                 cv::fisheye::undistortImage(src, dst, m_intrinsic_param_mat, m_distortion_coeffs, m_new_intrinsic_param_mat, cv::Size());
             }
+
 #if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
             /**@overload*/
             void remap(cv::cuda::GpuMat src, cv::cuda::GpuMat& dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0)
@@ -249,8 +266,8 @@ namespace common {
                     m_new_intrinsic_param_mat.at<double>(1, 2) = cy;
                 }
                 cv::cuda::GpuMat map1, map2;
-                cuda::checkCudaRet(cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
-                    m_new_intrinsic_param_mat, src.size(), map1, map2));
+                cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
+                    m_new_intrinsic_param_mat, src.size(), map1, map2);
                 cv::cuda::remap(src, dst, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
             }
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL

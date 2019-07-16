@@ -1,6 +1,7 @@
 ﻿/*
 @brief tests entry point
 @author guobao.v@gmail.com
+@note 测试程序目录下需要放置测试用例依赖的dll,目前依赖opencv的dll.
 */
 #include "gtest/gtest.h"
 

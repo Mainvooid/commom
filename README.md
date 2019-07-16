@@ -394,21 +394,13 @@ template<bool flag=false>
    - 下列名字或实体的声明中允许使用这个属性:
       ```cpp
       class/struct/union：struct [[deprecated("Replaced by bar, which has an improved interface")]] S;
-
       typedef名,也包括别名声明：[[deprecated]] typedef S* PS;using PS [[deprecated]] = S*;
-
       变量,包括静态数据成员：[[deprecated]] int x;
-
       非静态数据成员：union U { [[deprecated]] int n; };
-
       函数：[[deprecated]] void f();
-
       命名空间：namespace [[deprecated]] NS { int x; }
-
       枚举：enum [[deprecated]] E {};
-
       枚举项：enum { A [[deprecated]], B [[deprecated]] = 42 };
-
       模板特化：template<> struct [[deprecated]] X<int> {};
       ```
 
@@ -584,17 +576,27 @@ template<bool flag=false>
              hr = d3dDebug->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
          }
          ```
-       - IntRef是d3d内部的对象引用,Refcount是用户引用数量,只需要注意Refcount不为0的对象就可以了(除了ID3D11Device).
-          ```
-          D3D11 WARNING: 	Live ID3D11Texture2D at 0x000001F8C837ABB0, Name: in_left, Refcount: 1, IntRef: 0 [ STATE_CREATION WARNING #425: LIVE_TEXTURE2D]
-          ```
+      - IntRef是d3d内部的对象引用,Refcount是用户引用数量,只需要注意Refcount不为0的对象就可以了(除了ID3D11Device).
+         ```
+         D3D11 WARNING: 	Live ID3D11Texture2D at 0x000001F8C837ABB0, Name: in_left, Refcount: 1, IntRef: 0 [ STATE_CREATION WARNING #425: LIVE_TEXTURE2D]
+         ```
 
 - 关于`opencv`
    - 建议不要分配静态或全局`GpuMat`变量,即依赖于它的析构函数.此类变量和CUDA上下文的销毁顺序未定义.如果之前已销毁CUDA上下文.则GPU内存释放函数将返回错误.
    - `cv::UMat` , `cv::cuda::GpuMat` 有些时候需要手动`release`.
+   - `cv::Mat_`, 继承自`cv::Mat`,使用`cv::Mat_`类可以在变量声明时确定元素的类型,访问元素时,不再需要指定元素类型,使得代码更简洁清晰,减少出错可能.
+      模板类型|原类型
+      ---|---
+      `Mat_<uchar>` |CV_8U
+      `Mat_<char>`  |CV_8S
+      `Mat_<short>` |CV_16S
+      `Mat_<ushort>`|CV_16U
+      `Mat_<int>`   |CV_32S
+      `Mat_<float>` |CV_32F
+      `Mat_<double>`|CV_64F
 
 - 关于`cuda`
    - `__syncthreads`等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC__`(.cu源文件编译时会定义这个宏).
    - `<<<>>>`内核函数启动参数显示应输入表达式,只是因为VS2017无法正确识别cuda内核启动符号,代码实际是由NVCC编译器编译的,所以也是不影响编译.
-
-
+   - 在.cuh(.hpp)或.cu文件内可以分别独立声明/定义/特化模板函数,但是在.cuh(.hpp)中声明的模板函数,无法链接到.cu文件内的定义(除非完全特化),因为代码是由不同编译器编译的.
+   - 所有CUDA方法调用需要检查返回值,使用`cuda.hpp`中`checkCudaRet(expression)`.若失败重置CUDA并中断程序.

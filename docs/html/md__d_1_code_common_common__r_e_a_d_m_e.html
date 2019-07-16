@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <p>It has only been tested on Windows.</p>
 <hr/>
 <h2>Tree</h2>
-<div class="fragment"><div class="line">│  code.snippet     <span class="comment">//文件代码模板(vs-&gt;工具-&gt;代码片段管理中导入)</span></div><div class="line">│  <a class="code" href="namespacecommon.html">common</a>.hpp       <span class="comment">//主头文件(使用时include本文件)</span></div><div class="line">│  common_all.hpp   <span class="comment">//统一的主头文件(暂未生成)</span></div><div class="line">├─common            <span class="comment">//分头文件目录</span></div><div class="line">│  │  cmdline.hpp       <span class="comment">//命令行解析</span></div><div class="line">│  │  codecvt.hpp       <span class="comment">//字符编码转换</span></div><div class="line">│  │  cuda.hpp          <span class="comment">//cuda辅助(包含与opencv和directx的互操作)</span></div><div class="line">│  │  debuglog.hpp      <span class="comment">//windows调试日志</span></div><div class="line">│  │  opencl.hpp        <span class="comment">//opencl辅助</span></div><div class="line">│  │  opencv.hpp        <span class="comment">//opencv辅助(包含cuda重载版本)</span></div><div class="line">│  │  precomm.hpp       <span class="comment">//公共辅助</span></div><div class="line">│  │  windows.hpp       <span class="comment">//windows辅助(包含directx辅助)</span></div><div class="line">│  └─cuda           <span class="comment">//cuda设备函数目录</span></div><div class="line">│     │  texture_reference.cu</div><div class="line">│     └─ texture_reference.cuh</div><div class="line">├─docs              <span class="comment">//文档目录</span></div><div class="line">│  │  Doxyfile          <span class="comment">//doxygen生成配置文件</span></div><div class="line">│  └─html               <span class="comment">//文档网页根目录</span></div><div class="line">│     └─ index.html        <span class="comment">//文档入口</span></div><div class="line">├─samples           <span class="comment">//使用样例目录</span></div><div class="line">│  └─data               <span class="comment">//测试数据</span></div><div class="line">└─tests             <span class="comment">//单元测试目录</span></div><div class="line">   └─ tests_main.cpp    <span class="comment">//单元测试入口</span></div></div><!-- fragment --><hr/>
+<div class="fragment"><div class="line">│  code.snippet     <span class="comment">//文件代码模板(vs-&gt;工具-&gt;代码片段管理中导入)</span></div><div class="line">│  <a class="code" href="namespacecommon.html">common</a>.hpp       <span class="comment">//主头文件(使用时include本文件)</span></div><div class="line">│  common_all.hpp   <span class="comment">//统一的主头文件(暂未生成)</span></div><div class="line">├─common            <span class="comment">//分头文件目录</span></div><div class="line">│  │  cmdline.hpp       <span class="comment">//命令行解析</span></div><div class="line">│  │  codecvt.hpp       <span class="comment">//字符编码转换</span></div><div class="line">│  │  cuda.hpp          <span class="comment">//cuda辅助(包含与opencv和directx的互操作)</span></div><div class="line">│  │  debuglog.hpp      <span class="comment">//windows调试日志</span></div><div class="line">│  │  opencl.hpp        <span class="comment">//opencl辅助</span></div><div class="line">│  │  opencv.hpp        <span class="comment">//opencv辅助(包含cuda重载版本)</span></div><div class="line">│  │  precomm.hpp       <span class="comment">//公共辅助</span></div><div class="line">│  │  windows.hpp       <span class="comment">//windows辅助(包含directx辅助)</span></div><div class="line">│  └─cuda           <span class="comment">//cuda设备函数目录</span></div><div class="line">│     │  texture_reference.hpp <span class="comment">//纹理参考系相关</span></div><div class="line">│     │  texture_reference.cu</div><div class="line">│     │  fisheye_remap.hpp     <span class="comment">//鱼眼校正相关</span></div><div class="line">│     └─ fisheye_remap.cu</div><div class="line">├─docs              <span class="comment">//文档目录</span></div><div class="line">│  │  Doxyfile          <span class="comment">//doxygen生成配置文件</span></div><div class="line">│  └─html               <span class="comment">//文档网页根目录</span></div><div class="line">│     └─ index.html        <span class="comment">//文档入口</span></div><div class="line">├─samples           <span class="comment">//使用样例目录</span></div><div class="line">│  └─data               <span class="comment">//测试数据</span></div><div class="line">└─tests             <span class="comment">//单元测试目录</span></div><div class="line">   └─ tests_main.cpp    <span class="comment">//单元测试入口</span></div></div><!-- fragment --><hr/>
 <h2>Macro</h2>
 <p>默认关闭库/宏支持</p><ul>
 <li><code>HAVE_OPENCL</code> //基于OpenCL 1.2</li>
@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <li><code>HAVE_DIRECTX</code> //基于Microsoft DirectX SDK (June 2010)</li>
 <li><code>HAVE_CUDA</code> //基于CUDA 10.0</li>
 <li><code>HAVE_CUDA_KERNEL</code> // 本项目cuda目录下的.cu文件添加到工程后可以开启本宏,宏详细说明见<a class="el" href="common_2cuda_2_r_e_a_d_m_e_8md.html">common/cuda/README.md</a></li>
-<li><code>LINK_LIB_OPENCV_WORLD</code> //opencv链接到opencv_world***.lib</li>
+<li><code>LINK_LIB_OPENCV_WORLD</code> //指定OpenCV链接到opencv_world***.lib</li>
 </ul>
 <hr/>
 <h2>Code style and code specification</h2>
@@ -278,16 +278,7 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 </b></li>
 <li><b><code>deprecated</code>  弃用<ul>
 <li>声明时未被弃用的名字可被重声明为<code>deprecated</code>,而声明为<code>deprecated</code>的名字不能通过重声明变为未弃用.</li>
-<li><p class="startli">下列名字或实体的声明中允许使用这个属性: ```cpp class/struct/union：struct [[deprecated("Replaced by bar, which has an improved interface")]] S;</p>
-<p class="startli">typedef名,也包括别名声明：[[deprecated]] typedef S* PS;using PS [[deprecated]] = S*;</p>
-<p class="startli">变量,包括静态数据成员：[[deprecated]] int x;</p>
-<p class="startli">非静态数据成员：union U { [[deprecated]] int n; };</p>
-<p class="startli">函数：[[deprecated]] void f();</p>
-<p class="startli">命名空间：namespace [[deprecated]] NS { int x; }</p>
-<p class="startli">枚举：enum [[deprecated]] E {};</p>
-<p class="startli">枚举项：enum { A [[deprecated]], B [[deprecated]] = 42 };</p>
-<p class="startli">模板特化：template&lt;&gt; struct [[deprecated]] X&lt;int&gt; {}; ```</p>
-</li>
+<li>下列名字或实体的声明中允许使用这个属性: ```cpp class/struct/union：struct [[deprecated("Replaced by bar, which has an improved interface")]] S; typedef名,也包括别名声明：[[deprecated]] typedef S* PS;using PS [[deprecated]] = S*; 变量,包括静态数据成员：[[deprecated]] int x; 非静态数据成员：union U { [[deprecated]] int n; }; 函数：[[deprecated]] void f(); 命名空间：namespace [[deprecated]] NS { int x; } 枚举：enum [[deprecated]] E {}; 枚举项：enum { A [[deprecated]], B [[deprecated]] = 42 }; 模板特化：template&lt;&gt; struct [[deprecated]] X&lt;int&gt; {}; ```</li>
 </ul>
 </b></li>
 <li><b><code>noexcept</code><ul>
@@ -319,10 +310,8 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <li><code>不同</code>device<code>之间的</code>texture<code>通过</code>SharedHandle<code>进行共享/拷贝. -</code>DX11<code>调试,检查D3D对象是否释放,以及内存是否泄漏.<ul>
 <li>把d3d的device定义为debug模式:D3D11_CREATE_DEVICE_DEBUG`</li>
 <li>为初始化了的D3D对象设置别名. ```cpp #include &lt;d3dcommon.h&gt; #pragma comment(lib, "dxguid.lib") D3D_SET_OBJECT_NAME_A(device.Get(), "in_device"); ``<code></code></li>
-<li><code>调用</code>ReportLiveDeviceObjects()<code>. </code>``cpp Microsoft::WRL::ComPtr&lt;ID3D11Debug&gt; d3dDebug; HRESULT hr = pDevice-&gt;QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast&lt;void**&gt;(d3dDebug.GetAddressOf())); if (SUCCEEDED(hr)) { hr = d3dDebug-&gt;ReportLiveDeviceObjects(D3D11_RLDO_DETAIL); } ```<ul>
+<li><code>调用</code>ReportLiveDeviceObjects()<code>. </code>``cpp Microsoft::WRL::ComPtr&lt;ID3D11Debug&gt; d3dDebug; HRESULT hr = pDevice-&gt;QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast&lt;void**&gt;(d3dDebug.GetAddressOf())); if (SUCCEEDED(hr)) { hr = d3dDebug-&gt;ReportLiveDeviceObjects(D3D11_RLDO_DETAIL); } ```</li>
 <li>IntRef是d3d内部的对象引用,Refcount是用户引用数量,只需要注意Refcount不为0的对象就可以了(除了ID3D11Device). ``` D3D11 WARNING: Live ID3D11Texture2D at 0x000001F8C837ABB0, Name: in_left, Refcount: 1, IntRef: 0 [ STATE_CREATION WARNING #425: LIVE_TEXTURE2D] ```</li>
-</ul>
-</li>
 </ul>
 </code></li>
 </ul>
@@ -330,10 +319,31 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <li><b><code>关于<code>opencv</code><ul>
 <li>建议不要分配静态或全局<code>GpuMat</code>变量,即依赖于它的析构函数.此类变量和CUDA上下文的销毁顺序未定义.如果之前已销毁CUDA上下文.则GPU内存释放函数将返回错误.</li>
 <li><code>cv::UMat</code> , <code>cv::cuda::GpuMat</code> 有些时候需要手动<code>release</code>.</li>
+<li><code>cv::Mat_</code>, 继承自<code>cv::Mat</code>,使用<code>cv::Mat_</code>类可以在变量声明时确定元素的类型,访问元素时,不再需要指定元素类型,使得代码更简洁清晰,减少出错可能. <table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">模板类型  </th><th class="markdownTableHeadNone">原类型   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Mat_&lt;uchar&gt;</code>  </td><td class="markdownTableBodyNone">CV_8U   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Mat_&lt;char&gt;</code>  </td><td class="markdownTableBodyNone">CV_8S   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Mat_&lt;short&gt;</code>  </td><td class="markdownTableBodyNone">CV_16S   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Mat_&lt;ushort&gt;</code>  </td><td class="markdownTableBodyNone">CV_16U   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Mat_&lt;int&gt;</code>  </td><td class="markdownTableBodyNone">CV_32S   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Mat_&lt;float&gt;</code>  </td><td class="markdownTableBodyNone">CV_32F   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Mat_&lt;double&gt;</code>  </td><td class="markdownTableBodyNone">CV_64F   </td></tr>
+</table>
+</li>
 </ul>
 </code></b></li>
 <li><b><code>关于<code>cuda</code><ul>
-<li><code>__syncthreads</code>等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC<code>(.cu源文件编译时会定义这个宏). -</code>&lt;&lt;&lt;&gt;&gt;&gt;`内核函数启动参数显示应输入表达式,只是因为VS2017无法正确识别cuda内核启动符号,代码实际是由NVCC编译器编译的,所以也是不影响编译. </li>
+<li><code>__syncthreads</code>等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC<code>(.cu源文件编译时会定义这个宏). -</code>&lt;&lt;&lt;&gt;&gt;&gt;`内核函数启动参数显示应输入表达式,只是因为VS2017无法正确识别cuda内核启动符号,代码实际是由NVCC编译器编译的,所以也是不影响编译.</li>
+<li>在.cuh(.hpp)或.cu文件内可以分别独立声明/定义/特化模板函数,但是在.cuh(.hpp)中声明的模板函数,无法链接到.cu文件内的定义(除非完全特化),因为代码是由不同编译器编译的.</li>
+<li>所有CUDA方法调用需要检查返回值,使用<code><a class="el" href="cuda_8hpp.html">cuda.hpp</a></code>中<code><a class="el" href="group__cuda.html#ga0cb317a3c6744bd5dbefe00e1a8a03d0" title="cuda函数返回值检查,若失败会中断程序">checkCudaRet(expression)</a></code>.若失败重置CUDA并中断程序. </li>
 </ul>
 </code></b></li>
 </ul>

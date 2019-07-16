@@ -3,24 +3,36 @@
 
 #include <texture_types.h>
 #include <driver_types.h>
+
 namespace common {
     /// @addtogroup common
     /// @{
     namespace cuda {
         /// @addtogroup cuda
         /// @{
-        /**
-        @brief 获取CUDA纹理参考系对象
-        @note 暂只支持2d uchar4 纹理
-        */
-        template<class T, int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType>
-        cudaError_t cuda_get_texture_reference(const textureReference ** texref);
+        cudaError_t cuda_get_texture_reference_2d_uchar4(const textureReference ** texref);
+        cudaError_t cuda_get_texture_reference_2d_float4(const textureReference ** texref);
 
         /**
-        @brief [特化]获取CUDA 2D uchar4 类型的纹理参考系对象
-        @param[out] texref 纹理参考系对象
+        @brief 获取CUDA纹理参考系对象
+        @note 暂只支持2d uchar4,float4 纹理
         */
-        cudaError_t cuda_get_texture_reference_2d_uchar4(const textureReference ** texref);
+        template<typename T, int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType>
+        struct cuda_get_texture_reference;
+        /**@overload*/
+        template<>
+        struct cuda_get_texture_reference<uchar4, cudaTextureType2D, cudaReadModeElementType> {
+            cudaError_t operator()(const textureReference ** texref) {
+                return cuda_get_texture_reference_2d_uchar4(texref);
+            }
+        };
+        /**@overload*/
+        template<>
+        struct cuda_get_texture_reference<float4, cudaTextureType2D, cudaReadModeElementType> {
+            cudaError_t operator()(const textureReference ** texref) {
+                return cuda_get_texture_reference_2d_float4(texref);
+            }
+        };
         /// @}
     }// namespace cuda
     /// @}

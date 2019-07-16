@@ -3,6 +3,7 @@ var group__opencv_classcommon_1_1opencv_1_1_fisheye_remap =
     [ "FisheyeRemap", "group__opencv.html#a58e76db551e7f60aea0c513ca656154f", null ],
     [ "~FisheyeRemap", "group__opencv.html#ae239a79ad9af924740e0e4d3855321f9", null ],
     [ "init", "group__opencv.html#a00e5b1ee656b8414da983437264f9474", null ],
+    [ "init", "group__opencv.html#a7c15f8686c00279d27e8522ac19bc1b1", null ],
     [ "print_calibrate_errors", "group__opencv.html#a77479b5520f6ee5a23767caf3b3f4809", null ],
     [ "print_camera_intrinsic_info", "group__opencv.html#a57f5125d0dd9033eaea8a40435995775", null ],
     [ "remap", "group__opencv.html#a92cef84f5406ec96654b1368720af865", null ],

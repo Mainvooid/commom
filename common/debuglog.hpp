@@ -48,7 +48,6 @@ namespace common {
         class OutputDebugStringEx
         {
         public:
-            template<typename T = char>
             void operator()(const char* format, ...)
             {
                 char buf[BUFSIZ];
@@ -58,7 +57,6 @@ namespace common {
                 va_end(args);
                 OutputDebugStringA(buf);
             };
-            template<typename T = wchar_t >
             void operator()(const wchar_t* format, ...)
             {
                 wchar_t buf[BUFSIZ];

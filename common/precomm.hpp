@@ -24,7 +24,6 @@
 namespace common {
     /// @addtogroup common
     /// @{
-
     /**
     *@brief 函数计时(默认std::chrono::milliseconds)
     *@param Fn 函数对象,可用匿名函数包装代码片段来计时

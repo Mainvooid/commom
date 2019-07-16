@@ -1,7 +1,18 @@
 var searchData=
 [
-  ['has_5fset',['has_set',['../classcommon_1_1cmdline_1_1parser_1_1option__base.html#aab1255969a78dff99f9ee51d534cb40f',1,'common::cmdline::parser::option_base::has_set()'],['../classcommon_1_1cmdline_1_1parser_1_1option__without__value.html#a6fd41d61e1a364a0e80f6f0c6d5675c7',1,'common::cmdline::parser::option_without_value::has_set()'],['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#ab9ce8eac1c2ef3a716da8bffc173df95',1,'common::cmdline::parser::option_with_value::has_set()']]],
-  ['has_5fvalue',['has_value',['../classcommon_1_1cmdline_1_1parser_1_1option__base.html#a73671c64e8aa5107352de910d56b8bc6',1,'common::cmdline::parser::option_base::has_value()'],['../classcommon_1_1cmdline_1_1parser_1_1option__without__value.html#ad1701175de0ca0086ce8a69b43bf697b',1,'common::cmdline::parser::option_without_value::has_value()'],['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a7d523d191394295c02749d15b61d61df',1,'common::cmdline::parser::option_with_value::has_value()']]],
-  ['hashcompare',['HashCompare',['../group__opencv.html#ga316908c87e465d17a82fa4c2f585ab3f',1,'common::opencv']]],
-  ['height',['height',['../group__cuda.html#a33b3222483ae45ff4041acf88ad32041',1,'common::cuda::shared_texture_2d_t::height()'],['../group__cuda.html#ab074342e88567d08d76e66d8cc98a940',1,'common::cuda::shared_texture_3d_t::height()']]]
+  ['g_5flogger',['g_logger',['../group__common.html#ga4df005827c4fbc2ced19a3e1f38bfa8f',1,'common']]],
+  ['get',['get',['../group__cmdline.html#aa1c3c7e51794f8522615280663a4d5bf',1,'common::cmdline::parser::get()'],['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#aa5674355bf5a07d795b75f03fe43d968',1,'common::cmdline::parser::option_with_value::get()']]],
+  ['getaddress',['getAddress',['../group__windows.html#a9118ffcd581e5b4af0141a46aff21d57',1,'common::windows::ProcAddress']]],
+  ['getclsptr',['getClsPtr',['../group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3',1,'common::windows']]],
+  ['getcudafnduration',['getCudaFnDuration',['../group__cuda.html#ga23a4928e79244b498723dbde881781ae',1,'common::cuda']]],
+  ['getd3d11adapter',['getD3D11Adapter',['../group__cuda.html#gaa6ab334a0eb2e9d458f1d7d2232f9624',1,'common::cuda']]],
+  ['getfnduration',['getFnDuration',['../group__common.html#gabedbb4ac121d9fc5d8c9b042a23b5a72',1,'common::getFnDuration(std::function&lt; R(FArgs...)&gt; Fn, Args &amp;... args)'],['../group__common.html#ga2269e33944c2eeb8170c1acb67b232c7',1,'common::getFnDuration(R(*func)(Args...))']]],
+  ['getfunction',['getFunction',['../group__common.html#gada99d5b660332656cca9fde49ebb72ff',1,'common::getFunction(std::function&lt; R(FArgs...)&gt; Fn)'],['../group__common.html#gaa3da88d9740f493c2f2d85ea984e55e2',1,'common::getFunction(R(*Fn)(FArgs...))'],['../group__common.html#gaff845523b8c377e055690f9919102534',1,'common::getFunction(R(*Fn)(FArgs...,...))'],['../group__common.html#gac71ae17c99986a3f7b07e578b324880e',1,'common::getFunction(R(__stdcall *Fn)(FArgs...))']]],
+  ['getlevel',['getLevel',['../group__debuglog.html#a646740d78f2a0df6cc274df26fa9a249',1,'common::debuglog::logger']]],
+  ['getname',['getName',['../group__debuglog.html#a124f7e907d9e68340c46791a2cfaa2c4',1,'common::debuglog::logger']]],
+  ['getptr',['getPtr',['../group__windows.html#ae20d40e2a0d934a83d7c953b3533b935',1,'common::windows::ProcAddress']]],
+  ['getsubdllfilename',['getSubDllFileName',['../group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d',1,'common::windows']]],
+  ['getwname',['getWName',['../group__debuglog.html#a7d6fe5982f2e1e6cee097e2d85792aa6',1,'common::debuglog::logger']]],
+  ['getworkdir',['getWorkDir',['../group__windows.html#gac412e651914b28f54eecddc04d2dbea9',1,'common::windows']]],
+  ['gpumat_5fto_5ftexture2d',['gpumat_to_texture2d',['../group__cuda.html#a8fd70b18fe2739491d00394bb18c7d2f',1,'common::cuda::texture2d_cvt_gpumat']]]
 ];

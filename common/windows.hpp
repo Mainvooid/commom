@@ -47,7 +47,7 @@ namespace common {
         //DLL导出
 
         /**
-        *@brief 用于dll导出接口类的实现类指针,自动管理内存,以防范Cross-Dll问题
+        @brief 用于dll导出接口类的实现类指针,自动管理内存,以防范Cross-Dll问题
         */
         template<class interfaceCls, class implCls>
         std::shared_ptr<interfaceCls> getClsPtr() noexcept
@@ -58,7 +58,7 @@ namespace common {
         //DLL导入
 
        /**
-        *@brief 返回工作目录
+        @brief 返回工作目录
         */
         template<typename T>
         static auto getWorkDir() noexcept
@@ -78,10 +78,10 @@ namespace common {
         }
 
         /**
-        *@brief dll下根据运行时环境获取子dll的绝对加载路径
-        *@param g_dll_module DllMain函数的DLL_THREAD_ATTACH下通过g_dllModule = hModule获取
-        *@param sub_dll_name 子dll名 xxx.dll
-        *@return 子dll的绝对加载路径
+        @brief dll下根据运行时环境获取子dll的绝对加载路径
+        @param g_dll_module DllMain函数的DLL_THREAD_ATTACH下通过g_dllModule = hModule获取
+        @param sub_dll_name 子dll名 xxx.dll
+        @return 子dll的绝对加载路径
         */
         template<typename T>
         static auto getSubDllFileName(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
@@ -101,7 +101,7 @@ namespace common {
         };
 
         /**
-        *@brief 运行时目录下搜索DLL及其依赖项
+        @brief 运行时目录下搜索DLL及其依赖项
         */
         template<typename T>
         static HMODULE loadSubDll(const HMODULE& g_dll_module, const T* sub_dll_name) noexcept
@@ -111,7 +111,7 @@ namespace common {
         }
 
         /**
-        *@brief 指定目录搜索DLL及其依赖项
+        @brief 指定目录搜索DLL及其依赖项
         */
         static HMODULE loadSubDll(const std::wstring& sub_dll_dir, const std::wstring& sub_dll_name) noexcept
         {
@@ -120,7 +120,7 @@ namespace common {
         }
 
         /**
-        *@brief 在应用程序的安装目录中搜索DLL及其依赖项
+        @brief 在应用程序的安装目录中搜索DLL及其依赖项
         */
         template<typename T>
         static HMODULE loadSubDll(const T* sub_dll_name) noexcept
@@ -130,7 +130,7 @@ namespace common {
         }
 
         /**
-        *@brief 外部调用dll函数获取类实例指针或函数地址
+        @brief 外部调用dll函数获取类实例指针或函数地址
         */
         template<class interfaceCls>
         class ProcAddress
@@ -139,7 +139,7 @@ namespace common {
             typedef std::shared_ptr<interfaceCls>(*func_type_name)();
 
             /**
-            *@brief 外部调用dll函数获取函数地址
+            @brief 外部调用dll函数获取函数地址
             */
             func_type_name getAddress(const HMODULE& dll_module, const std::string& func_name) noexcept
             {
@@ -147,8 +147,8 @@ namespace common {
             }
 
             /**
-            *@brief 外部调用dll函数获取类实例指针
-            *@return 若失败返回nullptr
+            @brief 外部调用dll函数获取类实例指针
+            @return 若失败返回nullptr
             */
             std::shared_ptr<interfaceCls> getPtr(const HMODULE& dll_module, const std::string& func_name) noexcept
             {
@@ -171,9 +171,9 @@ namespace common {
 
         //一般性directX函数
 
-        /*
-        *@brief 检查D3D对象是否释放(一般放在device->Release()之前)
-        *@param pDevice 设备对象 需要设备开启标志:D3D11_CREATE_DEVICE_DEBUG
+        /**
+        @brief 检查D3D对象是否释放(一般放在device->Release()之前)
+        @param pDevice 设备对象 需要设备开启标志:D3D11_CREATE_DEVICE_DEBUG
         */
         static HRESULT reportLiveDeviceObjects(ID3D11Device* pDevice)
         {
@@ -185,21 +185,23 @@ namespace common {
             return hr;
         }
 
-        /*
-        *@brief 创建D3D11设备
-        *@param ppDevice 设备
-        *@param pAdapter 适配器
-        *@param ppImmediateContext 上下文
-        *@note Release模式下也可以通过定义D3D11_DEVICE_DEBUG开启设备调试模式
+        /**
+        @brief 创建D3D11设备
+        @param[out] ppDevice   目标设备
+        @param[in]  pAdapter   适配器
+        @param[in]  deiverType 设备类型
+        @param[out] ppImmediateContext 上下文
+        @param[in]  createDeviceFlags 设备标识
+        @note Release模式下也可以通过定义D3D11_DEVICE_DEBUG开启设备调试模式
         */
         static HRESULT createD3D11Device(ID3D11Device** ppDevice, IDXGIAdapter* pAdapter = nullptr,
+            D3D_DRIVER_TYPE deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN,
             ID3D11DeviceContext** ppImmediateContext = nullptr, UINT createDeviceFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT)
         {
 #if !defined(_DEBUG) || defined(DEBUG) || defined(D3D11_DEVICE_DEBUG)
             createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
             D3D_FEATURE_LEVEL featureLevel;
-            D3D_DRIVER_TYPE deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN;
             if (pAdapter == nullptr) {
                 deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_HARDWARE;
             }
@@ -221,11 +223,12 @@ namespace common {
             return S_OK;
         }
 
-        /*
-        *@brief D3D11保存Texture到文件
-        *@param pDevice    Device对象
-        *@param pSrcTexture Texture对象
-        *@param path       以(.png)结尾的路径
+        /**
+        @brief D3D11保存Texture到文件
+        @param[in] pDevice     Device对象
+        @param[in] pSrcTexture Texture对象
+        @param[in] path        以(.png)结尾的路径
+        @param[in] format      图片保存格式
         */
         template<typename T>
         static HRESULT saveTextureToFile(ID3D11Device *pDevice, ID3D11Resource* pSrcTexture, const T* path,
@@ -236,23 +239,24 @@ namespace common {
             return tvalue<T>(getFunction(D3DX11SaveTextureToFileA), getFunction(D3DX11SaveTextureToFileW))(ctx.Get(), pSrcTexture, format, path);
         }
 
-        /*
-        *@brief D3D9保存Texture到文件
-        *@param pSrcTexture Texture对象
-        *@param path       以(.png)结尾的路径
+        /**
+        @brief D3D9保存Texture到文件
+        @param[in] pSrcTexture Texture对象
+        @param[in] path        以(.png)结尾的路径
         */
         template<typename T>
         static HRESULT saveTextureToFile(IDirect3DTexture9* pSrcTexture, const T* path) {
             return tvalue<T>(getFunction(D3DXSaveTextureToFileA), getFunction(D3DXSaveTextureToFileW))(path, D3DXIFF_PNG, pSrcTexture, nullptr);
         }
 
-        /*
-        *@brief 从文件读取Texture
-        *@param d3dDevice  Device对象
-        *@param path       要读取的图像文件路径
-        *@param pTexture2D Texture2D对象
-        *@param bindFlags  数据使用类型
-        *@param format     读取格式
+        /**
+        @brief 从文件读取Texture
+        @param[in]  pDevice     Device对象
+        @param[out] pTexture2D  用于保存的纹理对象  
+        @param[in]  path        要读取的图像文件路径
+        @param[in]  format      数据读取格式
+        @param[in]  bindFlags   数据使用类型
+        @param[in]  miscFlags   资源标识
         */
         template<typename T>
         static HRESULT loadTextureFromFile(ID3D11Device *pDevice, ID3D11Texture2D **pTexture2D, const T* path,
@@ -273,13 +277,14 @@ namespace common {
                 (pDevice, path, &loadInfo, pump.Get(), (ID3D11Resource**)pTexture2D, nullptr);
         }
 
-        /*
-        *@brief 创建2D纹理配置
-        *@param textureDesc Texture配置
-        *@param width       宽度
-        *@param height      高度
-        *@param format      DXGI支持的数据格式
-        *@param bindFlags   数据使用类型
+        /**
+        @brief 创建2D纹理配置
+        @param[in] desc        Texture配置
+        @param[in] width       宽度
+        @param[in] height      高度
+        @param[in] format      DXGI支持的数据格式
+        @param[in] bindFlags   数据使用类型
+        @param[in] miscFlags   资源标识
         */
         static void createTextureDesc(D3D11_TEXTURE2D_DESC &desc, UINT width, UINT height,
             DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM,
@@ -299,12 +304,12 @@ namespace common {
             desc.MiscFlags = miscFlags;                  //资源标识[D3D11_RESOURCE_MISC_SHARED]
         }
 
-        /*
-        *@brief 不同device的共享纹理间的转换
-        *@param pSrcTexture2D    源纹理
-        *@param pDstTexture2D    目标纹理
-        *@param pDstDevice       目标设备
-        *@param dst_handle       目标共享句柄
+        /**
+        @brief 不同device的共享纹理间的转换
+        @param[in]  pSrcTexture2D  源纹理
+        @param[out] ppDstTexture2D 目标纹理
+        @param[in]  pDstDevice     目标设备
+        @param[out] dst_pHandle    目标共享句柄
         */
         static HRESULT texture2d_to_texture2d(ID3D11Texture2D* pSrcTexture2D, ID3D11Texture2D** ppDstTexture2D, ID3D11Device* pDstDevice, HANDLE* dst_pHandle = nullptr)
         {
@@ -327,24 +332,22 @@ namespace common {
             else {
                 p_new_src_texture = pSrcTexture2D;
             }
-
             ComPtr<IDXGIResource> pSharedResource;
             hr = p_new_src_texture.As(&pSharedResource);//QueryInterface
-
             if (FAILED(hr)) { return hr; }
+
             HANDLE handle;
             hr = pSharedResource->GetSharedHandle(&handle);
             if (FAILED(hr)) { return hr; }
 
             hr = pDstDevice->OpenSharedResource(handle, __uuidof(IDXGIResource), (void**)(pSharedResource.ReleaseAndGetAddressOf()));
             if (FAILED(hr)) { return hr; }
+
             Release_s(*ppDstTexture2D);
             hr = pSharedResource->QueryInterface(__uuidof(ID3D11Texture2D), reinterpret_cast<void**>(ppDstTexture2D));
             if (FAILED(hr)) { return hr; }
 
-            if (dst_pHandle != nullptr) {
-                *dst_pHandle = handle;
-            }
+            if (dst_pHandle != nullptr) { *dst_pHandle = handle; }
             return S_OK;
         }
 

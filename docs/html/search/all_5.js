@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['fatal',['Fatal',['../group__debuglog.html#a1b3a89e93f375ce24396d0fdf8686f2f',1,'common::debuglog::logger::Fatal(T msg) const'],['../group__debuglog.html#ab3a75e0f8b8b9084a50cc7670d88b6aa',1,'common::debuglog::logger::Fatal(T msg, const char *_func, const char *_file, const int _line) const'],['../group__common.html#ggaf7659de5ece427c413cf7194eafe087da621eabfdbc10816e990a4c0052a1611b',1,'common::Fatal()']]],
-  ['filldir',['fillDir',['../group__common.html#ga1206320bdec9633462ac1cc9a3733d93',1,'common']]],
-  ['fisheye_5fremap_2ehpp',['fisheye_remap.hpp',['../fisheye__remap_8hpp.html',1,'']]],
-  ['fisheyeremap',['FisheyeRemap',['../group__opencv.html#classcommon_1_1opencv_1_1_fisheye_remap',1,'common::opencv::FisheyeRemap'],['../group__opencv.html#a58e76db551e7f60aea0c513ca656154f',1,'common::opencv::FisheyeRemap::FisheyeRemap()']]],
-  ['footer',['footer',['../group__cmdline.html#a0ecbf64e4f261fc7bc92c67c3854d20f',1,'common::cmdline::parser']]],
-  ['free_5fs',['free_s',['../group__common.html#gace9a90982c4047ef85436058652ad8bd',1,'common::free_s(T p)'],['../group__common.html#ga73ca99b322c571edf3592d6e73713aef',1,'common::free_s(T p, Args ... args)']]],
-  ['ftr',['ftr',['../group__cmdline.html#a6bc017469fc38be851dee5d7be0be59c',1,'common::cmdline::parser']]],
-  ['full_5fdescription',['full_description',['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a86a5cc31da96df8c1c23ad97cb955040',1,'common::cmdline::parser::option_with_value']]],
-  ['func_5ftype_5fname',['func_type_name',['../group__windows.html#a965926a7b66a2ec3246076a227362aaa',1,'common::windows::ProcAddress']]]
+  ['error',['error',['../group__cmdline.html#a4adb9d7237a890cb2314b3ea1cc1af08',1,'common::cmdline::parser::error()'],['../group__debuglog.html#a79d13f0a00de208b95997f0c5c4931c2',1,'common::debuglog::logger::Error(T msg) const'],['../group__debuglog.html#aa20a4543ec9f7c9160d421a16944e96a',1,'common::debuglog::logger::Error(T msg, const char *_func, const char *_file, const int _line) const'],['../group__common.html#ggaf7659de5ece427c413cf7194eafe087da29ce7695cc6775f3e6356cee3d13625f',1,'common::Error()']]],
+  ['error_5ffull',['error_full',['../group__cmdline.html#a833baad2fc94ede28eb72625da0bb8f1',1,'common::cmdline::parser']]],
+  ['errors',['errors',['../group__cmdline.html#adb1e658d85660f2d56bd7d5988b2bf59',1,'common::cmdline::parser']]],
+  ['exist',['exist',['../group__cmdline.html#abc270bbcf606cd8f6eb86d36253cd5d1',1,'common::cmdline::parser']]]
 ];

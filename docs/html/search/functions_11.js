@@ -1,4 +1,16 @@
 var searchData=
 [
-  ['valid',['valid',['../classcommon_1_1cmdline_1_1parser_1_1option__base.html#a72fb7e9fb45281cc3fde6f172c8521fd',1,'common::cmdline::parser::option_base::valid()'],['../classcommon_1_1cmdline_1_1parser_1_1option__without__value.html#ad3e2c7bcd5e85cb4fccb38080dd85ee0',1,'common::cmdline::parser::option_without_value::valid()'],['../classcommon_1_1cmdline_1_1parser_1_1option__with__value.html#a89aa7d61e52fab3b9523f3a58bdd8343',1,'common::cmdline::parser::option_with_value::valid()']]]
+  ['unbind_5ffor_5fgpumat_5fto_5ftexture2d',['unbind_for_gpumat_to_texture2d',['../group__cuda.html#a6ce26939011eefbe86854676df6d3b2e',1,'common::cuda::texture2d_cvt_gpumat']]],
+  ['unbind_5ffor_5ftexture2d_5fto_5fgpumat',['unbind_for_texture2d_to_gpumat',['../group__cuda.html#a2bd0281ac7ea7a3f4eefe096c1930f15',1,'common::cuda::texture2d_cvt_gpumat']]],
+  ['unicode_5fto_5fansi',['unicode_to_ansi',['../group__codecvt.html#ga3ad837ac2a490851f3193ec58709f070',1,'common::codecvt']]],
+  ['unicode_5fto_5futf8',['unicode_to_utf8',['../group__codecvt.html#ga8ab56f2ea5605599af59ad88c48e8938',1,'common::codecvt']]],
+  ['usage',['usage',['../group__cmdline.html#a8e8a9cfe008f9c349d297edd6cf8a50d',1,'common::cmdline::parser']]],
+  ['utf16_5fto_5futf32',['utf16_to_utf32',['../group__codecvt.html#gaf9c1a5c6902227f48f841d2d9f7c2bf2',1,'common::codecvt']]],
+  ['utf16_5fto_5futf8',['utf16_to_utf8',['../group__codecvt.html#gad2cf5ae4482e03c3106d4549d319d83e',1,'common::codecvt']]],
+  ['utf32_5fto_5futf16',['utf32_to_utf16',['../group__codecvt.html#ga55bcf3547fe92dbcf799242f60579ea0',1,'common::codecvt']]],
+  ['utf32_5fto_5futf8',['utf32_to_utf8',['../group__codecvt.html#gad6cf19d8117a006ff2974fa03d63950a',1,'common::codecvt']]],
+  ['utf8_5fto_5fansi',['utf8_to_ansi',['../group__codecvt.html#ga2864220ce9f167c3caf596c2e034ea0b',1,'common::codecvt']]],
+  ['utf8_5fto_5funicode',['utf8_to_unicode',['../group__codecvt.html#gabc1a169e6ef241b3afb238c9177e5b53',1,'common::codecvt']]],
+  ['utf8_5fto_5futf16',['utf8_to_utf16',['../group__codecvt.html#gaf75c20ea1a68ca0ea0eff7a39886f39f',1,'common::codecvt']]],
+  ['utf8_5fto_5futf32',['utf8_to_utf32',['../group__codecvt.html#ga12adb9c91e4d656a6e98f2a48e415b85',1,'common::codecvt']]]
 ];

@@ -59,27 +59,29 @@ namespace common {
         namespace kernel {}
 
         /**
-        *@brief cudaError_t检查,若失败会中断程序
+        @brief cudaError_t检查,若失败会中断程序
         */
-        static void checkCudaRet(cudaError_t result, char const *const func, const char *const file, int const line)
-        {
-            if (result) {
-                std::ostringstream oss;
-                oss << cudaGetErrorName(result);
-                common::LOGE(oss.str(), func, file, line);
-                cudaDeviceReset();
-                // Make sure we call CUDA Device Reset before exiting
-                exit(EXIT_FAILURE);
+        template<typename T = char>
+        struct CheckCudaRet {
+            void operator()(cudaError_t result, char const *const func, const char *const file, int const line) {
+                if (result) {
+                    common::LOGE(cudaGetErrorName(result), func, file, line);
+                    cudaDeviceReset();// Make sure we call CUDA Device Reset before exiting
+                    exit(EXIT_FAILURE);
+                }
             }
-        }
+        };
+
         /**
         @def checkCudaRet
         @brief cuda函数返回值检查,若失败会中断程序
         */
-#define checkCudaRet(val) checkCudaRet((val), #val, __FILE__, __LINE__)
+#ifndef checkCudaRet
+#define checkCudaRet(val) common::cuda::CheckCudaRet<>()((val), #val, __FILE__, __LINE__)
+#endif
 
         /**
-        *@brief CUDA设备检查
+        @brief CUDA设备检查
         */
         static cudaError_t checkCUDADevice()
         {
@@ -92,10 +94,10 @@ namespace common {
         }
 
         /**
-        *@brief 统计CUDA函数体的gpu时间(主要用于统计内核函数调用开销，包含CPU代码的时间可能是不完整的)
-        *@param Fn 函数对象,可用匿名函数包装代码片段来计时
-        *@param args 函数参数
-        *@return 单位ms
+        @brief 统计CUDA函数体的gpu时间(主要用于统计内核函数调用开销，包含CPU代码的时间可能是不完整的)
+        @param Fn 函数对象,可用匿名函数包装代码片段来计时
+        @param args 函数参数
+        @return 单位ms
         */
         template<typename R, typename ...FArgs, typename ...Args>
         float getCudaFnDuration(std::function<R(FArgs...)> Fn, Args&... args) {
@@ -117,42 +119,43 @@ namespace common {
         // cuda_d3d11_interop
 
         /**
-        *@brief DX11和CUDA共享的纹理数据结构
+        @brief DX11和CUDA共享的纹理数据结构
+        @todo 考虑基类使用ID3D11Resource
         */
-        template<class T>
+        template<typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType>
         struct shared_texture_t
-        {
+        {//TODO 考虑基类使用ID3D11Resource
 #ifdef HAVE_CUDA_KERNEL
-            //TODO 暂只支持uchar4
+            /**@note 暂只支持uchar4和float4*/
             shared_texture_t() {
-                checkCudaRet(cuda_get_texture_reference<uchar4>(&texture_ref));
-            };
+                cuda_get_texture_reference<T, texType, cudaReadModeElementType>()(&texture_ref);
+                //cuda_get_texture_reference_2d_uchar4(&texture_ref);
+            }
             ~shared_texture_t() {};
 #endif
-            //TODO 考虑基类使用ID3D11Resource
             const textureReference* texture_ref = nullptr;//纹理参考系引用,需要初始化
             cudaGraphicsResource* cuda_resource = nullptr;
             cudaArray* cuda_array = nullptr;
             cudaChannelFormatDesc cuda_array_desc = cudaCreateChannelDesc<T>();
             size_t pitch;
         };
-        template<class T>
-        struct shared_texture_1d_t : shared_texture_t<T>
+        template<typename T, enum cudaTextureReadMode mode = cudaReadModeElementType>
+        struct shared_texture_1d_t : shared_texture_t<T, cudaTextureType1D, mode>
         {
             ~shared_texture_1d_t() { p_d3d11_texture_1d.Reset(); };
             ComPtr<ID3D11Texture1D> p_d3d11_texture_1d;
             UINT width;
         };
-        template<class T>
-        struct shared_texture_2d_t : shared_texture_t<T>
+        template<typename T, enum cudaTextureReadMode mode = cudaReadModeElementType>
+        struct shared_texture_2d_t : shared_texture_t<T, cudaTextureType2D, mode>
         {
             ~shared_texture_2d_t() { p_d3d11_texture_2d.Reset(); };
             ComPtr<ID3D11Texture2D> p_d3d11_texture_2d;
             UINT width;
             UINT height;
         };
-        template<class T>
-        struct shared_texture_3d_t : shared_texture_t<T>
+        template<typename T, enum cudaTextureReadMode mode = cudaReadModeElementType>
+        struct shared_texture_3d_t : shared_texture_t<T, cudaTextureType3D, mode>
         {
             ~shared_texture_3d_t() { p_d3d11_texture_3d.Reset(); };
             ComPtr<ID3D11Texture3D> p_d3d11_texture_3d;
@@ -162,8 +165,9 @@ namespace common {
         };
 
         /**
-       *@brief CUDA获取D3D11设备适配器
-       */
+        @brief CUDA获取D3D11设备适配器
+        @exception std::runtime_error 无法成功获取设备适配器
+        */
         static void getD3D11Adapter(IDXGIAdapter** pAdapter) noexcept(false)
         {
             ComPtr<IDXGIFactory> pFactory;
@@ -192,14 +196,20 @@ namespace common {
         }
 
 #ifdef HAVE_OPENCV
-        /*
-        *@brief d3d11 texture2d 与opencv gpumat 互转
-        TODO 目前只测试了uchar4( d3d R8G8A8B8 <-> opencv CV_8UC4 ),其他暂未支持
+        /**
+        @brief d3d11 texture2d 与opencv gpumat 互转
+        @attention 目前只测试了uchar4( D3D R8G8B8A8 <-> opencv CV_8UC4 ),其他暂未支持
+        @note texture2d_to_gpumat,gpumat_to_texture2d需配合其对应的绑定解绑方法调用,并且不能跨线程.
         */
+        template<typename T = uchar4>
         class texture2d_cvt_gpumat
         {
         public:
-            texture2d_cvt_gpumat() {};
+            texture2d_cvt_gpumat() {
+                getD3D11Adapter(mp_cuda_capable_adater.GetAddressOf());
+                HRESULT hr = windows::createD3D11Device(mp_d3d11_device.GetAddressOf(), mp_cuda_capable_adater.Get());
+                if (FAILED(hr)) LOGF_("createD3D11Device Failed!");
+            };
             ~texture2d_cvt_gpumat() {
                 mp_cuda_capable_adater.~ComPtr();
                 mt_texture2d_to_gpumat.~shared_texture_2d_t();
@@ -207,22 +217,63 @@ namespace common {
                 mp_d3d11_device.~ComPtr();
             };
 
-            /*
-            *@brief 初始化设备
+            /**
+            @brief texture2d_to_gpumat 之前调用一次,注册映射绑定资源
+            @param[in] p_src_texture 源D3D11纹理(R8G8B8A8),若地址/DESC发生改变需要解绑后重新绑定
+            @see texture2d_to_gpumat
             */
-            bool init() {
-                getD3D11Adapter(mp_cuda_capable_adater.GetAddressOf());
-                HRESULT hr = windows::createD3D11Device(mp_d3d11_device.GetAddressOf(), mp_cuda_capable_adater.Get());
-                if (FAILED(hr)) {
-                    return false;
-                }
+            bool bind_for_texture2d_to_gpumat(ID3D11Texture2D* p_src_texture) {
+                HRESULT hr = common::windows::texture2d_to_texture2d(p_src_texture, mt_texture2d_to_gpumat.p_d3d11_texture_2d.ReleaseAndGetAddressOf(), mp_d3d11_device.Get());
+                if (FAILED(hr)) { return false; }
+                //注册Direct3D 11资源以供CUDA访问
+                checkCudaRet(cudaGraphicsD3D11RegisterResource(&mt_texture2d_to_gpumat.cuda_resource, mt_texture2d_to_gpumat.p_d3d11_texture_2d.Get(), cudaGraphicsRegisterFlagsNone));
+                //映射图形资源以供CUDA访问,不能跨线程调用
+                checkCudaRet(cudaGraphicsMapResources(1, &mt_texture2d_to_gpumat.cuda_resource));
+                //获取一个数组，通过该数组访问映射图形资源的子资源
+                checkCudaRet(cudaGraphicsSubResourceGetMappedArray(&mt_texture2d_to_gpumat.cuda_array, mt_texture2d_to_gpumat.cuda_resource, 0, 0));
+                //绑定纹理参考系
+                checkCudaRet(cudaBindTextureToArray(mt_texture2d_to_gpumat.texture_ref, mt_texture2d_to_gpumat.cuda_array, &mt_texture2d_to_gpumat.cuda_array_desc));
+                return true;
+            }
+
+            /**
+            @brief texture2d到gpumat的转换
+            @pre 调用前通过bind_for_texture2d_to_gpumat方法绑定一次纹理资源,使用完成后通过unbind_for_texture2d_to_gpumat解绑
+            @param[out] dst_gpumat  目标矩阵,格式取决于p_src_texture(R8G8B8A8)
+            @see bind_for_texture2d_to_gpumat , unbind_for_texture2d_to_gpumat
+            */
+            bool texture2d_to_gpumat(cv::cuda::GpuMat& dst_gpumat){
+                D3D11_TEXTURE2D_DESC desc;
+                mt_texture2d_to_gpumat.p_d3d11_texture_2d->GetDesc(&desc);
+                dst_gpumat.release();
+                dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(T)));
+                checkCudaRet(cudaMemcpy2DFromArray(dst_gpumat.data, dst_gpumat.step,
+                    mt_texture2d_to_gpumat.cuda_array, 0, 0, dst_gpumat.cols * sizeof(T), dst_gpumat.rows, cudaMemcpyDeviceToDevice));
                 return true;
             };
+            /**@overload*/
+            bool texture2d_to_gpumat(ID3D11Texture2D* p_src_texture, cv::cuda::GpuMat& dst_gpumat){
+                bool flag=bind_for_texture2d_to_gpumat(p_src_texture);
+                flag =texture2d_to_gpumat(dst_gpumat);
+                unbind_for_texture2d_to_gpumat();
+                return flag;
+            }
 
-            /*
-            @brief 注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用
+            /**
+            @brief texture2d_to_gpumat 结束后调用一次,解除注册映射绑定资源
+            @see texture2d_to_gpumat
             */
-            bool register_resource_for_gpumat_to_texture2d(int width, int height) {
+            void unbind_for_texture2d_to_gpumat() {
+                checkCudaRet(cudaUnbindTexture(mt_texture2d_to_gpumat.texture_ref));
+                checkCudaRet(cudaGraphicsUnmapResources(1, &mt_texture2d_to_gpumat.cuda_resource));
+                checkCudaRet(cudaGraphicsUnregisterResource(mt_texture2d_to_gpumat.cuda_resource));
+            }
+
+            /**
+            @brief 注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用
+            @see gpumat_to_texture2d
+            */
+            bool bind_for_gpumat_to_texture2d(int width, int height) {
                 D3D11_TEXTURE2D_DESC desc;
                 windows::createTextureDesc(desc, width, height,
                     DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_RESOURCE_MISC_SHARED);
@@ -230,69 +281,50 @@ namespace common {
                 if (FAILED(hr)) { return false; }
                 //注册Direct3D 11资源以供CUDA访问
                 checkCudaRet(cudaGraphicsD3D11RegisterResource(&mt_gpumat_to_texture2d.cuda_resource, mt_gpumat_to_texture2d.p_d3d11_texture_2d.Get(), cudaGraphicsRegisterFlagsNone));
-                return true;
-            }
-
-            void unregister_resource_for_gpumat_to_texture2d() {
-                checkCudaRet(cudaGraphicsUnregisterResource(mt_gpumat_to_texture2d.cuda_resource));
-            }
-
-            bool texture2d_to_gpumat(ID3D11Texture2D* p_src_texture, cv::cuda::GpuMat& dst_gpumat)
-            {
-                HRESULT hr = common::windows::texture2d_to_texture2d(p_src_texture, mt_texture2d_to_gpumat.p_d3d11_texture_2d.ReleaseAndGetAddressOf(), mp_d3d11_device.Get());
-                if (FAILED(hr)) { return false; }
-                D3D11_TEXTURE2D_DESC desc;
-                p_src_texture->GetDesc(&desc);
-                dst_gpumat.release();
-                dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(uchar4)));
-                if (FAILED(hr)) { return false; }
-
-                //注册Direct3D 11资源以供CUDA访问
-                checkCudaRet(cudaGraphicsD3D11RegisterResource(&mt_texture2d_to_gpumat.cuda_resource, mt_texture2d_to_gpumat.p_d3d11_texture_2d.Get(), cudaGraphicsRegisterFlagsNone));
-                //映射图形资源以供CUDA访问
-                checkCudaRet(cudaGraphicsMapResources(1, &mt_texture2d_to_gpumat.cuda_resource));
-
-                //获取一个数组，通过该数组访问映射图形资源的子资源
-                checkCudaRet(cudaGraphicsSubResourceGetMappedArray(&mt_texture2d_to_gpumat.cuda_array, mt_texture2d_to_gpumat.cuda_resource, 0, 0));
-
-                checkCudaRet(cudaBindTextureToArray(mt_texture2d_to_gpumat.texture_ref, mt_texture2d_to_gpumat.cuda_array, &mt_texture2d_to_gpumat.cuda_array_desc));
-                //src和dst的step可能不同
-                checkCudaRet(cudaMemcpy2DFromArray(dst_gpumat.data, dst_gpumat.step,
-                    mt_texture2d_to_gpumat.cuda_array, 0, 0, dst_gpumat.cols * sizeof(uchar4), dst_gpumat.rows, cudaMemcpyDeviceToDevice));
-                checkCudaRet(cudaUnbindTexture(mt_texture2d_to_gpumat.texture_ref));
-
-                checkCudaRet(cudaGraphicsUnmapResources(1, &mt_texture2d_to_gpumat.cuda_resource));
-                checkCudaRet(cudaGraphicsUnregisterResource(mt_texture2d_to_gpumat.cuda_resource));
-                return true;
-            };
-            /**
-            @brief gpumat到texture2d的转换
-            @attention 使用前需要注册一次资源,使用结束后需要取消注册,并且同一分辨率只能注册一次,若分辨率更改需要重新注册,
-                  CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory.
-            @see register_resource_for_gpumat_to_texture2d , unregister_resource_for_gpumat_to_texture2d
-            */
-            bool gpumat_to_texture2d(const cv::cuda::GpuMat& src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device)
-            {
-                //映射图形资源以供CUDA访问
+                //映射图形资源以供CUDA访问,不能跨线程调用
                 checkCudaRet(cudaGraphicsMapResources(1, &mt_gpumat_to_texture2d.cuda_resource));
                 //获取一个数组，通过该数组访问映射图形资源的子资源
                 checkCudaRet(cudaGraphicsSubResourceGetMappedArray(&mt_gpumat_to_texture2d.cuda_array, mt_gpumat_to_texture2d.cuda_resource, 0, 0));
-
                 checkCudaRet(cudaBindTextureToArray(mt_gpumat_to_texture2d.texture_ref, mt_gpumat_to_texture2d.cuda_array, &mt_gpumat_to_texture2d.cuda_array_desc));
-                checkCudaRet(cudaMemcpy2DToArray(mt_gpumat_to_texture2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step,
-                    src_gpumat.cols * sizeof(uchar4), src_gpumat.rows, cudaMemcpyDeviceToDevice));
-                checkCudaRet(cudaUnbindTexture(mt_gpumat_to_texture2d.texture_ref));
+                return true;
+            }
 
-                checkCudaRet(cudaGraphicsUnmapResources(1, &mt_gpumat_to_texture2d.cuda_resource));
+            /**
+            @brief gpumat到texture2d的转换
+            @pre 此方法使用前需要注册一次资源,使用结束后需要取消注册,并且同一分辨率只能注册一次,若分辨率更改需要重新注册.
+            @param[in] src_gpumat 源矩阵,应输入RGBA格式
+            @param[out] pp_dst_texture 目标纹理对象, R8G8B8A8
+            @param[in] p_dst_device 目标纹理对象的设备
+            @note CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory.
+            @see bind_for_gpumat_to_texture2d , unbind_for_gpumat_to_texture2d
+            */
+            bool gpumat_to_texture2d(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device){
+                if (src_gpumat.channels() == 1) {
+                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_GRAY2RGBA);
+                }
+                if (src_gpumat.channels() == 3) {
+                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_BGR2RGBA);
+                }
+                checkCudaRet(cudaMemcpy2DToArray(mt_gpumat_to_texture2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step,
+                    src_gpumat.cols * sizeof(T), src_gpumat.rows, cudaMemcpyDeviceToDevice));
                 HRESULT hr = common::windows::texture2d_to_texture2d(mt_gpumat_to_texture2d.p_d3d11_texture_2d.Get(), pp_dst_texture, p_dst_device);
                 if (FAILED(hr)) { return false; }
                 return true;
             };
+            /**
+            @brief gpumat_to_texture2d 调用结束后解绑
+            @see gpumat_to_texture2d
+            */
+            void unbind_for_gpumat_to_texture2d() {
+                checkCudaRet(cudaUnbindTexture(mt_gpumat_to_texture2d.texture_ref));
+                checkCudaRet(cudaGraphicsUnmapResources(1, &mt_gpumat_to_texture2d.cuda_resource));
+                checkCudaRet(cudaGraphicsUnregisterResource(mt_gpumat_to_texture2d.cuda_resource));
+            }
         private:
             ComPtr<ID3D11Device> mp_d3d11_device;              ///< D3D11设备
             ComPtr<IDXGIAdapter> mp_cuda_capable_adater;       ///< CUDA需要的DX适配器
-            shared_texture_2d_t<uchar4> mt_texture2d_to_gpumat;///< 共享纹理对象
-            shared_texture_2d_t<uchar4> mt_gpumat_to_texture2d;///< 共享纹理对象
+            shared_texture_2d_t<T> mt_texture2d_to_gpumat;     ///< 共享纹理对象for texture2d_to_gpumat
+            shared_texture_2d_t<T> mt_gpumat_to_texture2d;     ///< 共享纹理对象for gpumat_to_texture2d
         };
 
 #endif // HAVE_OPENCV

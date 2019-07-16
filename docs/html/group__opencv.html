@@ -166,8 +166,11 @@ common::opencv::FisheyeRemap 的协作图:</div>
 <tr class="memitem:ae239a79ad9af924740e0e4d3855321f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#ae239a79ad9af924740e0e4d3855321f9">~FisheyeRemap</a> ()</td></tr>
 <tr class="separator:ae239a79ad9af924740e0e4d3855321f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00e5b1ee656b8414da983437264f9474"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#a00e5b1ee656b8414da983437264f9474">init</a> (cv::InputArrayOfArrays chessboards, cv::Size board_size, size_t square_size) noexcept(false)</td></tr>
-<tr class="memdesc:a00e5b1ee656b8414da983437264f9474"><td class="mdescLeft">&#160;</td><td class="mdescRight">输入标定参数以初始化鱼眼相机  <a href="#a00e5b1ee656b8414da983437264f9474">更多...</a><br /></td></tr>
+<tr class="memdesc:a00e5b1ee656b8414da983437264f9474"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算标定参数以初始化鱼眼相机  <a href="#a00e5b1ee656b8414da983437264f9474">更多...</a><br /></td></tr>
 <tr class="separator:a00e5b1ee656b8414da983437264f9474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c15f8686c00279d27e8522ac19bc1b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#a7c15f8686c00279d27e8522ac19bc1b1">init</a> (cv::Mat intrinsic_param_mat, cv::Vec4d distortion_coeffs)</td></tr>
+<tr class="memdesc:a7c15f8686c00279d27e8522ac19bc1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">输入相机原始参数初始化  <a href="#a7c15f8686c00279d27e8522ac19bc1b1">更多...</a><br /></td></tr>
+<tr class="separator:a7c15f8686c00279d27e8522ac19bc1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92cef84f5406ec96654b1368720af865"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__opencv.html#a92cef84f5406ec96654b1368720af865">remap</a> (cv::InputArray src, cv::OutputArray dst, double fx=1.0, double fy=1.0, double cx=0, double cy=0)</td></tr>
 <tr class="memdesc:a92cef84f5406ec96654b1368720af865"><td class="mdescLeft">&#160;</td><td class="mdescRight">应用重映射进行去畸变操作  <a href="#a92cef84f5406ec96654b1368720af865">更多...</a><br /></td></tr>
 <tr class="separator:a92cef84f5406ec96654b1368720af865"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -278,7 +281,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 </div>
 <h4 class="groupheader">成员函数说明</h4>
 <a id="a00e5b1ee656b8414da983437264f9474"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00e5b1ee656b8414da983437264f9474">&#9670;&nbsp;</a></span>init()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00e5b1ee656b8414da983437264f9474">&#9670;&nbsp;</a></span>init() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +320,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 </table>
 </div><div class="memdoc">
 
-<p>输入标定参数以初始化鱼眼相机 </p>
+<p>计算标定参数以初始化鱼眼相机 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">chessboards</td><td>棋盘格标定板图像集合,分辨率应与相机相同 </td></tr>
@@ -328,6 +331,53 @@ common::opencv::FisheyeRemap 的协作图:</div>
 </dl>
 
 <p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00168">168</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c15f8686c00279d27e8522ac19bc1b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c15f8686c00279d27e8522ac19bc1b1">&#9670;&nbsp;</a></span>init() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void common::opencv::FisheyeRemap::init </td>
+          <td>(</td>
+          <td class="paramtype">cv::Mat&#160;</td>
+          <td class="paramname"><em>intrinsic_param_mat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Vec4d&#160;</td>
+          <td class="paramname"><em>distortion_coeffs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>输入相机原始参数初始化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">intrinsic_param_mat</td><td>摄像机内参数矩阵 3x3 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">distortion_coeffs</td><td>摄像机的4个畸变系数: k1,k2,k3,k4 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00222">222</a> 行定义.</p>
 
 </div>
 </div>
@@ -357,7 +407,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 <p>计算并打印定标误差 </p>
 <dl class="section return"><dt>返回</dt><dd>总平均误差 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00285">285</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00302">302</a> 行定义.</p>
 
 </div>
 </div>
@@ -386,7 +436,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>打印相机的内参数矩阵及畸变参数 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00272">272</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00289">289</a> 行定义.</p>
 
 </div>
 </div>
@@ -461,7 +511,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00225">225</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00241">241</a> 行定义.</p>
 
 </div>
 </div>
@@ -524,7 +574,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 </div><div class="memdoc">
 <p>这是为便于使用而提供的一个重载成员函数.与上面的函数相比，它接受不同类型的参数. </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00240">240</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00257">257</a> 行定义.</p>
 
 </div>
 </div>
@@ -554,7 +604,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 <p>在所有标定图上画出标定的内角点并显示 </p>
 <dl class="section note"><dt>注解</dt><dd>需要另外调用cv::Waitkey()来阻塞才能显示. </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00262">262</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00279">279</a> 行定义.</p>
 
 </div>
 </div>
@@ -581,7 +631,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>定标板上每行、列的内角点数,等于格子数-1 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00318">318</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00335">335</a> 行定义.</p>
 
 </div>
 </div>
@@ -607,7 +657,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>棋盘格 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00317">317</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00334">334</a> 行定义.</p>
 
 </div>
 </div>
@@ -633,7 +683,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>标定图的角点坐标 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00321">321</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00338">338</a> 行定义.</p>
 
 </div>
 </div>
@@ -651,7 +701,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>摄像机的4个畸变系数: k1,k2,k3,k4 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00309">309</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00326">326</a> 行定义.</p>
 
 </div>
 </div>
@@ -677,7 +727,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>摄像机的4个畸变系数: k1,k2,k3,k4 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00315">315</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00332">332</a> 行定义.</p>
 
 </div>
 </div>
@@ -695,7 +745,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>摄像机内参数矩阵 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00307">307</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00324">324</a> 行定义.</p>
 
 </div>
 </div>
@@ -721,7 +771,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>摄像机内参数矩阵 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00314">314</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00331">331</a> 行定义.</p>
 
 </div>
 </div>
@@ -739,7 +789,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>手动调整后的摄像机内参数矩阵 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00308">308</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00325">325</a> 行定义.</p>
 
 </div>
 </div>
@@ -765,7 +815,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>保存定标板上角点的三维坐标,一个vector对应一张定标板 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00320">320</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00337">337</a> 行定义.</p>
 
 </div>
 </div>
@@ -783,7 +833,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>每幅图像的旋转向量 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00310">310</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00327">327</a> 行定义.</p>
 
 </div>
 </div>
@@ -809,7 +859,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>定标板上格子的宽度mm </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00319">319</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00336">336</a> 行定义.</p>
 
 </div>
 </div>
@@ -827,7 +877,7 @@ common::opencv::FisheyeRemap 的协作图:</div>
 
 <p>每幅图像的平移向量 </p>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00311">311</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00328">328</a> 行定义.</p>
 
 </div>
 </div>
@@ -866,7 +916,7 @@ template&lt;typename T &gt; </div>
 <p>由图像哈希计算图像距离 </p>
 <dl class="section return"><dt>返回</dt><dd>图像哈希距离 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00069">69</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00068">68</a> 行定义.</p>
 
 </div>
 </div>
@@ -997,6 +1047,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>debug保存图像,路径由时间＋描述+随机数产生 </p>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>图像或路径为空 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>返回</dt><dd>保存路径 </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00082">82</a> 行定义.</p>
@@ -1024,7 +1080,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00062">62</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="opencv_8hpp_source.html">opencv.hpp</a> 第 <a class="el" href="opencv_8hpp_source.html#l00061">61</a> 行定义.</p>
 
 </div>
 </div>

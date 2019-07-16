@@ -4,7 +4,6 @@
 */
 #include "gtest/gtest.h"
 #include <common/opencv.hpp>
-using namespace common;
 using namespace common::opencv;
 
 TEST(opencv, img_hash) {

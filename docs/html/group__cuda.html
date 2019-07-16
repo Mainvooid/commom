@@ -119,21 +119,32 @@ cuda - cuda utilities 的协作图:</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 类</h2></td></tr>
-<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t&lt; T &gt;</a></td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1cuda__get__texture__reference"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1cuda__get__texture__reference">common::cuda::cuda_get_texture_reference&lt; T, texType, mode &gt;</a></td></tr>
+<tr class="memdesc:structcommon_1_1cuda_1_1cuda__get__texture__reference"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取CUDA纹理参考系对象  <a href="group__cuda.html#structcommon_1_1cuda_1_1cuda__get__texture__reference">更多...</a><br /></td></tr>
+<tr class="separator:structcommon_1_1cuda_1_1cuda__get__texture__reference"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01uchar4_00_01cuda_texture_type2_d_00_01bafa89af8a39beb654d0453f03eb996d"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01uchar4_00_01cuda_texture_type2_d_00_01bafa89af8a39beb654d0453f03eb996d">common::cuda::cuda_get_texture_reference&lt; uchar4, cudaTextureType2D, cudaReadModeElementType &gt;</a></td></tr>
+<tr class="separator:structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01uchar4_00_01cuda_texture_type2_d_00_01bafa89af8a39beb654d0453f03eb996d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01float4_00_01cuda_texture_type2_d_00_015eba66a442b47ceaf5e512c9cc2c13a1"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01float4_00_01cuda_texture_type2_d_00_015eba66a442b47ceaf5e512c9cc2c13a1">common::cuda::cuda_get_texture_reference&lt; float4, cudaTextureType2D, cudaReadModeElementType &gt;</a></td></tr>
+<tr class="separator:structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01float4_00_01cuda_texture_type2_d_00_015eba66a442b47ceaf5e512c9cc2c13a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1_check_cuda_ret"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1_check_cuda_ret">common::cuda::CheckCudaRet&lt; T &gt;</a></td></tr>
+<tr class="memdesc:structcommon_1_1cuda_1_1_check_cuda_ret"><td class="mdescLeft">&#160;</td><td class="mdescRight">cudaError_t检查,若失败会中断程序  <a href="group__cuda.html#structcommon_1_1cuda_1_1_check_cuda_ret">更多...</a><br /></td></tr>
+<tr class="separator:structcommon_1_1cuda_1_1_check_cuda_ret"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t&lt; T, texType, mode &gt;</a></td></tr>
 <tr class="memdesc:structcommon_1_1cuda_1_1shared__texture__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">DX11和CUDA共享的纹理数据结构  <a href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">更多...</a><br /></td></tr>
 <tr class="separator:structcommon_1_1cuda_1_1shared__texture__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__1d__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t&lt; T &gt;</a></td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__1d__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t&lt; T, mode &gt;</a></td></tr>
 <tr class="separator:structcommon_1_1cuda_1_1shared__texture__1d__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__2d__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t&lt; T &gt;</a></td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__2d__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t&lt; T, mode &gt;</a></td></tr>
 <tr class="separator:structcommon_1_1cuda_1_1shared__texture__2d__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__3d__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t&lt; T &gt;</a></td></tr>
+<tr class="memitem:structcommon_1_1cuda_1_1shared__texture__3d__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t&lt; T, mode &gt;</a></td></tr>
 <tr class="separator:structcommon_1_1cuda_1_1shared__texture__3d__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:classcommon_1_1cuda_1_1texture2d__cvt__gpumat"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a></td></tr>
+<tr class="memitem:classcommon_1_1cuda_1_1texture2d__cvt__gpumat"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat&lt; T &gt;</a></td></tr>
+<tr class="memdesc:classcommon_1_1cuda_1_1texture2d__cvt__gpumat"><td class="mdescLeft">&#160;</td><td class="mdescRight">d3d11 texture2d 与opencv gpumat 互转  <a href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">更多...</a><br /></td></tr>
 <tr class="separator:classcommon_1_1cuda_1_1texture2d__cvt__gpumat"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:ga0cb317a3c6744bd5dbefe00e1a8a03d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga0cb317a3c6744bd5dbefe00e1a8a03d0">checkCudaRet</a>(val)&#160;&#160;&#160;checkCudaRet((val), #val, __FILE__, __LINE__)</td></tr>
+<tr class="memitem:ga0cb317a3c6744bd5dbefe00e1a8a03d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga0cb317a3c6744bd5dbefe00e1a8a03d0">checkCudaRet</a>(val)&#160;&#160;&#160;<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1_check_cuda_ret">common::cuda::CheckCudaRet</a>&lt;&gt;()((val), #val, __FILE__, __LINE__)</td></tr>
 <tr class="memdesc:ga0cb317a3c6744bd5dbefe00e1a8a03d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">cuda函数返回值检查,若失败会中断程序  <a href="#ga0cb317a3c6744bd5dbefe00e1a8a03d0">更多...</a><br /></td></tr>
 <tr class="separator:ga0cb317a3c6744bd5dbefe00e1a8a03d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -142,16 +153,10 @@ cuda - cuda utilities 的协作图:</div>
 <tr class="memitem:ga2ac83f3aa2d021cb8348e779a1879547"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">common::cuda::cuda_init_undistort_rectify_map</a> (cv::cuda::GpuMat &amp;K, cv::cuda::GpuMat &amp;D, const cv::Mat &amp;Knew, const cv::Size &amp;size, cv::cuda::GpuMat &amp;map1, cv::cuda::GpuMat &amp;map2)</td></tr>
 <tr class="memdesc:ga2ac83f3aa2d021cb8348e779a1879547"><td class="mdescLeft">&#160;</td><td class="mdescRight">cv::fisheye::initUndistortRectifyMap cuda版本 通过cv::cuda::remap()计算图像变换的不失真和校正图.如果D为空,则使用零失真,如果R或P为空,则使用单位矩阵.  <a href="group__cuda.html#ga2ac83f3aa2d021cb8348e779a1879547">更多...</a><br /></td></tr>
 <tr class="separator:ga2ac83f3aa2d021cb8348e779a1879547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memTemplParams" colspan="2">template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </td></tr>
-<tr class="memitem:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memTemplItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">common::cuda::cuda_get_texture_reference</a> (const textureReference **texref)</td></tr>
-<tr class="memdesc:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取CUDA纹理参考系对象  <a href="group__cuda.html#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">更多...</a><br /></td></tr>
-<tr class="separator:ga6ad9a0a48e2e7e359e7d5cbd022ea44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6be8aa6287d6151dab96cb9e84a98227"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227">common::cuda::cuda_get_texture_reference_2d_uchar4</a> (const textureReference **texref)</td></tr>
-<tr class="memdesc:ga6be8aa6287d6151dab96cb9e84a98227"><td class="mdescLeft">&#160;</td><td class="mdescRight">[特化]获取CUDA 2D uchar4 类型的纹理参考系对象  <a href="group__cuda.html#ga6be8aa6287d6151dab96cb9e84a98227">更多...</a><br /></td></tr>
 <tr class="separator:ga6be8aa6287d6151dab96cb9e84a98227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4473d5189817e79888383aef69e9f915"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">common::cuda::checkCudaRet</a> (cudaError_t result, char const *const func, const char *const file, int const line)</td></tr>
-<tr class="memdesc:ga4473d5189817e79888383aef69e9f915"><td class="mdescLeft">&#160;</td><td class="mdescRight">cudaError_t检查,若失败会中断程序  <a href="group__cuda.html#ga4473d5189817e79888383aef69e9f915">更多...</a><br /></td></tr>
-<tr class="separator:ga4473d5189817e79888383aef69e9f915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga10265811dfaaaaf0b3f7114e3db88dac"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga10265811dfaaaaf0b3f7114e3db88dac">common::cuda::cuda_get_texture_reference_2d_float4</a> (const textureReference **texref)</td></tr>
+<tr class="separator:ga10265811dfaaaaf0b3f7114e3db88dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6a097db82b5293c474022ad455364bc4"><td class="memItemLeft" align="right" valign="top">static cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ga6a097db82b5293c474022ad455364bc4">common::cuda::checkCUDADevice</a> ()</td></tr>
 <tr class="memdesc:ga6a097db82b5293c474022ad455364bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">CUDA设备检查  <a href="group__cuda.html#ga6a097db82b5293c474022ad455364bc4">更多...</a><br /></td></tr>
 <tr class="separator:ga6a097db82b5293c474022ad455364bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,1145 +170,52 @@ cuda - cuda utilities 的协作图:</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <hr/><h2 class="groupheader">类说明</h2>
-<a name="structcommon_1_1cuda_1_1shared__texture__t" id="structcommon_1_1cuda_1_1shared__texture__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_t</h2>
+<a name="structcommon_1_1cuda_1_1cuda__get__texture__reference" id="structcommon_1_1cuda_1_1cuda__get__texture__reference"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1cuda__get__texture__reference">&#9670;&nbsp;</a></span>common::cuda::cuda_get_texture_reference</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct common::cuda::shared_texture_t</td>
+          <td class="memname">struct common::cuda::cuda_get_texture_reference</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"><h3>template&lt;class T&gt;<br />
-struct common::cuda::shared_texture_t&lt; T &gt;</h3>
+<div class="textblock"><h3>template&lt;typename T, int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType&gt;<br />
+struct common::cuda::cuda_get_texture_reference&lt; T, texType, mode &gt;</h3>
 
-<p>DX11和CUDA共享的纹理数据结构 </p>
+<p>获取CUDA纹理参考系对象 </p>
+<dl class="section note"><dt>注解</dt><dd>暂只支持2d uchar4,float4 纹理 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00123">123</a> 行定义.</p>
-</div><div class="dynheader">
-类 common::cuda::shared_texture_t&lt; T &gt; 继承关系图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__t_3_01_t_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__t_3_01_t_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__t_3_01_t_01_4_inherit__map">
-<area shape="rect"  title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,71,160,112"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t" title=" " alt="" coords="208,5,363,47"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t" title=" " alt="" coords="208,71,363,112"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t" title=" " alt="" coords="208,136,363,177"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<table class="memberdecls">
+<p class="definition">在文件 <a class="el" href="texture__reference_8hpp_source.html">texture_reference.hpp</a> 第 <a class="el" href="texture__reference_8hpp_source.html#l00021">21</a> 行定义.</p>
+</div>
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01uchar4_00_01cuda_texture_type2_d_00_01bafa89af8a39beb654d0453f03eb996d" id="structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01uchar4_00_01cuda_texture_type2_d_00_01bafa89af8a39beb654d0453f03eb996d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01uchar4_00_01cuda_texture_type2_d_00_01bafa89af8a39beb654d0453f03eb996d">&#9670;&nbsp;</a></span>common::cuda::cuda_get_texture_reference&lt; uchar4, cudaTextureType2D, cudaReadModeElementType &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct common::cuda::cuda_get_texture_reference&lt; uchar4, cudaTextureType2D, cudaReadModeElementType &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;&gt;<br />
+struct common::cuda::cuda_get_texture_reference&lt; uchar4, cudaTextureType2D, cudaReadModeElementType &gt;</h3>
+
+<p>这是为便于使用而提供的一个重载成员函数.与上面的函数相比，它接受不同类型的参数. </p>
+
+<p class="definition">在文件 <a class="el" href="texture__reference_8hpp_source.html">texture_reference.hpp</a> 第 <a class="el" href="texture__reference_8hpp_source.html#l00024">24</a> 行定义.</p>
+</div><table class="memberdecls">
 <tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
-<tr class="memitem:a9db918dc116823ebcc5efab1d5a5cc02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a9db918dc116823ebcc5efab1d5a5cc02">shared_texture_t</a> ()</td></tr>
-<tr class="separator:a9db918dc116823ebcc5efab1d5a5cc02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73f4df0021672a0e7c835d1ea8550d1d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a73f4df0021672a0e7c835d1ea8550d1d">~shared_texture_t</a> ()</td></tr>
-<tr class="separator:a73f4df0021672a0e7c835d1ea8550d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
-<tr class="memitem:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ae63bcb05bb28dab1da9d834a9c9ec264">texture_ref</a> = nullptr</td></tr>
-<tr class="separator:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2cfad770dfee8b8d7709cb2e9efb8f5e">cuda_resource</a> = nullptr</td></tr>
-<tr class="separator:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6950c3ce93c9f020cef089f01c29a09"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac6950c3ce93c9f020cef089f01c29a09">cuda_array</a> = nullptr</td></tr>
-<tr class="separator:ac6950c3ce93c9f020cef089f01c29a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627ebdf51c846a811213006024dd9b22"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a627ebdf51c846a811213006024dd9b22">cuda_array_desc</a> = cudaCreateChannelDesc&lt;T&gt;()</td></tr>
-<tr class="separator:a627ebdf51c846a811213006024dd9b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a624f6b7a3eabdc04db7578e5a5dd626d">pitch</a></td></tr>
-<tr class="separator:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72f44d404fea19fee3fa2cb6dc646044"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a72f44d404fea19fee3fa2cb6dc646044">operator()</a> (const textureReference **texref)</td></tr>
+<tr class="separator:a72f44d404fea19fee3fa2cb6dc646044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h4 class="groupheader">构造及析构函数说明</h4>
-<a id="a9db918dc116823ebcc5efab1d5a5cc02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9db918dc116823ebcc5efab1d5a5cc02">&#9670;&nbsp;</a></span>shared_texture_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">shared_texture_t</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00127">127</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a73f4df0021672a0e7c835d1ea8550d1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73f4df0021672a0e7c835d1ea8550d1d">&#9670;&nbsp;</a></span>~shared_texture_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">shared_texture_t</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00130">130</a> 行定义.</p>
-
-</div>
-</div>
-<h4 class="groupheader">类成员变量说明</h4>
-<a id="ac6950c3ce93c9f020cef089f01c29a09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6950c3ce93c9f020cef089f01c29a09">&#9670;&nbsp;</a></span>cuda_array</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00135">135</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a627ebdf51c846a811213006024dd9b22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627ebdf51c846a811213006024dd9b22">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array_desc = cudaCreateChannelDesc&lt;T&gt;()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a2cfad770dfee8b8d7709cb2e9efb8f5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cfad770dfee8b8d7709cb2e9efb8f5e">&#9670;&nbsp;</a></span>cuda_resource</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_resource = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00134">134</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a624f6b7a3eabdc04db7578e5a5dd626d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a624f6b7a3eabdc04db7578e5a5dd626d">&#9670;&nbsp;</a></span>pitch</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::pitch</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ae63bcb05bb28dab1da9d834a9c9ec264"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae63bcb05bb28dab1da9d834a9c9ec264">&#9670;&nbsp;</a></span>texture_ref</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::texture_ref = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00133">133</a> 行定义.</p>
-
-</div>
-</div>
-
-</div>
-</div>
-<a name="structcommon_1_1cuda_1_1shared__texture__1d__t" id="structcommon_1_1cuda_1_1shared__texture__1d__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__1d__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_1d_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct common::cuda::shared_texture_1d_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="textblock"><h3>template&lt;class T&gt;<br />
-struct common::cuda::shared_texture_1d_t&lt; T &gt;</h3>
-
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00140">140</a> 行定义.</p>
-</div><div class="dynheader">
-类 common::cuda::shared_texture_1d_t&lt; T &gt; 继承关系图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__1d__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__1d__t_3_01_t_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_01_4_inherit__map">
-<area shape="rect"  title=" " alt="" coords="5,95,160,136"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,5,160,47"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<div class="dynheader">
-common::cuda::shared_texture_1d_t&lt; T &gt; 的协作图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__1d__t__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__1d__t_3_01_t_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_01_4_coll__map" id="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_01_4_coll__map">
-<area shape="rect"  title=" " alt="" coords="104,109,259,151"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,5,160,47"/>
-<area shape="rect"  title=" " alt="" coords="185,13,375,39"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<table class="memberdecls">
-<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
-<tr class="memitem:a2ee98d5dcef6b32c62c573eb6bf05937"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2ee98d5dcef6b32c62c573eb6bf05937">~shared_texture_1d_t</a> ()</td></tr>
-<tr class="separator:a2ee98d5dcef6b32c62c573eb6bf05937"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
-<tr class="memitem:a2d20ae4b573ae23cbeed67941afb10ae"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Texture1D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2d20ae4b573ae23cbeed67941afb10ae">p_d3d11_texture_1d</a></td></tr>
-<tr class="separator:a2d20ae4b573ae23cbeed67941afb10ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72b6bb2c275481cd0da8f07f8307c6e6"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a72b6bb2c275481cd0da8f07f8307c6e6">width</a></td></tr>
-<tr class="separator:a72b6bb2c275481cd0da8f07f8307c6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ae63bcb05bb28dab1da9d834a9c9ec264">texture_ref</a> = nullptr</td></tr>
-<tr class="separator:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2cfad770dfee8b8d7709cb2e9efb8f5e">cuda_resource</a> = nullptr</td></tr>
-<tr class="separator:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6950c3ce93c9f020cef089f01c29a09"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac6950c3ce93c9f020cef089f01c29a09">cuda_array</a> = nullptr</td></tr>
-<tr class="separator:ac6950c3ce93c9f020cef089f01c29a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627ebdf51c846a811213006024dd9b22"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a627ebdf51c846a811213006024dd9b22">cuda_array_desc</a> = cudaCreateChannelDesc&lt;T&gt;()</td></tr>
-<tr class="separator:a627ebdf51c846a811213006024dd9b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a624f6b7a3eabdc04db7578e5a5dd626d">pitch</a></td></tr>
-<tr class="separator:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h4 class="groupheader">构造及析构函数说明</h4>
-<a id="a2ee98d5dcef6b32c62c573eb6bf05937"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ee98d5dcef6b32c62c573eb6bf05937">&#9670;&nbsp;</a></span>~shared_texture_1d_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t</a>&lt; T &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">shared_texture_1d_t</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00142">142</a> 行定义.</p>
-
-</div>
-</div>
-<h4 class="groupheader">类成员变量说明</h4>
-<a id="ac6950c3ce93c9f020cef089f01c29a09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6950c3ce93c9f020cef089f01c29a09">&#9670;&nbsp;</a></span>cuda_array</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00135">135</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a627ebdf51c846a811213006024dd9b22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627ebdf51c846a811213006024dd9b22">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array_desc = cudaCreateChannelDesc&lt;T&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a2cfad770dfee8b8d7709cb2e9efb8f5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cfad770dfee8b8d7709cb2e9efb8f5e">&#9670;&nbsp;</a></span>cuda_resource</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_resource = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00134">134</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a2d20ae4b573ae23cbeed67941afb10ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d20ae4b573ae23cbeed67941afb10ae">&#9670;&nbsp;</a></span>p_d3d11_texture_1d</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D11Texture1D&gt; <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t</a>&lt; T &gt;::p_d3d11_texture_1d</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00142">142</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a624f6b7a3eabdc04db7578e5a5dd626d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a624f6b7a3eabdc04db7578e5a5dd626d">&#9670;&nbsp;</a></span>pitch</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::pitch</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ae63bcb05bb28dab1da9d834a9c9ec264"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae63bcb05bb28dab1da9d834a9c9ec264">&#9670;&nbsp;</a></span>texture_ref</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::texture_ref = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00133">133</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a72b6bb2c275481cd0da8f07f8307c6e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72b6bb2c275481cd0da8f07f8307c6e6">&#9670;&nbsp;</a></span>width</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t</a>&lt; T &gt;::width</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00144">144</a> 行定义.</p>
-
-</div>
-</div>
-
-</div>
-</div>
-<a name="structcommon_1_1cuda_1_1shared__texture__2d__t" id="structcommon_1_1cuda_1_1shared__texture__2d__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__2d__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_2d_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct common::cuda::shared_texture_2d_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="textblock"><h3>template&lt;class T&gt;<br />
-struct common::cuda::shared_texture_2d_t&lt; T &gt;</h3>
-
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00147">147</a> 行定义.</p>
-</div><div class="dynheader">
-类 common::cuda::shared_texture_2d_t&lt; T &gt; 继承关系图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__2d__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__2d__t_3_01_t_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_01_4_inherit__map">
-<area shape="rect"  title=" " alt="" coords="5,95,160,136"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,5,160,47"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<div class="dynheader">
-common::cuda::shared_texture_2d_t&lt; T &gt; 的协作图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__2d__t__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__2d__t_3_01_t_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_01_4_coll__map" id="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_01_4_coll__map">
-<area shape="rect"  title=" " alt="" coords="104,109,259,151"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,5,160,47"/>
-<area shape="rect"  title=" " alt="" coords="185,13,375,39"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<table class="memberdecls">
-<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
-<tr class="memitem:a3472a1425da279db6d4ca2a6cca9ff23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a3472a1425da279db6d4ca2a6cca9ff23">~shared_texture_2d_t</a> ()</td></tr>
-<tr class="separator:a3472a1425da279db6d4ca2a6cca9ff23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
-<tr class="memitem:afff479e857b7861430d97c07834ff1b4"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Texture2D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#afff479e857b7861430d97c07834ff1b4">p_d3d11_texture_2d</a></td></tr>
-<tr class="separator:afff479e857b7861430d97c07834ff1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d90f0adcf06ce5134a92d3245845db"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a45d90f0adcf06ce5134a92d3245845db">width</a></td></tr>
-<tr class="separator:a45d90f0adcf06ce5134a92d3245845db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33b3222483ae45ff4041acf88ad32041"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a33b3222483ae45ff4041acf88ad32041">height</a></td></tr>
-<tr class="separator:a33b3222483ae45ff4041acf88ad32041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ae63bcb05bb28dab1da9d834a9c9ec264">texture_ref</a> = nullptr</td></tr>
-<tr class="separator:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2cfad770dfee8b8d7709cb2e9efb8f5e">cuda_resource</a> = nullptr</td></tr>
-<tr class="separator:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6950c3ce93c9f020cef089f01c29a09"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac6950c3ce93c9f020cef089f01c29a09">cuda_array</a> = nullptr</td></tr>
-<tr class="separator:ac6950c3ce93c9f020cef089f01c29a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627ebdf51c846a811213006024dd9b22"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a627ebdf51c846a811213006024dd9b22">cuda_array_desc</a> = cudaCreateChannelDesc&lt;T&gt;()</td></tr>
-<tr class="separator:a627ebdf51c846a811213006024dd9b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a624f6b7a3eabdc04db7578e5a5dd626d">pitch</a></td></tr>
-<tr class="separator:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h4 class="groupheader">构造及析构函数说明</h4>
-<a id="a3472a1425da279db6d4ca2a6cca9ff23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3472a1425da279db6d4ca2a6cca9ff23">&#9670;&nbsp;</a></span>~shared_texture_2d_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00149">149</a> 行定义.</p>
-
-</div>
-</div>
-<h4 class="groupheader">类成员变量说明</h4>
-<a id="ac6950c3ce93c9f020cef089f01c29a09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6950c3ce93c9f020cef089f01c29a09">&#9670;&nbsp;</a></span>cuda_array</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00135">135</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a627ebdf51c846a811213006024dd9b22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627ebdf51c846a811213006024dd9b22">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array_desc = cudaCreateChannelDesc&lt;T&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a2cfad770dfee8b8d7709cb2e9efb8f5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cfad770dfee8b8d7709cb2e9efb8f5e">&#9670;&nbsp;</a></span>cuda_resource</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_resource = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00134">134</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a33b3222483ae45ff4041acf88ad32041"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33b3222483ae45ff4041acf88ad32041">&#9670;&nbsp;</a></span>height</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T &gt;::height</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00152">152</a> 行定义.</p>
-
-</div>
-</div>
-<a id="afff479e857b7861430d97c07834ff1b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afff479e857b7861430d97c07834ff1b4">&#9670;&nbsp;</a></span>p_d3d11_texture_2d</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D11Texture2D&gt; <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T &gt;::p_d3d11_texture_2d</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00149">149</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a624f6b7a3eabdc04db7578e5a5dd626d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a624f6b7a3eabdc04db7578e5a5dd626d">&#9670;&nbsp;</a></span>pitch</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::pitch</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ae63bcb05bb28dab1da9d834a9c9ec264"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae63bcb05bb28dab1da9d834a9c9ec264">&#9670;&nbsp;</a></span>texture_ref</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::texture_ref = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00133">133</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a45d90f0adcf06ce5134a92d3245845db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45d90f0adcf06ce5134a92d3245845db">&#9670;&nbsp;</a></span>width</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T &gt;::width</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00151">151</a> 行定义.</p>
-
-</div>
-</div>
-
-</div>
-</div>
-<a name="structcommon_1_1cuda_1_1shared__texture__3d__t" id="structcommon_1_1cuda_1_1shared__texture__3d__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__3d__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_3d_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct common::cuda::shared_texture_3d_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="textblock"><h3>template&lt;class T&gt;<br />
-struct common::cuda::shared_texture_3d_t&lt; T &gt;</h3>
-
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00155">155</a> 行定义.</p>
-</div><div class="dynheader">
-类 common::cuda::shared_texture_3d_t&lt; T &gt; 继承关系图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__3d__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__3d__t_3_01_t_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_01_4_inherit__map">
-<area shape="rect"  title=" " alt="" coords="5,95,160,136"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,5,160,47"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<div class="dynheader">
-common::cuda::shared_texture_3d_t&lt; T &gt; 的协作图:</div>
-<div class="dyncontent">
-<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__3d__t__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__3d__t_3_01_t_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_01_4_coll__map" id="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_01_4_coll__map">
-<area shape="rect"  title=" " alt="" coords="104,109,259,151"/>
-<area shape="rect"  href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t" title="DX11åCUDAå±äº«ççº¹çæ°æ®ç»æ" alt="" coords="5,5,160,47"/>
-<area shape="rect"  title=" " alt="" coords="185,13,375,39"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<table class="memberdecls">
-<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
-<tr class="memitem:a9324c569fac4a5bafa37757d25421692"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a9324c569fac4a5bafa37757d25421692">~shared_texture_3d_t</a> ()</td></tr>
-<tr class="separator:a9324c569fac4a5bafa37757d25421692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
-<tr class="memitem:a69d7c70fc877e8001f0d7230e8ed5983"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Texture3D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a69d7c70fc877e8001f0d7230e8ed5983">p_d3d11_texture_3d</a></td></tr>
-<tr class="separator:a69d7c70fc877e8001f0d7230e8ed5983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab15f244a5f96c96264d01839895864d6"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ab15f244a5f96c96264d01839895864d6">width</a></td></tr>
-<tr class="separator:ab15f244a5f96c96264d01839895864d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab074342e88567d08d76e66d8cc98a940"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ab074342e88567d08d76e66d8cc98a940">height</a></td></tr>
-<tr class="separator:ab074342e88567d08d76e66d8cc98a940"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0337ae8dc69a07fe48630247dce9538b"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a0337ae8dc69a07fe48630247dce9538b">depth</a></td></tr>
-<tr class="separator:a0337ae8dc69a07fe48630247dce9538b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ae63bcb05bb28dab1da9d834a9c9ec264">texture_ref</a> = nullptr</td></tr>
-<tr class="separator:ae63bcb05bb28dab1da9d834a9c9ec264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2cfad770dfee8b8d7709cb2e9efb8f5e">cuda_resource</a> = nullptr</td></tr>
-<tr class="separator:a2cfad770dfee8b8d7709cb2e9efb8f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6950c3ce93c9f020cef089f01c29a09"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac6950c3ce93c9f020cef089f01c29a09">cuda_array</a> = nullptr</td></tr>
-<tr class="separator:ac6950c3ce93c9f020cef089f01c29a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627ebdf51c846a811213006024dd9b22"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a627ebdf51c846a811213006024dd9b22">cuda_array_desc</a> = cudaCreateChannelDesc&lt;T&gt;()</td></tr>
-<tr class="separator:a627ebdf51c846a811213006024dd9b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a624f6b7a3eabdc04db7578e5a5dd626d">pitch</a></td></tr>
-<tr class="separator:a624f6b7a3eabdc04db7578e5a5dd626d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h4 class="groupheader">构造及析构函数说明</h4>
-<a id="a9324c569fac4a5bafa37757d25421692"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9324c569fac4a5bafa37757d25421692">&#9670;&nbsp;</a></span>~shared_texture_3d_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">shared_texture_3d_t</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00157">157</a> 行定义.</p>
-
-</div>
-</div>
-<h4 class="groupheader">类成员变量说明</h4>
-<a id="ac6950c3ce93c9f020cef089f01c29a09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6950c3ce93c9f020cef089f01c29a09">&#9670;&nbsp;</a></span>cuda_array</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00135">135</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a627ebdf51c846a811213006024dd9b22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627ebdf51c846a811213006024dd9b22">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_array_desc = cudaCreateChannelDesc&lt;T&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a2cfad770dfee8b8d7709cb2e9efb8f5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cfad770dfee8b8d7709cb2e9efb8f5e">&#9670;&nbsp;</a></span>cuda_resource</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::cuda_resource = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00134">134</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a0337ae8dc69a07fe48630247dce9538b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0337ae8dc69a07fe48630247dce9538b">&#9670;&nbsp;</a></span>depth</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T &gt;::depth</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00161">161</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ab074342e88567d08d76e66d8cc98a940"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab074342e88567d08d76e66d8cc98a940">&#9670;&nbsp;</a></span>height</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T &gt;::height</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00160">160</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a69d7c70fc877e8001f0d7230e8ed5983"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69d7c70fc877e8001f0d7230e8ed5983">&#9670;&nbsp;</a></span>p_d3d11_texture_3d</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">ComPtr&lt;ID3D11Texture3D&gt; <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T &gt;::p_d3d11_texture_3d</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00157">157</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a624f6b7a3eabdc04db7578e5a5dd626d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a624f6b7a3eabdc04db7578e5a5dd626d">&#9670;&nbsp;</a></span>pitch</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::pitch</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ae63bcb05bb28dab1da9d834a9c9ec264"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae63bcb05bb28dab1da9d834a9c9ec264">&#9670;&nbsp;</a></span>texture_ref</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T &gt;::texture_ref = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00133">133</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ab15f244a5f96c96264d01839895864d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab15f244a5f96c96264d01839895864d6">&#9670;&nbsp;</a></span>width</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T &gt;::width</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00159">159</a> 行定义.</p>
-
-</div>
-</div>
-
-</div>
-</div>
-<a name="classcommon_1_1cuda_1_1texture2d__cvt__gpumat" id="classcommon_1_1cuda_1_1texture2d__cvt__gpumat"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">&#9670;&nbsp;</a></span>common::cuda::texture2d_cvt_gpumat</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">class common::cuda::texture2d_cvt_gpumat</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00199">199</a> 行定义.</p>
-</div><div class="dynheader">
-common::cuda::texture2d_cvt_gpumat 的协作图:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcommon_1_1cuda_1_1texture2d__cvt__gpumat__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1texture2d__cvt__gpumat_coll__map" alt="Collaboration graph"/></div>
-<map name="common_1_1cuda_1_1texture2d__cvt__gpumat_coll__map" id="common_1_1cuda_1_1texture2d__cvt__gpumat_coll__map">
-<area shape="rect"  title=" " alt="" coords="737,58,908,99"/>
-<area shape="rect"  title=" " alt="" coords="365,5,536,32"/>
-<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="369,57,533,98"/>
-<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="23,27,178,69"/>
-<area shape="rect"  title=" " alt="" coords="5,93,196,120"/>
-<area shape="rect"  title=" " alt="" coords="367,123,534,149"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
-<table class="memberdecls">
-<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
-<tr class="memitem:a330e51dfd2c892c2ed9de7494c78efeb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a330e51dfd2c892c2ed9de7494c78efeb">texture2d_cvt_gpumat</a> ()</td></tr>
-<tr class="separator:a330e51dfd2c892c2ed9de7494c78efeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18bca47153b72b34ac1664f1e576cb74"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a18bca47153b72b34ac1664f1e576cb74">~texture2d_cvt_gpumat</a> ()</td></tr>
-<tr class="separator:a18bca47153b72b34ac1664f1e576cb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bb7d9a1d1d19b9be4a8bb3c830f82a8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a7bb7d9a1d1d19b9be4a8bb3c830f82a8">init</a> ()</td></tr>
-<tr class="separator:a7bb7d9a1d1d19b9be4a8bb3c830f82a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addc82a96c1c08c515934580aa9791cdc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#addc82a96c1c08c515934580aa9791cdc">register_resource_for_gpumat_to_texture2d</a> (int width, int height)</td></tr>
-<tr class="separator:addc82a96c1c08c515934580aa9791cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a005b0a2415ed38401525839db4707880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a005b0a2415ed38401525839db4707880">unregister_resource_for_gpumat_to_texture2d</a> ()</td></tr>
-<tr class="separator:a005b0a2415ed38401525839db4707880"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2db42c301e494241135276c3180eede7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2db42c301e494241135276c3180eede7">texture2d_to_gpumat</a> (ID3D11Texture2D *p_src_texture, cv::cuda::GpuMat &amp;dst_gpumat)</td></tr>
-<tr class="separator:a2db42c301e494241135276c3180eede7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11a58fac3f00c1bd9286b394ee431c1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a11a58fac3f00c1bd9286b394ee431c1e">gpumat_to_texture2d</a> (const cv::cuda::GpuMat &amp;src_gpumat, ID3D11Texture2D **pp_dst_texture, ID3D11Device *p_dst_device)</td></tr>
-<tr class="memdesc:a11a58fac3f00c1bd9286b394ee431c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">gpumat到texture2d的转换  <a href="#a11a58fac3f00c1bd9286b394ee431c1e">更多...</a><br /></td></tr>
-<tr class="separator:a11a58fac3f00c1bd9286b394ee431c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><h3>Private 属性</h3></td></tr>
-<tr class="memitem:a0d494ec781365a8e85a17e415e1cfd22"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Device &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a0d494ec781365a8e85a17e415e1cfd22">mp_d3d11_device</a></td></tr>
-<tr class="memdesc:a0d494ec781365a8e85a17e415e1cfd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">D3D11设备  <a href="#a0d494ec781365a8e85a17e415e1cfd22">更多...</a><br /></td></tr>
-<tr class="separator:a0d494ec781365a8e85a17e415e1cfd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f47f36752bfea88cf9b9bc255e22dd0"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; IDXGIAdapter &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a8f47f36752bfea88cf9b9bc255e22dd0">mp_cuda_capable_adater</a></td></tr>
-<tr class="memdesc:a8f47f36752bfea88cf9b9bc255e22dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">CUDA需要的DX适配器  <a href="#a8f47f36752bfea88cf9b9bc255e22dd0">更多...</a><br /></td></tr>
-<tr class="separator:a8f47f36752bfea88cf9b9bc255e22dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4bee694ffd527fd8a7872a79d070efe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt; uchar4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#af4bee694ffd527fd8a7872a79d070efe">mt_texture2d_to_gpumat</a></td></tr>
-<tr class="memdesc:af4bee694ffd527fd8a7872a79d070efe"><td class="mdescLeft">&#160;</td><td class="mdescRight">共享纹理对象  <a href="#af4bee694ffd527fd8a7872a79d070efe">更多...</a><br /></td></tr>
-<tr class="separator:af4bee694ffd527fd8a7872a79d070efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00bc7d5d56f6932f3c52edf877ae7ffe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt; uchar4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a00bc7d5d56f6932f3c52edf877ae7ffe">mt_gpumat_to_texture2d</a></td></tr>
-<tr class="memdesc:a00bc7d5d56f6932f3c52edf877ae7ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">共享纹理对象  <a href="#a00bc7d5d56f6932f3c52edf877ae7ffe">更多...</a><br /></td></tr>
-<tr class="separator:a00bc7d5d56f6932f3c52edf877ae7ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h4 class="groupheader">构造及析构函数说明</h4>
-<a id="a330e51dfd2c892c2ed9de7494c78efeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a330e51dfd2c892c2ed9de7494c78efeb">&#9670;&nbsp;</a></span>texture2d_cvt_gpumat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">common::cuda::texture2d_cvt_gpumat::texture2d_cvt_gpumat </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00202">202</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a18bca47153b72b34ac1664f1e576cb74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18bca47153b72b34ac1664f1e576cb74">&#9670;&nbsp;</a></span>~texture2d_cvt_gpumat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">common::cuda::texture2d_cvt_gpumat::~texture2d_cvt_gpumat </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00203">203</a> 行定义.</p>
-
-</div>
-</div>
 <h4 class="groupheader">成员函数说明</h4>
-<a id="a11a58fac3f00c1bd9286b394ee431c1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11a58fac3f00c1bd9286b394ee431c1e">&#9670;&nbsp;</a></span>gpumat_to_texture2d()</h2>
+<a id="a72f44d404fea19fee3fa2cb6dc646044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72f44d404fea19fee3fa2cb6dc646044">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1312,57 +224,10 @@ common::cuda::texture2d_cvt_gpumat 的协作图:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::gpumat_to_texture2d </td>
+          <td class="memname">cudaError_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1cuda__get__texture__reference">common::cuda::cuda_get_texture_reference</a>&lt; uchar4, cudaTextureType2D, cudaReadModeElementType &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype">const cv::cuda::GpuMat &amp;&#160;</td>
-          <td class="paramname"><em>src_gpumat</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ID3D11Texture2D **&#160;</td>
-          <td class="paramname"><em>pp_dst_texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ID3D11Device *&#160;</td>
-          <td class="paramname"><em>p_dst_device</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>gpumat到texture2d的转换 </p>
-<dl class="section attention"><dt>注意</dt><dd>使用前需要注册一次资源,使用结束后需要取消注册,并且同一分辨率只能注册一次,若分辨率更改需要重新注册, CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory. </dd></dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#addc82a96c1c08c515934580aa9791cdc">register_resource_for_gpumat_to_texture2d</a> , <a class="el" href="group__cuda.html#a005b0a2415ed38401525839db4707880">unregister_resource_for_gpumat_to_texture2d</a> </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00274">274</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a7bb7d9a1d1d19b9be4a8bb3c830f82a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bb7d9a1d1d19b9be4a8bb3c830f82a8">&#9670;&nbsp;</a></span>init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::init </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const textureReference **&#160;</td>
+          <td class="paramname"><em>texref</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1373,50 +238,38 @@ common::cuda::texture2d_cvt_gpumat 的协作图:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00213">213</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="texture__reference_8hpp_source.html">texture_reference.hpp</a> 第 <a class="el" href="texture__reference_8hpp_source.html#l00025">25</a> 行定义.</p>
 
 </div>
 </div>
-<a id="addc82a96c1c08c515934580aa9791cdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addc82a96c1c08c515934580aa9791cdc">&#9670;&nbsp;</a></span>register_resource_for_gpumat_to_texture2d()</h2>
+
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01float4_00_01cuda_texture_type2_d_00_015eba66a442b47ceaf5e512c9cc2c13a1" id="structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01float4_00_01cuda_texture_type2_d_00_015eba66a442b47ceaf5e512c9cc2c13a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1cuda__get__texture__reference_3_01float4_00_01cuda_texture_type2_d_00_015eba66a442b47ceaf5e512c9cc2c13a1">&#9670;&nbsp;</a></span>common::cuda::cuda_get_texture_reference&lt; float4, cudaTextureType2D, cudaReadModeElementType &gt;</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::register_resource_for_gpumat_to_texture2d </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">struct common::cuda::cuda_get_texture_reference&lt; float4, cudaTextureType2D, cudaReadModeElementType &gt;</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+<div class="textblock"><h3>template&lt;&gt;<br />
+struct common::cuda::cuda_get_texture_reference&lt; float4, cudaTextureType2D, cudaReadModeElementType &gt;</h3>
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00225">225</a> 行定义.</p>
+<p>这是为便于使用而提供的一个重载成员函数.与上面的函数相比，它接受不同类型的参数. </p>
 
-</div>
-</div>
-<a id="a2db42c301e494241135276c3180eede7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2db42c301e494241135276c3180eede7">&#9670;&nbsp;</a></span>texture2d_to_gpumat()</h2>
+<p class="definition">在文件 <a class="el" href="texture__reference_8hpp_source.html">texture_reference.hpp</a> 第 <a class="el" href="texture__reference_8hpp_source.html#l00031">31</a> 行定义.</p>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a75442e0c3e8a7a959003864542c683cb"><td class="memItemLeft" align="right" valign="top">cudaError_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a75442e0c3e8a7a959003864542c683cb">operator()</a> (const textureReference **texref)</td></tr>
+<tr class="separator:a75442e0c3e8a7a959003864542c683cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">成员函数说明</h4>
+<a id="a75442e0c3e8a7a959003864542c683cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75442e0c3e8a7a959003864542c683cb">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1425,47 +278,10 @@ common::cuda::texture2d_cvt_gpumat 的协作图:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool common::cuda::texture2d_cvt_gpumat::texture2d_to_gpumat </td>
+          <td class="memname">cudaError_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1cuda__get__texture__reference">common::cuda::cuda_get_texture_reference</a>&lt; float4, cudaTextureType2D, cudaReadModeElementType &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype">ID3D11Texture2D *&#160;</td>
-          <td class="paramname"><em>p_src_texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
-          <td class="paramname"><em>dst_gpumat</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00240">240</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a005b0a2415ed38401525839db4707880"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a005b0a2415ed38401525839db4707880">&#9670;&nbsp;</a></span>unregister_resource_for_gpumat_to_texture2d()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void common::cuda::texture2d_cvt_gpumat::unregister_resource_for_gpumat_to_texture2d </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const textureReference **&#160;</td>
+          <td class="paramname"><em>texref</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1476,182 +292,49 @@ common::cuda::texture2d_cvt_gpumat 的协作图:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00236">236</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="texture__reference_8hpp_source.html">texture_reference.hpp</a> 第 <a class="el" href="texture__reference_8hpp_source.html#l00032">32</a> 行定义.</p>
 
 </div>
 </div>
-<h4 class="groupheader">类成员变量说明</h4>
-<a id="a8f47f36752bfea88cf9b9bc255e22dd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f47f36752bfea88cf9b9bc255e22dd0">&#9670;&nbsp;</a></span>mp_cuda_capable_adater</h2>
+
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1_check_cuda_ret" id="structcommon_1_1cuda_1_1_check_cuda_ret"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1_check_cuda_ret">&#9670;&nbsp;</a></span>common::cuda::CheckCudaRet</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ComPtr&lt;IDXGIAdapter&gt; common::cuda::texture2d_cvt_gpumat::mp_cuda_capable_adater</td>
+          <td class="memname">struct common::cuda::CheckCudaRet</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename T = char&gt;<br />
+struct common::cuda::CheckCudaRet&lt; T &gt;</h3>
+
+<p>cudaError_t检查,若失败会中断程序 </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00065">65</a> 行定义.</p>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a79590f3f92e86b264f8b25c9874eec78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a79590f3f92e86b264f8b25c9874eec78">operator()</a> (cudaError_t result, char const *const func, const char *const file, int const line)</td></tr>
+<tr class="separator:a79590f3f92e86b264f8b25c9874eec78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><div class="memdoc">
-
-<p>CUDA需要的DX适配器 </p>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00293">293</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a0d494ec781365a8e85a17e415e1cfd22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d494ec781365a8e85a17e415e1cfd22">&#9670;&nbsp;</a></span>mp_d3d11_device</h2>
+<h4 class="groupheader">成员函数说明</h4>
+<a id="a79590f3f92e86b264f8b25c9874eec78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79590f3f92e86b264f8b25c9874eec78">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ComPtr&lt;ID3D11Device&gt; common::cuda::texture2d_cvt_gpumat::mp_d3d11_device</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>D3D11设备 </p>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00290">290</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a00bc7d5d56f6932f3c52edf877ae7ffe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00bc7d5d56f6932f3c52edf877ae7ffe">&#9670;&nbsp;</a></span>mt_gpumat_to_texture2d</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt;uchar4&gt; common::cuda::texture2d_cvt_gpumat::mt_gpumat_to_texture2d</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>共享纹理对象 </p>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00295">295</a> 行定义.</p>
-
-</div>
-</div>
-<a id="af4bee694ffd527fd8a7872a79d070efe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4bee694ffd527fd8a7872a79d070efe">&#9670;&nbsp;</a></span>mt_texture2d_to_gpumat</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt;uchar4&gt; common::cuda::texture2d_cvt_gpumat::mt_texture2d_to_gpumat</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>共享纹理对象 </p>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00294">294</a> 行定义.</p>
-
-</div>
-</div>
-
-</div>
-</div>
-<h2 class="groupheader">宏定义说明</h2>
-<a id="ga0cb317a3c6744bd5dbefe00e1a8a03d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0cb317a3c6744bd5dbefe00e1a8a03d0">&#9670;&nbsp;</a></span>checkCudaRet</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define checkCudaRet</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;checkCudaRet((val), #val, __FILE__, __LINE__)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>cuda函数返回值检查,若失败会中断程序 </p>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00079">79</a> 行定义.</p>
-
-</div>
-</div>
-<h2 class="groupheader">函数说明</h2>
-<a id="ga6a097db82b5293c474022ad455364bc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6a097db82b5293c474022ad455364bc4">&#9670;&nbsp;</a></span>checkCUDADevice()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static cudaError_t common::cuda::checkCUDADevice </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>CUDA设备检查 </p>
-
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00084">84</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ga4473d5189817e79888383aef69e9f915"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4473d5189817e79888383aef69e9f915">&#9670;&nbsp;</a></span>checkCudaRet()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void common::cuda::checkCudaRet </td>
+          <td class="memname">void <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1_check_cuda_ret">common::cuda::CheckCudaRet</a>&lt; T &gt;::operator() </td>
           <td>(</td>
           <td class="paramtype">cudaError_t&#160;</td>
           <td class="paramname"><em>result</em>, </td>
@@ -1682,27 +365,1598 @@ common::cuda::texture2d_cvt_gpumat 的协作图:</div>
       </table>
   </td>
   <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00066">66</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1shared__texture__t" id="structcommon_1_1cuda_1_1shared__texture__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct common::cuda::shared_texture_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt;<br />
+struct common::cuda::shared_texture_t&lt; T, texType, mode &gt;</h3>
+
+<p>DX11和CUDA共享的纹理数据结构 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">待办事项:</a></b></dt><dd>考虑基类使用ID3D11Resource </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00126">126</a> 行定义.</p>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:abfa7cb98e5faddefef996f37281b1f2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#abfa7cb98e5faddefef996f37281b1f2e">shared_texture_t</a> ()</td></tr>
+<tr class="separator:abfa7cb98e5faddefef996f37281b1f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a804a7838543c7976df79bc7235d76bcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a804a7838543c7976df79bc7235d76bcd">~shared_texture_t</a> ()</td></tr>
+<tr class="separator:a804a7838543c7976df79bc7235d76bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
+<tr class="memitem:ace3fe082a89ea253f370662479fab7cd"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ace3fe082a89ea253f370662479fab7cd">texture_ref</a> = nullptr</td></tr>
+<tr class="separator:ace3fe082a89ea253f370662479fab7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62a21bb4b30bdd87e638767736910a1"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac62a21bb4b30bdd87e638767736910a1">cuda_resource</a> = nullptr</td></tr>
+<tr class="separator:ac62a21bb4b30bdd87e638767736910a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67b9ae07b15dca235e681790feca2b17"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a67b9ae07b15dca235e681790feca2b17">cuda_array</a> = nullptr</td></tr>
+<tr class="separator:a67b9ae07b15dca235e681790feca2b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeca03a7801b1fbb9f08609b80117f69"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#adeca03a7801b1fbb9f08609b80117f69">cuda_array_desc</a> = cudaCreateChannelDesc&lt;T&gt;()</td></tr>
+<tr class="separator:adeca03a7801b1fbb9f08609b80117f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896d23301075d7a3415c1aa760d0302b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a896d23301075d7a3415c1aa760d0302b">pitch</a></td></tr>
+<tr class="separator:a896d23301075d7a3415c1aa760d0302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">构造及析构函数说明</h4>
+<a id="abfa7cb98e5faddefef996f37281b1f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfa7cb98e5faddefef996f37281b1f2e">&#9670;&nbsp;</a></span>shared_texture_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">shared_texture_t</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>暂只支持uchar4和float4 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00130">130</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a804a7838543c7976df79bc7235d76bcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a804a7838543c7976df79bc7235d76bcd">&#9670;&nbsp;</a></span>~shared_texture_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">shared_texture_t</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00134">134</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">类成员变量说明</h4>
+<a id="a67b9ae07b15dca235e681790feca2b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b9ae07b15dca235e681790feca2b17">&#9670;&nbsp;</a></span>cuda_array</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00138">138</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adeca03a7801b1fbb9f08609b80117f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeca03a7801b1fbb9f08609b80117f69">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array_desc = cudaCreateChannelDesc&lt;T&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00139">139</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac62a21bb4b30bdd87e638767736910a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62a21bb4b30bdd87e638767736910a1">&#9670;&nbsp;</a></span>cuda_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_resource = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a896d23301075d7a3415c1aa760d0302b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896d23301075d7a3415c1aa760d0302b">&#9670;&nbsp;</a></span>pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::pitch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ace3fe082a89ea253f370662479fab7cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3fe082a89ea253f370662479fab7cd">&#9670;&nbsp;</a></span>texture_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, int texType, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::texture_ref = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1shared__texture__1d__t" id="structcommon_1_1cuda_1_1shared__texture__1d__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__1d__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_1d_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct common::cuda::shared_texture_1d_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt;<br />
+struct common::cuda::shared_texture_1d_t&lt; T, mode &gt;</h3>
+
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00143">143</a> 行定义.</p>
+</div><div class="dynheader">
+类 common::cuda::shared_texture_1d_t&lt; T, mode &gt; 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__1d__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__1d__t_3_01_t_00_01mode_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_00_01mode_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_00_01mode_01_4_inherit__map">
+<area shape="rect"  title=" " alt="" coords="26,109,198,151"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,219,61"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+common::cuda::shared_texture_1d_t&lt; T, mode &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__1d__t__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__1d__t_3_01_t_00_01mode_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_00_01mode_01_4_coll__map" id="common_1_1cuda_1_1shared__texture__1d__t_3_01_t_00_01mode_01_4_coll__map">
+<area shape="rect"  title=" " alt="" coords="388,46,560,87"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,219,61"/>
+<area shape="rect"  title=" " alt="" coords="17,85,207,112"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a097acacae46481a8c45af52becf0a260"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a097acacae46481a8c45af52becf0a260">~shared_texture_1d_t</a> ()</td></tr>
+<tr class="separator:a097acacae46481a8c45af52becf0a260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
+<tr class="memitem:a63443cfc4793ffbabab5285dab04f8e8"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Texture1D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a63443cfc4793ffbabab5285dab04f8e8">p_d3d11_texture_1d</a></td></tr>
+<tr class="separator:a63443cfc4793ffbabab5285dab04f8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf2cb8bfd158058fa949115e36ea0c8b"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#adf2cb8bfd158058fa949115e36ea0c8b">width</a></td></tr>
+<tr class="separator:adf2cb8bfd158058fa949115e36ea0c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3fe082a89ea253f370662479fab7cd"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ace3fe082a89ea253f370662479fab7cd">texture_ref</a></td></tr>
+<tr class="separator:ace3fe082a89ea253f370662479fab7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62a21bb4b30bdd87e638767736910a1"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac62a21bb4b30bdd87e638767736910a1">cuda_resource</a></td></tr>
+<tr class="separator:ac62a21bb4b30bdd87e638767736910a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67b9ae07b15dca235e681790feca2b17"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a67b9ae07b15dca235e681790feca2b17">cuda_array</a></td></tr>
+<tr class="separator:a67b9ae07b15dca235e681790feca2b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeca03a7801b1fbb9f08609b80117f69"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#adeca03a7801b1fbb9f08609b80117f69">cuda_array_desc</a></td></tr>
+<tr class="separator:adeca03a7801b1fbb9f08609b80117f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896d23301075d7a3415c1aa760d0302b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a896d23301075d7a3415c1aa760d0302b">pitch</a></td></tr>
+<tr class="separator:a896d23301075d7a3415c1aa760d0302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">构造及析构函数说明</h4>
+<a id="a097acacae46481a8c45af52becf0a260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097acacae46481a8c45af52becf0a260">&#9670;&nbsp;</a></span>~shared_texture_1d_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t</a>&lt; T, mode &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">shared_texture_1d_t</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00145">145</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">类成员变量说明</h4>
+<a id="a67b9ae07b15dca235e681790feca2b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b9ae07b15dca235e681790feca2b17">&#9670;&nbsp;</a></span>cuda_array</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00138">138</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adeca03a7801b1fbb9f08609b80117f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeca03a7801b1fbb9f08609b80117f69">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array_desc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00139">139</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac62a21bb4b30bdd87e638767736910a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62a21bb4b30bdd87e638767736910a1">&#9670;&nbsp;</a></span>cuda_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_resource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a63443cfc4793ffbabab5285dab04f8e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63443cfc4793ffbabab5285dab04f8e8">&#9670;&nbsp;</a></span>p_d3d11_texture_1d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D11Texture1D&gt; <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t</a>&lt; T, mode &gt;::p_d3d11_texture_1d</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00145">145</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a896d23301075d7a3415c1aa760d0302b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896d23301075d7a3415c1aa760d0302b">&#9670;&nbsp;</a></span>pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::pitch</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ace3fe082a89ea253f370662479fab7cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3fe082a89ea253f370662479fab7cd">&#9670;&nbsp;</a></span>texture_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::texture_ref</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adf2cb8bfd158058fa949115e36ea0c8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf2cb8bfd158058fa949115e36ea0c8b">&#9670;&nbsp;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__1d__t">common::cuda::shared_texture_1d_t</a>&lt; T, mode &gt;::width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00147">147</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1shared__texture__2d__t" id="structcommon_1_1cuda_1_1shared__texture__2d__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__2d__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_2d_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct common::cuda::shared_texture_2d_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt;<br />
+struct common::cuda::shared_texture_2d_t&lt; T, mode &gt;</h3>
+
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00150">150</a> 行定义.</p>
+</div><div class="dynheader">
+类 common::cuda::shared_texture_2d_t&lt; T, mode &gt; 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__2d__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__2d__t_3_01_t_00_01mode_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_00_01mode_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_00_01mode_01_4_inherit__map">
+<area shape="rect"  title=" " alt="" coords="26,109,198,151"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,219,61"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+common::cuda::shared_texture_2d_t&lt; T, mode &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__2d__t__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__2d__t_3_01_t_00_01mode_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_00_01mode_01_4_coll__map" id="common_1_1cuda_1_1shared__texture__2d__t_3_01_t_00_01mode_01_4_coll__map">
+<area shape="rect"  title=" " alt="" coords="388,46,560,87"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,219,61"/>
+<area shape="rect"  title=" " alt="" coords="17,85,207,112"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a36a90777558d64717ad39fd05c6c428f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a36a90777558d64717ad39fd05c6c428f">~shared_texture_2d_t</a> ()</td></tr>
+<tr class="separator:a36a90777558d64717ad39fd05c6c428f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
+<tr class="memitem:a0d76eaf20472804b25e9405a57266d42"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Texture2D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a0d76eaf20472804b25e9405a57266d42">p_d3d11_texture_2d</a></td></tr>
+<tr class="separator:a0d76eaf20472804b25e9405a57266d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac69007dec8ba5d1cc22dff7f6ab0ea71"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac69007dec8ba5d1cc22dff7f6ab0ea71">width</a></td></tr>
+<tr class="separator:ac69007dec8ba5d1cc22dff7f6ab0ea71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41eff7eb4e2a6c5fcfbc2f829089fc8a"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a41eff7eb4e2a6c5fcfbc2f829089fc8a">height</a></td></tr>
+<tr class="separator:a41eff7eb4e2a6c5fcfbc2f829089fc8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3fe082a89ea253f370662479fab7cd"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ace3fe082a89ea253f370662479fab7cd">texture_ref</a></td></tr>
+<tr class="separator:ace3fe082a89ea253f370662479fab7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62a21bb4b30bdd87e638767736910a1"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac62a21bb4b30bdd87e638767736910a1">cuda_resource</a></td></tr>
+<tr class="separator:ac62a21bb4b30bdd87e638767736910a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67b9ae07b15dca235e681790feca2b17"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a67b9ae07b15dca235e681790feca2b17">cuda_array</a></td></tr>
+<tr class="separator:a67b9ae07b15dca235e681790feca2b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeca03a7801b1fbb9f08609b80117f69"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#adeca03a7801b1fbb9f08609b80117f69">cuda_array_desc</a></td></tr>
+<tr class="separator:adeca03a7801b1fbb9f08609b80117f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896d23301075d7a3415c1aa760d0302b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a896d23301075d7a3415c1aa760d0302b">pitch</a></td></tr>
+<tr class="separator:a896d23301075d7a3415c1aa760d0302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">构造及析构函数说明</h4>
+<a id="a36a90777558d64717ad39fd05c6c428f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36a90777558d64717ad39fd05c6c428f">&#9670;&nbsp;</a></span>~shared_texture_2d_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T, mode &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00152">152</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">类成员变量说明</h4>
+<a id="a67b9ae07b15dca235e681790feca2b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b9ae07b15dca235e681790feca2b17">&#9670;&nbsp;</a></span>cuda_array</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00138">138</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adeca03a7801b1fbb9f08609b80117f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeca03a7801b1fbb9f08609b80117f69">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array_desc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00139">139</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac62a21bb4b30bdd87e638767736910a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62a21bb4b30bdd87e638767736910a1">&#9670;&nbsp;</a></span>cuda_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_resource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a41eff7eb4e2a6c5fcfbc2f829089fc8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41eff7eb4e2a6c5fcfbc2f829089fc8a">&#9670;&nbsp;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T, mode &gt;::height</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00155">155</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0d76eaf20472804b25e9405a57266d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d76eaf20472804b25e9405a57266d42">&#9670;&nbsp;</a></span>p_d3d11_texture_2d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D11Texture2D&gt; <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T, mode &gt;::p_d3d11_texture_2d</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00152">152</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a896d23301075d7a3415c1aa760d0302b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896d23301075d7a3415c1aa760d0302b">&#9670;&nbsp;</a></span>pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::pitch</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ace3fe082a89ea253f370662479fab7cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3fe082a89ea253f370662479fab7cd">&#9670;&nbsp;</a></span>texture_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::texture_ref</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac69007dec8ba5d1cc22dff7f6ab0ea71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac69007dec8ba5d1cc22dff7f6ab0ea71">&#9670;&nbsp;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">common::cuda::shared_texture_2d_t</a>&lt; T, mode &gt;::width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00154">154</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<a name="structcommon_1_1cuda_1_1shared__texture__3d__t" id="structcommon_1_1cuda_1_1shared__texture__3d__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structcommon_1_1cuda_1_1shared__texture__3d__t">&#9670;&nbsp;</a></span>common::cuda::shared_texture_3d_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct common::cuda::shared_texture_3d_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename T, enum cudaTextureReadMode mode = cudaReadModeElementType&gt;<br />
+struct common::cuda::shared_texture_3d_t&lt; T, mode &gt;</h3>
+
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00158">158</a> 行定义.</p>
+</div><div class="dynheader">
+类 common::cuda::shared_texture_3d_t&lt; T, mode &gt; 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__3d__t__inherit__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__3d__t_3_01_t_00_01mode_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_00_01mode_01_4_inherit__map" id="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_00_01mode_01_4_inherit__map">
+<area shape="rect"  title=" " alt="" coords="26,109,198,151"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,219,61"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+common::cuda::shared_texture_3d_t&lt; T, mode &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon_1_1cuda_1_1shared__texture__3d__t__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1shared__texture__3d__t_3_01_t_00_01mode_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_00_01mode_01_4_coll__map" id="common_1_1cuda_1_1shared__texture__3d__t_3_01_t_00_01mode_01_4_coll__map">
+<area shape="rect"  title=" " alt="" coords="388,46,560,87"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,219,61"/>
+<area shape="rect"  title=" " alt="" coords="17,85,207,112"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a6b4b5dee7588b63a2490a3e162b9d0ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a6b4b5dee7588b63a2490a3e162b9d0ac">~shared_texture_3d_t</a> ()</td></tr>
+<tr class="separator:a6b4b5dee7588b63a2490a3e162b9d0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><h3>Public 属性</h3></td></tr>
+<tr class="memitem:afe74a2689663bdb96837fa5c83a41328"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Texture3D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#afe74a2689663bdb96837fa5c83a41328">p_d3d11_texture_3d</a></td></tr>
+<tr class="separator:afe74a2689663bdb96837fa5c83a41328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad7498f266a999876b4611aa89a9c8b"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a1ad7498f266a999876b4611aa89a9c8b">width</a></td></tr>
+<tr class="separator:a1ad7498f266a999876b4611aa89a9c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7213e0264d5e9d9c8e4f18bfb9fb8c76"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a7213e0264d5e9d9c8e4f18bfb9fb8c76">height</a></td></tr>
+<tr class="separator:a7213e0264d5e9d9c8e4f18bfb9fb8c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e0d348d10c3cc72d7876dd4b8340df"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a02e0d348d10c3cc72d7876dd4b8340df">depth</a></td></tr>
+<tr class="separator:a02e0d348d10c3cc72d7876dd4b8340df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3fe082a89ea253f370662479fab7cd"><td class="memItemLeft" align="right" valign="top">const textureReference *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ace3fe082a89ea253f370662479fab7cd">texture_ref</a></td></tr>
+<tr class="separator:ace3fe082a89ea253f370662479fab7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62a21bb4b30bdd87e638767736910a1"><td class="memItemLeft" align="right" valign="top">cudaGraphicsResource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac62a21bb4b30bdd87e638767736910a1">cuda_resource</a></td></tr>
+<tr class="separator:ac62a21bb4b30bdd87e638767736910a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67b9ae07b15dca235e681790feca2b17"><td class="memItemLeft" align="right" valign="top">cudaArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a67b9ae07b15dca235e681790feca2b17">cuda_array</a></td></tr>
+<tr class="separator:a67b9ae07b15dca235e681790feca2b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeca03a7801b1fbb9f08609b80117f69"><td class="memItemLeft" align="right" valign="top">cudaChannelFormatDesc&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#adeca03a7801b1fbb9f08609b80117f69">cuda_array_desc</a></td></tr>
+<tr class="separator:adeca03a7801b1fbb9f08609b80117f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896d23301075d7a3415c1aa760d0302b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a896d23301075d7a3415c1aa760d0302b">pitch</a></td></tr>
+<tr class="separator:a896d23301075d7a3415c1aa760d0302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">构造及析构函数说明</h4>
+<a id="a6b4b5dee7588b63a2490a3e162b9d0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b4b5dee7588b63a2490a3e162b9d0ac">&#9670;&nbsp;</a></span>~shared_texture_3d_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T, mode &gt;::~<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">shared_texture_3d_t</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00160">160</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">类成员变量说明</h4>
+<a id="a67b9ae07b15dca235e681790feca2b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b9ae07b15dca235e681790feca2b17">&#9670;&nbsp;</a></span>cuda_array</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaArray* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00138">138</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adeca03a7801b1fbb9f08609b80117f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeca03a7801b1fbb9f08609b80117f69">&#9670;&nbsp;</a></span>cuda_array_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaChannelFormatDesc <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_array_desc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00139">139</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac62a21bb4b30bdd87e638767736910a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62a21bb4b30bdd87e638767736910a1">&#9670;&nbsp;</a></span>cuda_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cudaGraphicsResource* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::cuda_resource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00137">137</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a02e0d348d10c3cc72d7876dd4b8340df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e0d348d10c3cc72d7876dd4b8340df">&#9670;&nbsp;</a></span>depth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T, mode &gt;::depth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00164">164</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7213e0264d5e9d9c8e4f18bfb9fb8c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7213e0264d5e9d9c8e4f18bfb9fb8c76">&#9670;&nbsp;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T, mode &gt;::height</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00163">163</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afe74a2689663bdb96837fa5c83a41328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe74a2689663bdb96837fa5c83a41328">&#9670;&nbsp;</a></span>p_d3d11_texture_3d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D11Texture3D&gt; <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T, mode &gt;::p_d3d11_texture_3d</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00160">160</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a896d23301075d7a3415c1aa760d0302b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896d23301075d7a3415c1aa760d0302b">&#9670;&nbsp;</a></span>pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::pitch</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ace3fe082a89ea253f370662479fab7cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3fe082a89ea253f370662479fab7cd">&#9670;&nbsp;</a></span>texture_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const textureReference* <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__t">common::cuda::shared_texture_t</a>&lt; T, texType, mode &gt;::texture_ref</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00136">136</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1ad7498f266a999876b4611aa89a9c8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ad7498f266a999876b4611aa89a9c8b">&#9670;&nbsp;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT <a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__3d__t">common::cuda::shared_texture_3d_t</a>&lt; T, mode &gt;::width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00162">162</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<a name="classcommon_1_1cuda_1_1texture2d__cvt__gpumat" id="classcommon_1_1cuda_1_1texture2d__cvt__gpumat"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">&#9670;&nbsp;</a></span>common::cuda::texture2d_cvt_gpumat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">class common::cuda::texture2d_cvt_gpumat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename T = uchar4&gt;<br />
+class common::cuda::texture2d_cvt_gpumat&lt; T &gt;</h3>
+
+<p>d3d11 texture2d 与opencv gpumat 互转 </p>
+<dl class="section attention"><dt>注意</dt><dd>目前只测试了uchar4( D3D R8G8B8A8 &lt;-&gt; opencv CV_8UC4 ),其他暂未支持 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>texture2d_to_gpumat,gpumat_to_texture2d需配合其对应的绑定解绑方法调用,并且不能跨线程. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00205">205</a> 行定义.</p>
+</div><div class="dynheader">
+common::cuda::texture2d_cvt_gpumat&lt; T &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcommon_1_1cuda_1_1texture2d__cvt__gpumat__coll__graph.png" border="0" usemap="#common_1_1cuda_1_1texture2d__cvt__gpumat_3_01_t_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="common_1_1cuda_1_1texture2d__cvt__gpumat_3_01_t_01_4_coll__map" id="common_1_1cuda_1_1texture2d__cvt__gpumat_3_01_t_01_4_coll__map">
+<area shape="rect"  title="d3d11 texture2d ä¸opencv gpumat äºè½¬" alt="" coords="764,105,935,146"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="400,46,555,87"/>
+<area shape="rect"  href="group__cuda.html" title=" " alt="" coords="5,5,223,61"/>
+<area shape="rect"  title=" " alt="" coords="19,85,209,112"/>
+<area shape="rect"  title=" " alt="" coords="392,112,563,139"/>
+<area shape="rect"  title=" " alt="" coords="394,163,561,189"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h3>Public 成员函数</h3></td></tr>
+<tr class="memitem:a9de3a4579ab2fbddb4ec21b2ada009c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a9de3a4579ab2fbddb4ec21b2ada009c1">texture2d_cvt_gpumat</a> ()</td></tr>
+<tr class="separator:a9de3a4579ab2fbddb4ec21b2ada009c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bf64cacb41386b5191abc6695dc0708"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a4bf64cacb41386b5191abc6695dc0708">~texture2d_cvt_gpumat</a> ()</td></tr>
+<tr class="separator:a4bf64cacb41386b5191abc6695dc0708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c0baa00578a5c3f13a9982cd8bfd4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a10c0baa00578a5c3f13a9982cd8bfd4f">bind_for_texture2d_to_gpumat</a> (ID3D11Texture2D *p_src_texture)</td></tr>
+<tr class="memdesc:a10c0baa00578a5c3f13a9982cd8bfd4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">texture2d_to_gpumat 之前调用一次,注册映射绑定资源  <a href="#a10c0baa00578a5c3f13a9982cd8bfd4f">更多...</a><br /></td></tr>
+<tr class="separator:a10c0baa00578a5c3f13a9982cd8bfd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc3f2e2dfbae60dfba7c655a540affe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a9dc3f2e2dfbae60dfba7c655a540affe">texture2d_to_gpumat</a> (cv::cuda::GpuMat &amp;dst_gpumat)</td></tr>
+<tr class="memdesc:a9dc3f2e2dfbae60dfba7c655a540affe"><td class="mdescLeft">&#160;</td><td class="mdescRight">texture2d到gpumat的转换  <a href="#a9dc3f2e2dfbae60dfba7c655a540affe">更多...</a><br /></td></tr>
+<tr class="separator:a9dc3f2e2dfbae60dfba7c655a540affe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2467a87c3c49a98f887cf19cfc30f64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#af2467a87c3c49a98f887cf19cfc30f64">texture2d_to_gpumat</a> (ID3D11Texture2D *p_src_texture, cv::cuda::GpuMat &amp;dst_gpumat)</td></tr>
+<tr class="separator:af2467a87c3c49a98f887cf19cfc30f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd0281ac7ea7a3f4eefe096c1930f15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a2bd0281ac7ea7a3f4eefe096c1930f15">unbind_for_texture2d_to_gpumat</a> ()</td></tr>
+<tr class="memdesc:a2bd0281ac7ea7a3f4eefe096c1930f15"><td class="mdescLeft">&#160;</td><td class="mdescRight">texture2d_to_gpumat 结束后调用一次,解除注册映射绑定资源  <a href="#a2bd0281ac7ea7a3f4eefe096c1930f15">更多...</a><br /></td></tr>
+<tr class="separator:a2bd0281ac7ea7a3f4eefe096c1930f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98a3f704c21521f55171e5d1ddc4a31c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a98a3f704c21521f55171e5d1ddc4a31c">bind_for_gpumat_to_texture2d</a> (int width, int height)</td></tr>
+<tr class="memdesc:a98a3f704c21521f55171e5d1ddc4a31c"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用  <a href="#a98a3f704c21521f55171e5d1ddc4a31c">更多...</a><br /></td></tr>
+<tr class="separator:a98a3f704c21521f55171e5d1ddc4a31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd70b18fe2739491d00394bb18c7d2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a8fd70b18fe2739491d00394bb18c7d2f">gpumat_to_texture2d</a> (cv::cuda::GpuMat src_gpumat, ID3D11Texture2D **pp_dst_texture, ID3D11Device *p_dst_device)</td></tr>
+<tr class="memdesc:a8fd70b18fe2739491d00394bb18c7d2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">gpumat到texture2d的转换  <a href="#a8fd70b18fe2739491d00394bb18c7d2f">更多...</a><br /></td></tr>
+<tr class="separator:a8fd70b18fe2739491d00394bb18c7d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ce26939011eefbe86854676df6d3b2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a6ce26939011eefbe86854676df6d3b2e">unbind_for_gpumat_to_texture2d</a> ()</td></tr>
+<tr class="memdesc:a6ce26939011eefbe86854676df6d3b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">gpumat_to_texture2d 调用结束后解绑  <a href="#a6ce26939011eefbe86854676df6d3b2e">更多...</a><br /></td></tr>
+<tr class="separator:a6ce26939011eefbe86854676df6d3b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><h3>Private 属性</h3></td></tr>
+<tr class="memitem:a94bb4eb4310d31cd08ca0faa559d6eab"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; ID3D11Device &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#a94bb4eb4310d31cd08ca0faa559d6eab">mp_d3d11_device</a></td></tr>
+<tr class="memdesc:a94bb4eb4310d31cd08ca0faa559d6eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">D3D11设备  <a href="#a94bb4eb4310d31cd08ca0faa559d6eab">更多...</a><br /></td></tr>
+<tr class="separator:a94bb4eb4310d31cd08ca0faa559d6eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af21bb796707a14a1642769c5f243e724"><td class="memItemLeft" align="right" valign="top">ComPtr&lt; IDXGIAdapter &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#af21bb796707a14a1642769c5f243e724">mp_cuda_capable_adater</a></td></tr>
+<tr class="memdesc:af21bb796707a14a1642769c5f243e724"><td class="mdescLeft">&#160;</td><td class="mdescRight">CUDA需要的DX适配器  <a href="#af21bb796707a14a1642769c5f243e724">更多...</a><br /></td></tr>
+<tr class="separator:af21bb796707a14a1642769c5f243e724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3f393c005086823d0ff7e4144e236b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#af3f393c005086823d0ff7e4144e236b9">mt_texture2d_to_gpumat</a></td></tr>
+<tr class="memdesc:af3f393c005086823d0ff7e4144e236b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">共享纹理对象for texture2d_to_gpumat  <a href="#af3f393c005086823d0ff7e4144e236b9">更多...</a><br /></td></tr>
+<tr class="separator:af3f393c005086823d0ff7e4144e236b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac557035128030a354b8e7c5ae1f963b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cuda.html#ac557035128030a354b8e7c5ae1f963b6">mt_gpumat_to_texture2d</a></td></tr>
+<tr class="memdesc:ac557035128030a354b8e7c5ae1f963b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">共享纹理对象for gpumat_to_texture2d  <a href="#ac557035128030a354b8e7c5ae1f963b6">更多...</a><br /></td></tr>
+<tr class="separator:ac557035128030a354b8e7c5ae1f963b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h4 class="groupheader">构造及析构函数说明</h4>
+<a id="a9de3a4579ab2fbddb4ec21b2ada009c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de3a4579ab2fbddb4ec21b2ada009c1">&#9670;&nbsp;</a></span>texture2d_cvt_gpumat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::<a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">texture2d_cvt_gpumat</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00208">208</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4bf64cacb41386b5191abc6695dc0708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bf64cacb41386b5191abc6695dc0708">&#9670;&nbsp;</a></span>~texture2d_cvt_gpumat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::~<a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">texture2d_cvt_gpumat</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00213">213</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">成员函数说明</h4>
+<a id="a98a3f704c21521f55171e5d1ddc4a31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98a3f704c21521f55171e5d1ddc4a31c">&#9670;&nbsp;</a></span>bind_for_gpumat_to_texture2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::bind_for_gpumat_to_texture2d </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#a8fd70b18fe2739491d00394bb18c7d2f" title="gpumat到texture2d的转换">gpumat_to_texture2d</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00276">276</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a10c0baa00578a5c3f13a9982cd8bfd4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c0baa00578a5c3f13a9982cd8bfd4f">&#9670;&nbsp;</a></span>bind_for_texture2d_to_gpumat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::bind_for_texture2d_to_gpumat </td>
+          <td>(</td>
+          <td class="paramtype">ID3D11Texture2D *&#160;</td>
+          <td class="paramname"><em>p_src_texture</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>texture2d_to_gpumat 之前调用一次,注册映射绑定资源 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_src_texture</td><td>源D3D11纹理(R8G8B8A8),若地址/DESC发生改变需要解绑后重新绑定 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#a9dc3f2e2dfbae60dfba7c655a540affe" title="texture2d到gpumat的转换">texture2d_to_gpumat</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00225">225</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8fd70b18fe2739491d00394bb18c7d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fd70b18fe2739491d00394bb18c7d2f">&#9670;&nbsp;</a></span>gpumat_to_texture2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::gpumat_to_texture2d </td>
+          <td>(</td>
+          <td class="paramtype">cv::cuda::GpuMat&#160;</td>
+          <td class="paramname"><em>src_gpumat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D11Texture2D **&#160;</td>
+          <td class="paramname"><em>pp_dst_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D11Device *&#160;</td>
+          <td class="paramname"><em>p_dst_device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>gpumat到texture2d的转换 </p>
+<dl class="section pre"><dt>前置条件</dt><dd>此方法使用前需要注册一次资源,使用结束后需要取消注册,并且同一分辨率只能注册一次,若分辨率更改需要重新注册. </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_gpumat</td><td>源矩阵,应输入RGBA格式 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pp_dst_texture</td><td>目标纹理对象, R8G8B8A8 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_dst_device</td><td>目标纹理对象的设备 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory. </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#a98a3f704c21521f55171e5d1ddc4a31c" title="注册D3D11资源以供CUDA访问,此调用可能具有高开销，并且不应在交互式应用程序中每帧调用">bind_for_gpumat_to_texture2d</a> , <a class="el" href="group__cuda.html#a6ce26939011eefbe86854676df6d3b2e" title="gpumat_to_texture2d 调用结束后解绑">unbind_for_gpumat_to_texture2d</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00301">301</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9dc3f2e2dfbae60dfba7c655a540affe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc3f2e2dfbae60dfba7c655a540affe">&#9670;&nbsp;</a></span>texture2d_to_gpumat() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::texture2d_to_gpumat </td>
+          <td>(</td>
+          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
+          <td class="paramname"><em>dst_gpumat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>texture2d到gpumat的转换 </p>
+<dl class="section pre"><dt>前置条件</dt><dd>调用前通过bind_for_texture2d_to_gpumat方法绑定一次纹理资源,使用完成后通过unbind_for_texture2d_to_gpumat解绑 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst_gpumat</td><td>目标矩阵,格式取决于p_src_texture(R8G8B8A8) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#a10c0baa00578a5c3f13a9982cd8bfd4f" title="texture2d_to_gpumat 之前调用一次,注册映射绑定资源">bind_for_texture2d_to_gpumat</a> , <a class="el" href="group__cuda.html#a2bd0281ac7ea7a3f4eefe096c1930f15" title="texture2d_to_gpumat 结束后调用一次,解除注册映射绑定资源">unbind_for_texture2d_to_gpumat</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00245">245</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af2467a87c3c49a98f887cf19cfc30f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2467a87c3c49a98f887cf19cfc30f64">&#9670;&nbsp;</a></span>texture2d_to_gpumat() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::texture2d_to_gpumat </td>
+          <td>(</td>
+          <td class="paramtype">ID3D11Texture2D *&#160;</td>
+          <td class="paramname"><em>p_src_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::cuda::GpuMat &amp;&#160;</td>
+          <td class="paramname"><em>dst_gpumat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>这是为便于使用而提供的一个重载成员函数.与上面的函数相比，它接受不同类型的参数. </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00255">255</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6ce26939011eefbe86854676df6d3b2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ce26939011eefbe86854676df6d3b2e">&#9670;&nbsp;</a></span>unbind_for_gpumat_to_texture2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::unbind_for_gpumat_to_texture2d </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>gpumat_to_texture2d 调用结束后解绑 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#a8fd70b18fe2739491d00394bb18c7d2f" title="gpumat到texture2d的转换">gpumat_to_texture2d</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00318">318</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2bd0281ac7ea7a3f4eefe096c1930f15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd0281ac7ea7a3f4eefe096c1930f15">&#9670;&nbsp;</a></span>unbind_for_texture2d_to_gpumat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::unbind_for_texture2d_to_gpumat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>texture2d_to_gpumat 结束后调用一次,解除注册映射绑定资源 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__cuda.html#a9dc3f2e2dfbae60dfba7c655a540affe" title="texture2d到gpumat的转换">texture2d_to_gpumat</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00266">266</a> 行定义.</p>
+
+</div>
+</div>
+<h4 class="groupheader">类成员变量说明</h4>
+<a id="af21bb796707a14a1642769c5f243e724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af21bb796707a14a1642769c5f243e724">&#9670;&nbsp;</a></span>mp_cuda_capable_adater</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;IDXGIAdapter&gt; <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::mp_cuda_capable_adater</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>CUDA需要的DX适配器 </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00325">325</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a94bb4eb4310d31cd08ca0faa559d6eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94bb4eb4310d31cd08ca0faa559d6eab">&#9670;&nbsp;</a></span>mp_d3d11_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComPtr&lt;ID3D11Device&gt; <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::mp_d3d11_device</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>D3D11设备 </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00324">324</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac557035128030a354b8e7c5ae1f963b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac557035128030a354b8e7c5ae1f963b6">&#9670;&nbsp;</a></span>mt_gpumat_to_texture2d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt;T&gt; <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::mt_gpumat_to_texture2d</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>共享纹理对象for gpumat_to_texture2d </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00327">327</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af3f393c005086823d0ff7e4144e236b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3f393c005086823d0ff7e4144e236b9">&#9670;&nbsp;</a></span>mt_texture2d_to_gpumat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = uchar4&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1shared__texture__2d__t">shared_texture_2d_t</a>&lt;T&gt; <a class="el" href="group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat">common::cuda::texture2d_cvt_gpumat</a>&lt; T &gt;::mt_texture2d_to_gpumat</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>共享纹理对象for texture2d_to_gpumat </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00326">326</a> 行定义.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="ga0cb317a3c6744bd5dbefe00e1a8a03d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0cb317a3c6744bd5dbefe00e1a8a03d0">&#9670;&nbsp;</a></span>checkCudaRet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define checkCudaRet</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">val</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="group__cuda.html#structcommon_1_1cuda_1_1_check_cuda_ret">common::cuda::CheckCudaRet</a>&lt;&gt;()((val), #val, __FILE__, __LINE__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cuda函数返回值检查,若失败会中断程序 </p>
+
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00080">80</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="ga6a097db82b5293c474022ad455364bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6a097db82b5293c474022ad455364bc4">&#9670;&nbsp;</a></span>checkCUDADevice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static cudaError_t common::cuda::checkCUDADevice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>cudaError_t检查,若失败会中断程序 </p>
+<p>CUDA设备检查 </p>
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00064">64</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00086">86</a> 行定义.</p>
 
 </div>
 </div>
-<a id="ga6ad9a0a48e2e7e359e7d5cbd022ea44c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6ad9a0a48e2e7e359e7d5cbd022ea44c">&#9670;&nbsp;</a></span>cuda_get_texture_reference()</h2>
+<a id="ga10265811dfaaaaf0b3f7114e3db88dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga10265811dfaaaaf0b3f7114e3db88dac">&#9670;&nbsp;</a></span>cuda_get_texture_reference_2d_float4()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode mode = cudaReadModeElementType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">cudaError_t common::cuda::cuda_get_texture_reference </td>
+          <td class="memname">cudaError_t common::cuda::cuda_get_texture_reference_2d_float4 </td>
           <td>(</td>
           <td class="paramtype">const textureReference **&#160;</td>
           <td class="paramname"><em>texref</em></td><td>)</td>
@@ -1710,9 +1964,6 @@ template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode 
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>获取CUDA纹理参考系对象 </p>
-<dl class="section note"><dt>注解</dt><dd>暂只支持2d uchar4 纹理 </dd></dl>
 
 </div>
 </div>
@@ -1731,14 +1982,6 @@ template&lt;class T , int texType = cudaTextureType2D, enum cudaTextureReadMode 
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>[特化]获取CUDA 2D uchar4 类型的纹理参考系对象 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">texref</td><td>纹理参考系对象 </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -1845,7 +2088,7 @@ template&lt;typename R , typename ... FArgs, typename ... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>单位ms </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00101">101</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00103">103</a> 行定义.</p>
 
 </div>
 </div>
@@ -1874,8 +2117,14 @@ template&lt;typename R , typename ... FArgs, typename ... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>CUDA获取D3D11设备适配器 </p>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>无法成功获取设备适配器 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00167">167</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="cuda_8hpp_source.html">cuda.hpp</a> 第 <a class="el" href="cuda_8hpp_source.html#l00171">171</a> 行定义.</p>
 
 </div>
 </div>

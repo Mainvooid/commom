@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['unicode_5fto_5fansi',['unicode_to_ansi',['../group__codecvt.html#ga3ad837ac2a490851f3193ec58709f070',1,'common::codecvt']]],
-  ['unicode_5fto_5futf8',['unicode_to_utf8',['../group__codecvt.html#ga8ab56f2ea5605599af59ad88c48e8938',1,'common::codecvt']]],
-  ['unregister_5fresource_5ffor_5fgpumat_5fto_5ftexture2d',['unregister_resource_for_gpumat_to_texture2d',['../group__cuda.html#a005b0a2415ed38401525839db4707880',1,'common::cuda::texture2d_cvt_gpumat']]],
-  ['usage',['usage',['../group__cmdline.html#a8e8a9cfe008f9c349d297edd6cf8a50d',1,'common::cmdline::parser']]],
-  ['utf16_5fto_5futf32',['utf16_to_utf32',['../group__codecvt.html#gaf9c1a5c6902227f48f841d2d9f7c2bf2',1,'common::codecvt']]],
-  ['utf16_5fto_5futf8',['utf16_to_utf8',['../group__codecvt.html#gad2cf5ae4482e03c3106d4549d319d83e',1,'common::codecvt']]],
-  ['utf32_5fto_5futf16',['utf32_to_utf16',['../group__codecvt.html#ga55bcf3547fe92dbcf799242f60579ea0',1,'common::codecvt']]],
-  ['utf32_5fto_5futf8',['utf32_to_utf8',['../group__codecvt.html#gad6cf19d8117a006ff2974fa03d63950a',1,'common::codecvt']]],
-  ['utf8_5fto_5fansi',['utf8_to_ansi',['../group__codecvt.html#ga2864220ce9f167c3caf596c2e034ea0b',1,'common::codecvt']]],
-  ['utf8_5fto_5funicode',['utf8_to_unicode',['../group__codecvt.html#gabc1a169e6ef241b3afb238c9177e5b53',1,'common::codecvt']]],
-  ['utf8_5fto_5futf16',['utf8_to_utf16',['../group__codecvt.html#gaf75c20ea1a68ca0ea0eff7a39886f39f',1,'common::codecvt']]],
-  ['utf8_5fto_5futf32',['utf8_to_utf32',['../group__codecvt.html#ga12adb9c91e4d656a6e98f2a48e415b85',1,'common::codecvt']]]
+  ['texture2d_5fcvt_5fgpumat',['texture2d_cvt_gpumat',['../group__cuda.html#classcommon_1_1cuda_1_1texture2d__cvt__gpumat',1,'common::cuda::texture2d_cvt_gpumat&lt; T &gt;'],['../group__cuda.html#a9de3a4579ab2fbddb4ec21b2ada009c1',1,'common::cuda::texture2d_cvt_gpumat::texture2d_cvt_gpumat()']]],
+  ['texture2d_5fto_5fgpumat',['texture2d_to_gpumat',['../group__cuda.html#a9dc3f2e2dfbae60dfba7c655a540affe',1,'common::cuda::texture2d_cvt_gpumat::texture2d_to_gpumat(cv::cuda::GpuMat &amp;dst_gpumat)'],['../group__cuda.html#af2467a87c3c49a98f887cf19cfc30f64',1,'common::cuda::texture2d_cvt_gpumat::texture2d_to_gpumat(ID3D11Texture2D *p_src_texture, cv::cuda::GpuMat &amp;dst_gpumat)']]],
+  ['texture2d_5fto_5ftexture2d',['texture2d_to_texture2d',['../group__windows.html#ga09533a9672f03711ef59ca54c0056da5',1,'common::windows']]],
+  ['texture_5fref',['texture_ref',['../group__cuda.html#ace3fe082a89ea253f370662479fab7cd',1,'common::cuda::shared_texture_t']]],
+  ['texture_5freference_2ehpp',['texture_reference.hpp',['../texture__reference_8hpp.html',1,'']]],
+  ['trace',['Trace',['../group__debuglog.html#aac5555e594596cd14f25045ed5d05501',1,'common::debuglog::logger::Trace(T msg) const'],['../group__debuglog.html#a00e9d57240df2966722b82e967bf425c',1,'common::debuglog::logger::Trace(T msg, const char *_func, const char *_file, const int _line) const'],['../group__common.html#ggaf7659de5ece427c413cf7194eafe087daa30aac70d54371896a4eb7ad8fc7f791',1,'common::Trace()']]],
+  ['tvalue',['tvalue',['../group__common.html#ga82fbddf474a1f80cb484bb0f7890166c',1,'common::tvalue(TA a, TW)'],['../namespacecommon.html#ga82fbddf474a1f80cb484bb0f7890166c',1,'common::tvalue(TA, TW w)']]]
 ];

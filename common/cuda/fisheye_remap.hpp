@@ -1,8 +1,9 @@
 ﻿#ifndef _COMMON_CUDA_FISHEYE_REMAP_CUH_
 #define _COMMON_CUDA_FISHEYE_REMAP_CUH_
+
 #include <cuda_runtime.h>
 #include <driver_types.h>
-#include <opencv2/core/cuda.hpp>
+#include <opencv2/core/cuda.hpp> 
 
 namespace common {
     /// @addtogroup common

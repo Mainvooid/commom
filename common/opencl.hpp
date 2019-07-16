@@ -24,7 +24,7 @@ namespace common {
         /*
         *@brief 打印opencl设备信息
         */
-        void printPlatformInfo()
+        static void printPlatformInfo()
         {
             cl_platform_id *platform;
             cl_uint num_platform;

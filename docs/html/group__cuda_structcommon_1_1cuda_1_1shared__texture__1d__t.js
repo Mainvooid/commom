@@ -1,11 +1,11 @@
 var group__cuda_structcommon_1_1cuda_1_1shared__texture__1d__t =
 [
-    [ "~shared_texture_1d_t", "group__cuda.html#a2ee98d5dcef6b32c62c573eb6bf05937", null ],
-    [ "cuda_array", "group__cuda.html#ac6950c3ce93c9f020cef089f01c29a09", null ],
-    [ "cuda_array_desc", "group__cuda.html#a627ebdf51c846a811213006024dd9b22", null ],
-    [ "cuda_resource", "group__cuda.html#a2cfad770dfee8b8d7709cb2e9efb8f5e", null ],
-    [ "p_d3d11_texture_1d", "group__cuda.html#a2d20ae4b573ae23cbeed67941afb10ae", null ],
-    [ "pitch", "group__cuda.html#a624f6b7a3eabdc04db7578e5a5dd626d", null ],
-    [ "texture_ref", "group__cuda.html#ae63bcb05bb28dab1da9d834a9c9ec264", null ],
-    [ "width", "group__cuda.html#a72b6bb2c275481cd0da8f07f8307c6e6", null ]
+    [ "~shared_texture_1d_t", "group__cuda.html#a097acacae46481a8c45af52becf0a260", null ],
+    [ "cuda_array", "group__cuda.html#a67b9ae07b15dca235e681790feca2b17", null ],
+    [ "cuda_array_desc", "group__cuda.html#adeca03a7801b1fbb9f08609b80117f69", null ],
+    [ "cuda_resource", "group__cuda.html#ac62a21bb4b30bdd87e638767736910a1", null ],
+    [ "p_d3d11_texture_1d", "group__cuda.html#a63443cfc4793ffbabab5285dab04f8e8", null ],
+    [ "pitch", "group__cuda.html#a896d23301075d7a3415c1aa760d0302b", null ],
+    [ "texture_ref", "group__cuda.html#ace3fe082a89ea253f370662479fab7cd", null ],
+    [ "width", "group__cuda.html#adf2cb8bfd158058fa949115e36ea0c8b", null ]
 ];
