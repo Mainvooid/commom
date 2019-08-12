@@ -2,13 +2,16 @@
 #ifndef __CUDACC__
 #define __CUDACC__
 #endif
-
+#include <common/cuda.hpp>
 #include <device_functions.h>
 #include <device_launch_parameters.h>
 
 namespace common {
     namespace cuda {
         namespace kernel {
+            /**
+            @note 保证1080个线程每个线程处理一行,建议:30个block每个36个线程
+            */
             __global__ void cuda_init_undistort_rectify_map_kernel(cv::cuda::PtrStepSz<double> K, cv::cuda::PtrStepSz<double> D,
                 cv::cuda::PtrStepSz<double> iR, cv::Size size, cv::cuda::PtrStepSz<float> map1, cv::cuda::PtrStepSz<float> map2)
             {
@@ -67,8 +70,7 @@ namespace common {
             }
             cv::Matx33d iR = (_Knew * cv::Matx33d::eye()).inv(cv::DECOMP_SVD);//奇异值分解
             cv::cuda::GpuMat iR_g(iR);
-            //10个block每个108个线程,每个线程处理一行
-            kernel::cuda_init_undistort_rectify_map_kernel << <108, 10, 0 >> > (K, D, iR_g, size, map1, map2);
+            kernel::cuda_init_undistort_rectify_map_kernel << <36, 30, 0 >> > (K, D, iR_g, size, map1, map2);//13ms
             return cudaGetLastError();
         }
     } // namespace cuda
