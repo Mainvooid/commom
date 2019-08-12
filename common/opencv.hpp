@@ -14,35 +14,41 @@
 #include <opencv2/img_hash.hpp>
 #include <random>
 
+#define OPENCV_VERSION 410
+// 将参数连接并转成字符串(遇宏则展开)
+#define _CV_LIB(x)  "\"" _S(x) "" _S(OPENCV_VERSION) "" ".lib\""
+#define _CV_LIB_D(x)  "\"" _S(x) "" _S(OPENCV_VERSION) "" "d.lib\""
+
 #if defined(_DEBUG) || defined(DEBUG)
-#pragma comment(lib,"opencv_img_hash410d.lib")
+#pragma comment(lib,_CV_LIB_D(opencv_img_hash))
 #ifdef LINK_LIB_OPENCV_WORLD
-#pragma comment(lib,"opencv_world410d.lib")
+#pragma comment(lib,_CV_LIB_D(opencv_world))
 #else
-#pragma comment(lib,"opencv_core410d.lib")
-#pragma comment(lib,"opencv_imgproc410d.lib")
-#pragma comment(lib,"opencv_imgcodecs410d.lib")
-#pragma comment(lib,"opencv_highgui410d.lib")
-#pragma comment(lib,"opencv_calib3d410d.lib")
+#pragma comment(lib,_CV_LIB_D(opencv_core))
+#pragma comment(lib,_CV_LIB_D(opencv_imgproc))
+#pragma comment(lib,_CV_LIB_D(opencv_imgcodecs))
+#pragma comment(lib,_CV_LIB_D(opencv_highgui))
+#pragma comment(lib,_CV_LIB_D(opencv_calib3d))
 #endif // LIB_OPENCV_WORLD
 #ifdef HAVE_CUDA
-#pragma comment(lib,"opencv_cudawarping410d.lib")
-#pragma comment(lib,"opencv_cudaimgproc410d.lib")
+#pragma comment(lib,_CV_LIB_D(opencv_cudawarping))
+#pragma comment(lib,_CV_LIB_D(opencv_cudaimgproc))
+
 #endif // HAVE_CUDA
 #else
-#pragma comment(lib,"opencv_img_hash410.lib")
+#pragma comment(lib,_CV_LIB(opencv_img_hash))
 #ifdef LINK_LIB_OPENCV_WORLD
-#pragma comment(lib,"opencv_world410.lib")
+#pragma comment(lib,_CV_LIB(opencv_world))
 #else
-#pragma comment(lib,"opencv_core410.lib")
-#pragma comment(lib,"opencv_imgproc410.lib")
-#pragma comment(lib,"opencv_imgcodecs410.lib")
-#pragma comment(lib,"opencv_highgui410.lib")
-#pragma comment(lib,"opencv_calib3d410.lib")
+#pragma comment(lib,_CV_LIB(opencv_core))
+#pragma comment(lib,_CV_LIB(opencv_imgproc))
+#pragma comment(lib,_CV_LIB(opencv_imgcodecs))
+#pragma comment(lib,_CV_LIB(opencv_highgui))
+#pragma comment(lib,_CV_LIB(opencv_calib3d))
 #endif // LIB_OPENCV_WORLD
 #ifdef HAVE_CUDA
-#pragma comment(lib,"opencv_cudawarping410.lib")
-#pragma comment(lib,"opencv_cudaimgproc410.lib")
+#pragma comment(lib,_CV_LIB(opencv_cudawarping))
+#pragma comment(lib,_CV_LIB(opencv_cudaimgproc))
 #endif // HAVE_CUDA
 #endif // DEBUG
 

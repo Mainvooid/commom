@@ -15,6 +15,12 @@
 #include <map>
 #include <limits>
 #include <chrono>
+
+// 将x变成字符串(如果x是宏,不展开)
+#define __S(x)   #x
+// 将x变成字符串(如果x是宏,展开)
+#define _S(x)   __S(x)
+
 /**
   @addtogroup common
   @{
