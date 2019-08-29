@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['add',['add',['../group__cmdline.html#a72ec36167bc36c64d5144405b76f0627',1,'common::cmdline::oneof_reader::add(const T &amp;v, const Values &amp;...vs) noexcept'],['../group__cmdline.html#a17379aa01acea327fe7c025debbde0b3',1,'common::cmdline::oneof_reader::add(const T &amp;v) noexcept'],['../group__cmdline.html#ac33300b1c11c7e3d07314042398327ee',1,'common::cmdline::parser::add(const std::string &amp;name, char short_name=0, const std::string &amp;desc=&quot;&quot;) noexcept(false)'],['../group__cmdline.html#a76a6a1b1dc37e12ff6ad245629b7f6ee',1,'common::cmdline::parser::add(const std::string &amp;name, char short_name=0, const std::string &amp;desc=&quot;&quot;, bool need=true, const T def=T()) noexcept(false)'],['../group__cmdline.html#aa548de67bbc487a3bdbafa1a23461296',1,'common::cmdline::parser::add(const std::string &amp;name, char short_name=0, const std::string &amp;desc=&quot;&quot;, bool need=true, const T def=T(), F reader=F()) noexcept(false)']]],
-  ['ansi_5fto_5funicode',['ansi_to_unicode',['../group__codecvt.html#ga6577d6465b6549ec09e4bfdc21cb1da9',1,'common::codecvt']]],
-  ['ansi_5fto_5futf8',['ansi_to_utf8',['../group__codecvt.html#ga578524b4a57c655af8894a8aeef10962',1,'common::codecvt']]]
-];
