@@ -5,6 +5,7 @@ var windows_8hpp =
     [ "createD3D11Device", "windows_8hpp.html#ga19503626c2bfc35e45912dfd6a64db79", null ],
     [ "createTextureDesc", "windows_8hpp.html#ga23ad78f45c3bbc83e6be7a67e780c586", null ],
     [ "getClsPtr", "windows_8hpp.html#ga1d8b8497f7476c661b60a9cd1054d0e3", null ],
+    [ "getLastErrorString", "windows_8hpp.html#gaf8dff3fa34bd8f6a374404749c196814", null ],
     [ "getSubDllFileName", "windows_8hpp.html#gae680f30ba97e9cc1186a1ca654719f0d", null ],
     [ "getWorkDir", "windows_8hpp.html#gac412e651914b28f54eecddc04d2dbea9", null ],
     [ "loadSubDll", "windows_8hpp.html#gae8418ec6d8a91edfc32a57772fefe7a4", null ],

@@ -8,6 +8,7 @@ var group__windows =
     [ "createD3D11Device", "group__windows.html#ga19503626c2bfc35e45912dfd6a64db79", null ],
     [ "createTextureDesc", "group__windows.html#ga23ad78f45c3bbc83e6be7a67e780c586", null ],
     [ "getClsPtr", "group__windows.html#ga1d8b8497f7476c661b60a9cd1054d0e3", null ],
+    [ "getLastErrorString", "group__windows.html#gaf8dff3fa34bd8f6a374404749c196814", null ],
     [ "getSubDllFileName", "group__windows.html#gae680f30ba97e9cc1186a1ca654719f0d", null ],
     [ "getWorkDir", "group__windows.html#gac412e651914b28f54eecddc04d2dbea9", null ],
     [ "loadSubDll", "group__windows.html#gae8418ec6d8a91edfc32a57772fefe7a4", null ],

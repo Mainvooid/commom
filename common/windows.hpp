@@ -101,6 +101,27 @@ namespace common {
         };
 
         /**
+        @brief 返回最后一条错误信息
+        */
+        template<typename T = wchar_t/*or char*/>
+        static auto getLastErrorString()
+        {
+            LPVOID p_buf;
+            tvalue<T>(getFunction(FormatMessageA), getFunction(FormatMessageW))(
+                FORMAT_MESSAGE_ALLOCATE_BUFFER |
+                FORMAT_MESSAGE_FROM_SYSTEM |
+                FORMAT_MESSAGE_IGNORE_INSERTS,
+                NULL,
+                GetLastError(),
+                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+                (typename std::conditional_t<std::is_same_v<T, char>, LPSTR, LPWSTR>)&p_buf,
+                0, NULL);
+            std::basic_string<T, std::char_traits<T>, std::allocator<T>> msg =
+                (typename std::conditional_t<std::is_same_v<T, char>, LPSTR, LPWSTR>)p_buf;
+            return msg;
+        }
+
+        /**
         @brief 运行时目录下搜索DLL及其依赖项
         */
         template<typename T>
@@ -252,7 +273,7 @@ namespace common {
         /**
         @brief 从文件读取Texture
         @param[in]  pDevice     Device对象
-        @param[out] pTexture2D  用于保存的纹理对象  
+        @param[out] pTexture2D  用于保存的纹理对象
         @param[in]  path        要读取的图像文件路径
         @param[in]  format      数据读取格式
         @param[in]  bindFlags   数据使用类型

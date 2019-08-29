@@ -173,7 +173,7 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <li>仿函数</li>
 </ul>
 <h3>Doxygen文档</h3>
-<h4>注释</h4>
+<p><a href="http://www.doxygen.nl/manual/index.html">http://www.doxygen.nl/manual/index.html</a> </p><h4>注释</h4>
 <div class="fragment"><div class="line">/**</div><div class="line"> *  多行注释</div><div class="line"> */</div><div class="line"></div><div class="line">/**单行注释*/ 或 ///</div><div class="line"></div><div class="line">/**&lt;同行注释 */ 或 ///&lt; (Doxygen认为注释是修饰接下来的程序代码的)</div></div><!-- fragment --><h4>文件信息</h4>
 <div class="fragment"><div class="line">@file      文件名</div><div class="line">@author    作者名</div><div class="line">@version   版本号</div><div class="line">@todo      待办事项</div><div class="line">@date      日期时间</div><div class="line">@section   章节标题 e.g. [@section LICENSE 版权许可] [@section DESCRIPTION 描述]</div></div><!-- fragment --> <h4>模块信息</h4>
 <div class="fragment"><div class="line">@defgroup   定义模块                         模块名(英文) 显示名    @{ 类/函数/变量/宏/... @}</div><div class="line">@ingroup    作为指定名的模块的子模块          模块名(英文) [显示名]</div><div class="line">@addtogroup 作为指定名的模块的成员            模块名(英文) [显示名]</div><div class="line">@name       按用途分,以便理解全局变量/宏的用途 显示名(中文)           @{ 变量/宏 @}</div></div><!-- fragment --><h4>函数信息</h4>
@@ -319,7 +319,11 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <li><b><code>关于<code>opencv</code><ul>
 <li>建议不要分配静态或全局<code>GpuMat</code>变量,即依赖于它的析构函数.此类变量和CUDA上下文的销毁顺序未定义.如果之前已销毁CUDA上下文.则GPU内存释放函数将返回错误.</li>
 <li><code>cv::UMat</code> , <code>cv::cuda::GpuMat</code> 有些时候需要手动<code>release</code>.</li>
-<li><code>cv::Mat_</code>, 继承自<code>cv::Mat</code>,使用<code>cv::Mat_</code>类可以在变量声明时确定元素的类型,访问元素时,不再需要指定元素类型,使得代码更简洁清晰,减少出错可能. <table class="markdownTable">
+<li><code>cv::Mat_</code>, 继承自<code>cv::Mat</code>,使用<code>cv::Mat_</code>类可以在变量声明时确定元素的类型,访问元素时,不再需要指定元素类型,使得代码更简洁清晰,减少出错可能.</li>
+</ul>
+</code></b></li>
+</ul>
+<p><b><code></p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">模板类型  </th><th class="markdownTableHeadNone">原类型   </th></tr>
 <tr class="markdownTableRowOdd">
@@ -337,16 +341,16 @@ $(document).ready(function(){initNavTree('md__d_1_code_common_common__r_e_a_d_m_
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>Mat_&lt;double&gt;</code>  </td><td class="markdownTableBodyNone">CV_64F   </td></tr>
 </table>
-</li>
-</ul>
-</code></b></li>
-<li><b><code>关于<code>cuda</code><ul>
+<p></code></b></p>
+<p><b><code></p><ul>
+<li>关于<code>cuda</code><ul>
 <li><code>__syncthreads</code>等提示未定义标识符,并不会影响编译.原因可能是先创建的cpp工程而后添加的cuda生成自定义文件,而非直接创建cuda工程.可以通过在依赖的头文件前`#define __CUDACC<code>(.cu源文件编译时会定义这个宏). -</code>&lt;&lt;&lt;&gt;&gt;&gt;`内核函数启动参数显示应输入表达式,只是因为VS2017无法正确识别cuda内核启动符号,代码实际是由NVCC编译器编译的,所以也是不影响编译.</li>
 <li>在.cuh(.hpp)或.cu文件内可以分别独立声明/定义/特化模板函数,但是在.cuh(.hpp)中声明的模板函数,无法链接到.cu文件内的定义(除非完全特化),因为代码是由不同编译器编译的.</li>
 <li>所有CUDA方法调用需要检查返回值,使用<code><a class="el" href="cuda_8hpp.html">cuda.hpp</a></code>中<code><a class="el" href="group__cuda.html#ga0cb317a3c6744bd5dbefe00e1a8a03d0" title="cuda函数返回值检查,若失败会中断程序">checkCudaRet(expression)</a></code>.若失败重置CUDA并中断程序. </li>
 </ul>
-</code></b></li>
+</li>
 </ul>
+<p></code></b></p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

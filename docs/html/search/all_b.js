@@ -1,6 +1,7 @@
 var searchData=
 [
   ['level_5fe',['level_e',['../group__common.html#gaf7659de5ece427c413cf7194eafe087d',1,'common']]],
+  ['link_5flib_5fopencv_5fworld',['LINK_LIB_OPENCV_WORLD',['../common_8hpp.html#ad8902c683c0b560ce6c84358f05237ca',1,'common.hpp']]],
   ['loadsubdll',['loadSubDll',['../group__windows.html#gae8418ec6d8a91edfc32a57772fefe7a4',1,'common::windows::loadSubDll(const HMODULE &amp;g_dll_module, const T *sub_dll_name) noexcept'],['../group__windows.html#gaa8e6d2eb037479324dcb5445cea10289',1,'common::windows::loadSubDll(const std::wstring &amp;sub_dll_dir, const std::wstring &amp;sub_dll_name) noexcept'],['../group__windows.html#ga4848ceb6cbe9b8ff859833928ab97732',1,'common::windows::loadSubDll(const T *sub_dll_name) noexcept']]],
   ['loadtexturefromfile',['loadTextureFromFile',['../group__windows.html#gad1c36117a351448f72ef34252a990246',1,'common::windows']]],
   ['local_5fcodecvt',['local_codecvt',['../group__codecvt.html#classcommon_1_1codecvt_1_1local__codecvt',1,'common::codecvt::local_codecvt'],['../group__codecvt.html#a229e26419afbc8b7f67c343c7c18511a',1,'common::codecvt::local_codecvt::local_codecvt()']]],
