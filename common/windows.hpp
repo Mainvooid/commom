@@ -14,11 +14,16 @@
 #include <d3d11.h>
 #include <d3dx11.h>
 #include <wrl\client.h>
+#include <DirectXMath.h>
+#include <D3DX11async.h>
+#include <D3DCompiler.h>
 using Microsoft::WRL::ComPtr;
-#if !defined(_DEBUG) || defined(DEBUG)
+
+#if defined(_DEBUG) || defined(DEBUG)
 #include <d3dcommon.h>
-#pragma comment(lib, "dxguid.lib") 
 #endif
+
+#pragma comment ( lib, "dxguid.lib") 
 #pragma comment ( lib, "d3d9.lib")
 #pragma comment ( lib, "d3dx9.lib")
 #pragma comment ( lib, "d3d11.lib")
@@ -189,6 +194,61 @@ namespace common {
         };
 
 #ifdef HAVE_DIRECTX
+
+        /**
+        @brief 函数fps控制(运行次/s)
+        */
+        class FnFpsControl {
+        public:
+            FnFpsControl(int fps) {
+                m_hNullEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+                ::QueryPerformanceFrequency(&m_lpFrequency);
+                m_llFreq = m_lpFrequency.QuadPart;
+
+                m_llAvgFreqPerFrm = (m_llFreq * 1000) / fps;
+                m_llAvgDeltaFreqPerFrm = (m_llFreq * 1000) % fps;
+
+                m_llTotalDeltaFreq = 0;
+            };
+
+            /**
+            @brief 固定fps执行函数
+            @return 帧等待时间 为负数时说明资源占用达到上限(不再限制等待)
+            */
+            template<typename R, typename ...FArgs, typename ...Args>
+            int run(std::function<R(FArgs...)> Fn, Args&... args) {
+                ::QueryPerformanceCounter(&m_lpFrequency);
+                LONGLONG llPerStart = m_lpFrequency.QuadPart;
+
+                Fn(args...);
+
+                ::QueryPerformanceCounter(&m_lpFrequency);
+                LONGLONG llUseFreq = (m_lpFrequency.QuadPart - llPerStart) * 1000;
+                LONGLONG llCurWaitFreq = (m_llTotalDeltaFreq + m_llAvgFreqPerFrm + m_llAvgDeltaFreqPerFrm - llUseFreq);
+
+                ::QueryPerformanceFrequency(&m_lpFrequency);
+                m_llFreq = m_lpFrequency.QuadPart;
+
+                int iCurWaitMS = static_cast<int>(llCurWaitFreq / m_llFreq);
+                m_llTotalDeltaFreq = llCurWaitFreq % m_llFreq;
+
+                if (iCurWaitMS > 0) {
+                    ::timeBeginPeriod(1);
+                    ::WaitForSingleObject(m_hNullEvent, iCurWaitMS);
+                    ::timeEndPeriod(1);
+                }
+
+                return iCurWaitMS;
+            }
+
+        private:
+            HANDLE m_hNullEvent;
+            LARGE_INTEGER m_lpFrequency;
+            LONGLONG m_llAvgFreqPerFrm;
+            LONGLONG m_llAvgDeltaFreqPerFrm;
+            LONGLONG m_llFreq;
+            LONGLONG m_llTotalDeltaFreq;
+        };
 
         //一般性directX函数
 
@@ -371,6 +431,350 @@ namespace common {
             if (dst_pHandle != nullptr) { *dst_pHandle = handle; }
             return S_OK;
         }
+
+        // dxgi_format_convert
+
+        /**
+        @brief 顶点位置
+        */
+        struct VertexPos
+        {
+            DirectX::XMFLOAT3 pos;
+            DirectX::XMFLOAT2 Tex;
+        };
+
+        /**
+        @brief 像素着色器对象
+        */
+        struct DXGI_D3D11_PIXEL_SHADER_OBJ
+        {
+            Microsoft::WRL::ComPtr<ID3D11VertexShader> solidColorVS;
+            Microsoft::WRL::ComPtr<ID3D11PixelShader> solidColorPS;
+            Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
+            Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer;
+            Microsoft::WRL::ComPtr<ID3D11SamplerState> colorMapSampler;
+            void Reset(){
+                solidColorVS.Reset();
+                solidColorPS.Reset();
+                inputLayout.Reset();
+                vertexBuffer.Reset();
+                colorMapSampler.Reset();
+            }
+        };
+
+        /**
+        @brief D3D11格式转换类
+        */
+        class DXGI_D3D11_FORMAT_BGRA2RGBA
+        {
+        public:
+            DXGI_D3D11_FORMAT_BGRA2RGBA() {};
+
+            /**
+            *@brief 构造
+            *@param D3D11Device D3D11设备
+            *@param Width 图像宽度
+            *@param Height 图像高度
+            */
+            void Create(ID3D11Device* D3D11Device, int Width, int Height) noexcept(false) 
+            {
+                if (D3D11Device == nullptr) {
+                    throw std::invalid_argument("ID3D11Device == nullptr");
+                }
+                mp_D3D11Device = D3D11Device;
+                //获取上下文对象
+                mp_D3D11Device->GetImmediateContext(mp_D3D11Context.ReleaseAndGetAddressOf());
+
+                //创建交换纹理
+                //TODO 这边固定配置为DXGI_FORMAT_R8G8B8A8_UNORM，理论上可以进行多种格式转换，尝试泛化此类
+                D3D11_TEXTURE2D_DESC etDesc;
+                ZeroMemory(&etDesc, sizeof(etDesc));
+                etDesc.Width = Width;
+                etDesc.Height = Height;
+                etDesc.MipLevels = 1;											//纹理中最大的mipmap等级数(1,只包含最大的位图本身)
+                etDesc.ArraySize = 1;											//纹理数目(可创建数组)
+                etDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;						//DXGI支持的数据格式
+                etDesc.SampleDesc.Count = 1;									//MSAA采样数(纹理通常不开启MSAA)
+                etDesc.Usage = D3D11_USAGE_DEFAULT;								//指定数据的CPU/GPU访问权限(GPU读写)
+                etDesc.BindFlags = D3D11_BIND_UNORDERED_ACCESS | D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;//数据使用类型
+                etDesc.CPUAccessFlags = 0;										//CPU访问权限(0不需要)
+                etDesc.MiscFlags = D3D11_RESOURCE_MISC_SHARED;					//资源标识
+
+                HRESULT hr = mp_D3D11Device->CreateTexture2D(&etDesc, NULL, mp_ExchangeTexture.ReleaseAndGetAddressOf());
+                if (FAILED(hr)) {
+                    throw std::runtime_error("Create Exchange Texture Failed!");
+                }
+
+                //创建渲染视图
+                D3D11_RENDER_TARGET_VIEW_DESC renderTargetViewDesc;
+                renderTargetViewDesc.Format = etDesc.Format;
+                renderTargetViewDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;//渲染目标的资源类型
+                renderTargetViewDesc.Texture2D.MipSlice = 0;
+
+                hr = mp_D3D11Device->CreateRenderTargetView(mp_ExchangeTexture.Get(), &renderTargetViewDesc, mp_RTView.ReleaseAndGetAddressOf());
+                if (FAILED(hr)) {
+                    throw std::runtime_error("CreateRenderTargetView Failed!");
+                }
+
+                //创建着色器
+                Create_Shader_Object();
+
+                //创建缓冲区
+                Prepare_Vector_Buffer();
+            };
+
+        private:
+
+            /**
+            *@brief 从文件编译D3D11着色器
+            *@param pFunctionName 着色器入口点函数的名称
+            *@param pProfile 着色器模型
+            *@param ppShader 指向内存的指针，其中包含已编译的着色器，以及任何嵌入式调试和符号表信息
+            */
+            void Compile_D3D_Shader(const char* pFunctionName, const char* pProfile, ID3DBlob** ppShader) 
+            {
+                DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+
+#ifdef _DEBUG
+                shaderFlags |= D3DCOMPILE_DEBUG;
+#endif
+
+                ComPtr<ID3DBlob> pErrorMsgs;
+
+                if (ppShader == nullptr) {
+                    throw std::invalid_argument("ID3DBlob == nullptr");
+                }
+
+                static constexpr char colorMap_hlsl[] =
+                    "Texture2D colorMap_ : register( t0 );\n"\
+                    "SamplerState colorSampler_ : register(s0);\n"\
+                    "struct VS_Input\n"\
+                    "{\n"\
+                    "    float4 pos : POSITION;\n"\
+                    "    float2 tex0 : TEXCOORD0; \n"\
+                    "};\n"\
+                    "struct PS_Input\n"\
+                    "{\n"\
+                    "    float4 pos : SV_POSITION;\n"\
+                    "    float2 tex0 : TEXCOORD0;\n"\
+                    "};\n"\
+                    "PS_Input VS_Main(VS_Input vertex)\n"\
+                    "{\n"\
+                    "    PS_Input vsOut = (PS_Input)0;\n"\
+                    "    vsOut.pos = vertex.pos;\n"\
+                    "    vsOut.tex0 = vertex.tex0;\n"\
+                    "    return vsOut;\n"\
+                    "}\n"\
+                    "float4 PS_Main(PS_Input frag) : SV_TARGET\n"\
+                    "{\n"\
+                    "    return colorMap_.Sample(colorSampler_, frag.tex0);\n"\
+                    "}\n";
+
+                HRESULT hr = D3DX11CompileFromMemory(
+                    colorMap_hlsl,
+                    strlen(colorMap_hlsl),
+                    "Memory", NULL, NULL,
+                    pFunctionName,
+                    pProfile,
+                    shaderFlags, 0,
+                    nullptr,
+                    ppShader,
+                    &pErrorMsgs,
+                    nullptr);
+                if (FAILED(hr)) {
+                    throw std::invalid_argument((const char*)pErrorMsgs->GetBufferPointer());
+                }
+            };
+
+            /**
+            *@brief 创建D3D11顶点着色器,像素着色器
+            */
+            void Create_Shader_Object() 
+            {
+                //顶点着色器对象
+                ComPtr<ID3DBlob> vsBuffer;
+                Compile_D3D_Shader("VS_Main", "vs_5_0", &vsBuffer);
+
+                //从已编译的着色器创建顶点着色器对象
+                HRESULT hr = mp_D3D11Device->CreateVertexShader(
+                    vsBuffer->GetBufferPointer(),		//已编译着色器的指针
+                    vsBuffer->GetBufferSize(),			//已编译顶点着色器的大小
+                    0,
+                    m_PixelShaderObject.solidColorVS.ReleaseAndGetAddressOf());	//ID3D11VertexShader接口的指针的地址
+                if (FAILED(hr)) {
+                    throw std::invalid_argument("CreateVertexShader Failed!");
+                }
+
+                //输入布局对象
+
+                D3D11_INPUT_ELEMENT_DESC solidColorLayout[] =
+                {
+                    { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },//输入数据是每顶点数据
+                    { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+                };
+
+                unsigned int totalLayoutElements = ARRAYSIZE(solidColorLayout);
+                //创建一个输入布局对象来描述输入:汇编程序阶段的输入缓冲区数据
+                hr = mp_D3D11Device->CreateInputLayout(
+                    solidColorLayout,
+                    totalLayoutElements,
+                    vsBuffer->GetBufferPointer(),
+                    vsBuffer->GetBufferSize(),
+                    m_PixelShaderObject.inputLayout.ReleaseAndGetAddressOf());
+                if (FAILED(hr)) {
+                    throw std::runtime_error("CreateInputLayout Failed!");
+                }
+
+                //创建像素着色器
+
+                ComPtr<ID3DBlob> psBuffer;
+                Compile_D3D_Shader("PS_Main", "ps_5_0", &psBuffer);
+
+                hr = mp_D3D11Device->CreatePixelShader(
+                    psBuffer->GetBufferPointer(),
+                    psBuffer->GetBufferSize(),
+                    0,
+                    m_PixelShaderObject.solidColorPS.ReleaseAndGetAddressOf());
+                if (FAILED(hr)) {
+                    throw std::runtime_error("CreatePixelShader Failed!");
+                }
+
+                //创建采样器状态对象
+
+                D3D11_SAMPLER_DESC colorMapDesc;
+                ZeroMemory(&colorMapDesc, sizeof(colorMapDesc));
+                colorMapDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;//default 线性插值
+                colorMapDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;//default:D3D11_TEXTURE_ADDRESS_CLAMP
+                colorMapDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+                colorMapDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+                colorMapDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;//default 不比较采样数据
+                colorMapDesc.MaxLOD = D3D11_FLOAT32_MAX;//default mipmap范围没有上限
+
+                //创建一个采样器状态对象，该对象封装纹理的采样信息
+                hr = mp_D3D11Device->CreateSamplerState(&colorMapDesc,
+                    m_PixelShaderObject.colorMapSampler.ReleaseAndGetAddressOf());
+                if (FAILED(hr)) {
+                    throw std::runtime_error("CreateSamplerState Failed!");
+                }
+            };
+
+            /**
+            *@brief 创建缓冲区
+            */
+            void Prepare_Vector_Buffer() 
+            {
+                if (m_PixelShaderObject.vertexBuffer) { return; }
+
+                //创建缓冲区;
+                //创建缩放矩形顶点缓存;
+                //使用左手坐标系
+                float fLeft = -1.0;
+                float fRight = 1.0;
+                float ftop = 1.0;
+                float fBottom = -1.0;
+
+                //计算缩放矩阵 原点(-1,1)宽度2->原点(-1,1)宽度1
+                VertexPos vertices[] =
+                {
+                    { DirectX::XMFLOAT3(fRight, ftop, 1.0f), DirectX::XMFLOAT2(0.0f, 0.0f) },
+                    { DirectX::XMFLOAT3(fRight,fBottom, 1.0f), DirectX::XMFLOAT2(0.0f, 1.0f) },
+                    { DirectX::XMFLOAT3(fLeft, fBottom, 1.0f), DirectX::XMFLOAT2(-1.0f, 1.0f) },
+
+                    { DirectX::XMFLOAT3(fLeft, fBottom, 1.0f), DirectX::XMFLOAT2(-1.0f, 1.0f) },
+                    { DirectX::XMFLOAT3(fLeft,  ftop, 1.0f), DirectX::XMFLOAT2(-1.0f, 0.0f) },
+                    { DirectX::XMFLOAT3(fRight, ftop, 1.0f), DirectX::XMFLOAT2(0.0f, 0.0f) },
+                };
+
+                D3D11_BUFFER_DESC vertexDesc;//表示缓冲区并提供创建缓冲区的方法
+                ZeroMemory(&vertexDesc, sizeof(vertexDesc));
+                vertexDesc.Usage = D3D11_USAGE_DEFAULT;
+                vertexDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+                vertexDesc.ByteWidth = sizeof(VertexPos) * 6;
+
+                D3D11_SUBRESOURCE_DATA subResourceData;//指定用于初始化子资源的数据
+                ZeroMemory(&subResourceData, sizeof(subResourceData));
+                subResourceData.pSysMem = vertices;//指向初始化数据的指针
+
+                //创建缓冲区（顶点缓冲区，索引缓冲区或着色器常量缓冲区）
+                HRESULT hr = mp_D3D11Device->CreateBuffer(
+                    &vertexDesc,
+                    &subResourceData,
+                    &m_PixelShaderObject.vertexBuffer);
+                if (FAILED(hr)) {
+                    throw std::runtime_error("CreateBuffer Failed!");
+                }
+            };
+
+            /**
+            *@brief 渲染到纹理
+            *@param pSrc 源图像
+            */
+            void Render_To_Texture(ID3D11Texture2D* pSrc) 
+            {
+                D3D11_VIEWPORT _OldVP;
+                UINT nOldView = 1;
+                mp_D3D11Context->RSGetViewports(&nOldView, &_OldVP);
+
+                D3D11_TEXTURE2D_DESC src_desc;
+                pSrc->GetDesc(&src_desc);
+
+                D3D11_VIEWPORT vp;
+                vp.Height = static_cast<FLOAT>(src_desc.Height);
+                vp.Width = static_cast<FLOAT>(src_desc.Width);
+                vp.MinDepth = 0.0f;
+                vp.MaxDepth = 1.0f;
+                vp.TopLeftX = 0;
+                vp.TopLeftY = 0;
+                mp_D3D11Context->RSSetViewports(1, &vp);
+                mp_D3D11Context->OMSetRenderTargets(1, mp_RTView.GetAddressOf(), NULL);
+
+                //填充渲染目标
+                float color[4] = { 0,1.0,0,1.0 };
+                mp_D3D11Context->ClearRenderTargetView(mp_RTView.Get(), color);
+
+                ComPtr<ID3D11ShaderResourceView>  pSRView;//着色器资源视图
+                HRESULT  hr = mp_D3D11Device->CreateShaderResourceView(pSrc, NULL, &pSRView);
+                if (FAILED(hr)) {
+                    throw std::runtime_error("CreateShaderResourceView Failed!");
+                }
+
+                unsigned int stride = sizeof(VertexPos);
+                unsigned int offset = 0;
+                mp_D3D11Context->IASetInputLayout(m_PixelShaderObject.inputLayout.Get());
+                mp_D3D11Context->IASetVertexBuffers(0, 1, m_PixelShaderObject.vertexBuffer.GetAddressOf(), &stride, &offset);
+                mp_D3D11Context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+                mp_D3D11Context->VSSetShader(m_PixelShaderObject.solidColorVS.Get(), 0, 0);
+                mp_D3D11Context->PSSetShader(m_PixelShaderObject.solidColorPS.Get(), 0, 0);
+                mp_D3D11Context->PSSetShaderResources(0, 1, pSRView.GetAddressOf());
+                mp_D3D11Context->PSSetSamplers(0, 1, m_PixelShaderObject.colorMapSampler.GetAddressOf());
+                mp_D3D11Context->Draw(6, 0);
+
+                //RTT结束：恢复状态
+                mp_D3D11Context->RSSetViewports(1, &_OldVP);
+            };
+
+        public:
+            /**
+            *@brief 进行DXGI格式转换(DXGI_FORMAT_B8G8R8A8_UNORM->DXGI_FORMAT_R8G8B8A8_UNORM)
+            *@param pSrc 源图像
+            *@param pDst 结果图像,传空指针接收
+            */
+            void Convert(ID3D11Texture2D* pSrc, ID3D11Texture2D*& pDst) 
+            {
+                if (pSrc == nullptr) {
+                    throw std::invalid_argument("ID3D11Texture2D == nullptr!");
+                }
+                Render_To_Texture(pSrc);
+                pDst = mp_ExchangeTexture.Get();
+            };
+
+        private:
+            Microsoft::WRL::ComPtr<ID3D11Device> mp_D3D11Device;        ///< D3D11设备
+            Microsoft::WRL::ComPtr<ID3D11DeviceContext> mp_D3D11Context;///< D3D11设备上下文
+            Microsoft::WRL::ComPtr<ID3D11Texture2D> mp_ExchangeTexture; ///< 转格式后的纹理
+            DXGI_D3D11_PIXEL_SHADER_OBJ m_PixelShaderObject;            ///< 着色器对象
+            Microsoft::WRL::ComPtr<ID3D11RenderTargetView> mp_RTView;   ///< 渲染目标视图
+        };
 
 #endif // HAVE_DIRECTX
         /// @}

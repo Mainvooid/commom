@@ -261,7 +261,7 @@ namespace common {
     /**
     @brief 基本数据类型转字符串
     */
-    template<typename char_t, typename TI>
+    template<typename char_t = char, typename TI>
     inline auto convert_to_string(const TI& arg)
     {
         std::basic_stringstream<char_t, std::char_traits<char_t>, std::allocator<char_t>> str;

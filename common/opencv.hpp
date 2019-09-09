@@ -108,20 +108,20 @@ namespace common {
         /**
         *@brief 显示指定大小的图像
         */
-        static void imshowR(const std::string& img_name, const cv::InputArray& image, cv::Size img_size = cv::Size(960, 540))
+        static void imshowR(const std::string& img_name, cv::InputArray image, cv::Size img_size = cv::Size(960, 540))
         {
             cv::namedWindow(img_name, cv::WindowFlags::WINDOW_NORMAL);
             if (image.total() > static_cast<size_t>(img_size.height) * static_cast<size_t>(img_size.width)) {
                 cv::resizeWindow(img_name, img_size);
             }
+            cv::Mat _;
             if (image.isGpuMat()) {
-                cv::Mat _;
                 image.getGpuMat().download(_);
-                cv::imshow(img_name, _);
             }
-            else{
-                cv::imshow(img_name, image.getMat());
+            else {
+                _ = image.getMat();
             }
+            cv::imshow(img_name, _);
         }
 
         /**
@@ -135,7 +135,21 @@ namespace common {
                 msg << _TAG << "..InputArray is empty";
                 throw std::runtime_error(msg.str());
             }
-            cv::Mat _left = left.getMat(), _right = right.getMat();
+            cv::Mat _left, _right;
+
+            if (left.isGpuMat()) {
+                left.getGpuMat().download(_left);
+            }
+            else {
+                left.getMat();
+            }
+            if (right.isGpuMat()) {
+                right.getGpuMat().download(_right);
+            }
+            else {
+                right.getMat();
+            }
+
             if (left.channels() != right.channels()) {
                 if (left.channels() == 1) {
                     cv::cvtColor(left, _left, cv::COLOR_GRAY2BGRA);
@@ -260,7 +274,7 @@ namespace common {
 
 #if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
             /**@overload*/
-            void remap(cv::cuda::GpuMat src, cv::cuda::GpuMat& dst, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0)
+            void remap(cv::cuda::GpuMat src, cv::cuda::GpuMat& dst, cv::cuda::Stream& stream, double fx = 1.0, double fy = 1.0, double cx = 0, double cy = 0)
             {
                 //调节视场大小, 乘的系数越小视场越大
                 m_new_intrinsic_param_mat = m_intrinsic_param_mat.clone();
@@ -271,10 +285,16 @@ namespace common {
                     m_new_intrinsic_param_mat.at<double>(0, 2) = cx;
                     m_new_intrinsic_param_mat.at<double>(1, 2) = cy;
                 }
-                cv::cuda::GpuMat map1, map2;
-                cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
-                    m_new_intrinsic_param_mat, src.size(), map1, map2);
-                cv::cuda::remap(src, dst, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+                if (m_map1.empty() || m_map2.empty()) {
+                    cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
+                        m_new_intrinsic_param_mat, src.size(), m_map1, m_map2);
+                }
+                //异步调用才是线程安全的
+                cv::cuda::remap(src, dst, m_map1, m_map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT, cv::Scalar(), stream);
+                stream.waitForCompletion();
+                common::opencv::imshowR("remap:" + convert_to_string(GetCurrentThreadId()), dst);
+                cv::waitKey(1);
+
             }
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL
 
@@ -336,6 +356,7 @@ namespace common {
 #if defined(HAVE_CUDA) && defined(HAVE_CUDA_KERNEL)
             cv::cuda::GpuMat m_intrinsic_param_mat_g;///<摄像机内参数矩阵
             cv::cuda::GpuMat m_distortion_coeffs_g;  ///<摄像机的4个畸变系数: k1,k2,k3,k4
+            cv::cuda::GpuMat m_map1, m_map2;         ///<畸变校正矩阵
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL
             std::vector<cv::Mat> m_chessboards;///<棋盘格
             cv::Size m_board_size;///<定标板上每行、列的内角点数,等于格子数-1

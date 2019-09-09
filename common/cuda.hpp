@@ -35,6 +35,7 @@
 #ifdef HAVE_OPENCV
 #include <common/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
+#include <opencv2/core/cuda.hpp>
 #include <opencv2/core/cuda_stream_accessor.hpp>
 #endif // HAVE_OPENCV
 
@@ -242,19 +243,18 @@ namespace common {
             @param[out] dst_gpumat  目标矩阵,格式取决于p_src_texture(R8G8B8A8)
             @see bind_for_texture2d_to_gpumat , unbind_for_texture2d_to_gpumat
             */
-            bool texture2d_to_gpumat(cv::cuda::GpuMat& dst_gpumat){
+            bool texture2d_to_gpumat(cv::cuda::GpuMat& dst_gpumat) {
                 D3D11_TEXTURE2D_DESC desc;
                 mt_texture2d_to_gpumat.p_d3d11_texture_2d->GetDesc(&desc);
-                dst_gpumat.release();
                 dst_gpumat.create(desc.Height, desc.Width, CV_MAKETYPE(CV_8U, sizeof(T)));
                 checkCudaRet(cudaMemcpy2DFromArray(dst_gpumat.data, dst_gpumat.step,
                     mt_texture2d_to_gpumat.cuda_array, 0, 0, dst_gpumat.cols * sizeof(T), dst_gpumat.rows, cudaMemcpyDeviceToDevice));
                 return true;
             };
             /**@overload*/
-            bool texture2d_to_gpumat(ID3D11Texture2D* p_src_texture, cv::cuda::GpuMat& dst_gpumat){
-                bool flag=bind_for_texture2d_to_gpumat(p_src_texture);
-                flag =texture2d_to_gpumat(dst_gpumat);
+            bool texture2d_to_gpumat(ID3D11Texture2D* p_src_texture, cv::cuda::GpuMat& dst_gpumat) {
+                bool flag = bind_for_texture2d_to_gpumat(p_src_texture);
+                flag = texture2d_to_gpumat(dst_gpumat);
                 unbind_for_texture2d_to_gpumat();
                 return flag;
             }
@@ -298,13 +298,14 @@ namespace common {
             @note CUDA要求不能频繁注册/解注册资源.否则会导致显存out of memory.
             @see bind_for_gpumat_to_texture2d , unbind_for_gpumat_to_texture2d
             */
-            bool gpumat_to_texture2d(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device){
+            bool gpumat_to_texture2d(cv::cuda::GpuMat src_gpumat, ID3D11Texture2D** pp_dst_texture, ID3D11Device* p_dst_device,cv::cuda::Stream& stream) {
                 if (src_gpumat.channels() == 1) {
-                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_GRAY2RGBA);
+                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_GRAY2RGBA, 0, stream);
                 }
                 if (src_gpumat.channels() == 3) {
-                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_BGR2RGBA);
+                    cv::cuda::cvtColor(src_gpumat, src_gpumat, cv::COLOR_BGR2RGBA, 0, stream);
                 }
+                stream.waitForCompletion();
                 checkCudaRet(cudaMemcpy2DToArray(mt_gpumat_to_texture2d.cuda_array, 0, 0, src_gpumat.data, src_gpumat.step,
                     src_gpumat.cols * sizeof(T), src_gpumat.rows, cudaMemcpyDeviceToDevice));
                 HRESULT hr = common::windows::texture2d_to_texture2d(mt_gpumat_to_texture2d.p_d3d11_texture_2d.Get(), pp_dst_texture, p_dst_device);
