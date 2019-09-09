@@ -289,8 +289,8 @@ namespace common {
                     cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
                         m_new_intrinsic_param_mat, src.size(), m_map1, m_map2);
                 }
+
                 //异步调用才是线程安全的
-                
                 try{
                     cv::cuda::remap(src, dst, m_map1, m_map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT, cv::Scalar(), stream);
                 }
@@ -298,9 +298,6 @@ namespace common {
                     LOGD_(e.what());
                 }
                 stream.waitForCompletion();
-                common::opencv::imshowR("remap:" + convert_to_string(GetCurrentThreadId()), dst);
-                cv::waitKey(1);
-
             }
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL
 
