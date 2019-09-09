@@ -290,7 +290,13 @@ namespace common {
                         m_new_intrinsic_param_mat, src.size(), m_map1, m_map2);
                 }
                 //异步调用才是线程安全的
-                cv::cuda::remap(src, dst, m_map1, m_map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT, cv::Scalar(), stream);
+                
+                try{
+                    cv::cuda::remap(src, dst, m_map1, m_map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT, cv::Scalar(), stream);
+                }
+                catch (const std::exception& e){
+                    LOGD_(e.what());
+                }
                 stream.waitForCompletion();
                 common::opencv::imshowR("remap:" + convert_to_string(GetCurrentThreadId()), dst);
                 cv::waitKey(1);
