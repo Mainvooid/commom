@@ -227,11 +227,12 @@ namespace common {
         template <typename R, typename... Args>
         std::function<R(Args...)> cache_fn(R(*func)(Args...))
         {
-            auto result_map = std::make_shared<std::map<std::tuple<Args...>, R>>();
-            return ([=](Args... args) {//延迟执行
+            
+            auto result_map = std::make_shared<std::map<std::tuple<Args...>, R>>();//map指针对象，关联入参与结果
+            return ([=](Args... args) {//lambda延迟到调用的时候执行
                 std::tuple<Args...> _args(args...);
                 if (result_map->find(_args) == result_map->end()) {
-                    (*result_map)[_args] = func(args...);//未找到相同入参，执行函数刷新缓存
+                    (*result_map)[_args] = func(args...);//未找到已缓存函数，保存函数执行结果
                 }
                 return (*result_map)[_args];//返回缓存
             });
@@ -240,20 +241,20 @@ namespace common {
     }// namespace detail
 
     /**
-    @brief 函数对象缓存，若存在相同类型函数指针，则调用相应缓存函数获取缓存结果,可以大幅提高递归类函数的性能
+    @brief 函数对象缓存，若存在已缓存的函数(及相同参数)，则直接获取缓存结果,可以大幅提高递归类函数的性能
     */
     template <typename R, typename...  Args>
     std::function<R(Args...)> cache_fn(R(*func)(Args...), bool flush = false)
     {
         using function_type = std::function<R(Args...)>;
-        static std::unordered_map<decltype(func), function_type> functor_map;
+        static std::unordered_map<decltype(func), function_type> functor_map;//key唯一，查找O(1)较快
         if (flush) {//明确要求刷新缓存
             return functor_map[func] = detail::cache_fn(func);
         }
         if (functor_map.find(func) == functor_map.end()) {
-            functor_map[func] = detail::cache_fn(func);//未找到相同函数，执行函数刷新缓存
+            functor_map[func] = detail::cache_fn(func);//未找到相同参数的函数，刷新缓存
         }
-        return functor_map[func];//返回缓存
+        return functor_map[func];//返回函数对应的缓存结果
     }
 
     //----------基于流的string/wstring与基本类型的互转----------

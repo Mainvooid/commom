@@ -279,7 +279,7 @@ namespace common {
             D3D_DRIVER_TYPE deiverType = D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN,
             ID3D11DeviceContext** ppImmediateContext = nullptr, UINT createDeviceFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT)
         {
-#if !defined(_DEBUG) || defined(DEBUG) || defined(D3D11_DEVICE_DEBUG)
+#if defined(DEBUG) || defined(D3D11_DEVICE_DEBUG)
             createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
             D3D_FEATURE_LEVEL featureLevel;
@@ -403,7 +403,7 @@ namespace common {
             ComPtr <ID3D11Texture2D> p_new_src_texture;
             if ((desc.MiscFlags & D3D11_RESOURCE_MISC_SHARED) != D3D11_RESOURCE_MISC_SHARED) {
                 ComPtr <ID3D11DeviceContext> p_ctx;
-                p_src_device->GetImmediateContext(&p_ctx);
+                p_src_device->GetImmediateContext(p_ctx.GetAddressOf());
                 desc.MiscFlags |= D3D11_RESOURCE_MISC_SHARED;
                 hr = p_src_device->CreateTexture2D(&desc, nullptr, p_new_src_texture.GetAddressOf());
                 if (FAILED(hr)) { return hr; }
@@ -579,7 +579,7 @@ namespace common {
                     shaderFlags, 0,
                     nullptr,
                     ppShader,
-                    &pErrorMsgs,
+                    pErrorMsgs.GetAddressOf(),
                     nullptr);
                 if (FAILED(hr)) {
                     throw std::invalid_argument((const char*)pErrorMsgs->GetBufferPointer());
@@ -593,7 +593,7 @@ namespace common {
             {
                 //顶点着色器对象
                 ComPtr<ID3DBlob> vsBuffer;
-                Compile_D3D_Shader("VS_Main", "vs_5_0", &vsBuffer);
+                Compile_D3D_Shader("VS_Main", "vs_5_0", vsBuffer.GetAddressOf());
 
                 //从已编译的着色器创建顶点着色器对象
                 HRESULT hr = mp_D3D11Device->CreateVertexShader(
@@ -628,7 +628,7 @@ namespace common {
                 //创建像素着色器
 
                 ComPtr<ID3DBlob> psBuffer;
-                Compile_D3D_Shader("PS_Main", "ps_5_0", &psBuffer);
+                Compile_D3D_Shader("PS_Main", "ps_5_0", psBuffer.GetAddressOf());
 
                 hr = mp_D3D11Device->CreatePixelShader(
                     psBuffer->GetBufferPointer(),
@@ -699,7 +699,7 @@ namespace common {
                 HRESULT hr = mp_D3D11Device->CreateBuffer(
                     &vertexDesc,
                     &subResourceData,
-                    &m_PixelShaderObject.vertexBuffer);
+                    m_PixelShaderObject.vertexBuffer.GetAddressOf());
                 if (FAILED(hr)) {
                     throw std::runtime_error("CreateBuffer Failed!");
                 }
@@ -733,7 +733,7 @@ namespace common {
                 mp_D3D11Context->ClearRenderTargetView(mp_RTView.Get(), color);
 
                 ComPtr<ID3D11ShaderResourceView>  pSRView;//着色器资源视图
-                HRESULT  hr = mp_D3D11Device->CreateShaderResourceView(pSrc, NULL, &pSRView);
+                HRESULT  hr = mp_D3D11Device->CreateShaderResourceView(pSrc, NULL, pSRView.GetAddressOf());
                 if (FAILED(hr)) {
                     throw std::runtime_error("CreateShaderResourceView Failed!");
                 }
