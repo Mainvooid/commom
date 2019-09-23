@@ -204,6 +204,16 @@ namespace common {
                     //提取角点
                     cv::findChessboardCorners(m_chessboards[i], board_size, corners,
                         cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE + cv::CALIB_CB_FAST_CHECK);
+                    if (corners.empty()){
+                        //提取不到角点坐标，检查标定图像是否满足标定要求
+                        continue;
+                    }
+                    //else{ //DEBUG
+                    //    cv::Mat _ = m_chessboards[i].clone();
+                    //    cv::drawChessboardCorners(_, board_size, corners,true);
+                    //    imshowR("chessboards", _);
+                    //    cv::waitKey(0);
+                    //}
                     cv::cvtColor(m_chessboards[i], chessboard_gray, cv::COLOR_BGR2GRAY);
                     //亚像素精确化
                     cv::cornerSubPix(chessboard_gray, corners, board_size,
@@ -281,20 +291,23 @@ namespace common {
                 m_new_intrinsic_param_mat.at<double>(0, 0) *= fx;
                 m_new_intrinsic_param_mat.at<double>(1, 1) *= fy;
                 //调节校正图中心，建议置于校正图中心
-                if (cx != 0 && cy != 0) {
+                if (cx != 0) {
                     m_new_intrinsic_param_mat.at<double>(0, 2) = cx;
+                }
+                if (cy != 0) {
                     m_new_intrinsic_param_mat.at<double>(1, 2) = cy;
                 }
+
                 if (m_map1.empty() || m_map2.empty()) {
                     cuda::cuda_init_undistort_rectify_map(m_intrinsic_param_mat_g, m_distortion_coeffs_g,
                         m_new_intrinsic_param_mat, src.size(), m_map1, m_map2);
                 }
 
                 //异步调用才是线程安全的
-                try{
+                try {
                     cv::cuda::remap(src, dst, m_map1, m_map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT, cv::Scalar(), stream);
                 }
-                catch (const std::exception& e){
+                catch (const std::exception& e) {
                     LOGD_(e.what());
                 }
                 stream.waitForCompletion();
