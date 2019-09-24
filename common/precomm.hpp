@@ -227,7 +227,6 @@ namespace common {
         template <typename R, typename... Args>
         std::function<R(Args...)> cache_fn(R(*func)(Args...))
         {
-            
             auto result_map = std::make_shared<std::map<std::tuple<Args...>, R>>();//map指针对象，关联入参与结果
             return ([=](Args... args) {//lambda延迟到调用的时候执行
                 std::tuple<Args...> _args(args...);
