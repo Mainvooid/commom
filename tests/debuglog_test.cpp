@@ -31,10 +31,10 @@ TEST(debuglog, logger__constructor) {
 }
 TEST(debuglog, logger__Log) {
     logger log("name", level_e::Trace);
-    std::wstring wstr = L"Test测试123";
+    std::wstring wstr = L"宽字符 Test测试123";
     std::string str = "Test测试123";
 
-    OutputDebugStringA("----------以下15条测试应正常打印----------\n");
+    OutputDebugStringA("----------以下测试应正常打印----------\n");
     log.Log(wstr, level_e::Trace);
     log.Log(wstr, level_e::Debug, __FUNCTION__, __FILE__, __LINE__);
     LOGI("Test测试123");
@@ -51,5 +51,19 @@ TEST(debuglog, logger__Log) {
     LOGE(str, __FUNCTION__, __FILE__, __LINE__);
     LOGF(str.data(), __FUNCTION__, __FILE__, __LINE__);
     LOGE_(str);
+
+    //流模式
+    std::wstring swstr = L"流模式测试 宽字符 Test 123";
+    std::string sstr = "流模式测试 Test 123";
+
+    DLOGD << "std::endl:" << std::endl << DEND;
+    DLOGD << sstr.data() << DEND;
+    DLOGD << sstr << DEND;
+    DLOGD << sstr << DEND_;
+
+    DLOGD << swstr << DEND;
+    DLOGD << swstr.data() << DEND;
+    DLOGD << swstr << DEND_;
+
     OutputDebugStringA("--------------------\n");
 }

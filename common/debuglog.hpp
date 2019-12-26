@@ -12,6 +12,10 @@
 
 #include <common/codecvt.hpp>
 #include <algorithm>
+#include <iostream>
+#include <sstream>
+#include <mutex>
+#include <functional>
 #include <windows.h>
 
 /**
@@ -23,6 +27,7 @@
 namespace common {
     /// @addtogroup common
     /// @{
+
     /**
     @brief 调试日志级别
     */
@@ -221,10 +226,128 @@ namespace common {
             std::string m_name;
             level_e m_level;
         };
+
         /// @}
     } // namespace debuglog
 
-    static std::unique_ptr<debuglog::logger> g_logger(new debuglog::logger(_T("G"), level_e::Trace));/*< 全局logger对象 */
+    /*< 全局静态logger对象 管理默认记录级别 */
+    static std::unique_ptr<debuglog::logger> g_logger(new debuglog::logger(_T("G"), level_e::Trace));
+
+    namespace debuglog {
+        /// @addtogroup debuglog
+        /// @{
+        /**
+         @brief 封装debugoutput log流, 需要一个结束符将流内容输入到debugoutput
+        */
+        class dlog_ostream :public std::ostream
+        {
+        private:
+            level_e _level;
+            std::mutex _log_mu;      // 多线程log时保证以消息为单位
+            std::ostringstream _oss;
+        public:
+
+            level_e& get_level() {
+                return _level;
+            };
+
+            std::mutex& get_log_mu() {
+                return _log_mu;
+            };
+
+            std::ostringstream& get_oss() {
+                return _oss;
+            };
+
+        public:
+
+            dlog_ostream(level_e level) :std::ostream(0), _level(level)
+            {
+            }
+
+            template<typename T>
+            dlog_ostream& operator<<(T str)
+            {
+                _oss << str;
+                return (*this);
+            }
+
+            dlog_ostream& operator<<(std::wstring str)
+            {
+                _oss << codecvt::unicode_to_ansi(str);
+                return (*this);
+            }
+
+            dlog_ostream& operator<<(const wchar_t * str)
+            {
+                _oss << codecvt::unicode_to_ansi(str);
+                return (*this);
+            }
+
+            template<typename T, typename = typename std::enable_if_t<std::is_same_v<T, dlog_ostream&>>>
+            dlog_ostream& operator<<(dlog_ostream& str)
+            {
+                _oss << str._oss.str();
+                return (*this);
+            }
+
+            template<class _Elem = char, class _Traits = std::char_traits<char>>
+            dlog_ostream& operator<<(std::basic_ostream<_Elem, _Traits>& str)
+            {
+                _oss << str._oss.str();
+                return (*this);
+            }
+
+            template<class _Elem = char, class _Traits = std::char_traits<char>>
+            dlog_ostream& operator<<(std::basic_ostream<_Elem, _Traits>& (__cdecl *_Pfn)(std::basic_ostream<_Elem, _Traits>&))
+            {
+                (*_Pfn)(this->_oss);
+                return (*this);
+            }
+
+            dlog_ostream& operator<<(dlog_ostream& (__cdecl * Pfn)(dlog_ostream&))
+            {
+                return (*Pfn)(*this);
+            }
+
+            dlog_ostream& operator<<(std::function<dlog_ostream&(dlog_ostream&)> Fn)
+            {
+                return Fn(*this);
+            }
+
+            /**
+             @brief 打印输出并清空oss
+             @note 由于当前logger为固定format格式,以消息为单位 所以stream需要一个结束符
+             @see logger
+            */
+            static dlog_ostream& dend(dlog_ostream& dlog)
+            {
+                dlog._log_mu.lock();
+                common::g_logger->Log(std::move(dlog._oss.str()), dlog._level);
+                dlog._oss.str("");
+                dlog._log_mu.unlock();
+                return dlog;
+            }
+            // @override
+            static dlog_ostream& dend_(dlog_ostream& dlog, const char* _func, const char* _file, const int _line)
+            {
+                dlog._log_mu.lock();
+                common::g_logger->Log(std::move(dlog._oss.str()), dlog._level, _func, _file, _line);
+                dlog._oss.str("");
+                dlog._log_mu.unlock();
+                return dlog;
+            }
+        };
+
+        template<typename T>
+        dlog_ostream&& operator<<(dlog_ostream&& os, const T& val)
+        {
+            os << val;
+            return std::move(os);
+        }
+
+        /// @}
+    } // namespace debuglog
 
     template<typename T>
     inline void LOGT(T msg) { g_logger->Trace(std::move(msg)); };
@@ -252,12 +375,27 @@ namespace common {
     template<typename T>
     inline void LOGF(T msg, const char* _func, const char* _file, const int _line) { g_logger->Fatal(std::move(msg), _func, _file, _line); };
 
+// debug log ostream 可调用模式 () ,下划线版本输出位置
+
 #define LOGT_(msg) common::LOGT(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGD_(msg) common::LOGD(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGI_(msg) common::LOGI(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGW_(msg) common::LOGW(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGE_(msg) common::LOGE(msg, __FUNCTION__, __FILE__, __LINE__)
 #define LOGF_(msg) common::LOGF(msg, __FUNCTION__, __FILE__, __LINE__)
+
+// debug log ostream 流输出模式 <<
+
+#define DLOGT common::debuglog::dlog_ostream(level_e::Trace)
+#define DLOGD common::debuglog::dlog_ostream(level_e::Debug)
+#define DLOGI common::debuglog::dlog_ostream(level_e::Info)
+#define DLOGW common::debuglog::dlog_ostream(level_e::Warn)
+#define DLOGE common::debuglog::dlog_ostream(level_e::Error)
+#define DLOGF common::debuglog::dlog_ostream(level_e::Fatal)
+#define DEND  common::debuglog::dlog_ostream::dend
+#define DEND_ std::function<common::debuglog::dlog_ostream&(common::debuglog::dlog_ostream&)>( \
+    std::bind(common::debuglog::dlog_ostream::dend_, std::placeholders::_1,__FUNCTION__, __FILE__, __LINE__)); // 拖尾"_"表示打印位置
+
     /// @}
 } // namespace common
 
