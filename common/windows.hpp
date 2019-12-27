@@ -49,6 +49,32 @@ namespace common {
         /// @addtogroup windows
         /// @{
 
+        /**
+         @brief 包装CRITICAL_SECTION 在win上效率高一些
+        */
+        class win_mutex
+        {
+        private:
+            CRITICAL_SECTION _lock;
+        public:
+            win_mutex()
+            {
+                InitializeCriticalSection(&_lock);
+            };
+            ~win_mutex()
+            {
+                DeleteCriticalSection(&_lock);
+            };
+            void lock()
+            {
+                EnterCriticalSection(&_lock);
+            };
+            void unlock()
+            {
+                LeaveCriticalSection(&_lock);
+            };
+        };
+
         //DLL导出
 
         /**
@@ -453,7 +479,7 @@ namespace common {
             Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
             Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer;
             Microsoft::WRL::ComPtr<ID3D11SamplerState> colorMapSampler;
-            void Reset(){
+            void Reset() {
                 solidColorVS.Reset();
                 solidColorPS.Reset();
                 inputLayout.Reset();
@@ -476,7 +502,7 @@ namespace common {
             *@param Width 图像宽度
             *@param Height 图像高度
             */
-            void Create(ID3D11Device* D3D11Device, int Width, int Height) noexcept(false) 
+            void Create(ID3D11Device* D3D11Device, int Width, int Height) noexcept(false)
             {
                 if (D3D11Device == nullptr) {
                     throw std::invalid_argument("ID3D11Device == nullptr");
@@ -531,7 +557,7 @@ namespace common {
             *@param pProfile 着色器模型
             *@param ppShader 指向内存的指针，其中包含已编译的着色器，以及任何嵌入式调试和符号表信息
             */
-            void Compile_D3D_Shader(const char* pFunctionName, const char* pProfile, ID3DBlob** ppShader) 
+            void Compile_D3D_Shader(const char* pFunctionName, const char* pProfile, ID3DBlob** ppShader)
             {
                 DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
 
@@ -589,7 +615,7 @@ namespace common {
             /**
             *@brief 创建D3D11顶点着色器,像素着色器
             */
-            void Create_Shader_Object() 
+            void Create_Shader_Object()
             {
                 //顶点着色器对象
                 ComPtr<ID3DBlob> vsBuffer;
@@ -661,7 +687,7 @@ namespace common {
             /**
             *@brief 创建缓冲区
             */
-            void Prepare_Vector_Buffer() 
+            void Prepare_Vector_Buffer()
             {
                 if (m_PixelShaderObject.vertexBuffer) { return; }
 
@@ -709,7 +735,7 @@ namespace common {
             *@brief 渲染到纹理
             *@param pSrc 源图像
             */
-            void Render_To_Texture(ID3D11Texture2D* pSrc) 
+            void Render_To_Texture(ID3D11Texture2D* pSrc)
             {
                 D3D11_VIEWPORT _OldVP;
                 UINT nOldView = 1;
@@ -759,7 +785,7 @@ namespace common {
             *@param pSrc 源图像
             *@param pDst 结果图像,传空指针接收
             */
-            void Convert(ID3D11Texture2D* pSrc, ID3D11Texture2D*& pDst) 
+            void Convert(ID3D11Texture2D* pSrc, ID3D11Texture2D*& pDst)
             {
                 if (pSrc == nullptr) {
                     throw std::invalid_argument("ID3D11Texture2D == nullptr!");
