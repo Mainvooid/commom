@@ -386,12 +386,12 @@ namespace common {
 
 // debug log ostream 流输出模式 <<
 
-#define DLOGT common::debuglog::dlog_ostream(level_e::Trace)
-#define DLOGD common::debuglog::dlog_ostream(level_e::Debug)
-#define DLOGI common::debuglog::dlog_ostream(level_e::Info)
-#define DLOGW common::debuglog::dlog_ostream(level_e::Warn)
-#define DLOGE common::debuglog::dlog_ostream(level_e::Error)
-#define DLOGF common::debuglog::dlog_ostream(level_e::Fatal)
+#define DLOGT common::debuglog::dlog_ostream(common::level_e::Trace)
+#define DLOGD common::debuglog::dlog_ostream(common::level_e::Debug)
+#define DLOGI common::debuglog::dlog_ostream(common::level_e::Info)
+#define DLOGW common::debuglog::dlog_ostream(common::level_e::Warn)
+#define DLOGE common::debuglog::dlog_ostream(common::level_e::Error)
+#define DLOGF common::debuglog::dlog_ostream(common::level_e::Fatal)
 #define DEND  common::debuglog::dlog_ostream::dend
 #define DEND_ std::function<common::debuglog::dlog_ostream&(common::debuglog::dlog_ostream&)>( \
     std::bind(common::debuglog::dlog_ostream::dend_, std::placeholders::_1,__FUNCTION__, __FILE__, __LINE__)); // 拖尾"_"表示打印位置
