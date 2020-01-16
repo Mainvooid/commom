@@ -57,22 +57,10 @@ namespace common {
         private:
             CRITICAL_SECTION _lock;
         public:
-            win_mutex()
-            {
-                InitializeCriticalSection(&_lock);
-            };
-            ~win_mutex()
-            {
-                DeleteCriticalSection(&_lock);
-            };
-            void lock()
-            {
-                EnterCriticalSection(&_lock);
-            };
-            void unlock()
-            {
-                LeaveCriticalSection(&_lock);
-            };
+            win_mutex() { InitializeCriticalSection(&_lock); };
+            ~win_mutex() { DeleteCriticalSection(&_lock); };
+            void lock() { EnterCriticalSection(&_lock); };
+            void unlock() { LeaveCriticalSection(&_lock); };
         };
 
         //DLL导出
