@@ -22,6 +22,12 @@
 #ifndef _COMMON_CODECVT_HPP_
 #define _COMMON_CODECVT_HPP_
 
+//#if ( __cplusplus || _MSVC_LANG >= 201703L)
+//warning STL4017 : std::wstring_convert...
+//#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+//#define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
+//#endif
+
 #include <common/precomm.hpp>
 #include <codecvt>
 
@@ -267,9 +273,56 @@ namespace common {
         }
 
         //std::string utf8_to_ansi(const std::wstring& utf8_wstring) noexcept {}
-        //std::wstring ansi_to_utf8(const std::string& ansi_string) noexcept {}
         //std::wstring utf8_to_unicode(const std::wstring& utf8_wstring) noexcept {}
+        //std::wstring ansi_to_utf8(const std::string& ansi_string) noexcept {}
         //std::wstring unicode_to_utf8(const std::wstring& unicode_wstring) noexcept {}
+
+        template<typename T>
+        inline auto to_ansi(T str) ->std::enable_if_t<std::is_same_v<T, std::string>, std::string>
+        {
+            return std::move(str);
+        }
+
+        template<typename T>
+        inline auto to_ansi(T str) ->std::enable_if_t<std::is_same_v<T, std::wstring>, std::string>
+        {
+            return unicode_to_ansi(str);
+        }
+
+        template<typename T>
+        inline auto to_unicode(T str)->std::enable_if_t<std::is_same_v<T, std::wstring>, std::wstring>
+        {
+            return std::move(str);
+        }
+
+        template<typename T>
+        inline auto to_unicode(T str)->std::enable_if_t<std::is_same_v<T, std::string>, std::wstring>
+        {
+            return ansi_to_unicode(str);
+        }
+
+        template<typename T>
+        inline auto to_utf8(T str)->std::enable_if_t<std::is_same_v<T, std::wstring>, std::string>
+        {
+            return unicode_to_utf8(str);
+        }
+
+        template<typename T>
+        inline auto to_utf8(T str)->std::enable_if_t<std::is_same_v<T, std::string>, std::string>
+        {
+            return ansi_to_utf8(str);
+        }
+        template<typename T>
+        inline auto to_utf8(T str)->std::enable_if_t<std::is_same_v<T, std::u16string>, std::string>
+        {
+            return utf16_to_utf8(str);
+        }
+
+        template<typename T>
+        inline auto to_utf8(T str)->std::enable_if_t<std::is_same_v<T, std::u32string>, std::string>
+        {
+            return utf32_to_utf8(str);
+        }
         /// @}
     }// namespace codecvt
     /// @}

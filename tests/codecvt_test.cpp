@@ -7,7 +7,7 @@
 #include <common/codecvt.hpp>
 using namespace common::codecvt;
 
-//\u0054\u0065\u0073\u0074\u6d4b\u8bd5\u0031\u0032\u0033\u002e\u005c\u006e
+//\u0054\u0065\u0073\u0074\u6d4b\u8bd5\u0031\u0032\u0033\u002e\u000A
 std::string a_s = "Test测试123.\n";
 std::string u8_s = u8"Test测试123.\n";
 std::wstring w_s = L"Test测试123.\n";
@@ -52,4 +52,30 @@ TEST(codecvt, unicode_to_ansi) {
 }
 TEST(codecvt, ansi_to_unicode) {
     EXPECT_EQ(ansi_to_unicode(a_s), w_s);
+}
+
+//to_unicode() to_ansi() to_utf8()
+TEST(codecvt, ato_unicode) {
+    EXPECT_EQ(to_unicode(a_s), w_s);
+}
+TEST(codecvt, wto_unicode) {
+    EXPECT_EQ(to_unicode(w_s), w_s);
+}
+TEST(codecvt, ato_ansi) {
+    EXPECT_EQ(to_ansi(a_s), a_s);
+}
+TEST(codecvt, wto_ansi) {
+    EXPECT_EQ(to_ansi(w_s), a_s);
+}
+TEST(codecvt, ato_utf8) {
+    EXPECT_EQ(to_utf8(a_s), u8_s);
+}
+TEST(codecvt, wto_utf8) {
+    EXPECT_EQ(to_utf8(w_s), u8_s);
+}
+TEST(codecvt, u16to_utf8) {
+    EXPECT_EQ(to_utf8(u16_s), u8_s);
+}
+TEST(codecvt, u32to_utf8) {
+    EXPECT_EQ(to_utf8(u32_s), u8_s);
 }

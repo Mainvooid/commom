@@ -61,6 +61,9 @@ namespace common {
                 vsprintf_s(buf, BUFSIZ, format, args);
                 va_end(args);
                 OutputDebugStringA(buf);
+#ifdef PRINT_TO_CONSOLE
+                printf(buf);
+#endif // PRINT_TO_CONSOLE
             };
             void operator()(const wchar_t* format, ...)
             {
@@ -70,6 +73,9 @@ namespace common {
                 vswprintf_s(buf, BUFSIZ, format, args);
                 va_end(args);
                 OutputDebugStringW(buf);
+#ifdef PRINT_TO_CONSOLE
+                wprintf(buf);
+#endif // PRINT_TO_CONSOLE
             };
         };
 
@@ -238,6 +244,7 @@ namespace common {
         /// @{
         /**
          @brief 封装debugoutput log流, 需要一个结束符将流内容输入到debugoutput
+         @note 多线程以消息为单位打印,e.g.使用DLOGI/DEND直接替换std::cout/std::endl
         */
         class dlog_ostream :public std::ostream
         {

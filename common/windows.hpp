@@ -49,6 +49,18 @@ namespace common {
         /// @addtogroup windows
         /// @{
 
+        template <typename T>
+        inline auto to_tchar(T str) {
+            return common::tvalue<TCHAR>(codecvt::to_ansi(str),
+                codecvt::to_unicode(str));
+        }
+
+        template <typename T>
+        inline auto to_tchar(const T* str) {
+            std::basic_string<T, std::char_traits<T>, std::allocator<T>> _str = str;
+            return to_tchar(_str);
+        }
+
         /**
          @brief 包装CRITICAL_SECTION 在win上效率高一些
         */
@@ -60,6 +72,7 @@ namespace common {
             win_mutex() { InitializeCriticalSection(&_lock); };
             ~win_mutex() { DeleteCriticalSection(&_lock); };
             void lock() { EnterCriticalSection(&_lock); };
+            bool trylock() { return TryEnterCriticalSection(&_lock); };
             void unlock() { LeaveCriticalSection(&_lock); };
         };
 

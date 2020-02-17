@@ -51,6 +51,9 @@
     <ClInclude Include="common\cuda\texture_reference.hpp">
       <Filter>common\cuda</Filter>
     </ClInclude>
+    <ClInclude Include="common\ipc.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="samples\cmdline.cpp">

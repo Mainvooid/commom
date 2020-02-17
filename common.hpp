@@ -32,6 +32,9 @@
 //#define HAVE_CUDA_KERNEL
 //#define LINK_LIB_OPENCV_WORLD
 
+//其他开关
+#define PRINT_TO_CONSOLE
+
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>
 #include <common/codecvt.hpp>
