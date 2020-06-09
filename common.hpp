@@ -31,9 +31,10 @@
 //#define HAVE_CUDA
 //#define HAVE_CUDA_KERNEL
 //#define LINK_LIB_OPENCV_WORLD
+//#define WITH_OPENCV_CONTRIB 需要编译cv时增加扩展库
 
 //其他开关
-#define PRINT_TO_CONSOLE
+// #define PRINT_TO_CONSOLE
 
 #include <common/precomm.hpp>
 #include <common/cmdline.hpp>
@@ -58,7 +59,7 @@
 namespace common {
     /// @addtogroup common
     /// @{
-    static const std::string _TAG = "common";
+    static const ::std::string _TAG = "common";
     /// @}
 } // namespace common
 

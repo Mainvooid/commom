@@ -3,12 +3,7 @@
 @author guobao.v@gmail.com
 */
 #pragma warning(disable:4091)
-#include <common/precomm.hpp>
 #include <common.hpp>
-#include <windows.h>
-
-using namespace common;
-using namespace std;
 
 size_t __stdcall addA(const char* str,size_t a, size_t b) { return a + b; };
 size_t addW(const wchar_t* str, size_t a, size_t b) { return a + b; };
@@ -21,11 +16,11 @@ auto addAW(const T* str) {
 int main() {
     //目录路径填充
     std::wstring wstr;
-    wstr = fillDir(L"D:\\a\\b\\c\\", L"/");//"D:/a/b/c/"
-    wstr = fillDir(L"D:\\a\\b\\c", L"/");  //"D:/a/b/c/"
-    wstr = fillDir(L"D:/a/b/c/", L"\\");   //"D:\a\b\c\"
-    wstr = fillDir(L"D:/a/b/c", L"\\");    //"D:\a\b\c\"
-    wstr = fillDir(L"a\\b\\c", L"/");      //"a/b/c/"
+    wstr = common::fillDir(L"D:\\a\\b\\c\\", L"/");//"D:/a/b/c/"
+    wstr = common::fillDir(L"D:\\a\\b\\c", L"/");  //"D:/a/b/c/"
+    wstr = common::fillDir(L"D:/a/b/c/", L"\\");   //"D:\a\b\c\"
+    wstr = common::fillDir(L"D:/a/b/c", L"\\");    //"D:\a\b\c\"
+    wstr = common::fillDir(L"a\\b\\c", L"/");      //"a/b/c/"
 
     //函数计时
     std::function<std::wstring(const wchar_t*, const wchar_t*)> fn = fillDir<wchar_t>;

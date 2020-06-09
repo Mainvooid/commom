@@ -6,6 +6,7 @@
 #include <common/opencv.hpp>
 using namespace common::opencv;
 
+#ifdef WITH_OPENCV_CONTRIB
 TEST(opencv, img_hash) {
     cv::UMat left(cv::Size(10, 10), CV_8UC3, cv::Scalar::all(40));
     cv::UMat right(cv::Size(10, 10), CV_8UC3, cv::Scalar::all(100));
@@ -18,6 +19,8 @@ TEST(opencv, img_hash) {
     EXPECT_EQ(AverageHashCompareResult, 0);
     EXPECT_EQ(BlockMeanHashCompareResult, 0);
 }
+#endif // WITH_OPENCV_CONTRIB
+
 TEST(opencv, mergeImage) {
     cv::UMat left(cv::Size(20, 20), CV_8UC3, cv::Scalar::all(40));
     cv::UMat right(cv::Size(10, 10), CV_8UC3, cv::Scalar::all(100));

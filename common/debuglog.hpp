@@ -2,6 +2,8 @@
 @file a simple debug logger
 @author guobao.v@gmail.com
 */
+#define _WIN32
+
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable:4067)
@@ -40,10 +42,43 @@ namespace common {
         Fatal = 5, /*< 会导致应用程序退出的致命事件 */
         Off   = 6  /*< 关闭日志记录 */
     };
+    template<typename bool p=false>
+    std::string get_level_str(level_e e)
+    {
+        switch (e)
+        {
+        case level_e::Trace:
+            return "Trace";
+        case level_e::Debug:
+            return "Debug";
+        case level_e::Info:
+            return "Info";
+        case level_e::Warn:
+            return "Warn";
+        case level_e::Debug:
+            return "Debug";
+        case level_e::Error:
+            return "Error";
+        case level_e::Fatal:
+            return "Fatal";
+        default:
+            break;
+        }
+        
+    }
 
     namespace debuglog {
         /// @addtogroup debuglog
         /// @{
+
+#define KNRM  "\x1B[0m"  // 结束符
+#define KRED  "\x1B[31m" // 红色
+#define KGRN  "\x1B[32m" // 绿色
+#define KYEL  "\x1B[33m" // 黄色
+#define KBLU  "\x1B[34m" // 蓝色
+#define KMAG  "\x1B[35m" // 紫色
+#define KCYN  "\x1B[36m" // 天蓝
+#define KWHT  "\x1B[37m" // 白色
 
         /**
         *@brief OutputDebugString扩展版
@@ -60,9 +95,10 @@ namespace common {
                 va_start(args, format);
                 vsprintf_s(buf, BUFSIZ, format, args);
                 va_end(args);
-                OutputDebugStringA(buf);
-#ifdef PRINT_TO_CONSOLE
+#if defined(PRINT_TO_CONSOLE) or defined(__linux__)
                 printf(buf);
+#else
+                OutputDebugStringA(buf);
 #endif // PRINT_TO_CONSOLE
             };
             void operator()(const wchar_t* format, ...)

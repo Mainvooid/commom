@@ -5,7 +5,6 @@
 #ifndef _COMMON_PRECOMM_HPP_
 #define _COMMON_PRECOMM_HPP_
 #include <cstdlib>
-#include <tchar.h>
 #include <sstream>
 #include <iostream>
 #include <vector>
@@ -15,6 +14,8 @@
 #include <map>
 #include <limits>
 #include <chrono>
+#include <string>
+#include <type_traits>
 
 // 将x变成字符串(如果x是宏,不展开)
 #define __S(x)   #x

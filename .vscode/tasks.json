@@ -1,0 +1,63 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build: g++ -g -o",
+            "type": "shell",
+            "command": "g++",
+            "args":[
+                "-g",
+                "-std=c++17",
+                "main.cpp",
+                "-o",
+                "main"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "test: g++ -g -o",
+            "type": "shell",
+            "command": "g++",
+            "args":[
+                "-g",
+                "-std=c++17",
+                "tests/tests_main.cpp",
+                "-o",
+                "tests_main",
+                "-I","/usr/include",
+                "-I","/usr/include/opencv4",
+                "-L","/usr/lib/gtest",
+                "-L","/usr/lib/opencv4",
+                "-l","gmock",
+                "-l","gmock_main",
+                "-l","gtest",
+                "-l","gtest_main"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }
+    ]
+}

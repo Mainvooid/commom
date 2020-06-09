@@ -11,8 +11,11 @@
 #endif // HAVE_CUDA && HAVE_CUDA_KERNEL
 
 #include <opencv2/opencv.hpp>
+#ifdef WITH_OPENCV_CONTRIB
 #include <opencv2/img_hash.hpp>
+#endif // WITH_OPENCV_CONTRIB
 #include <random>
+#include <common/precomm.hpp>
 
 #define OPENCV_VERSION 410
 // 将参数连接并转成字符串(遇宏则展开)
@@ -36,7 +39,9 @@
 
 #endif // HAVE_CUDA
 #else
+#ifdef WITH_OPENCV_CONTRIB
 #pragma comment(lib,_CV_LIB(opencv_img_hash))
+#endif // WITH_OPENCV_CONTRIB
 #ifdef LINK_LIB_OPENCV_WORLD
 #pragma comment(lib,_CV_LIB(opencv_world))
 #else
@@ -96,7 +101,11 @@ namespace common {
             time_t now_time = time(nullptr);
             char time_stamp[64];
             tm _tm;
+            #ifdef _WIN32
             ::localtime_s(&_tm, &now_time);
+            #else
+            _tm = *localtime(&now_time);
+            #endif
             strftime(time_stamp, sizeof(time_stamp), "%Y-%m-%d_%H-%M-%S", &_tm);
             std::default_random_engine engine(_tm.tm_sec);
             char fname[260];
