@@ -16,7 +16,8 @@
     @defgroup timer timer - simple timer
   @}
 */
-namespace common{
+namespace common
+{
     /// @addtogroup common
     /// @{
 
@@ -83,7 +84,6 @@ namespace common{
 
         void stop_timer(std::size_t timer_id)
         {
-
             if (_timer_task.empty())
                 return;
             for (auto it = _timer_task.begin(); it != _timer_task.end();)
@@ -99,6 +99,8 @@ namespace common{
                     it++;
                 }
             }
+            if (_timer_task.empty())
+                _release(); //若已删除最后一个定时任务，释放线程
         };
         void stop_timer(std::shared_ptr<user_timer_obj> timer_obj_ptr)
         {
@@ -130,6 +132,7 @@ namespace common{
             _observer_thread.~thread();
             _wocker_thread.~thread();
             _is_init = false;
+            std::unique_lock<std::mutex> _timer_task_ul(_timer_task_mu);
             _timer_task.clear();
         };
 
