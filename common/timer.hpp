@@ -119,8 +119,8 @@ namespace common
                 return;
             _next_flush_duration = std::chrono::milliseconds(_next_flush_max);
             _is_run.store(true);
-            _wocker_thread = std::thread(std::bind(&timer::_wocker, this));
-            _wocker_thread.detach();
+            _worker_thread = std::thread(std::bind(&timer::_worker, this));
+            _worker_thread.detach();
             _observer_thread = std::thread(std::bind(&timer::_observer, this));
             _observer_thread.detach();
             _is_init = true;
@@ -130,7 +130,7 @@ namespace common
             _is_run.store(false);
             _cond.notify_all();
             _observer_thread.~thread();
-            _wocker_thread.~thread();
+            _worker_thread.~thread();
             _is_init = false;
             std::unique_lock<std::mutex> _timer_task_ul(_timer_task_mu);
             _timer_task.clear();
@@ -204,7 +204,7 @@ namespace common
         /**
          * @brief 工作线程方法
         */
-        void _wocker()
+        void _worker()
         {
             while (_is_run.load())
             {
@@ -257,7 +257,7 @@ namespace common
 
     private:
         bool _is_init;                 /**< 线程是否初始化 */
-        std::thread _wocker_thread;    /**< 工作线程,TODO:可扩展线程池 */
+        std::thread _worker_thread;    /**< 工作线程,TODO:可扩展线程池 */
         std::thread _observer_thread;  /**< 观察者线程 */
         std::mutex _mu;                /**< 线程锁 */
         std::condition_variable _cond; /**< 条件变量 */
